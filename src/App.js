@@ -1,21 +1,38 @@
 import React, { Component } from 'react';
-import getEndpoint from 'helpers/blog';
+import {
+  BrowserRouter,
+  Route,
+  Switch
+} from 'react-router-dom';
+import { CssBaseline } from '@material-ui/core';
+import {
+  MuiThemeProvider,
+  createMuiTheme
+} from '@material-ui/core/styles';
+import { Blog } from 'views';
 import './App.css';
 
+const theme = createMuiTheme({});
+
 class App extends Component {
+
   render() {
-    console.log(getEndpoint('posts'));
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <React.Fragment>
+        <CssBaseline />
+        <MuiThemeProvider theme={theme}>
+          <BrowserRouter>
+              <Switch>
+                <Route path="/" component={Blog} />
+              </Switch>
+          </BrowserRouter>
+        </MuiThemeProvider>
+      </React.Fragment>
     );
+
   }
+
 }
 
 export default App;
