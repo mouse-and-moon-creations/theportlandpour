@@ -14,6 +14,7 @@ import {
   Typography
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { blogHelper } from 'helpers';
 
 const propTypes = {
   post: PropTypes.object
@@ -38,9 +39,11 @@ class Post extends Component {
 
     const { classes, post } = this.props;
 
+    console.log(blogHelper.getAssetUrl(post.feature_image));
+
     return (
       <Card className={classes.card}>
-        <CardMedia className={classes.cardMedia} image={post.feature_image} />
+        <CardMedia className={classes.cardMedia} image={blogHelper.getAssetUrl(post.feature_image)} />
         <CardContent>
           <Typography variant="title">{post.title}</Typography>
         </CardContent>

@@ -9,6 +9,7 @@ import config from 'config';
 import API from 'services/API';
 
 const blogHelper = {
+  getAssetUrl,
   getEndpoint,
   getPosts
 };
@@ -23,8 +24,10 @@ export default blogHelper;
  */
 function getEndpoint(endpoint, query='')  {
 
-  let ret = config.blog.api.host;
+  let ret = config.blog.host;
 
+  ret += '/';
+  ret += config.blog.api.path;
   ret += '/';
   ret += config.blog.api.endpoints[endpoint];
   ret += '?';
@@ -33,6 +36,12 @@ function getEndpoint(endpoint, query='')  {
   ret += query ? '&' + query : '';
 
   return ret;
+
+}
+
+function getAssetUrl(asset) {
+
+  return config.blog.host + asset;
 
 }
 

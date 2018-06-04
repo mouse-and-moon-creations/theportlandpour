@@ -24,11 +24,13 @@ class Posts extends Component {
 
   render() {
 
+    const { posts } = this.props;
+
     return (
       <Grid container spacing={16}>
-        {this.props.posts.map(post => {
+        {posts.map(post => {
           return (
-            <Grid item xs={12} sm={6} md={3} lg={2} xl={1}>
+            <Grid item xs={12} sm={6} md={3} lg={2} xl={1} key={post.id}>
               <Post post={post} />
             </Grid>
           );

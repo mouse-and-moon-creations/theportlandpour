@@ -1,7 +1,8 @@
 const config = {
   blog: {
+    host: 'https://blog.theportlandpour.com',
     api: {
-      host: 'https://blog.theportlandpour.com/ghost/api/v0.1',
+      path: 'ghost/api/v0.1',
       user: 'ghost-frontend',
       secret: 'a26d5ff404ed',
       endpoints: {
