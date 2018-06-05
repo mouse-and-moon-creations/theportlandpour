@@ -6,12 +6,10 @@
  */
 
 import config from 'config';
-import API from 'services/API';
 
 const blogHelper = {
   getAssetUrl,
-  getEndpoint,
-  getPosts
+  getEndpoint
 };
 
 export default blogHelper;
@@ -39,21 +37,13 @@ function getEndpoint(endpoint, query='')  {
 
 }
 
+/**
+ * Get an absolute path for a Ghost asset
+ * @param {string} asset relative path to an asset
+ * @return {string}
+ */
 function getAssetUrl(asset) {
 
   return config.blog.host + asset;
-
-}
-
-/**
- * Get a list of posts from Ghost
- * @param  {String}  [posts='posts']         The endpoint
- * @return {Promise} { meta: {}, posts: [] } Promise object contains posts array and meta object
- */
-function getPosts(posts = 'posts') {
-
-  const endpoint = getEndpoint(posts, 'formats=mobiledoc');
-
-  return API.get(endpoint);
 
 }

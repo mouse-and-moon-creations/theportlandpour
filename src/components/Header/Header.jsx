@@ -5,7 +5,7 @@
  * @copyright Inspec Digital, LLC
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Card,
   CardContent
@@ -22,22 +22,18 @@ const styles = {
   }
 };
 
-class Header extends Component {
+const Header = props => {
 
-  render() {
+  const { classes } = props;
 
-    const { classes } = this.props;
-
-    return (
-      <Card className={classes.header}>
-        <CardContent>
-          <Logo />
-          <Tagline />
-        </CardContent>
-      </Card>
-    );
-
-  }
+  return (
+    <Card className={classes.header}>
+      <CardContent>
+        <Logo />
+        <Tagline />
+      </CardContent>
+    </Card>
+  );
 
 }
 

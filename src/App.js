@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   BrowserRouter,
   Route,
@@ -13,18 +13,12 @@ import {
   createMuiTheme,
   withStyles
 } from '@material-ui/core/styles';
-import { Blog } from 'views';
+import { themeHelper } from 'helpers';
+import { BlogView } from 'views';
 import { Header } from 'components';
 import './App.css';
 
-const theme = createMuiTheme({
-  typography: {
-    body1: {
-      lineHeight: '1.7em'
-    },
-    fontSize: 16
-  }
-});
+const theme = createMuiTheme(themeHelper.getTheme());
 
 const styles = {
   wrapper: {
@@ -36,11 +30,9 @@ const styles = {
   }
 };
 
-class App extends Component {
+const App = props => {
 
-  render() {
-
-    const { classes } = this.props;
+    const { classes } = props;
 
     return (
       <React.Fragment>
@@ -50,7 +42,7 @@ class App extends Component {
             <Header />
             <BrowserRouter>
                 <Switch>
-                  <Route path="/" component={Blog} />
+                  <Route path="/" component={BlogView} />
                 </Switch>
             </BrowserRouter>
           </Paper>
@@ -59,7 +51,5 @@ class App extends Component {
     );
 
   }
-
-}
 
 export default withStyles(styles)(App);
