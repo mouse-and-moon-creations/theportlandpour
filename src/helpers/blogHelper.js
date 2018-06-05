@@ -52,7 +52,7 @@ function getAssetUrl(asset) {
  */
 function getPosts(posts = 'posts') {
 
-  const endpoint = getEndpoint(posts);
+  const endpoint = getEndpoint(posts, 'formats=mobiledoc');
 
   return API.get(endpoint);
 

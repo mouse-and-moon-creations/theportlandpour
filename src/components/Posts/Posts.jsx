@@ -7,9 +7,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Grid
-} from '@material-ui/core';
+import { Paper } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import { Post } from 'components';
 
 const propTypes = {
@@ -20,22 +19,29 @@ const defaultProps = {
   posts: []
 };
 
+const styles = {
+  paper: {
+    background: 'transparent',
+    maxWidth: '900px',
+    margin: '0 auto',
+    padding: '12px 0'
+  }
+};
+
 class Posts extends Component {
 
   render() {
 
-    const { posts } = this.props;
+    const { classes, posts } = this.props;
 
     return (
-      <Grid container spacing={16}>
+      <Paper className={classes.paper} elevation={0}>
         {posts.map(post => {
           return (
-            <Grid item xs={12} sm={6} md={3} lg={2} xl={1} key={post.id}>
-              <Post post={post} />
-            </Grid>
+            <Post post={post} key={post.id} />
           );
         })}
-      </Grid>
+      </Paper>
     );
 
   }
@@ -45,4 +51,4 @@ class Posts extends Component {
 Posts.propTypes = propTypes;
 Posts.defaultProps = defaultProps;
 
-export default Posts;
+export default withStyles(styles)(Posts);

@@ -10,10 +10,11 @@ import PropTypes from 'prop-types';
 import {
   Card,
   CardContent,
-  CardMedia,
   Typography
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import Markdown from 'react-markdown';
+import { find } from 'lodash';
 import { blogHelper } from 'helpers';
 
 const propTypes = {
@@ -26,10 +27,18 @@ const defaultProps = {
 
 const styles = {
   card: {
-    height: '100%'
+    height: '100%',
+    marginBottom: '12px',
+    padding: '36px'
   },
-  cardMedia: {
-    paddingTop: '50%'
+  image: {
+    border: '1px solid #D3DBDF',
+    height: 'auto',
+    maxWidth: '600px',
+    width: '100%'
+  },
+  title: {
+    padding: '24px 0'
   }
 };
 
@@ -38,14 +47,20 @@ class Post extends Component {
   render() {
 
     const { classes, post } = this.props;
-
-    console.log(blogHelper.getAssetUrl(post.feature_image));
+    const mobiledoc = JSON.parse(post.mobiledoc);
+    const card = mobiledoc.cards[0];
+    const markdown = find(card, { cardName: card[0] });
 
     return (
       <Card className={classes.card}>
-        <CardMedia className={classes.cardMedia} image={blogHelper.getAssetUrl(post.feature_image)} />
         <CardContent>
-          <Typography variant="title">{post.title}</Typography>
+          <Typography align="center">
+            <img src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} className={classes.image} />
+          </Typography>
+          <Typography variant="title" align="center" className={classes.title}>{post.title}</Typography>
+          <Typography component="div">
+            <Markdown escapeHtml={true} source={markdown.markdown} />
+          </Typography>
         </CardContent>
       </Card>
     );
