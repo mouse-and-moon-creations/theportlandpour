@@ -29,7 +29,7 @@ const styles = {
   card: {
     height: '100%',
     marginBottom: '12px',
-    padding: '36px'
+    padding: '5%'
   },
   image: {
     border: '1px solid #D3DBDF',

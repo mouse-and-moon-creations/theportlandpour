@@ -19,6 +19,9 @@ import './App.css';
 
 const theme = createMuiTheme({
   typography: {
+    body1: {
+      lineHeight: '1.7em'
+    },
     fontSize: 16
   }
 });

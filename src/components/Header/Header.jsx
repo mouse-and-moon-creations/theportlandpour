@@ -8,11 +8,13 @@
 import React, { Component } from 'react';
 import {
   Card,
-  CardContent,
-  Typography
+  CardContent
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { Logo } from 'components';
+import {
+  Logo,
+  Tagline
+} from 'components';
 
 const styles = {
   header: {
@@ -30,9 +32,7 @@ class Header extends Component {
       <Card className={classes.header}>
         <CardContent>
           <Logo />
-          <Typography variant="subheading">
-            Cocktails created with the spirits and ingredients of the Pacific Northwest. An art and recipe project by Mouse and Moon Creations, Portland, OR
-          </Typography>
+          <Tagline />
         </CardContent>
       </Card>
     );

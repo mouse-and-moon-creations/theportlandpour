@@ -38,6 +38,8 @@ class Blog extends Component {
 
   render() {
 
+    console.log(this.state);
+
     return (
       <Posts posts={this.state.posts} />
     );
