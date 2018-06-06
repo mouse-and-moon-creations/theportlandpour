@@ -7,8 +7,13 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {
+  withRouter,
+  Link
+} from 'react-router-dom';
 import { blogActions } from 'actions';
 import { Posts } from 'components';
+import { blogHelper } from 'helpers';
 
 
 /**
@@ -19,49 +24,38 @@ class BlogView extends Component {
 
   componentDidMount() {
 
-    return this.getNextPosts();
+    this.historyUnlisten = this.props.history.listen((location, action) => {
+      const path = location.pathname.split('/');
+      const page = path[path.indexOf('page') + 1];
+      window.scrollTo(0, 0);
+      return page ? this.props.dispatch(blogActions.getPosts({page: page})) : null;
+    });
+
+    const page = this.props.match.params.page ? this.props.match.params.page : this.props.blog.meta.pagination.page;
+
+    return this.props.dispatch(blogActions.getPosts({page: page}));
 
   }
 
-  getNextPosts = () => {
+  componentWillUnmount() {
 
-    const { pagination } = this.props.blog.meta;
-
-    const query = {
-      page: pagination.next
-    };
-
-    return this.getPosts(query);
-
-  }
-
-  getPosts = query => {
-
-    window.scrollTo(0, 0);
-    return this.props.dispatch(blogActions.getPosts(query));
-
-  }
-
-  getPreviousPosts = () => {
-
-    const { pagination } = this.props.meta;
-
-    const query = {
-      page: pagination.prev
-    };
-
-    return this.getPosts(query);
-
+    return this.historyUnlisten();
+    
   }
 
   render() {
 
+    const { pagination } = this.props.blog.meta;
+    const { posts } = this.props.blog;
+    const prevUrl = blogHelper.getUrl(pagination.prev);
+    const nextUrl = blogHelper.getUrl(pagination.next);
+
     return (
       <React.Fragment>
-        <Posts posts={this.props.blog.posts} />
+        <Posts posts={posts} />
         <div>
-          <button type="button" onClick={this.getPreviousPosts}>Previous</button>
-          <button type="button" onClick={this.getNextPosts}>Next</button>
+          <Link to={prevUrl}>Previous</Link>
+          <Link to={nextUrl}>Next</Link>
         </div>
       </React.Fragment>
     );
@@ -76,4 +70,4 @@ const mapStateToProps = state => {
 
 }
 
-export default connect(mapStateToProps)(BlogView);
+export default withRouter(connect(mapStateToProps)(BlogView));

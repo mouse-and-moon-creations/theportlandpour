@@ -11,7 +11,7 @@ import { API } from 'services';
 
 const request = () => { return { type: blogConstants.WAITING }; }
 
-const success = posts => { return { type: blogConstants.GET_POSTS, posts: posts }};
+const success = (posts) => { return { type: blogConstants.GET_POSTS, posts: posts }};
 
 const fail = error => { return { type: blogConstants.ERROR, error: error }};
 
@@ -25,6 +25,7 @@ const getPosts = (opts = {}) => {
   const options = Object.assign({}, { formats: 'mobiledoc' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
+  console.log(endpoint);
 
   return dispatch => {
 

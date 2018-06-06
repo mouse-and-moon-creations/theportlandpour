@@ -42,7 +42,8 @@ const App = props => {
             <Header />
             <BrowserRouter>
                 <Switch>
-                  <Route path="/" component={BlogView} />
+                  <Route path="/" exact component={BlogView} />
+                  <Route path="/page/:page" component={BlogView} />
                 </Switch>
             </BrowserRouter>
           </Paper>

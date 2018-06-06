@@ -7,20 +7,13 @@
 
 import config from 'config';
 
-const blogHelper = {
-  getAssetUrl,
-  getEndpoint
-};
-
-export default blogHelper;
-
 /**
  * Create an endpoint for the Ghost API
  * @param  {String} endpoint   The endpoint (such as 'posts' for posts, 'tags' for tags, etc.)
  * @param  {String} [query=''] An optional query string to append to the endpoint
  * @return {String}            The full absolute endpoint URL
  */
-function getEndpoint(endpoint, query='')  {
+const getEndpoint = (endpoint, query='') =>  {
 
   let ret = config.blog.host;
 
@@ -42,8 +35,22 @@ function getEndpoint(endpoint, query='')  {
  * @param {string} asset relative path to an asset
  * @return {string}
  */
-function getAssetUrl(asset) {
+const getAssetUrl = asset => {
 
   return config.blog.host + asset;
 
 }
+
+const getUrl = page => {
+
+  return '/page/' + page;
+
+}
+
+const blogHelper = {
+  getAssetUrl,
+  getEndpoint,
+  getUrl
+};
+
+export default blogHelper;

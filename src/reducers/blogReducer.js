@@ -1,7 +1,5 @@
 import blogConstants from 'constants/blogConstants';
 
-console.log(blogConstants);
-
 const initialState = {
   meta: {
     pagination: {
@@ -21,7 +19,7 @@ const blog = (state = initialState, action) => {
 
   switch(action.type) {
     case blogConstants.GET_POSTS:
-      return Object.assign({}, state, initialState, action.posts);
+      return Object.assign({}, state, initialState, action.posts, action.meta);
     case blogConstants.WAITING:
       return Object.assign({}, state, {
         waiting: true

@@ -16,23 +16,15 @@ const styles = {
   }
 };
 
-/**
- * Logo component
- * @extends Component
- */
-class Logo extends Component {
+const Logo = props => {
 
-  render() {
+  const { classes } = props;
 
-    const { classes } = this.props;
-
-    return (
-      <div>
-        <img src="/assets/images/logo.png" alt="The Portland Pour logo" className={classes.logo} />
-      </div>
-    );
-
-  }
+  return (
+    <div>
+      <img src="/assets/images/logo.png" alt="The Portland Pour logo" className={classes.logo} />
+    </div>
+  );
 
 }
 
