@@ -13,13 +13,16 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { Post } from 'components';
+import { find } from 'lodash';
 
 const propTypes = {
-  posts: PropTypes.array
+  posts: PropTypes.array,
+  users: PropTypes.array
 };
 
 const defaultProps = {
-  posts: []
+  posts: [],
+  users: []
 };
 
 const styles = {
@@ -33,14 +36,14 @@ const styles = {
 
 const Posts = props => {
 
-  const { classes, posts } = props;
+  const { classes, posts, users } = props;
 
   return (
     <Paper className={classes.paper} elevation={0}>
       {posts.map(post => {
         return (
           <span key={post.id} >
-            <Post post={post} />
+            <Post post={post} user={find(users, { id: post.author })} />
             <Divider light />
           </span>
         );

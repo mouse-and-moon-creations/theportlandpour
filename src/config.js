@@ -8,7 +8,7 @@ const config = {
       endpoints: {
         posts: 'posts',
         tags: 'tags',
-        users: 'user'
+        users: 'users'
       }
     }
   },

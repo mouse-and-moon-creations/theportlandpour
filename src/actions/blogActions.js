@@ -9,9 +9,9 @@ import blogConstants from 'constants/blogConstants';
 import { blogHelper } from 'helpers';
 import { API } from 'services';
 
-const request = () => { return { type: blogConstants.WAITING }; }
+const request = (type) => { return { type: type }; }
 
-const success = (posts) => { return { type: blogConstants.GET_POSTS, posts: posts }};
+const success = (type, data) => { return { type: type, data: data }};
 
 const fail = error => { return { type: blogConstants.ERROR, error: error }};
 
@@ -22,18 +22,42 @@ const fail = error => { return { type: blogConstants.ERROR, error: error }};
  */
 const getPosts = (opts = {}) => {
 
-  const options = Object.assign({}, { formats: 'mobiledoc' }, opts);
+  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 
   return dispatch => {
 
-    dispatch(request());
+    dispatch(request(blogConstants.WAITING_POSTS));
 
     API.get(endpoint)
       .then(
         posts => {
-          dispatch(success(posts));
+          dispatch(success(blogConstants.GET_POSTS, posts));
+        },
+        error => {
+          dispatch(fail(error));
+        }
+      );
+
+  }
+
+}
+
+const getUsers = (opts={}) => {
+
+  const options = Object.assign({}, { limit: 'all' }, opts);
+  const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
+  const endpoint = blogHelper.getEndpoint('users', queryString);
+
+  return dispatch => {
+
+    dispatch(request(blogConstants.WAITING_USERS));
+
+    API.get(endpoint)
+      .then(
+        users => {
+          dispatch(success(blogConstants.GET_USERS, users.users));
         },
         error => {
           dispatch(fail(error));
@@ -45,7 +69,8 @@ const getPosts = (opts = {}) => {
 }
 
 const blogActions = {
-  getPosts
+  getPosts,
+  getUsers
 };
 
 export default blogActions;

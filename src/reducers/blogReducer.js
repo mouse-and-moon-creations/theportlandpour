@@ -12,6 +12,7 @@ const initialState = {
     }
   },
   posts: [],
+  users: [],
   waiting: false
 };
 
@@ -19,11 +20,17 @@ const blog = (state = initialState, action) => {
 
   switch(action.type) {
     case blogConstants.GET_POSTS:
-      return Object.assign({}, state, initialState, action.posts, action.meta);
-    case blogConstants.WAITING:
+      return Object.assign({}, state, { posts: initialState.posts, meta: initialState.meta, waiting: false }, action.data);
+    case blogConstants.GET_USERS:
+      return Object.assign({}, state, { users: action.data, waiting: false });
+    case blogConstants.WAITING_POSTS:
       state.meta.pagination.total = initialState.meta.pagination.total;
       return Object.assign({}, state, {
         posts: initialState.posts,
+        waiting: true
+      });
+    case blogConstants.WAITING_USERS:
+      return Object.assign({}, state, {
         waiting: true
       });
     default:

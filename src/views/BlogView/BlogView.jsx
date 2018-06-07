@@ -35,7 +35,10 @@ class BlogView extends Component {
 
     const page = this.props.match.params.page ? this.props.match.params.page : this.props.blog.meta.pagination.page;
 
-    return this.props.dispatch(blogActions.getPosts({page: page}));
+    this.props.dispatch(blogActions.getUsers());
+    this.props.dispatch(blogActions.getPosts({page: page}));
+
+    return this;
 
   }
 
@@ -47,15 +50,17 @@ class BlogView extends Component {
 
   render() {
 
-    const { meta, posts, waiting } = this.props.blog;
+    const { meta, posts, users, waiting } = this.props.blog;
     const { pagination } = meta;
+
+    console.log(this.props);
 
     return (
       <React.Fragment>
         <Pager pagination={pagination} />
         <Divider light />
         <Collapse in={!waiting} timeout="auto">
-          <Posts posts={posts} />
+          <Posts posts={posts} users={users} />
         </Collapse>
         <Pager pagination={pagination} />
       </React.Fragment>
