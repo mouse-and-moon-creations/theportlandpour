@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   BrowserRouter,
+  Redirect,
   Route,
   Switch
 } from 'react-router-dom';
@@ -14,7 +15,10 @@ import {
   withStyles
 } from '@material-ui/core/styles';
 import { themeHelper } from 'helpers';
-import { BlogView } from 'views';
+import {
+  AboutView,
+  BlogView
+} from 'views';
 import { Header } from 'components';
 import './App.css';
 
@@ -37,12 +41,17 @@ const App = props => {
         <CssBaseline />
         <MuiThemeProvider theme={theme}>
           <Paper className={classes.wrapper}>
-            <Header />
             <BrowserRouter>
+              <span>
+                <Header />
                 <Switch>
-                  <Route path="/" exact component={BlogView} />
+                  <Route path="/" exact render={() => (
+                      <Redirect to="/page/1" />
+                    )} />
                   <Route path="/page/:page" component={BlogView} />
+                  <Route path="/about" component={AboutView} />
                 </Switch>
+              </span>
             </BrowserRouter>
           </Paper>
         </MuiThemeProvider>

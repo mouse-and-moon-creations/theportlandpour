@@ -7,7 +7,6 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import {
   Collapse,
   Divider
@@ -35,7 +34,10 @@ class BlogView extends Component {
 
     const page = this.props.match.params.page ? this.props.match.params.page : this.props.blog.meta.pagination.page;
 
-    this.props.dispatch(blogActions.getUsers());
+    if(this.props.blog.users.length === 0) {
+      this.props.dispatch(blogActions.getUsers());
+    }
+
     this.props.dispatch(blogActions.getPosts({page: page}));
 
     return this;
@@ -52,8 +54,6 @@ class BlogView extends Component {
 
     const { meta, posts, users, waiting } = this.props.blog;
     const { pagination } = meta;
-
-    console.log(this.props);
 
     return (
       <React.Fragment>
@@ -76,4 +76,4 @@ const mapStateToProps = state => {
 
 }
 
-export default withRouter(connect(mapStateToProps)(BlogView));
+export default connect(mapStateToProps)(BlogView);

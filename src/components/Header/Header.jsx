@@ -14,6 +14,7 @@ import {
 import { withStyles } from '@material-ui/core/styles';
 import {
   Logo,
+  Navigation,
   Tagline
 } from 'components';
 
@@ -34,6 +35,7 @@ const Header = props => {
         <CardContent>
           <Logo />
           <Tagline />
+          <Navigation />
         </CardContent>
       </Card>
       <Divider light />

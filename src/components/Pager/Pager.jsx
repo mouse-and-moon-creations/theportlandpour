@@ -7,10 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  withRouter,
-  Link
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import {
   Card,
@@ -76,4 +73,4 @@ const Pager = props => {
 Pager.propTypes = propTypes;
 Pager.defaultProps = defaultProps;
 
-export default withRouter(withStyles(styles)(Pager));
+export default withStyles(styles)(Pager);
