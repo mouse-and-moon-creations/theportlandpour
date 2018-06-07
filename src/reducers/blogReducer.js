@@ -4,7 +4,7 @@ const initialState = {
   meta: {
     pagination: {
       limit: 15,
-      next: 0,
+      next: null,
       page: 1,
       pages: null,
       prev: null,
@@ -21,7 +21,9 @@ const blog = (state = initialState, action) => {
     case blogConstants.GET_POSTS:
       return Object.assign({}, state, initialState, action.posts, action.meta);
     case blogConstants.WAITING:
+      state.meta.pagination.total = initialState.meta.pagination.total;
       return Object.assign({}, state, {
+        posts: initialState.posts,
         waiting: true
       });
     default:

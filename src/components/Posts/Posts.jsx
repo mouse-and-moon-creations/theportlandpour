@@ -5,9 +5,12 @@
  * @copyright Inspec Digital, LLC
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Paper } from '@material-ui/core';
+import {
+  Divider,
+  Paper
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { Post } from 'components';
 
@@ -24,27 +27,26 @@ const styles = {
     background: 'transparent',
     maxWidth: '900px',
     margin: '0 auto',
-    padding: '12px 0'
+    padding: '0'
   }
 };
 
-class Posts extends Component {
+const Posts = props => {
 
-  render() {
+  const { classes, posts } = props;
 
-    const { classes, posts } = this.props;
-
-    return (
-      <Paper className={classes.paper} elevation={0}>
-        {posts.map(post => {
-          return (
-            <Post post={post} key={post.id} />
-          );
-        })}
-      </Paper>
-    );
-
-  }
+  return (
+    <Paper className={classes.paper} elevation={0}>
+      {posts.map(post => {
+        return (
+          <span key={post.id} >
+            <Post post={post} />
+            <Divider light />
+          </span>
+        );
+      })}
+    </Paper>
+  );
 
 }
 

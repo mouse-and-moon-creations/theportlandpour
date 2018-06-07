@@ -8,7 +8,8 @@
 import React from 'react';
 import {
   Card,
-  CardContent
+  CardContent,
+  Divider
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import {
@@ -18,6 +19,7 @@ import {
 
 const styles = {
   header: {
+    marginBottom: '12px',
     textAlign: 'center'
   }
 };
@@ -27,12 +29,15 @@ const Header = props => {
   const { classes } = props;
 
   return (
-    <Card className={classes.header}>
-      <CardContent>
-        <Logo />
-        <Tagline />
-      </CardContent>
-    </Card>
+    <React.Fragment>
+      <Card className={classes.header} elevation={0}>
+        <CardContent>
+          <Logo />
+          <Tagline />
+        </CardContent>
+      </Card>
+      <Divider light />
+    </React.Fragment>
   );
 
 }

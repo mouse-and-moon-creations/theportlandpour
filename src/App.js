@@ -22,10 +22,8 @@ const theme = createMuiTheme(themeHelper.getTheme());
 
 const styles = {
   wrapper: {
-    background: 'transparent',
-    margin: 'auto',
+    margin: '12px auto',
     maxWidth: '900px',
-    padding: '12px',
     width: '100%'
   }
 };
@@ -38,7 +36,7 @@ const App = props => {
       <React.Fragment>
         <CssBaseline />
         <MuiThemeProvider theme={theme}>
-          <Paper className={classes.wrapper} elevation={0}>
+          <Paper className={classes.wrapper}>
             <Header />
             <BrowserRouter>
                 <Switch>

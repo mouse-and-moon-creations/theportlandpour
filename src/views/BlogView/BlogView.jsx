@@ -7,14 +7,16 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import {
-  withRouter,
-  Link
-} from 'react-router-dom';
+  Collapse,
+  Divider
+} from '@material-ui/core';
 import { blogActions } from 'actions';
-import { Posts } from 'components';
-import { blogHelper } from 'helpers';
-
+import {
+  Pager,
+  Posts
+} from 'components';
 
 /**
  * Blog view component
@@ -40,23 +42,22 @@ class BlogView extends Component {
   componentWillUnmount() {
 
     return this.historyUnlisten();
-    
+
   }
 
   render() {
 
-    const { pagination } = this.props.blog.meta;
-    const { posts } = this.props.blog;
-    const prevUrl = blogHelper.getUrl(pagination.prev);
-    const nextUrl = blogHelper.getUrl(pagination.next);
+    const { meta, posts, waiting } = this.props.blog;
+    const { pagination } = meta;
 
     return (
       <React.Fragment>
-        <Posts posts={posts} />
-        <div>
-          <Link to={prevUrl}>Previous</Link>
-          <Link to={nextUrl}>Next</Link>
-        </div>
+        <Pager pagination={pagination} />
+        <Divider light />
+        <Collapse in={!waiting} timeout="auto">
+          <Posts posts={posts} />
+        </Collapse>
+        <Pager pagination={pagination} />
       </React.Fragment>
     );
 

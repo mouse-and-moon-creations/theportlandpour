@@ -5,7 +5,7 @@
  * @copyright Inspec Digital, LLC
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
@@ -28,7 +28,6 @@ const defaultProps = {
 const styles = {
   card: {
     height: '100%',
-    marginBottom: '12px',
     padding: '5%'
   },
   image: {
@@ -42,30 +41,26 @@ const styles = {
   }
 };
 
-class Post extends Component {
+const Post = props => {
 
-  render() {
+  const { classes, post } = props;
+  const mobiledoc = JSON.parse(post.mobiledoc);
+  const card = mobiledoc.cards[0];
+  const markdown = find(card, { cardName: card[0] });
 
-    const { classes, post } = this.props;
-    const mobiledoc = JSON.parse(post.mobiledoc);
-    const card = mobiledoc.cards[0];
-    const markdown = find(card, { cardName: card[0] });
-
-    return (
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography align="center">
-            <img src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} className={classes.image} />
-          </Typography>
-          <Typography variant="title" align="center" className={classes.title}>{post.title}</Typography>
-          <Typography component="div">
-            <Markdown escapeHtml={true} source={markdown.markdown} />
-          </Typography>
-        </CardContent>
-      </Card>
-    );
-
-  }
+  return (
+    <Card className={classes.card} elevation={0}>
+      <CardContent>
+        <Typography align="center">
+          <img src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} className={classes.image} />
+        </Typography>
+        <Typography variant="title" align="center" className={classes.title}>{post.title}</Typography>
+        <Typography component="div">
+          <Markdown escapeHtml={true} source={markdown.markdown} />
+        </Typography>
+      </CardContent>
+    </Card>
+  );
 
 }
 

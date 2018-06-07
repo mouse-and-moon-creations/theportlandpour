@@ -25,7 +25,6 @@ const getPosts = (opts = {}) => {
   const options = Object.assign({}, { formats: 'mobiledoc' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
-  console.log(endpoint);
 
   return dispatch => {
 
