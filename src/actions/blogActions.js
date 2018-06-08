@@ -68,7 +68,33 @@ const getUsers = (opts={}) => {
 
 }
 
+const addToMailChimp = (flds, opts={}) => {
+
+  const options = Object.assign({}, opts);
+  const endpoint = blogHelper.getMailChimpEndpoint();
+  let fields = Object.assign({}, flds, { EMAIL: flds.email })
+  delete fields.email;
+
+  return dispatch => {
+
+    dispatch(request(blogConstants.WAITING_MAILCHIMP));
+
+    API.post(endpoint, fields, options)
+      .then(
+        success => {
+          dispatch(success(blogConstants.MAILCHIMP, success))
+        },
+        error => {
+          dispatch(fail(error));
+        }
+      );
+
+  }
+
+}
+
 const blogActions = {
+  addToMailChimp,
   getPosts,
   getUsers
 };

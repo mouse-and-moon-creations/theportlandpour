@@ -46,7 +46,8 @@ class AboutView extends Component {
       <React.Fragment>
         <Card elevation={0}>
           <CardContent>
-            <Typography variant="title">The project</Typography>
+            <Typography variant="headline" paragraph={true}>About The Portland Pour</Typography>
+            <Typography variant="title" paragraph={true}>The project</Typography>
             <Typography paragraph={true}>
               We're as passionate about the spirits and distilleries of Portland as we are about a skillfully crafted cocktail.
               The Portland Pour is a celebration of Portland, the Northwest, and the wonderful products made here.
@@ -56,7 +57,7 @@ class AboutView extends Component {
             <Typography paragraph={true}>
               All the photos you see on The Portland Pour were made at Mouse and Moon Creations, our studio in downtown Portland.
             </Typography>
-            <Typography variant="title">The people</Typography>
+            <Typography variant="title" paragraph={true}>The people</Typography>
             {users.map(user => {
               return (<Typography paragraph={true} key={user.id}>{user.name}</Typography>);
             })}

@@ -8,6 +8,17 @@
 import config from 'config';
 
 /**
+ * Get an absolute path for a Ghost asset
+ * @param {string} asset relative path to an asset
+ * @return {string}
+ */
+const getAssetUrl = asset => {
+
+  return config.blog.host + asset;
+
+}
+
+/**
  * Create an endpoint for the Ghost API
  * @param  {String} endpoint   The endpoint (such as 'posts' for posts, 'tags' for tags, etc.)
  * @param  {String} [query=''] An optional query string to append to the endpoint
@@ -30,14 +41,9 @@ const getEndpoint = (endpoint, query='') =>  {
 
 }
 
-/**
- * Get an absolute path for a Ghost asset
- * @param {string} asset relative path to an asset
- * @return {string}
- */
-const getAssetUrl = asset => {
+const getMailChimpEndpoint = () => {
 
-  return config.blog.host + asset;
+  return config.mailchimp.joinUrl;
 
 }
 
@@ -50,6 +56,7 @@ const getUrl = page => {
 const blogHelper = {
   getAssetUrl,
   getEndpoint,
+  getMailChimpEndpoint,
   getUrl
 };
 

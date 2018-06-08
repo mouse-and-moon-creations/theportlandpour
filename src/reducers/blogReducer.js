@@ -1,6 +1,7 @@
 import blogConstants from 'constants/blogConstants';
 
 const initialState = {
+  mailchimp: false,
   meta: {
     pagination: {
       limit: 15,
@@ -23,6 +24,13 @@ const blog = (state = initialState, action) => {
       return Object.assign({}, state, { posts: initialState.posts, meta: initialState.meta, waiting: false }, action.data);
     case blogConstants.GET_USERS:
       return Object.assign({}, state, { users: action.data, waiting: false });
+    case blogConstants.MAILCHIMP:
+    console.log(action);
+      return Object.assign({}, state, { mailchimp: true, waiting: false });
+    case blogConstants.WAITING_MAILCHIMP:
+      return Object.assign({}, state, {
+        waiting: true
+      });
     case blogConstants.WAITING_POSTS:
       state.meta.pagination.total = initialState.meta.pagination.total;
       return Object.assign({}, state, {

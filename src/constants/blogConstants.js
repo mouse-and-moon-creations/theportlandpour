@@ -4,6 +4,8 @@ const blogConstants = {
   GET_POSTS: 'blog_get_posts',
   GET_USERS: 'blog_get_users',
   GET_PREVIOUS_POSTS: 'blog_get_previous_posts',
+  MAILCHIMP: 'blog_mailchimp',
+  WAITING_MAILCHIMP: 'blog_waiting_mailchimp',
   WAITING_POSTS: 'blog_waiting_posts',
   WAITING_USERS: 'blog_waiting_users'
 }

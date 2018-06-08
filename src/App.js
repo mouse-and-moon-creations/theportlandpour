@@ -17,7 +17,9 @@ import {
 import { themeHelper } from 'helpers';
 import {
   AboutView,
-  BlogView
+  BarView,
+  BlogView,
+  ContactView
 } from 'views';
 import { Header } from 'components';
 import './App.css';
@@ -50,6 +52,8 @@ const App = props => {
                     )} />
                   <Route path="/page/:page" component={BlogView} />
                   <Route path="/about" component={AboutView} />
+                  <Route path="/build-your-bar" component={BarView} />
+                  <Route path="/contact" component={ContactView} />
                 </Switch>
               </span>
             </BrowserRouter>

@@ -1,3 +1,5 @@
+export { default as Form } from './Form';
+export { default as FormValidator } from './FormValidator';
 export { default as Header } from './Header';
 export { default as Logo } from './Logo';
 export { default as Navigation } from './Navigation';

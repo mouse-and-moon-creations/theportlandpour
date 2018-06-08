@@ -19,9 +19,11 @@ const Navigation = props => {
   }
 
   return (
-    <Tabs value={false} textColor="secondary" centered>
+    <Tabs value={false} centered>
       <Tab onClick={() => handleClick('/page/1')} label="Home" />
+      <Tab onClick={() => handleClick('/build-your-bar')} label="Build your bar" />
       <Tab onClick={() => handleClick('/about')} label="About" />
+      <Tab onClick={() => handleClick('/contact')} label="Contact" />
     </Tabs>
   );
 
