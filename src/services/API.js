@@ -4,9 +4,11 @@
  * @author tm
  * @copyright Inspec Digital, LLC
  */
+import reqwest from 'reqwest';
 
 const API = {
   get,
+  jsonPost,
   post
 }
 
@@ -25,6 +27,22 @@ function get(endpoint, options = {}) {
     }).then(data => {
       return data;
     });
+
+}
+
+function jsonPost(endpoint, options = {}) {
+
+  return reqwest({
+      method: 'get',
+      type: 'jsonp',
+      contentType: 'application/json',
+      url: endpoint,
+      data: {EMAIL: options.email, STATUS: 'subscribed'},
+      jsonpCallback: 'c'
+    })
+    .then(response => {
+      return response;
+    })
 
 }
 

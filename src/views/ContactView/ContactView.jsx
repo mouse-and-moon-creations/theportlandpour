@@ -26,8 +26,6 @@ class ContactView extends Component {
 
   submitForm = fields => {
 
-    fields['b_2b5f5ea27c2aeb60c18ebca53_d633c0fa8c'] = '';
-
     return this.props.dispatch(blogActions.addToMailChimp(fields));
 
   }

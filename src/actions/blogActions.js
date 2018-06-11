@@ -15,6 +15,8 @@ const success = (type, data) => { return { type: type, data: data }};
 
 const fail = error => { return { type: blogConstants.ERROR, error: error }};
 
+//const message = message => { return { type: blogConstants.MESSAGE, message: message }};
+
 /**
  * Get a list of posts from Ghost
  * @param  {String}  [posts='posts']         The endpoint
@@ -68,21 +70,23 @@ const getUsers = (opts={}) => {
 
 }
 
-const addToMailChimp = (flds, opts={}) => {
+const addToMailChimp = (fields) => {
 
-  const options = Object.assign({}, opts);
   const endpoint = blogHelper.getMailChimpEndpoint();
-  let fields = Object.assign({}, flds, { EMAIL: flds.email })
-  delete fields.email;
 
   return dispatch => {
 
     dispatch(request(blogConstants.WAITING_MAILCHIMP));
 
-    API.post(endpoint, fields, options)
+    API.jsonPost(endpoint, fields)
       .then(
-        success => {
-          dispatch(success(blogConstants.MAILCHIMP, success))
+        result => {
+          if(result === 'success') {
+            dispatch(success(blogConstants.MAILCHIMP, result));
+          }
+          else {
+            dispatch(fail(result));
+          }
         },
         error => {
           dispatch(fail(error));
@@ -93,7 +97,16 @@ const addToMailChimp = (flds, opts={}) => {
 
 }
 
+const clearMessaging = () => {
+
+  return dispatch => {
+    dispatch(success(blogConstants.CLEAR_MESSAGING));
+  };
+
+}
+
 const blogActions = {
+  clearMessaging,
   addToMailChimp,
   getPosts,
   getUsers

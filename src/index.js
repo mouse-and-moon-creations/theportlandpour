@@ -5,6 +5,8 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { storeHelper } from 'helpers';
 
+require('es6-promise').polyfill();
+
 const store = storeHelper.getStore();
 
 ReactDOM.render(

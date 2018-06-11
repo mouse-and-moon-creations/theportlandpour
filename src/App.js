@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   BrowserRouter,
   Redirect,
@@ -14,6 +15,7 @@ import {
   createMuiTheme,
   withStyles
 } from '@material-ui/core/styles';
+import { blogActions } from 'actions';
 import { themeHelper } from 'helpers';
 import {
   AboutView,
@@ -21,7 +23,10 @@ import {
   BlogView,
   ContactView
 } from 'views';
-import { Header } from 'components';
+import {
+  Alert,
+  Header
+} from 'components';
 import './App.css';
 
 const theme = createMuiTheme(themeHelper.getTheme());
@@ -34,34 +39,47 @@ const styles = {
   }
 };
 
-const App = props => {
+const AppRoot = props => {
 
-    const { classes } = props;
-
-    return (
-      <React.Fragment>
-        <CssBaseline />
-        <MuiThemeProvider theme={theme}>
-          <Paper className={classes.wrapper}>
-            <BrowserRouter>
-              <span>
-                <Header />
-                <Switch>
-                  <Route path="/" exact render={() => (
-                      <Redirect to="/page/1" />
-                    )} />
-                  <Route path="/page/:page" component={BlogView} />
-                  <Route path="/about" component={AboutView} />
-                  <Route path="/build-your-bar" component={BarView} />
-                  <Route path="/contact" component={ContactView} />
-                </Switch>
-              </span>
-            </BrowserRouter>
-          </Paper>
-        </MuiThemeProvider>
-      </React.Fragment>
-    );
-
+  const alertCallback = () => {
+    return props.dispatch(blogActions.clearMessaging());
   }
 
-export default withStyles(styles)(App);
+  const { classes } = props;
+
+  return (
+    <React.Fragment>
+      <CssBaseline />
+      <MuiThemeProvider theme={theme}>
+        <Paper className={classes.wrapper}>
+          <BrowserRouter>
+            <span>
+              <Header />
+              <Switch>
+                <Route path="/" exact render={() => (
+                    <Redirect to="/page/1" />
+                  )} />
+                <Route path="/page/:page" component={BlogView} />
+                <Route path="/about" component={AboutView} />
+                <Route path="/build-your-bar" component={BarView} />
+                <Route path="/contact" component={ContactView} />
+              </Switch>
+            </span>
+          </BrowserRouter>
+        </Paper>
+        <Alert message={props.message} show={props.message ? true : false} type={props.error ? 'error' : 'success'} actionCallback={alertCallback} />
+      </MuiThemeProvider>
+    </React.Fragment>
+  );
+
+}
+
+const mapStateToProps = state => {
+
+  return state.blog.messaging;
+
+};
+
+const App = withStyles(styles)(AppRoot);
+
+export default connect(mapStateToProps)(App);
