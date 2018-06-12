@@ -79,7 +79,10 @@ const blog = (state = initialState, action) => {
         state,
         {
           mailchimp: true,
-          messaging: initialState.messaging,
+          messaging: {
+            message: action.data.msg,
+            error: false
+          },
           waiting: false
         }
       );

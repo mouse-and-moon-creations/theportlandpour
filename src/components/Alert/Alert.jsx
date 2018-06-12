@@ -49,6 +49,7 @@ const alertTypes = {
 class Alert extends Component {
 
   actionHandler = () => {
+
     return this.props.actionCallback ? this.props.actionCallback() : null;
 
   }

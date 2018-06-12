@@ -7,8 +7,10 @@ import {
   Switch
 } from 'react-router-dom';
 import {
+  Button,
   CssBaseline,
-  Paper
+  Paper,
+  Snackbar
 } from '@material-ui/core';
 import {
   MuiThemeProvider,
@@ -23,10 +25,7 @@ import {
   BlogView,
   ContactView
 } from 'views';
-import {
-  Alert,
-  Header
-} from 'components';
+import { Header } from 'components';
 import './App.css';
 
 const theme = createMuiTheme(themeHelper.getTheme());
@@ -41,7 +40,7 @@ const styles = {
 
 const AppRoot = props => {
 
-  const alertCallback = () => {
+  const actionCallback = () => {
     return props.dispatch(blogActions.clearMessaging());
   }
 
@@ -67,7 +66,11 @@ const AppRoot = props => {
             </span>
           </BrowserRouter>
         </Paper>
-        <Alert message={props.message} show={props.message ? true : false} type={props.error ? 'error' : 'success'} actionCallback={alertCallback} />
+        <Snackbar open={props.message ? true : false}
+                  message={props.message}
+                  autoHideDuration={6000}
+                  action={<Button onClick={actionCallback} color="secondary" size="small">Dismiss</Button>}
+                  onClose={actionCallback} />
       </MuiThemeProvider>
     </React.Fragment>
   );

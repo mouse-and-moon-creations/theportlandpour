@@ -34,6 +34,9 @@ class ContactView extends Component {
 
     const { classes } = this.props;
 
+    const form = <Form submitFormCallback={this.submitForm} form="contact" />;
+    const formSuccess = <Typography>Thank you for subscribing to our newsletter. Please check your email for confirmation.</Typography>;
+
     return (
       <React.Fragment>
         <Card elevation={0}>
@@ -41,7 +44,7 @@ class ContactView extends Component {
             <Typography variant="headline" paragraph={true}>Contact The Portland Pour</Typography>
             <Typography variant="title" paragraph>Subscribe</Typography>
             <Typography variant="subheading" paragraph>Join our mailing list</Typography>
-            <Form submitFormCallback={this.submitForm} form="contact" />
+            {this.props.mailchimp ? formSuccess : form}
             <Typography variant="caption" paragraph className={classes.firstCaption}>
               Get occassional updates about The Portland Pour, and local spirits.
             </Typography>

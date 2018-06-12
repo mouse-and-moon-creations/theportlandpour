@@ -9,7 +9,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   Collapse,
-  Divider
+  Divider,
+  LinearProgress
 } from '@material-ui/core';
 import { blogActions } from 'actions';
 import {
@@ -55,11 +56,13 @@ class BlogView extends Component {
     const { meta, posts, users, waiting } = this.props.blog;
     const { pagination } = meta;
 
+    const progress = <LinearProgress />;
+
     return (
       <React.Fragment>
-        <Pager pagination={pagination} />
         <Divider light />
         <Collapse in={!waiting} timeout="auto">
+          {waiting ? progress : null}
           <Posts posts={posts} users={users} />
         </Collapse>
         <Pager pagination={pagination} />

@@ -81,7 +81,7 @@ const addToMailChimp = (fields) => {
     API.jsonPost(endpoint, fields)
       .then(
         result => {
-          if(result === 'success') {
+          if(result.result === 'success') {
             dispatch(success(blogConstants.MAILCHIMP, result));
           }
           else {
@@ -89,6 +89,7 @@ const addToMailChimp = (fields) => {
           }
         },
         error => {
+          console.log(error);
           dispatch(fail(error));
         }
       );
