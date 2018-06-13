@@ -55,9 +55,7 @@ const AppRoot = props => {
             <span>
               <Header />
               <Switch>
-                <Route path="/" exact render={() => (
-                    <Redirect to="/page/1" />
-                  )} />
+                <Route path="/" exact component={BlogView} />
                 <Route path="/page/:page" component={BlogView} />
                 <Route path="/about" component={AboutView} />
                 <Route path="/build-your-bar" component={BarView} />
