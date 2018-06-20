@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
   BrowserRouter,
-  Redirect,
   Route,
   Switch
 } from 'react-router-dom';
@@ -23,7 +22,8 @@ import {
   AboutView,
   BarView,
   BlogView,
-  ContactView
+  ContactView,
+  PostView
 } from 'views';
 import { Header } from 'components';
 import './App.css';
@@ -57,6 +57,7 @@ const AppRoot = props => {
               <Switch>
                 <Route path="/" exact component={BlogView} />
                 <Route path="/page/:page" component={BlogView} />
+                <Route path="/post/:slug" component={PostView} />
                 <Route path="/about" component={AboutView} />
                 <Route path="/build-your-bar" component={BarView} />
                 <Route path="/contact" component={ContactView} />

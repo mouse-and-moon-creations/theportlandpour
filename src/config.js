@@ -6,6 +6,7 @@ const config = {
       user: 'ghost-frontend',
       secret: 'a26d5ff404ed',
       endpoints: {
+        postBySlug: 'posts/slug',
         posts: 'posts',
         tags: 'tags',
         users: 'users'

@@ -1,5 +1,5 @@
 /**
- * @file blog helper
+ * @file blog actions
  * @description Helper methods for blog stuff
  * @author tm
  * @copyright Inspec Digital, LLC
@@ -16,6 +16,31 @@ const success = (type, data) => { return { type: type, data: data }};
 const fail = error => { return { type: blogConstants.ERROR, error: error }};
 
 //const message = message => { return { type: blogConstants.MESSAGE, message: message }};
+
+
+const getPostBySlug = (slug, opts={}) => {
+
+  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags' }, opts);
+  const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
+  const endpoint = blogHelper.getEndpoint('postBySlug', queryString, slug);
+
+  return dispatch => {
+
+    dispatch(request(blogConstants.WAITING_POSTS));
+
+    API.get(endpoint)
+      .then(
+        posts => {
+          dispatch(success(blogConstants.GET_POSTS, posts));
+        },
+        error => {
+          dispatch(fail(error));
+        }
+      );
+
+  }
+
+}
 
 /**
  * Get a list of posts from Ghost
@@ -109,6 +134,7 @@ const clearMessaging = () => {
 const blogActions = {
   clearMessaging,
   addToMailChimp,
+  getPostBySlug,
   getPosts,
   getUsers
 };

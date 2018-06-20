@@ -24,7 +24,7 @@ const getAssetUrl = asset => {
  * @param  {String} [query=''] An optional query string to append to the endpoint
  * @return {String}            The full absolute endpoint URL
  */
-const getEndpoint = (endpoint, query='') =>  {
+const getEndpoint = (endpoint, query='', slug='') =>  {
 
   let ret = config.blog.host;
 
@@ -32,6 +32,7 @@ const getEndpoint = (endpoint, query='') =>  {
   ret += config.blog.api.path;
   ret += '/';
   ret += config.blog.api.endpoints[endpoint];
+  ret += slug ? '/' + slug : '';
   ret += '?';
   ret += 'client_id=' + config.blog.api.user;
   ret += '&client_secret=' + config.blog.api.secret;
