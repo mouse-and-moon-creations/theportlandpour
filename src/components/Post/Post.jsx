@@ -16,6 +16,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Markdown from 'react-markdown';
 import { find } from 'lodash';
 import moment from 'moment';
+import { TagList } from 'components';
 import { blogHelper } from 'helpers';
 
 const propTypes = {
@@ -63,6 +64,7 @@ const Post = props => {
         <Typography component="div">
           <Markdown escapeHtml={true} source={markdown.markdown} />
         </Typography>
+        <TagList className={classes.tagList} tags={post.tags} />
       </CardContent>
     </Card>
   );

@@ -8,4 +8,6 @@ export { default as Navigation } from './Navigation';
 export { default as Pager } from './Pager';
 export { default as Post } from './Post';
 export { default as Posts } from './Posts';
+export { default as Tag } from './Tag';
 export { default as Tagline } from './Tagline';
+export { default as TagList } from './TagList';
