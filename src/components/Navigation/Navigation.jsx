@@ -19,7 +19,7 @@ const Navigation = props => {
   }
 
   return (
-    <Tabs value={false} scrollable scrollButtons="auto">
+    <Tabs value={false} {...props}>
       <Tab onClick={() => handleClick('/page/1')} label="Home" />
       <Tab onClick={() => handleClick('/build-your-bar')} label="Build your bar" />
       <Tab onClick={() => handleClick('/about')} label="About" />

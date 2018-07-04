@@ -21,6 +21,12 @@ const config = {
       body1: {
         lineHeight: '1.7em'
       },
+      display4: {
+        color: '#000',
+        fontFamily: 'Italianno, cursive',
+        fontSize: '2rem',
+        fontWeight: 400
+      },
       fontSize: 16
     }
   }
