@@ -32,7 +32,7 @@ const theme = createMuiTheme(themeHelper.getTheme());
 
 const styles = {
   wrapper: {
-    margin: '12px auto',
+    margin: '10% auto',
     maxWidth: '900px',
     width: '100%'
   }

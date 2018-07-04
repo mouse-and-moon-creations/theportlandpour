@@ -95,12 +95,6 @@ class Header extends Component {
             </Hidden>
           </Toolbar>
         </AppBar>
-        <Card className={classes.header} elevation={0}>
-          <CardContent>
-            <Tagline />
-          </CardContent>
-        </Card>
-        <Divider light />
         <Drawer open={this.state.drawer} onClose={this.toggleDrawer}>
           <div
             tabIndex={0}
