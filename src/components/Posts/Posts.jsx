@@ -27,11 +27,10 @@ const styles = theme => ({
     flexFlow: 'row wrap',
     justifyContent: 'space-around',
     margin: 'auto 24% auto auto',
-//    width: '74%',
-    [theme.breakpoints.only('sm')]: {
-      width: '64%'
+    [theme.breakpoints.only('md')]: {
+      marginRight: '30%'
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       width: '100%'
     }
   }

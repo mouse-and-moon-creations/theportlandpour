@@ -29,12 +29,15 @@ import './App.css';
 
 const theme = createMuiTheme(themeHelper.getTheme());
 
-const styles = {
+const styles = theme => ({
   wrapper: {
     margin: '130px auto auto auto',
-    width: '100%'
+    width: '100%',
+    [theme.breakpoints.down('md')]: {
+      marginTop: '100px'
+    }
   }
-};
+});
 
 const AppRoot = props => {
 

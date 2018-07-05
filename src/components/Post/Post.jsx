@@ -36,10 +36,10 @@ const styles = theme => ({
     marginBottom: '3%',
 //    width: '60%',
     width: '32%',
-    [theme.breakpoints.only('md')]: {
+    [theme.breakpoints.down('md')]: {
       width: '48%'
     },
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       width: '100%'
     }
   },

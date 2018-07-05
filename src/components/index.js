@@ -9,6 +9,7 @@ export { default as Pager } from './Pager';
 export { default as Post } from './Post';
 export { default as PostDetail } from './PostDetail';
 export { default as Posts } from './Posts';
+export { default as Sidebar } from './Sidebar';
 export { default as Tag } from './Tag';
 export { default as Tagline } from './Tagline';
 export { default as TagList } from './TagList';

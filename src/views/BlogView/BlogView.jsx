@@ -8,22 +8,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Drawer,
   Collapse,
+  Drawer,
+  Hidden,
   LinearProgress
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { blogActions } from 'actions';
 import {
   Pager,
-  Posts
+  Posts,
+  Sidebar
 } from 'components';
-
-const styles = {
-  drawerPaper: {
-    width: '24%'
-  }
-};
 
 /**
  * Blog view component
@@ -73,15 +69,9 @@ class BlogView extends Component {
           <Posts posts={posts} users={users} />
           <Pager pagination={pagination} />
         </Collapse>
-        <Drawer
-          variant="permanent"
-          anchor="right"
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          drawer
-        </Drawer>
+        <Hidden smDown>
+          <Sidebar />
+        </Hidden>
       </React.Fragment>
     );
 
@@ -95,6 +85,4 @@ const mapStateToProps = state => {
 
 }
 
-const styledComponent = withStyles(styles)(BlogView);
-
-export default connect(mapStateToProps)(styledComponent);
+export default connect(mapStateToProps)(BlogView);
