@@ -6,30 +6,26 @@
  */
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   AppBar,
-  Card,
-  CardContent,
-  Divider,
   Drawer,
   Hidden,
   IconButton,
   List,
   ListItem,
   ListItemText,
-  Toolbar,
-  Typography
+  Toolbar
 } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
-import {
-  Logo,
-  Navigation,
-  Tagline
-} from 'components';
+import { Navigation } from 'components';
 
 const styles = theme => ({
-  root: {
+  appbar: {
+    zIndex: theme.zIndex.drawer + 1
+  },
+  toolbar: {
     flexGrow: 1,
   },
   brand: {
@@ -69,26 +65,26 @@ class Header extends Component {
 
   render() {
 
-    console.log(this.state);
-
     const { classes } = this.props;
 
     return (
       <React.Fragment>
-        <AppBar position="fixed" color="default">
-          <Toolbar className={classes.root}>
+        <AppBar className={classes.appbar} position="fixed" color="default">
+          <Toolbar className={classes.toolbar}>
             <Hidden lgUp>
               <IconButton onClick={this.toggleDrawer} className={classes.menuButton} color="inherit" aria-label="Menu">
                 <Menu />
               </IconButton>
             </Hidden>
             <div className={classes.brand}>
-              <Hidden mdDown>
-                <img src="/assets/images/brand/tpp.brand.lg.png" alt=""/>
-              </Hidden>
-              <Hidden lgUp>
-                <img src="/assets/images/brand/tpp.brand.md.png" alt=""/>
-              </Hidden>
+              <Link to="/">
+                <Hidden mdDown>
+                  <img src="/assets/images/brand/tpp.brand.lg.png" alt=""/>
+                </Hidden>
+                <Hidden lgUp>
+                  <img src="/assets/images/brand/tpp.brand.md.png" alt=""/>
+                </Hidden>
+              </Link>
             </div>
             <Hidden mdDown>
               <Navigation className={classes.navigation} />
@@ -104,7 +100,7 @@ class Header extends Component {
           >
             <List component="nav">
               <ListItem button component="a" href="/page/1">
-                <ListItemText primary="Home" />
+                <ListItemText primary="Cocktails" />
               </ListItem>
               <ListItem button component="a" href="/build-your-bar">
                 <ListItemText primary="Build your bar" />

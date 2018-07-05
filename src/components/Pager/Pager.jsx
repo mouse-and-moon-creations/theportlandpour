@@ -33,6 +33,12 @@ const defaultProps = {
 };
 
 const styles = {
+  card: {
+    marginRight: '24.5%',
+    marginTop: '-1.5%',
+    marginBottom: '1%',
+    marginLeft: '.5%'
+  },
   meta: {
     lineHeight: '48px'
   },
@@ -49,7 +55,7 @@ const Pager = props => {
   const fade = pagination.total ? true : false;
 
   return (
-    <Card elevation={0}>
+    <Card className={classes.card} elevation={0}>
       <CardContent>
         <GridList cols={3} cellHeight="auto">
           <GridListTile>

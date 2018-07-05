@@ -8,7 +8,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {
-  Drawer,
   Tab,
   Tabs
 } from '@material-ui/core';
@@ -21,7 +20,7 @@ const Navigation = props => {
 
   return (
     <Tabs value={false} {...props}>
-      <Tab onClick={() => handleClick('/page/1')} label="Home" />
+      <Tab onClick={() => handleClick('/page/1')} label="Cocktails" />
       <Tab onClick={() => handleClick('/build-your-bar')} label="Build your bar" />
       <Tab onClick={() => handleClick('/about')} label="About" />
       <Tab onClick={() => handleClick('/contact')} label="Contact" />

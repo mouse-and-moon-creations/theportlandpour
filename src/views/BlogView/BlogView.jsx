@@ -8,15 +8,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
+  Drawer,
   Collapse,
-  Divider,
   LinearProgress
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import { blogActions } from 'actions';
 import {
   Pager,
   Posts
 } from 'components';
+
+const styles = {
+  drawerPaper: {
+    width: '24%'
+  }
+};
 
 /**
  * Blog view component
@@ -55,17 +62,26 @@ class BlogView extends Component {
 
     const { meta, posts, users, waiting } = this.props.blog;
     const { pagination } = meta;
+    const { classes } = this.props;
 
     const progress = <LinearProgress />;
 
     return (
       <React.Fragment>
-        <Divider light />
         <Collapse in={!waiting} timeout="auto">
           {waiting ? progress : null}
           <Posts posts={posts} users={users} />
+          <Pager pagination={pagination} />
         </Collapse>
-        <Pager pagination={pagination} />
+        <Drawer
+          variant="permanent"
+          anchor="right"
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+        >
+          drawer
+        </Drawer>
       </React.Fragment>
     );
 
@@ -79,4 +95,6 @@ const mapStateToProps = state => {
 
 }
 
-export default connect(mapStateToProps)(BlogView);
+const styledComponent = withStyles(styles)(BlogView);
+
+export default connect(mapStateToProps)(styledComponent);

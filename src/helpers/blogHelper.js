@@ -54,10 +54,17 @@ const getUrl = page => {
 
 }
 
+const getPostUrl = slug => {
+
+  return '/post/' + slug;
+
+}
+
 const blogHelper = {
   getAssetUrl,
   getEndpoint,
   getMailChimpEndpoint,
+  getPostUrl,
   getUrl
 };
 

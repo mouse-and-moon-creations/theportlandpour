@@ -7,10 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Divider,
-  Paper
-} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { Post } from 'components';
 import { find } from 'lodash';
@@ -25,30 +21,34 @@ const defaultProps = {
   users: []
 };
 
-const styles = {
+const styles = theme => ({
   paper: {
-    background: 'transparent',
-    maxWidth: '900px',
-    margin: '0 auto',
-    padding: '0'
+    display: 'flex',
+    flexFlow: 'row wrap',
+    justifyContent: 'space-around',
+    margin: 'auto 24% auto auto',
+//    width: '74%',
+    [theme.breakpoints.only('sm')]: {
+      width: '64%'
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: '100%'
+    }
   }
-};
+});
 
 const Posts = props => {
 
   const { classes, posts, users } = props;
 
   return (
-    <Paper className={classes.paper} elevation={0}>
+    <div className={classes.paper}>
       {posts.map(post => {
         return (
-          <span key={post.id} >
-            <Post post={post} user={find(users, { id: post.author })} />
-            <Divider light />
-          </span>
+          <Post post={post} user={find(users, { id: post.author })} key={post.id} />
         );
       })}
-    </Paper>
+    </div>
   );
 
 }

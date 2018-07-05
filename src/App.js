@@ -8,7 +8,6 @@ import {
 import {
   Button,
   CssBaseline,
-  Paper,
   Snackbar
 } from '@material-ui/core';
 import {
@@ -32,8 +31,7 @@ const theme = createMuiTheme(themeHelper.getTheme());
 
 const styles = {
   wrapper: {
-    margin: '10% auto',
-    maxWidth: '900px',
+    margin: '130px auto auto auto',
     width: '100%'
   }
 };
@@ -48,9 +46,9 @@ const AppRoot = props => {
 
   return (
     <React.Fragment>
-      <CssBaseline />
       <MuiThemeProvider theme={theme}>
-        <Paper className={classes.wrapper}>
+        <CssBaseline />
+        <div className={classes.wrapper}>
           <BrowserRouter>
             <span>
               <Header />
@@ -64,7 +62,7 @@ const AppRoot = props => {
               </Switch>
             </span>
           </BrowserRouter>
-        </Paper>
+        </div>
         <Snackbar open={props.message ? true : false}
                   message={props.message}
                   autoHideDuration={6000}
