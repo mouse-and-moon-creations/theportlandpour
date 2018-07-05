@@ -6,13 +6,18 @@
  */
 
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   Collapse,
+  Hidden,
   LinearProgress
 } from '@material-ui/core';
 import { blogActions } from 'actions';
-import { PostDetail } from 'components';
+import {
+  PostDetail,
+  Sidebar
+} from 'components';
 import { find, isEmpty } from 'lodash';
 
 /**
@@ -35,6 +40,8 @@ class PostView extends Component {
 
   render() {
 
+    console.log(this.props);
+
     const { post, users, waiting } = this.props.blog;
     const progress = <LinearProgress />;
 
@@ -44,6 +51,9 @@ class PostView extends Component {
           {waiting ? progress : null}
           {isEmpty(post) ? null : <PostDetail post={post} user={find(users, { id: post.author })} />}
         </Collapse>
+        <Hidden smDown>
+          <Sidebar />
+        </Hidden>
       </React.Fragment>
     );
 
@@ -57,4 +67,6 @@ const mapStateToProps = state => {
 
 }
 
-export default connect(mapStateToProps)(PostView);
+const routedComponent = withRouter(PostView);
+
+export default connect(mapStateToProps)(routedComponent);

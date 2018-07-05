@@ -19,6 +19,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Markdown from 'react-markdown';
 import { find } from 'lodash';
 import moment from 'moment';
+import { TagList } from 'components';
 import { blogHelper } from 'helpers';
 
 const propTypes = {
@@ -33,22 +34,23 @@ const defaultProps = {
 
 const styles = theme => ({
   root: {
-    marginBottom: '3%',
-//    width: '60%',
-    width: '32%',
+    marginBottom: '5%',
+    marginLeft: '3%',
+    width: '70%',
     [theme.breakpoints.only('md')]: {
-      width: '48%'
+      marginLeft: '5%',
+      width: '60%'
     },
     [theme.breakpoints.down('sm')]: {
-      width: '100%'
+      margin: '5% auto',
+      width: '90%'
     }
   },
   cardActions: {
     display: 'flex'
   },
   cardBody: {
-    height: '80px',
-    overflow: 'hidden'
+    padding: '0 10%'
   },
   cardButton: {
     marginLeft: 'auto'
@@ -56,11 +58,14 @@ const styles = theme => ({
   image: {
     border: '1px solid #D3DBDF',
     height: 'auto',
-//    maxWidth: '400px',
+    maxWidth: '600px',
     width: '100%'
   },
+  cardSubheading: {
+    paddingBottom: '24px'
+  },
   cardTitle: {
-    padding: '24px 0'
+    padding: '24px 0 12px 0'
   }
 });
 
@@ -75,19 +80,18 @@ const PostDetail = props => {
 
   return (
     <Card className={classes.root}>
-      <Link to={postBySlug}>
-        <CardContent>
-          <Typography align="center">
-            <img src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} className={classes.image} />
-          </Typography>
-          <Typography variant="title" align="center" className={classes.cardTitle}>{post.title}</Typography>
-          <Typography variant="caption" align="center" paragraph={true}>{postDate} by {user.name}</Typography>
-          <Typography className={classes.cardBody} component="div">{ post.custom_excerpt }</Typography>
-        </CardContent>
-        <CardActions className={classes.cardActions}>
-          <Button className={classes.cardButton} color="primary">Read more</Button>
-        </CardActions>
-      </Link>
+      <CardContent className={classes.cardBody}>
+        <Typography variant="display2" color="primary" align="center" className={classes.cardTitle}>{post.title}</Typography>
+        <Typography className={classes.cardSubheading} align="center" variant="subheading" color="textSecondary" component="div">"{ post.custom_excerpt }"</Typography>
+        <Typography className={classes.cardSubheading} variant="caption" align="center" paragraph={true}>{postDate} by {user.name}</Typography>
+        <Typography align="center">
+          <img src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} className={classes.image} />
+        </Typography>
+        <Typography component="div">
+          <Markdown escapeHtml={true} source={markdown.markdown} />
+        </Typography>
+        <TagList tags={post.tags} />
+      </CardContent>
     </Card>
   );
 
