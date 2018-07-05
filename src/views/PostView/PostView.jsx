@@ -12,7 +12,8 @@ import {
   LinearProgress
 } from '@material-ui/core';
 import { blogActions } from 'actions';
-import { Posts } from 'components';
+import { PostDetail } from 'components';
+import { find, isEmpty } from 'lodash';
 
 /**
  * Blog view component
@@ -34,14 +35,14 @@ class PostView extends Component {
 
   render() {
 
-    const { posts, users, waiting } = this.props.blog;
+    const { post, users, waiting } = this.props.blog;
     const progress = <LinearProgress />;
 
     return (
       <React.Fragment>
         <Collapse in={!waiting} timeout="auto">
           {waiting ? progress : null}
-          <Posts posts={posts} users={users} />
+          {isEmpty(post) ? null : <PostDetail post={post} user={find(users, { id: post.author })} />}
         </Collapse>
       </React.Fragment>
     );

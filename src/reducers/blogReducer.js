@@ -16,6 +16,7 @@ const initialState = {
     error: {},
     message: null
   },
+  post: {},
   posts: [],
   users: [],
   waiting: false
@@ -43,6 +44,19 @@ const blog = (state = initialState, action) => {
             error: true,
             message: action.error.msg
           }
+        }
+      );
+
+    case blogConstants.GET_POST:
+
+      return Object.assign(
+        {},
+        state,
+        {
+          post: action.data,
+          messaging: initialState.messaging,
+          meta: initialState.meta,
+          waiting: false
         }
       );
 

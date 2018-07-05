@@ -31,7 +31,7 @@ const getPostBySlug = (slug, opts={}) => {
     API.get(endpoint)
       .then(
         posts => {
-          dispatch(success(blogConstants.GET_POSTS, posts));
+          dispatch(success(blogConstants.GET_POST, posts.posts[0]));
         },
         error => {
           dispatch(fail(error));
