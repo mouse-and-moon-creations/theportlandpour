@@ -22,6 +22,7 @@ import {
   BarView,
   BlogView,
   ContactView,
+  HomeView,
   PostView
 } from 'views';
 import { Header } from 'components';
@@ -31,11 +32,7 @@ const theme = createMuiTheme(themeHelper.getTheme());
 
 const styles = theme => ({
   wrapper: {
-    margin: '130px auto auto auto',
     width: '100%',
-    [theme.breakpoints.down('md')]: {
-      marginTop: '100px'
-    }
   }
 });
 
@@ -56,7 +53,7 @@ const AppRoot = props => {
             <span>
               <Header />
               <Switch>
-                <Route path="/" exact component={BlogView} />
+                <Route path="/" exact component={HomeView} />
                 <Route path="/page/:page" component={BlogView} />
                 <Route path="/post/:slug" component={PostView} />
                 <Route path="/about" component={AboutView} />

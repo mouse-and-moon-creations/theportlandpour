@@ -6,6 +6,7 @@
  */
 
 import config from 'config';
+import moment from 'moment';
 
 /**
  * Get an absolute path for a Ghost asset
@@ -54,6 +55,12 @@ const getUrl = page => {
 
 }
 
+const getPostDate = date => {
+
+  return moment(date).format('LL');
+
+}
+
 const getPostUrl = slug => {
 
   return '/post/' + slug;
@@ -64,6 +71,7 @@ const blogHelper = {
   getAssetUrl,
   getEndpoint,
   getMailChimpEndpoint,
+  getPostDate,
   getPostUrl,
   getUrl
 };

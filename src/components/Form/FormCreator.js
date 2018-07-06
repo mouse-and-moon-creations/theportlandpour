@@ -249,14 +249,14 @@ class FormCreator extends Component {
   renderForm = (form) => {
 
     return (
-      <form className="form" onSubmit={this.handleSubmit}>
-        <Card elevation={0}>
+      <form onSubmit={this.handleSubmit}>
+        <Card className={this.props.classes.form} elevation={0}>
           <CardContent>
             {form}
           </CardContent>
-          <CardActions>
-            <Button color="primary" onClick={this._toggleTask}>cancel</Button>
-            <Button disabled={this.disabled} variant="raised" color="primary" type="submit">submit</Button>
+          <CardActions className={this.props.classes.formActions}>
+            { this.props.showCancel ? <Button className={this.props.classes.cancelButton} color={this.props.buttonColor} onClick={this._toggleTask}>cancel</Button> : null }
+            <Button className={this.props.classes.submitButton} disabled={this.disabled} variant="raised" color={this.props.buttonColor} type="submit">{this.props.submitLabel}</Button>
           </CardActions>
         </Card>
       </form>

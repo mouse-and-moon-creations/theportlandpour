@@ -6,23 +6,52 @@
  */
 
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import {
+  Hidden,
+  Typography
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = {
+const styles = theme => ({
+  root: {
+    background: 'transparent',
+    [theme.breakpoints.down('sm')]: {
+      padding: '0 48px 48px 48px'
+    }
+  },
   tagline: {
-    padding: '48px 0'
+    fontFamily: theme.local.typography.gloss.fontFamily,
+    fontSize: '2.2rem',
+    whiteSpace: 'nowrap',
+    [theme.breakpoints.only('md')]: {
+      fontSize: '1.8rem'
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '2.5rem'
+    }
   }
-};
+});
 
 const Tagline = props => {
 
   const { classes } = props;
 
   return (
-    <Typography variant="subheading" align="center" className={classes.tagline}>
-      Cocktails created with the spirits and ingredients of the Pacific Northwest. An art and recipe project by Mouse and Moon Creations, Portland, OR
-    </Typography>
+    <div className={ classes.root }>
+      <Typography variant="display1" align="right" className={classes.tagline} {...props} classes={{}}>
+        Fine art &sdot; Cocktail recipes &sdot; Local spirits
+      </Typography>
+      <Hidden smDown>
+        <Typography variant="subheading" align="right"  {...props} classes={{}}>
+          Proudly made in Portland, Oregon
+        </Typography>
+      </Hidden>
+      <Hidden mdUp>
+        <Typography variant="subheading"  {...props} classes={{}}>
+          Proudly made in Portland, Oregon
+        </Typography>
+      </Hidden>
+    </div>
   );
 
 }

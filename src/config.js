@@ -17,12 +17,17 @@ const config = {
     joinUrl: '//inspecdigital.us10.list-manage.com/subscribe/post-json?u=2b5f5ea27c2aeb60c18ebca53&amp;id=d633c0fa8c&b_2b5f5ea27c2aeb60c18ebca53_d633c0fa8c='
   },
   theme: {
+    local: {
+      headerPadding: '148px',
+      typography: {
+        gloss: {
+          fontFamily: 'Italianno, cursive',
+        }
+      }
+    },
     palette: {
       background: {
         default: '#BDD7D7'
-      },
-      primary: {
-        main: '#335757'
       }
     },
     typography: {

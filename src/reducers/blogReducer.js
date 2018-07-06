@@ -1,6 +1,8 @@
 import blogConstants from 'constants/blogConstants';
 
 const initialState = {
+  featuredPosts: [],
+  latestPosts: [],
   mailchimp: false,
   meta: {
     pagination: {
@@ -52,6 +54,32 @@ const blog = (state = initialState, action) => {
             error: true,
             message: action.error.msg
           }
+        }
+      );
+
+    case blogConstants.GET_FEATURED_POSTS:
+
+      return Object.assign(
+        {},
+        state,
+        {
+          featuredPosts: action.data,
+          messaging: initialState.messaging,
+          meta: initialState.meta,
+          waiting: false
+        }
+      );
+
+    case blogConstants.GET_LATEST_POSTS:
+
+      return Object.assign(
+        {},
+        state,
+        {
+          latestPosts: action.data.posts,
+          messaging: initialState.messaging,
+          meta: initialState.meta,
+          waiting: false
         }
       );
 

@@ -7,18 +7,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import {
-  Button,
   Card,
-  CardActions,
   CardContent,
   Typography
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Markdown from 'react-markdown';
 import { find } from 'lodash';
-import moment from 'moment';
 import { TagList } from 'components';
 import { blogHelper } from 'helpers';
 
@@ -75,8 +71,7 @@ const PostDetail = props => {
   const mobiledoc = JSON.parse(post.mobiledoc);
   const card = mobiledoc.cards[0];
   const markdown = find(card, { cardName: card[0] });
-  const postDate = moment(post.published_at).format('LL');
-  const postBySlug = blogHelper.getPostUrl(post.slug)
+  const postDate = blogHelper.getPostDate(post.published_at);
 
   return (
     <Card className={classes.root}>

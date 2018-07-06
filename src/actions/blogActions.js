@@ -47,6 +47,54 @@ const getPostBySlug = (slug, opts={}) => {
 
 }
 
+const getFeaturedPosts = (opts = {}) => {
+
+  const options = Object.assign({}, { filter: 'featured:true', formats: 'mobiledoc', include: 'tags', limit: 6 }, opts);
+  const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
+  const endpoint = blogHelper.getEndpoint('posts', queryString);
+
+  return dispatch => {
+
+    dispatch(request(blogConstants.WAITING_POSTS));
+
+    API.get(endpoint)
+      .then(
+        featuredPosts => {
+          dispatch(success(blogConstants.GET_FEATURED_POSTS, featuredPosts));
+        },
+        error => {
+          dispatch(fail(error));
+        }
+      );
+
+  }
+
+}
+
+const getLatestPosts = (opts = {}) => {
+
+  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags', limit: 5 }, opts);
+  const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
+  const endpoint = blogHelper.getEndpoint('posts', queryString);
+
+  return dispatch => {
+
+    dispatch(request(blogConstants.WAITING_POSTS));
+
+    API.get(endpoint)
+      .then(
+        latestPosts => {
+          dispatch(success(blogConstants.GET_LATEST_POSTS, latestPosts));
+        },
+        error => {
+          dispatch(fail(error));
+        }
+      );
+
+  }
+
+}
+
 /**
  * Get a list of posts from Ghost
  * @param  {String}  [posts='posts']         The endpoint
@@ -140,6 +188,8 @@ const blogActions = {
   clearMessaging,
   clearPostDetail,
   addToMailChimp,
+  getFeaturedPosts,
+  getLatestPosts,
   getPostBySlug,
   getPosts,
   getUsers

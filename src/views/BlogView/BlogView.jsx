@@ -9,11 +9,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   Collapse,
-  Drawer,
   Hidden,
   LinearProgress
 } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 import { blogActions } from 'actions';
 import {
   Pager,
@@ -58,7 +56,6 @@ class BlogView extends Component {
 
     const { meta, posts, users, waiting } = this.props.blog;
     const { pagination } = meta;
-    const { classes } = this.props;
 
     const progress = <LinearProgress />;
 

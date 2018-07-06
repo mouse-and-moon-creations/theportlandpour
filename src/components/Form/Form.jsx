@@ -3,6 +3,7 @@
  */
 
 import React, { Component } from 'react';
+import { HeroForm } from './HeroForm';
 import { ContactForm } from './ContactForm';
 import { PROPTYPES, DEFAULT_PROPS } from './config';
 
@@ -13,6 +14,8 @@ class Form extends Component {
     switch (this.props.form.toLowerCase()) {
       case 'contact':
         return (<ContactForm {...this.props} />);
+      case 'hero':
+        return (<HeroForm {...this.props} />);
       default:
         return (<ContactForm {...this.props} />);
     }

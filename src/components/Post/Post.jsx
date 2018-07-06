@@ -16,8 +16,6 @@ import {
   Typography
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import Markdown from 'react-markdown';
-import { find } from 'lodash';
 import moment from 'moment';
 import { blogHelper } from 'helpers';
 
@@ -67,9 +65,6 @@ const styles = theme => ({
 const Post = props => {
 
   const { classes, post, user } = props;
-  const mobiledoc = JSON.parse(post.mobiledoc);
-  const card = mobiledoc.cards[0];
-  const markdown = find(card, { cardName: card[0] });
   const postDate = moment(post.published_at).format('LL');
   const postBySlug = blogHelper.getPostUrl(post.slug)
 
@@ -85,7 +80,7 @@ const Post = props => {
           <Typography className={classes.cardBody} component="div">{ post.custom_excerpt }</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          <Button className={classes.cardButton} color="primary">Read more</Button>
+          <Button className={classes.cardButton} color="secondary" disableRipple disableFocusRipple>Read more</Button>
         </CardActions>
       </Link>
     </Card>

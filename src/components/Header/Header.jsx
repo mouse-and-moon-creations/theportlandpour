@@ -19,7 +19,10 @@ import {
 } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
-import { Navigation } from 'components';
+import {
+  Navigation,
+  Tagline
+} from 'components';
 
 const styles = theme => ({
   appbar: {
@@ -30,7 +33,6 @@ const styles = theme => ({
     flexGrow: 1
   },
   brand: {
-    flexGrow: 1,
     padding: '12px 0'
   },
   header: {
@@ -42,11 +44,11 @@ const styles = theme => ({
     marginRight: 20
   },
   navigation: {
+    paddingTop: '38px'
   },
   tagline: {
-    [theme.breakpoints.up('lg')]: {
-//      paddingTop: '36px'
-    }
+    background: 'transparent',
+    flexGrow: 1
   }
 });
 
@@ -89,6 +91,11 @@ class Header extends Component {
             </div>
             <Hidden mdDown>
               <Navigation className={classes.navigation} />
+            </Hidden>
+            <Hidden smDown>
+              <div className={classes.tagline}>
+                <Tagline />
+              </div>
             </Hidden>
           </Toolbar>
         </AppBar>
