@@ -32,6 +32,7 @@ const styles = theme => ({
   root: {
     marginBottom: '5%',
     marginLeft: '3%',
+    marginTop: theme.local.headerPadding,
     width: '70%',
     [theme.breakpoints.only('md')]: {
       marginLeft: '5%',
@@ -76,7 +77,7 @@ const PostDetail = props => {
   return (
     <Card className={classes.root}>
       <CardContent className={classes.cardBody}>
-        <Typography variant="display2" color="primary" align="center" className={classes.cardTitle}>{post.title}</Typography>
+        <Typography variant="display2" color="default" align="center" className={classes.cardTitle}>{post.title}</Typography>
         <Typography className={classes.cardSubheading} align="center" variant="subheading" color="textSecondary" component="div">"{ post.custom_excerpt }"</Typography>
         <Typography className={classes.cardSubheading} variant="caption" align="center" paragraph={true}>{postDate} by {user.name}</Typography>
         <Typography align="center">

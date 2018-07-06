@@ -163,7 +163,9 @@ const Hero = props => {
         <div className={classes.latestPost}>
           <div className={classes.latestImage}>
             <Typography className={classes.sectionHeading} color="inherit" variant="display1">Latest cocktail</Typography>
-            { latestPost ? <img className={classes.image} src={blogHelper.getAssetUrl(latestPost.feature_image)} alt={latestPost.title} /> : null }
+            <Link to={postBySlug}>
+              { latestPost ? <img className={classes.image} src={blogHelper.getAssetUrl(latestPost.feature_image)} alt={latestPost.title} /> : null }
+            </Link>
           </div>
           <div className={classes.latestDescription}>
             <Typography className={classes.latestTitle} color="inherit">{ latestPost ? latestPost.title : null }</Typography>
