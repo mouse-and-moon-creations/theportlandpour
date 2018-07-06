@@ -17,6 +17,11 @@ const fail = error => { return { type: blogConstants.ERROR, error: error }};
 
 //const message = message => { return { type: blogConstants.MESSAGE, message: message }};
 
+const clearPostDetail = () => {
+
+  return dispatch => { dispatch(success(blogConstants.CLEAR_POST_DETAIL, null)); }
+
+}
 
 const getPostBySlug = (slug, opts={}) => {
 
@@ -133,6 +138,7 @@ const clearMessaging = () => {
 
 const blogActions = {
   clearMessaging,
+  clearPostDetail,
   addToMailChimp,
   getPostBySlug,
   getPosts,

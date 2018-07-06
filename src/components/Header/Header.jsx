@@ -26,7 +26,8 @@ const styles = theme => ({
     zIndex: theme.zIndex.drawer + 1
   },
   toolbar: {
-    flexGrow: 1,
+    background: theme.palette.common.white,
+    flexGrow: 1
   },
   brand: {
     flexGrow: 1,

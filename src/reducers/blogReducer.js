@@ -34,6 +34,14 @@ const blog = (state = initialState, action) => {
         { messaging: initialState.messaging }
       );
 
+    case blogConstants.CLEAR_POST_DETAIL:
+
+      return Object.assign(
+        {},
+        state,
+        { post: {} }
+      );
+
     case blogConstants.ERROR:
 
       return Object.assign(

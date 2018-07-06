@@ -38,9 +38,12 @@ class PostView extends Component {
 
   }
 
-  render() {
+  componentWillUnmount() {
 
-    console.log(this.props);
+    return this.props.dispatch(blogActions.clearPostDetail());
+  }
+
+  render() {
 
     const { post, users, waiting } = this.props.blog;
     const progress = <LinearProgress />;
