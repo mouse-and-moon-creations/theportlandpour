@@ -70,9 +70,14 @@ const styles = theme => ({
   },
   hero: {
     color: theme.palette.common.white,
-    background: theme.palette.grey[800],
+    background: 'url(/assets/images/hero.bg.jpg) top center no-repeat',
+    backgroundColor: theme.palette.grey[800],
+    backgroundSize: 'cover',
     minHeight: '400px',
-    paddingTop: theme.local.headerPadding
+    paddingTop: theme.local.headerPadding,
+    [theme.breakpoints.down('sm')]: {
+      backgroundImage: 'none'
+    }
   },
   heroContent: {
     display: 'flex',
@@ -172,7 +177,7 @@ const Hero = props => {
             <Typography color="inherit" paragraph variant="subheading">{ latestPost ? latestPost.custom_excerpt : null }</Typography>
             <Typography variant="caption" color="inherit" paragraph>{postDate} by {user ? user.name : null}</Typography>
             <Link to={postBySlug}>
-              <Button variant="contained">See how we pour this with spirits made in Portland</Button>
+              <Button variant="raised">See how we pour this with spirits made in Portland</Button>
             </Link>
           </div>
         </div>
