@@ -9,11 +9,14 @@ import React from 'react';
 import {
   Card,
   CardContent,
-  Drawer
+  Divider,
+  Drawer,
+  Typography
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { blogActions } from 'actions';
 import {
-  FeaturedPosts,
+  Gloss,
   Form
 } from 'components';
 
@@ -24,12 +27,19 @@ const styles = theme => ({
     [theme.breakpoints.down('md')]: {
       width: '30%'
     }
+  },
+  rootCompact: {
+    width: 'auto'
   }
 });
 
 const Sidebar = props => {
 
+  console.log(props);
+
   const { classes } = props;
+
+  const submitForm = fields => { return props.dispatch(blogActions.addToMailChimp(fields)); }
 
   return (
     <Drawer
@@ -42,9 +52,12 @@ const Sidebar = props => {
     >
       <Card elevation={0}>
         <CardContent>
-          Sidebar
+          <Gloss label="Stay in touch" />
+          <Typography variant="headline">Get the newsletter</Typography>
+          <Form submitFormCallback={submitForm} form="hero" classes={{ submitButton: classes.submitButton, form: classes.form }} showCancel={false} buttonColor="default" submitLabel="Sign up" />
         </CardContent>
       </Card>
+      <Divider />
     </Drawer>
   );
 

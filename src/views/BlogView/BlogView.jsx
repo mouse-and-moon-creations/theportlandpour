@@ -41,6 +41,10 @@ class BlogView extends Component {
       this.props.dispatch(blogActions.getUsers());
     }
 
+    if(this.props.blog.featuredPosts.length === 0) {
+      this.props.dispatch(blogActions.getFeaturedPosts());
+    }
+
     this.props.dispatch(blogActions.getPosts({page: page}));
 
     return this;
@@ -69,7 +73,7 @@ class BlogView extends Component {
           <Footer />
         </Collapse>
         <Hidden smDown>
-          <Sidebar />
+          <Sidebar {...this.props} />
         </Hidden>
       </React.Fragment>
     );

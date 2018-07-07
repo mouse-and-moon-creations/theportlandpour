@@ -12,7 +12,14 @@ import {
   CardContent,
   Typography
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import { blogActions } from 'actions';
+
+const styles = theme => ({
+  about: {
+    paddingTop: theme.local.headerPadding
+  }
+});
 
 class AboutView extends Component {
 
@@ -25,6 +32,8 @@ class AboutView extends Component {
   }
 
   render() {
+
+    const { classes } = this.props;
 
     let { users } = this.props
 
@@ -44,7 +53,7 @@ class AboutView extends Component {
 
     return (
       <React.Fragment>
-        <Card elevation={0}>
+        <Card className={classes.about} elevation={0}>
           <CardContent>
             <Typography variant="headline" paragraph={true}>About The Portland Pour</Typography>
             <Typography variant="title" paragraph={true}>The project</Typography>
@@ -75,4 +84,6 @@ const mapStateToProps = state => {
   return { users: state.blog.users };
 }
 
-export default connect(mapStateToProps)(AboutView);
+const styledComponent = withStyles(styles)(AboutView);
+
+export default connect(mapStateToProps)(styledComponent);

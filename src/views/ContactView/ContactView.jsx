@@ -16,11 +16,14 @@ import { withStyles } from '@material-ui/core/styles';
 import { blogActions } from 'actions';
 import { Form } from 'components';
 
-const styles = {
+const styles = theme => ({
+  card: {
+    paddingTop: theme.local.headerPadding
+  },
   firstCaption: {
     marginTop: '60px'
   }
-}
+});
 
 class ContactView extends Component {
 
@@ -39,7 +42,7 @@ class ContactView extends Component {
 
     return (
       <React.Fragment>
-        <Card elevation={0}>
+        <Card className={classes.card} elevation={0}>
           <CardContent>
             <Typography variant="headline" paragraph={true}>Contact The Portland Pour</Typography>
             <Typography variant="title" paragraph>Subscribe</Typography>

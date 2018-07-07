@@ -7,10 +7,6 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  Collapse,
-  LinearProgress
-} from '@material-ui/core';
 import { blogActions } from 'actions';
 import {
   FeaturedPosts,

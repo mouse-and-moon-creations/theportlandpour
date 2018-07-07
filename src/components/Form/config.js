@@ -13,10 +13,10 @@ export const PROPTYPES = {
 export const DEFAULT_PROPS = {
   buttonColor: 'default',
   classes: {
-    cancelButton: {},
-    form: {},
-    formActions: {},
-    submitButton: {}
+    cancelButton: '',
+    form: '',
+    formActions: '',
+    submitButton: ''
   },
   fields: {},
   form: '',

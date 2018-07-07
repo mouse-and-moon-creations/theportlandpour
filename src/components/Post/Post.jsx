@@ -80,7 +80,7 @@ const Post = props => {
   const postBySlug = blogHelper.getPostUrl(post.slug)
 
   return (
-    <Card className={compact ? classes.rootCompact : classes.root} {...props} classes={{}}>
+    <Card className={compact ? classes.rootCompact : classes.root} {...props} classes={{}} compact="" showactions="">
       <Link to={postBySlug}>
         <CardContent>
           <Typography align="center">
