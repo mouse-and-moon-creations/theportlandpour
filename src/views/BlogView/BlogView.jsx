@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import { blogActions } from 'actions';
 import {
+  Footer,
   Pager,
   Posts,
   Sidebar
@@ -65,6 +66,7 @@ class BlogView extends Component {
           {waiting ? progress : null}
           <Posts posts={posts} users={users} />
           <Pager pagination={pagination} />
+          <Footer />
         </Collapse>
         <Hidden smDown>
           <Sidebar />

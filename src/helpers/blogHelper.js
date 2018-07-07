@@ -43,6 +43,18 @@ const getEndpoint = (endpoint, query='', slug='') =>  {
 
 }
 
+const getFeaturedPostsCaption = () => {
+
+  return config.blog.featuredPostsCaption;
+
+}
+
+const getFeaturedPostsTitle = () => {
+
+  return config.blog.featuredPostsTitle;
+
+}
+
 const getMailChimpEndpoint = () => {
 
   return config.mailchimp.joinUrl;
@@ -70,6 +82,8 @@ const getPostUrl = slug => {
 const blogHelper = {
   getAssetUrl,
   getEndpoint,
+  getFeaturedPostsCaption,
+  getFeaturedPostsTitle,
   getMailChimpEndpoint,
   getPostDate,
   getPostUrl,

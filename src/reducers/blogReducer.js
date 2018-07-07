@@ -63,7 +63,7 @@ const blog = (state = initialState, action) => {
         {},
         state,
         {
-          featuredPosts: action.data,
+          featuredPosts: action.data.posts,
           messaging: initialState.messaging,
           meta: initialState.meta,
           waiting: false

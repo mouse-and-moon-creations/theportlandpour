@@ -15,6 +15,10 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     background: 'transparent',
+    [theme.breakpoints.down('md')]: {
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+    },
     [theme.breakpoints.down('sm')]: {
       padding: '0 48px 48px 48px'
     }
@@ -23,12 +27,11 @@ const styles = theme => ({
     fontFamily: theme.local.typography.gloss.fontFamily,
     fontSize: '2.2rem',
     whiteSpace: 'nowrap',
-    [theme.breakpoints.only('md')]: {
-      fontSize: '1.8rem'
+    [theme.breakpoints.down('md')]: {
+      fontSize: '1.8rem',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
     },
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '2.5rem'
-    }
   }
 });
 
@@ -38,7 +41,7 @@ const Tagline = props => {
 
   return (
     <div className={ classes.root }>
-      <Typography variant="display1" align="right" className={classes.tagline} {...props} classes={{}}>
+      <Typography color="inherit" variant="display1" align="right" className={classes.tagline} {...props} classes={{}}>
         Fine art &sdot; Cocktail recipes &sdot; Local spirits
       </Typography>
       <Hidden smDown>

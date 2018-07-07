@@ -25,7 +25,9 @@ import {
   HomeView,
   PostView
 } from 'views';
-import { Header } from 'components';
+import {
+  Header
+} from 'components';
 import './App.css';
 
 const theme = createMuiTheme(themeHelper.getTheme());

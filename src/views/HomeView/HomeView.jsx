@@ -13,9 +13,11 @@ import {
 } from '@material-ui/core';
 import { blogActions } from 'actions';
 import {
-  Hero,
-  Posts
+  FeaturedPosts,
+  Footer,
+  Hero
 } from 'components';
+import { blogHelper } from 'helpers';
 
 /**
  * Blog view component
@@ -39,17 +41,15 @@ class HomeView extends Component {
 
   render() {
 
-    const { posts, users, waiting } = this.props.blog;
-
-    const progress = <LinearProgress />;
+    const { featuredPosts, users } = this.props.blog;
+    const featuredPostsCaption = blogHelper.getFeaturedPostsCaption();
+    const featuredPostsTitle = blogHelper.getFeaturedPostsTitle();
 
     return (
       <React.Fragment>
         <Hero {...this.props} />
-        <Collapse in={!waiting} timeout="auto">
-          {waiting ? progress : null}
-          <Posts posts={posts} users={users} />
-        </Collapse>
+        <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
+        <Footer />
       </React.Fragment>
     );
 

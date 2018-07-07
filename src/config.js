@@ -1,5 +1,7 @@
 const config = {
   blog: {
+    featuredPostsCaption: 'The dog days are upon us, and it\'s time to reach for a refreshing Summer cooler. Fortunately, Portland distillers have us covered. Here\'s some of our favorite Summer recipes.',
+    featuredPostsTitle: 'Cocktails for Summer',
     host: 'https://blog.theportlandpour.com',
     api: {
       path: 'ghost/api/v0.1',

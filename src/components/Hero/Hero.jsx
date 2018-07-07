@@ -21,6 +21,7 @@ import {
 import { blogActions } from 'actions';
 import {
   Form,
+  Gloss,
   Tagline
 } from 'components';
 import { blogHelper } from 'helpers';
@@ -139,9 +140,6 @@ const styles = theme => ({
   recentImage: {
     height: '100%',
     width: '100%'
-  },
-  sectionHeading: {
-    fontFamily: theme.local.typography.gloss.fontFamily
   }
 });
 
@@ -167,7 +165,7 @@ const Hero = props => {
         </Hidden>
         <div className={classes.latestPost}>
           <div className={classes.latestImage}>
-            <Typography className={classes.sectionHeading} color="inherit" variant="display1">Latest cocktail</Typography>
+            <Gloss label="Latest cocktail" />
             <Link to={postBySlug}>
               { latestPost ? <img className={classes.image} src={blogHelper.getAssetUrl(latestPost.feature_image)} alt={latestPost.title} /> : null }
             </Link>
@@ -177,13 +175,13 @@ const Hero = props => {
             <Typography color="inherit" paragraph variant="subheading">{ latestPost ? latestPost.custom_excerpt : null }</Typography>
             <Typography variant="caption" color="inherit" paragraph>{postDate} by {user ? user.name : null}</Typography>
             <Link to={postBySlug}>
-              <Button variant="raised">See how we pour this with spirits made in Portland</Button>
+              <Button variant="raised">See how we make this with spirits made in Portland</Button>
             </Link>
           </div>
         </div>
         <div className={classes.cta}>
           <div className={classes.recent}>
-            <Typography className={classes.sectionHeading} color="inherit" variant="display1">Recent posts</Typography>
+            <Gloss label="Recent posts" />
             <GridList cellHeight="auto" className={classes.gridList} cols={gridCols[width]}>
               {latestPosts.map((post, index) => {
                 return index === 0 ? null : (
@@ -197,7 +195,7 @@ const Hero = props => {
             </GridList>
           </div>
           <div className={classes.newsletter}>
-            <Typography className={classes.sectionHeading} color="inherit" variant="display1">Stay in touch</Typography>
+            <Gloss label="Stay in touch" />
             <Card className={classes.card}>
               <CardContent className={classes.cardContent}>
                 <Typography variant="headline">Get the newsletter</Typography>

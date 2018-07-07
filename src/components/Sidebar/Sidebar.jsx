@@ -6,8 +6,16 @@
  */
 
 import React from 'react';
-import { Drawer } from '@material-ui/core';
+import {
+  Card,
+  CardContent,
+  Drawer
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import {
+  FeaturedPosts,
+  Form
+} from 'components';
 
 const styles = theme => ({
   drawerPaper: {
@@ -27,11 +35,16 @@ const Sidebar = props => {
     <Drawer
       variant="permanent"
       anchor="right"
+      elevation={0}
       classes={{
         paper: classes.drawerPaper,
       }}
     >
-      drawer
+      <Card elevation={0}>
+        <CardContent>
+          Sidebar
+        </CardContent>
+      </Card>
     </Drawer>
   );
 
