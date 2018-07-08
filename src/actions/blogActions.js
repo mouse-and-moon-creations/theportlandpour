@@ -55,7 +55,7 @@ const getFeaturedPosts = (opts = {}) => {
 
   return dispatch => {
 
-    dispatch(request(blogConstants.WAITING_POSTS));
+    dispatch(request(blogConstants.WAITING_POST));
 
     API.get(endpoint)
       .then(
@@ -79,7 +79,7 @@ const getLatestPosts = (opts = {}) => {
 
   return dispatch => {
 
-    dispatch(request(blogConstants.WAITING_POSTS));
+    dispatch(request(blogConstants.WAITING_POST));
 
     API.get(endpoint)
       .then(
