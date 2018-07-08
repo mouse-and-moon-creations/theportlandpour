@@ -11,7 +11,8 @@ import { blogActions } from 'actions';
 import {
   FeaturedPosts,
   Footer,
-  Hero
+  Hero,
+  PitchBlock
 } from 'components';
 import { blogHelper } from 'helpers';
 
@@ -45,6 +46,7 @@ class HomeView extends Component {
       <React.Fragment>
         <Hero {...this.props} />
         <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
+        <PitchBlock />
         <Footer />
       </React.Fragment>
     );

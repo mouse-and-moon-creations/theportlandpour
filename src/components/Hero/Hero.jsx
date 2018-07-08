@@ -175,7 +175,7 @@ const Hero = props => {
             <Typography color="inherit" paragraph variant="subheading">{ latestPost ? latestPost.custom_excerpt : null }</Typography>
             <Typography variant="caption" color="inherit" paragraph>{postDate} by {user ? user.name : null}</Typography>
             <Link to={postBySlug}>
-              <Button variant="raised">See how we make this with spirits made in Portland</Button>
+              <Button variant="raised">See how we make this with local ingredients</Button>
             </Link>
           </div>
         </div>

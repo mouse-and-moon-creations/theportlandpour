@@ -9,6 +9,7 @@ export { default as Hero } from './Hero';
 export { default as Logo } from './Logo';
 export { default as Navigation } from './Navigation';
 export { default as Pager } from './Pager';
+export { default as PitchBlock } from './PitchBlock';
 export { default as Post } from './Post';
 export { default as PostDetail } from './PostDetail';
 export { default as Posts } from './Posts';
