@@ -31,7 +31,7 @@ const getPostBySlug = (slug, opts={}) => {
 
   return dispatch => {
 
-    dispatch(request(blogConstants.WAITING_POSTS));
+    dispatch(request(blogConstants.WAITING_POST));
 
     API.get(endpoint)
       .then(

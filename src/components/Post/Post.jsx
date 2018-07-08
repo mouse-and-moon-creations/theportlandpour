@@ -22,14 +22,14 @@ import { blogHelper } from 'helpers';
 const propTypes = {
   compact: PropTypes.bool,
   post: PropTypes.object,
-  showActions: PropTypes.bool,
+  showactions: PropTypes.bool,
   user: PropTypes.object
 };
 
 const defaultProps = {
   compact: false,
   post: {},
-  showActions: true,
+  showactions: true,
   user: {}
 };
 
@@ -75,7 +75,7 @@ const styles = theme => ({
 
 const Post = props => {
 
-  const { classes, compact, post, showActions, user } = props;
+  const { classes, compact, post, showactions, user } = props;
   const postDate = moment(post.published_at).format('LL');
   const postBySlug = blogHelper.getPostUrl(post.slug)
 
@@ -92,7 +92,7 @@ const Post = props => {
             <Typography className={classes.cardBody} component="div">{ post.custom_excerpt }</Typography>
           )}
         </CardContent>
-        {showActions && !compact ? (
+        {showactions && !compact ? (
           <CardActions className={classes.cardActions}>
             <Button className={classes.cardButton} color="secondary" disableRipple disableFocusRipple>Read more</Button>
           </CardActions>

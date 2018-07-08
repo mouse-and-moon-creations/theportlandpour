@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { ScrollContext } from 'react-router-scroll-4';
 import {
   BrowserRouter,
   Route,
@@ -52,17 +53,19 @@ const AppRoot = props => {
         <CssBaseline />
         <div className={classes.wrapper}>
           <BrowserRouter>
-            <span>
-              <Header />
-              <Switch>
-                <Route path="/" exact component={HomeView} />
-                <Route path="/page/:page" component={BlogView} />
-                <Route path="/post/:slug" component={PostView} />
-                <Route path="/about" component={AboutView} />
-                <Route path="/build-your-bar" component={BarView} />
-                <Route path="/contact" component={ContactView} />
-              </Switch>
-            </span>
+            <ScrollContext>
+              <span>
+                <Header />
+                <Switch>
+                  <Route path="/" exact component={HomeView} />
+                  <Route path="/page/:page" component={BlogView} />
+                  <Route path="/post/:slug" component={PostView} />
+                  <Route path="/about" component={AboutView} />
+                  <Route path="/build-your-bar" component={BarView} />
+                  <Route path="/contact" component={ContactView} />
+                </Switch>
+              </span>
+            </ScrollContext>
           </BrowserRouter>
         </div>
         <Snackbar open={props.message ? true : false}

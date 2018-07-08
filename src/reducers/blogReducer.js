@@ -6,9 +6,9 @@ const initialState = {
   mailchimp: false,
   meta: {
     pagination: {
-      limit: 15,
+      limit: null,
       next: null,
-      page: 1,
+      page: null,
       pages: null,
       prev: null,
       total: null
@@ -65,7 +65,6 @@ const blog = (state = initialState, action) => {
         {
           featuredPosts: action.data.posts,
           messaging: initialState.messaging,
-          meta: initialState.meta,
           waiting: false
         }
       );
@@ -78,7 +77,6 @@ const blog = (state = initialState, action) => {
         {
           latestPosts: action.data.posts,
           messaging: initialState.messaging,
-          meta: initialState.meta,
           waiting: false
         }
       );
@@ -91,7 +89,6 @@ const blog = (state = initialState, action) => {
         {
           post: action.data,
           messaging: initialState.messaging,
-          meta: initialState.meta,
           waiting: false
         }
       );
@@ -102,9 +99,7 @@ const blog = (state = initialState, action) => {
         {},
         state,
         {
-          posts: initialState.posts,
           messaging: initialState.messaging,
-          meta: initialState.meta,
           waiting: false
         },
         action.data
@@ -158,6 +153,19 @@ const blog = (state = initialState, action) => {
         {
           messaging: initialState.messaging,
           posts: initialState.posts,
+          waiting: true
+        }
+      );
+
+    case blogConstants.WAITING_POST:
+
+      state.meta.pagination.total = initialState.meta.pagination.total;
+
+      return Object.assign(
+        {},
+        state,
+        {
+          messaging: initialState.messaging,
           waiting: true
         }
       );

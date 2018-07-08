@@ -13,6 +13,7 @@ const blogConstants = {
   MESSAGE: 'blog_message',
   WAITING_MAILCHIMP: 'blog_waiting_mailchimp',
   WAITING_POSTS: 'blog_waiting_posts',
+  WAITING_POST: 'blog_waiting_post',
   WAITING_USERS: 'blog_waiting_users'
 }
 

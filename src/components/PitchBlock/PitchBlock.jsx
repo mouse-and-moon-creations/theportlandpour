@@ -8,7 +8,6 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { Gloss } from 'components';
 
 const styles = {
   pitch: {

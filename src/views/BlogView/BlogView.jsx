@@ -8,7 +8,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Collapse,
   Hidden,
   LinearProgress
 } from '@material-ui/core';
@@ -31,11 +30,12 @@ class BlogView extends Component {
     this.historyUnlisten = this.props.history.listen((location, action) => {
       const path = location.pathname.split('/');
       const page = path[path.indexOf('page') + 1];
-      window.scrollTo(0, 0);
+      //window.scrollTo(0, 0);
       return page ? this.props.dispatch(blogActions.getPosts({page: page})) : null;
     });
 
-    const page = this.props.match.params.page ? this.props.match.params.page : this.props.blog.meta.pagination.page;
+    const page = this.props.match.params.page;
+    const paginationPage = this.props.blog.meta.pagination.page;
 
     if(this.props.blog.users.length === 0) {
       this.props.dispatch(blogActions.getUsers());
@@ -45,7 +45,9 @@ class BlogView extends Component {
       this.props.dispatch(blogActions.getFeaturedPosts());
     }
 
-    this.props.dispatch(blogActions.getPosts({page: page}));
+    if(+page !== +paginationPage) {
+      this.props.dispatch(blogActions.getPosts({page: page}));
+    }
 
     return this;
 
@@ -66,12 +68,10 @@ class BlogView extends Component {
 
     return (
       <React.Fragment>
-        <Collapse in={!waiting} timeout="auto">
           {waiting ? progress : null}
           <Posts posts={posts} users={users} />
           <Pager pagination={pagination} />
           <Footer />
-        </Collapse>
         <Hidden smDown>
           <Sidebar {...this.props} />
         </Hidden>

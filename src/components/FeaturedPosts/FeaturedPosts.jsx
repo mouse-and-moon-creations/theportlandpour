@@ -7,8 +7,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import {
+  Button,
   Card,
+  CardActions,
   CardContent,
   Typography
 } from '@material-ui/core';
@@ -34,7 +37,16 @@ const defaultProps = {
 };
 
 const styles = theme => ({
+  cardActions: {
+    display: 'flex',
+    paddingBottom: '24px',
+    paddingTop: 0
+  },
+  cardButton: {
+    margin: 'auto'
+  },
   cardContent: {
+    paddingBottom: 0,
     [theme.breakpoints.up('lg')]: {
       paddingLeft: '60px',
       paddingRight: '60px'
@@ -63,6 +75,11 @@ const FeaturedPosts = props => {
           }) : null}
         </div>
       </CardContent>
+      <CardActions className={classes.cardActions}>
+        <Link className={classes.cardButton} to="/page/1">
+          <Button color="secondary">See all the cocktails</Button>
+        </Link>
+      </CardActions>
     </Card>
   );
 

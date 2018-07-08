@@ -35,8 +35,6 @@ const styles = theme => ({
 
 const Sidebar = props => {
 
-  console.log(props);
-
   const { classes } = props;
 
   const submitForm = fields => { return props.dispatch(blogActions.addToMailChimp(fields)); }

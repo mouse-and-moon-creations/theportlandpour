@@ -14,12 +14,27 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { blogActions } from 'actions';
+import { Sidebar } from 'components';
 
 const styles = theme => ({
   about: {
-    paddingTop: theme.local.headerPadding
+    display: 'flex',
+    flexFlow: 'row wrap',
+    justifyContent: 'space-around',
+    margin: 'auto 24% auto auto',
+    marginBottom: 'auto',
+    marginLeft: '24px',
+    marginRight: '26%',
+    marginTop: theme.local.headerPadding,
+    [theme.breakpoints.only('md')]: {
+      marginRight: '30%'
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '100%'
+    }
   }
 });
+
 
 class AboutView extends Component {
 
@@ -72,6 +87,7 @@ class AboutView extends Component {
             })}
           </CardContent>
         </Card>
+        <Sidebar />
       </React.Fragment>
     );
 
