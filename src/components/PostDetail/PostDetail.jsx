@@ -8,6 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Avatar,
   Card,
   CardContent,
   Typography
@@ -43,6 +44,11 @@ const styles = theme => ({
       width: '90%'
     }
   },
+  avatar: {
+    display: 'inline-block',
+    marginRight: '12px',
+    verticalAlign: 'middle'
+  },
   cardActions: {
     display: 'flex'
   },
@@ -73,13 +79,16 @@ const PostDetail = props => {
   const card = mobiledoc.cards[0];
   const markdown = find(card, { cardName: card[0] });
   const postDate = blogHelper.getPostDate(post.published_at);
+  const absSrc = blogHelper.getAssetUrl(user.profile_image);
 
   return (
     <Card className={classes.root}>
       <CardContent className={classes.cardBody}>
         <Typography variant="display2" color="default" align="center" className={classes.cardTitle}>{post.title}</Typography>
         <Typography className={classes.cardSubheading} align="center" variant="subheading" color="textSecondary" component="div">"{ post.custom_excerpt }"</Typography>
-        <Typography className={classes.cardSubheading} variant="caption" align="center" paragraph={true}>{postDate} by {user.name}</Typography>
+        <Typography className={classes.cardSubheading} variant="subheading" color="textSecondary" align="center" paragraph={true}>
+          <Avatar className={classes.avatar} src={absSrc} />
+          {user.name} on {postDate}</Typography>
         <Typography align="center">
           <img src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} className={classes.image} />
         </Typography>

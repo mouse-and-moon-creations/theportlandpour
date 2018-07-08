@@ -22,7 +22,6 @@ const Navigation = props => {
     <Tabs value={false} className={props.className ? props.className : ''}>
       <Tab onClick={() => handleClick('/page/1')} label="Cocktails" />
       <Tab onClick={() => handleClick('/about')} label="About" />
-      <Tab onClick={() => handleClick('/contact')} label="Contact" />
     </Tabs>
   );
 

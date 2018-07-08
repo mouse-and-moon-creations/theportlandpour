@@ -110,14 +110,8 @@ class Header extends Component {
               <ListItem button component="a" href="/page/1">
                 <ListItemText primary="Cocktails" />
               </ListItem>
-              <ListItem button component="a" href="/build-your-bar">
-                <ListItemText primary="Build your bar" />
-              </ListItem>
               <ListItem button component="a" href="/about">
                 <ListItemText primary="About" />
-              </ListItem>
-              <ListItem button component="a" href="/contact">
-                <ListItemText primary="Contact" />
               </ListItem>
             </List>
           </div>

@@ -14,7 +14,10 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { blogActions } from 'actions';
-import { Sidebar } from 'components';
+import {
+  Sidebar,
+  User
+} from 'components';
 
 const styles = theme => ({
   about: {
@@ -83,7 +86,7 @@ class AboutView extends Component {
             </Typography>
             <Typography variant="title" paragraph={true}>The people</Typography>
             {users.map(user => {
-              return (<Typography paragraph={true} key={user.id}>{user.name}</Typography>);
+              return (<User bio={user.bio} key={user.id} name={user.name} src={user.profile_image} />);
             })}
           </CardContent>
         </Card>
