@@ -7,7 +7,9 @@
 
 import React from 'react';
 import {
+  Button,
   Card,
+  CardActions,
   CardContent,
   Divider,
   Drawer,
@@ -59,17 +61,20 @@ const Sidebar = props => {
       <Divider />
         <Card elevation={0}>
           <CardContent>
+            <Gloss label="Let's chat" />
             <Typography variant="headline">Contact us</Typography>
+            <form action="https://formspree.io/info@theportlandpour.com" method="POST">
               <Card elevation={0}>
                 <CardContent>
-                  <form action="https://formspree.io/info@theportlandpour.com" method="POST">
-                    <TextField type="text" name="name" label="Name" />
-                    <TextField type="email" name="_replyto" label="Email" />
-                    <TextField multiline rows={3} name="message" label="Message" />
-                    <input type="submit" value="Send" />
-                  </form>
+                  <TextField type="text" name="name" label="Name" />
+                  <TextField type="email" name="_replyto" label="Email" />
+                  <TextField multiline rows={3} name="message" label="Message" />
                 </CardContent>
+                <CardActions>
+                  <Button type="submit" variant="raised">Send</Button>
+                </CardActions>
               </Card>
+            </form>
           </CardContent>
         </Card>
     </Drawer>
