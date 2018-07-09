@@ -15,6 +15,7 @@ import {
 } from '@material-ui/core';
 import { blogActions } from 'actions';
 import {
+  Footer,
   PostDetail,
   Sidebar
 } from 'components';
@@ -50,10 +51,9 @@ class PostView extends Component {
 
     return (
       <React.Fragment>
-        <Collapse in={!waiting} timeout="auto">
-          {waiting ? progress : null}
-          {isEmpty(post) ? null : <PostDetail post={post} user={find(users, { id: post.author })} />}
-        </Collapse>
+        {waiting ? progress : null}
+        {isEmpty(post) ? null : <PostDetail post={post} user={find(users, { id: post.author })} />}
+        <Footer />
         <Hidden smDown>
           <Sidebar />
         </Hidden>

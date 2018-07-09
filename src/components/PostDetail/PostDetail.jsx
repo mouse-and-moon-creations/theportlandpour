@@ -40,7 +40,8 @@ const styles = theme => ({
       width: '60%'
     },
     [theme.breakpoints.down('sm')]: {
-      margin: '5% auto',
+      marginLeft: 'auto',
+      marginRight: 'auto',
       width: '90%'
     }
   },
