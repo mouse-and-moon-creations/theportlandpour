@@ -62,9 +62,7 @@ const Pager = props => {
             {prevUrl ? <Link to={prevUrl}><IconButton><KeyboardArrowLeft/></IconButton></Link> : <IconButton disabled={true}><KeyboardArrowLeft/></IconButton>}
           </GridListTile>
           <GridListTile>
-            <Fade in={fade}>
-              <Typography className={classes.meta} align="center" variant="caption">Page {pagination.page} of {pagination.pages}</Typography>
-            </Fade>
+            <Typography className={classes.meta} align="center" variant="caption">Page {pagination.page} of {pagination.pages}</Typography>
           </GridListTile>
           <GridListTile className={classes.next}>
             {nextUrl ? <Link to={nextUrl}><IconButton><KeyboardArrowRight/></IconButton></Link> : <IconButton disabled={true}><KeyboardArrowRight/></IconButton>}
