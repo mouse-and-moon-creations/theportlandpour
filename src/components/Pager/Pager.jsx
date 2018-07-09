@@ -12,7 +12,6 @@ import { withStyles } from '@material-ui/core/styles';
 import {
   Card,
   CardContent,
-  Fade,
   GridList,
   GridListTile,
   IconButton,
