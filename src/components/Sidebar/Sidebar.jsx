@@ -11,6 +11,7 @@ import {
   CardContent,
   Divider,
   Drawer,
+  TextField,
   Typography
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
@@ -56,6 +57,21 @@ const Sidebar = props => {
         </CardContent>
       </Card>
       <Divider />
+        <Card elevation={0}>
+          <CardContent>
+            <Typography variant="headline">Contact us</Typography>
+              <Card elevation={0}>
+                <CardContent>
+                  <form action="https://formspree.io/info@theportlandpour.com" method="POST">
+                    <TextField type="text" name="name" label="Name" />
+                    <TextField type="email" name="_replyto" label="Email" />
+                    <TextField multiline rows={3} name="message" label="Message" />
+                    <input type="submit" value="Send" />
+                  </form>
+                </CardContent>
+              </Card>
+          </CardContent>
+        </Card>
     </Drawer>
   );
 
