@@ -27,7 +27,7 @@ const styles = theme => ({
     flexFlow: 'row wrap',
     justifyContent: 'space-around',
     margin: 'auto 24% auto auto',
-    marginBottom: 'auto',
+    marginBottom: '24px',
     marginLeft: '24px',
     marginRight: '26%',
     marginTop: theme.local.headerPadding,
