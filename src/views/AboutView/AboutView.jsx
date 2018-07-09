@@ -10,11 +10,13 @@ import { connect } from 'react-redux';
 import {
   Card,
   CardContent,
+  Hidden,
   Typography
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { blogActions } from 'actions';
 import {
+  Footer,
   Sidebar,
   User
 } from 'components';
@@ -90,7 +92,10 @@ class AboutView extends Component {
             })}
           </CardContent>
         </Card>
-        <Sidebar />
+        <Footer />
+        <Hidden smDown>
+          <Sidebar />
+        </Hidden>
       </React.Fragment>
     );
 
