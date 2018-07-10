@@ -51,7 +51,6 @@ const Pager = props => {
   const { classes, pagination } = props;
   const prevUrl = pagination.prev ? blogHelper.getUrl(pagination.prev) : null;
   const nextUrl = pagination.next ? blogHelper.getUrl(pagination.next) : null;
-  const fade = pagination.total ? true : false;
 
   return (
     <Card className={classes.card} elevation={0}>

@@ -8,7 +8,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { User } from 'components';
-import { blogHelper } from 'helpers';
 
 const propTypes = {
   compact: PropTypes.bool,

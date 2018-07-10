@@ -17,7 +17,6 @@ import {
   Gloss,
   Users
 } from 'components';
-import { blogHelper } from 'helpers';
 
 const propTypes = {
   users: PropTypes.array
