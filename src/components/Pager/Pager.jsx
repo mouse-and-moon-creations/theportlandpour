@@ -31,12 +31,16 @@ const defaultProps = {
   pagination: {}
 };
 
-const styles = {
+const styles = theme => ({
   card: {
-    marginRight: '24.5%',
+    marginRight: '26%',
     marginTop: '-1.5%',
     marginBottom: '1%',
-    marginLeft: '.5%'
+    marginLeft: '.5%',
+    [theme.breakpoints.down('sm')]: {
+      margin: 'auto auto 1% auto',
+      width: '98%'
+    }
   },
   meta: {
     lineHeight: '48px'
@@ -44,7 +48,7 @@ const styles = {
   next: {
     textAlign: 'right'
   }
-};
+});
 
 const Pager = props => {
 

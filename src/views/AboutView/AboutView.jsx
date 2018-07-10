@@ -29,7 +29,7 @@ const styles = theme => ({
     margin: 'auto 24% auto auto',
     marginBottom: '24px',
     marginLeft: '24px',
-    marginRight: '26%',
+    marginRight: '27%',
     marginTop: theme.local.headerPadding,
     [theme.breakpoints.only('md')]: {
       marginRight: '30%'

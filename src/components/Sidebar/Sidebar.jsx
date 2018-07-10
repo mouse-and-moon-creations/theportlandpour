@@ -12,7 +12,7 @@ import {
   CardActions,
   CardContent,
   Divider,
-  Drawer,
+  Paper,
   TextField,
   Typography
 } from '@material-ui/core';
@@ -24,11 +24,13 @@ import {
 } from 'components';
 
 const styles = theme => ({
-  drawerPaper: {
-    paddingTop: '130px',
+  sidebar: {
+    position: 'absolute',
+    right: '24px',
+    top: theme.local.headerPadding,
     width: '24%',
     [theme.breakpoints.down('md')]: {
-      width: '30%'
+      width: '26%'
     }
   },
   rootCompact: {
@@ -37,20 +39,12 @@ const styles = theme => ({
 });
 
 const Sidebar = props => {
-
   const { classes } = props;
 
   const submitForm = fields => { return props.dispatch(blogActions.addToMailChimp(fields)); }
 
   return (
-    <Drawer
-      variant="permanent"
-      anchor="right"
-      elevation={0}
-      classes={{
-        paper: classes.drawerPaper,
-      }}
-    >
+    <Paper className={classes.sidebar} elevation={0}>
       <Card elevation={0}>
         <CardContent>
           <Gloss label="Stay in touch" />
@@ -59,25 +53,25 @@ const Sidebar = props => {
         </CardContent>
       </Card>
       <Divider />
-        <Card elevation={0}>
-          <CardContent>
-            <Gloss label="Let's chat" />
-            <Typography variant="headline">Contact us</Typography>
-            <form action="https://formspree.io/info@theportlandpour.com" method="POST">
-              <Card elevation={0}>
-                <CardContent>
-                  <TextField type="text" name="name" label="Name" />
-                  <TextField type="email" name="_replyto" label="Email" />
-                  <TextField multiline rows={3} name="message" label="Message" />
-                </CardContent>
-                <CardActions>
-                  <Button type="submit" variant="raised">Send</Button>
-                </CardActions>
-              </Card>
-            </form>
-          </CardContent>
-        </Card>
-    </Drawer>
+      <Card elevation={0}>
+        <CardContent>
+          <Gloss label="Let's chat" />
+          <Typography variant="headline">Contact us</Typography>
+          <form action="https://formspree.io/info@theportlandpour.com" method="POST">
+            <Card elevation={0}>
+              <CardContent>
+                <TextField type="text" name="name" label="Name" />
+                <TextField type="email" name="_replyto" label="Email" />
+                <TextField multiline rows={3} name="message" label="Message" />
+              </CardContent>
+              <CardActions>
+                <Button type="submit" variant="raised">Send</Button>
+              </CardActions>
+            </Card>
+          </form>
+        </CardContent>
+      </Card>
+    </Paper>
   );
 
 }

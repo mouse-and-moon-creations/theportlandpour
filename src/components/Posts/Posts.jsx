@@ -26,12 +26,14 @@ const styles = theme => ({
     display: 'flex',
     flexFlow: 'row wrap',
     justifyContent: 'space-around',
-    margin: 'auto 24% auto auto',
+    margin: 'auto 27% auto 24px',
     paddingTop: theme.local.headerPadding,
     [theme.breakpoints.only('md')]: {
       marginRight: '30%'
     },
     [theme.breakpoints.down('sm')]: {
+      marginLeft: 'auto',
+      paddingTop: '98px',
       width: '100%'
     }
   }

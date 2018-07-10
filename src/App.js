@@ -35,7 +35,7 @@ const theme = createMuiTheme(themeHelper.getTheme());
 
 const styles = theme => ({
   wrapper: {
-    width: '100%',
+    width: '100%'
   }
 });
 

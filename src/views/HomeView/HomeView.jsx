@@ -17,7 +17,8 @@ import {
   FeaturedPosts,
   Footer,
   Hero,
-  PitchBlock
+  PitchBlock,
+  PostsBlock
 } from 'components';
 import { blogHelper } from 'helpers';
 
@@ -43,7 +44,7 @@ class HomeView extends Component {
 
   render() {
 
-    const { featuredPosts, users } = this.props.blog;
+    const { featuredPosts, latestPosts, users } = this.props.blog;
     const featuredPostsCaption = blogHelper.getFeaturedPostsCaption();
     const featuredPostsTitle = blogHelper.getFeaturedPostsTitle();
 
@@ -55,6 +56,8 @@ class HomeView extends Component {
           <Divider />
           <AboutBlock users={users} />
         </Paper>
+        <PostsBlock posts={latestPosts} users={users} />
+        <Divider />
         <PitchBlock />
         <Footer />
       </React.Fragment>

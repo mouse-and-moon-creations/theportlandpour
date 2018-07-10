@@ -68,10 +68,10 @@ class BlogView extends Component {
 
     return (
       <React.Fragment>
-          {waiting ? progress : null}
-          <Posts posts={posts} users={users} />
-          <Pager pagination={pagination} />
-          <Footer />
+        {waiting ? progress : null}
+        <Posts posts={posts} users={users} />
+        <Pager pagination={pagination} />
+        <Footer />
         <Hidden smDown>
           <Sidebar {...this.props} />
         </Hidden>
