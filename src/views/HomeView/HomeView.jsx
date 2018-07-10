@@ -7,8 +7,13 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {
+  Divider,
+  Paper
+} from '@material-ui/core';
 import { blogActions } from 'actions';
 import {
+  AboutBlock,
   FeaturedPosts,
   Footer,
   Hero,
@@ -45,7 +50,11 @@ class HomeView extends Component {
     return (
       <React.Fragment>
         <Hero {...this.props} />
-        <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
+        <Paper elevation={0} square>
+          <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
+          <Divider />
+          <AboutBlock users={users} />
+        </Paper>
         <PitchBlock />
         <Footer />
       </React.Fragment>

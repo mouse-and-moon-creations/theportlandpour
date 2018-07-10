@@ -137,6 +137,19 @@ const getUsers = (opts={}) => {
     API.get(endpoint)
       .then(
         users => {
+          users.users.sort((a, b) => {
+            const nameA = a.name.toUpperCase();
+            const nameB = b.name.toUpperCase();
+            if(nameA > nameB) {
+              return 1;
+            }
+            else if (nameA < nameB) {
+              return -1;
+            }
+            else {
+              return 0;
+            }
+          });
           dispatch(success(blogConstants.GET_USERS, users.users));
         },
         error => {

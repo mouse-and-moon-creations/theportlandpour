@@ -17,12 +17,14 @@ import { withStyles } from '@material-ui/core/styles';
 import { blogHelper } from 'helpers';
 
 const propTypes = {
+  compact: PropTypes.bool,
   bio: PropTypes.string,
   name: PropTypes.string,
   src: PropTypes.string
 };
 
 const defaultProps = {
+  compact: false,
   bio: '',
   name: '',
   src: ''
@@ -32,9 +34,14 @@ const styles = {
   avatar: {
     marginRight: '12px'
   },
+  bioCompact: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    width: '24%'
+  },
   card: {
-    maxWidth: '600px',
-    marginBottom: '24px'
+    minWidth: '240px',
   },
   cardContent: {
     display: 'flex'
@@ -43,17 +50,17 @@ const styles = {
 
 const User = props => {
 
-  const { bio, classes, name, src } = props;
+  const { bio, classes, compact, name, src } = props;
 
   const absSrc = blogHelper.getAssetUrl(src);
 
   return (
-    <Card className={classes.card}>
+    <Card className={compact ? classes.cardCompact : classes.card} elevation={0}>
       <CardContent className={classes.cardContent}>
         <Avatar className={classes.avatar} src={absSrc} />
         <div>
-          <Typography variant="title" paragraph>{name}</Typography>
-          <Typography variant="caption">{bio}</Typography>
+          <Typography noWrap={compact} variant={compact ? 'body2' : 'title'}>{name}</Typography>
+          <Typography noWrap={compact} variant="body1">{bio}</Typography>
         </div>
       </CardContent>
     </Card>
