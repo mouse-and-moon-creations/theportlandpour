@@ -76,7 +76,7 @@ const AboutBlock = props => {
               Have you ever wanted to try one of the local brands, then thought, what do I do with it?
               You're not alone.
               We spent alot of time collecting recipes, and finding ways to make them with as many local products as possible.
-              Our recipes come from practice, we try different local spirits and proportions until we find what we like, then we photograph it in our downtown Portland studio, and post the recipes for you to try.
+              Our recipes come from practice, we try different local spirits and adjust proportions until we find what we like, then we photograph the results in our downtown Portland studio and post the recipes for you to try.
               If you're curious about what to do with local spirits, try some of our suggestions.
               We enjoy the amazing things we can make with local ingredients, and take pride in supporting our community.
               We encourage you to join us in our adventure.
