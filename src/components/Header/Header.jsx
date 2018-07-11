@@ -14,10 +14,17 @@ import {
   IconButton,
   List,
   ListItem,
+  ListItemIcon,
+  ListSubheader,
   ListItemText,
   Toolbar
 } from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
+import {
+  Home,
+  Info,
+  LocalBar,
+  Menu
+} from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
 import {
   Navigation,
@@ -27,6 +34,9 @@ import {
 const styles = theme => ({
   appbar: {
     zIndex: theme.zIndex.drawer + 1
+  },
+  drawer: {
+    width: '200px'
   },
   toolbar: {
     background: theme.palette.common.white,
@@ -99,18 +109,30 @@ class Header extends Component {
             </Hidden>
           </Toolbar>
         </AppBar>
-        <Drawer open={this.state.drawer} onClose={this.toggleDrawer}>
+        <Drawer  open={this.state.drawer} onClose={this.toggleDrawer}>
           <div
             tabIndex={0}
             role="button"
             onClick={this.toggleDrawer}
             onKeyDown={this.toggleDrawer}
           >
-            <List component="nav">
+            <List className={classes.drawer} component="nav" subheader={<ListSubheader>Menu</ListSubheader>}>
+              <ListItem button component="a" href="/">
+                <ListItemIcon>
+                  <Home />
+                </ListItemIcon>
+                <ListItemText primary="Home" />
+              </ListItem>
               <ListItem button component="a" href="/page/1">
+                <ListItemIcon>
+                  <LocalBar />
+                </ListItemIcon>
                 <ListItemText primary="Cocktails" />
               </ListItem>
               <ListItem button component="a" href="/about">
+                <ListItemIcon>
+                  <Info />
+                </ListItemIcon>
                 <ListItemText primary="About" />
               </ListItem>
             </List>
