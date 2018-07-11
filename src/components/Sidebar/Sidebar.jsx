@@ -60,9 +60,9 @@ const Sidebar = props => {
           <form action="https://formspree.io/info@theportlandpour.com" method="POST">
             <Card elevation={0}>
               <CardContent>
-                <TextField type="text" name="name" label="Name" />
-                <TextField type="email" name="_replyto" label="Email" />
-                <TextField multiline rows={3} name="message" label="Message" />
+                <TextField fullWidth type="text" name="name" label="Name" />
+                <TextField fullWidth type="email" name="_replyto" label="Email" />
+                <TextField fullWidth multiline rows={3} name="message" label="Message" />
               </CardContent>
               <CardActions>
                 <Button type="submit" variant="raised">Send</Button>

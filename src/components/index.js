@@ -22,3 +22,4 @@ export { default as Tagline } from './Tagline';
 export { default as TagList } from './TagList';
 export { default as User } from './User';
 export { default as Users } from './Users';
+export { default as WithTracker } from './WithTracker';

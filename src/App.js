@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import { connect } from 'react-redux';
 import { ScrollContext } from 'react-router-scroll-4';
 import {
@@ -27,7 +28,8 @@ import {
   PostView
 } from 'views';
 import {
-  Header
+  Header,
+  WithTracker
 } from 'components';
 import './App.css';
 
@@ -39,6 +41,13 @@ const styles = theme => ({
   }
 });
 
+const ga = {
+  trackingId: 'UA-98891622-2',
+  gaOptions: {
+    cookieDomain: 'auto'
+  }
+}
+
 const AppRoot = props => {
 
   const actionCallback = () => {
@@ -46,6 +55,8 @@ const AppRoot = props => {
   }
 
   const { classes } = props;
+
+  ReactGA.initialize(ga);
 
   return (
     <React.Fragment>
@@ -57,12 +68,12 @@ const AppRoot = props => {
               <span>
                 <Header />
                 <Switch>
-                  <Route path="/" exact component={HomeView} />
-                  <Route path="/page/:page" component={BlogView} />
-                  <Route path="/post/:slug" component={PostView} />
-                  <Route path="/about" component={AboutView} />
-                  <Route path="/build-your-bar" component={BarView} />
-                  <Route path="/contact" component={ContactView} />
+                  <Route path="/" exact component={WithTracker(HomeView)} />
+                  <Route path="/page/:page" component={WithTracker(BlogView)} />
+                  <Route path="/post/:slug" component={WithTracker(PostView)} />
+                  <Route path="/about" component={WithTracker(AboutView)} />
+                  <Route path="/build-your-bar" component={WithTracker(BarView)} />
+                  <Route path="/contact" component={WithTracker(ContactView)} />
                 </Switch>
               </span>
             </ScrollContext>
