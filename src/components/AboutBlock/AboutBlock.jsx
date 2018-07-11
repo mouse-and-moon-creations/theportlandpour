@@ -69,33 +69,20 @@ const AboutBlock = props => {
             </div>
           </CardContent>
         </Card>
-        <div className={classes.cards}>
-          <Card className={classes.card} elevation={0}>
-            <CardContent>
-              <Typography variant="headline">The pictures</Typography>
-              <Typography paragraph>
-                Have you ever sat down to a meal, or ordered a drink and thought, this looks too good to finish?
-                We know that moment well, and try to capture the art of the cocktail in pictures.
-                As working artists ourselves, we appreciate the elegance and effort it takes to create something both beautiful, and delicious.
-                It inspires us to create, and share with you, pictures of these creations, which, by the way, we craft ourselves in our downtown Portland studio.
-                After trying them, of course.
-              </Typography>
-            </CardContent>
-          </Card>
-          <Card className={classes.card} elevation={0}>
-            <CardContent>
-              <Typography variant="headline">The recipes</Typography>
-                <Typography paragraph>
-                  Have you ever wanted to try one of the local brands, then thought, what do I do with it?
-                  You're not alone.
-                  We spent alot of time collecting and trying recipes, and finding ways to make them with as many local products as possible, then we made this blog.
-                  If you're curious about what to do with local spirits, try some of our suggestions.
-                  We enjoy the amazing things we can make with local ingredients, and take pride in supporting our community.
-                  We encourage you to join us in our adventure.
-                </Typography>
-            </CardContent>
-          </Card>
-        </div>
+        <Card elevation={0}>
+          <CardContent>
+            <Typography variant="headline">The recipes</Typography>
+            <Typography paragraph>
+              Have you ever wanted to try one of the local brands, then thought, what do I do with it?
+              You're not alone.
+              We spent alot of time collecting recipes, and finding ways to make them with as many local products as possible.
+              Our recipes come from practice, we try different local spirits and proportions until we find what we like, then we photograph it in our downtown Portland studio, and post the recipes for you to try.
+              If you're curious about what to do with local spirits, try some of our suggestions.
+              We enjoy the amazing things we can make with local ingredients, and take pride in supporting our community.
+              We encourage you to join us in our adventure.
+            </Typography>
+          </CardContent>
+        </Card>
       </CardContent>
     </Card>
   );

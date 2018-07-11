@@ -42,7 +42,7 @@ const Tagline = props => {
   return (
     <div className={ classes.root }>
       <Typography color="inherit" variant="display1" align="right" className={classes.tagline} {...props} classes={{}}>
-        Fine art &sdot; Cocktail recipes &sdot; Local spirits
+        Cocktail recipes with local ingredients
       </Typography>
       <Hidden smDown>
         <Typography variant="subheading" align="right"  {...props} classes={{}}>
