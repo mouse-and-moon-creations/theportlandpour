@@ -74,10 +74,11 @@ const AboutBlock = props => {
             <CardContent>
               <Typography variant="headline">The pictures</Typography>
               <Typography paragraph>
-                We believe a well made cocktail is, itself, a work of art.
+                Have you ever sat down to a meal, or ordered a drink and thought, this looks too good to finish?
+                We know that moment well, and try to capture the art of the cocktail in pictures.
                 As working artists ourselves, we appreciate the elegance and effort it takes to create something both beautiful, and delicious.
-                It inspires us to create our pictures of these creations, which, by the way, we craft ourselves in our downtown Portland studio.
-                After trying them for ourselves, of course.
+                It inspires us to create, and share with you, pictures of these creations, which, by the way, we craft ourselves in our downtown Portland studio.
+                After trying them, of course.
               </Typography>
             </CardContent>
           </Card>
@@ -85,9 +86,12 @@ const AboutBlock = props => {
             <CardContent>
               <Typography variant="headline">The recipes</Typography>
                 <Typography paragraph>
-                  The craft spirits made in Portland are fantastic.
-                  We all have our favorites, and decided we should write about the cocktails we photograph, and share the recipes, but only if made with local spirits.
-                  We enjoy the amazing things we can make with local ingredients, and take pride in supporting our local community, which is why we share these recipes along with our art.
+                  Have you ever wanted to try one of the local brands, then thought, what do I do with it?
+                  You're not alone.
+                  We spent alot of time collecting and trying recipes, and finding ways to make them with as many local products as possible, then we made this blog.
+                  If you're curious about what to do with local spirits, try some of our suggestions.
+                  We enjoy the amazing things we can make with local ingredients, and take pride in supporting our community.
+                  We encourage you to join us in our adventure.
                 </Typography>
             </CardContent>
           </Card>

@@ -93,6 +93,7 @@ const styles = theme => ({
   },
   latestDescription: {
     display: 'flex',
+    flexBasis: 'auto',
     flexDirection: 'column'
   },
   latestImage: {
@@ -107,6 +108,7 @@ const styles = theme => ({
   },
   latestPost: {
     display: 'flex',
+    flexBasis: 'auto',
     padding: '0 48px 48px 48px',
     [theme.breakpoints.down('md')]: {
       flexWrap: 'wrap',
