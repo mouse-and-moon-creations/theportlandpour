@@ -26,7 +26,7 @@ const Users = props => {
   return (
     <React.Fragment>
       {users.map(user => {
-        return (<User bio={user.bio} compact={compact} key={user.id} name={user.name} src={user.profile_image} />);
+        return (<User bio={user.bio} compact={compact} key={user.id} name={user.name} src={user.profile_image} website={user.website} />);
       })}
     </React.Fragment>
   );

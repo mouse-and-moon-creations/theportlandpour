@@ -20,14 +20,16 @@ const propTypes = {
   compact: PropTypes.bool,
   bio: PropTypes.string,
   name: PropTypes.string,
-  src: PropTypes.string
+  src: PropTypes.string,
+  website: PropTypes.string
 };
 
 const defaultProps = {
   compact: false,
   bio: '',
   name: '',
-  src: ''
+  src: '',
+  website: ''
 };
 
 const styles = {
@@ -50,7 +52,7 @@ const styles = {
 
 const User = props => {
 
-  const { bio, classes, compact, name, src } = props;
+  const { bio, classes, compact, name, src, website } = props;
 
   const absSrc = blogHelper.getAssetUrl(src);
 
@@ -61,6 +63,7 @@ const User = props => {
         <div>
           <Typography noWrap={compact} variant={compact ? 'body2' : 'title'}>{name}</Typography>
           <Typography noWrap={compact} variant="body1">{bio}</Typography>
+          { website ? <Typography paragraph><a href={website} target="_blank">{website}</a></Typography> : null }
         </div>
       </CardContent>
     </Card>
