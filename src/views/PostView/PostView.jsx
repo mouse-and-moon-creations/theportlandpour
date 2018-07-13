@@ -18,6 +18,7 @@ import {
   PostDetail,
   Sidebar
 } from 'components';
+import { blogHelper } from 'helpers';
 import { find, isEmpty } from 'lodash';
 
 /**
@@ -36,18 +37,13 @@ class PostView extends Component {
 
     this.props.dispatch(blogActions.getPostBySlug(slug.pop()));
 
-    document.body.addEventListener('click', e => {
-      if(e.target && e.target.nodeName === 'A') {
-        e.preventDefault();
-        window.open(e.target.href, '_blank');     
-      }
-    });
+    document.body.addEventListener('click', blogHelper.postLinkHandler);
 
   }
 
   componentWillUnmount() {
 
-    document.body.removeEventListener('click');
+    document.body.removeEventListener('click', blogHelper.postLinkHandler);
 
     return this.props.dispatch(blogActions.clearPostDetail());
 

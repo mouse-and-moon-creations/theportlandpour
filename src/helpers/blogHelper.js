@@ -79,6 +79,15 @@ const getPostUrl = slug => {
 
 }
 
+const postLinkHandler = e => {
+
+  if(e.target && e.target.nodeName === 'A') {
+    e.preventDefault();
+    window.open(e.target.href, '_blank');
+  }
+
+}
+
 const blogHelper = {
   getAssetUrl,
   getEndpoint,
@@ -87,7 +96,8 @@ const blogHelper = {
   getMailChimpEndpoint,
   getPostDate,
   getPostUrl,
-  getUrl
+  getUrl,
+  postLinkHandler
 };
 
 export default blogHelper;
