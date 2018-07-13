@@ -36,11 +36,21 @@ class PostView extends Component {
 
     this.props.dispatch(blogActions.getPostBySlug(slug.pop()));
 
+    document.body.addEventListener('click', e => {
+      if(e.target && e.target.nodeName === 'A') {
+        e.preventDefault();
+        window.open(e.target.href, '_blank');     
+      }
+    });
+
   }
 
   componentWillUnmount() {
 
+    document.body.removeEventListener('click');
+
     return this.props.dispatch(blogActions.clearPostDetail());
+
   }
 
   render() {

@@ -88,7 +88,7 @@ const PostDetail = props => {
         <Typography variant="display2" color="default" align="center" className={classes.cardTitle}>{post.title}</Typography>
         <Typography className={classes.cardSubheading} align="center" variant="subheading" color="textSecondary" component="div">"{ post.custom_excerpt }"</Typography>
         <Typography className={classes.cardSubheading} variant="subheading" color="textSecondary" align="center" paragraph={true}>
-          <Avatar className={classes.avatar} src={absSrc} />
+          <Avatar className={classes.avatar} component="span" src={absSrc} />
           {user.name} on {postDate}</Typography>
         <Typography align="center">
           <img src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} className={classes.image} />
