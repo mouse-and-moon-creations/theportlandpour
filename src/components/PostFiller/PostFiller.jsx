@@ -66,7 +66,7 @@ const PostFiller = props => {
           <IconButton className={classes.button} aria-label="Delete">
             <LocalBar className={classes.icon} />
           </IconButton>
-          <Typography variant="headline">See all the posts</Typography>
+          <Typography variant="headline">See all the cocktails</Typography>
         </CardContent>
       </Link>
     </Card>

@@ -36,6 +36,10 @@ const gridCols = {
 };
 
 const styles = theme => ({
+  buttonLink: {
+    color: theme.palette.common.white,
+    marginTop: '12px'
+  },
   card: {
     background: theme.palette.grey[300],
     width: '100%'
@@ -178,6 +182,9 @@ const Hero = props => {
             <Typography variant="caption" color="inherit" paragraph>{postDate} by {user ? user.name : null}</Typography>
             <Link to={postBySlug}>
               <Button variant="raised">See how we make this with local ingredients</Button>
+            </Link>
+            <Link to="/page/1">
+              <Button classes={{ root: classes.buttonLink }} size="small">See all the cocktails</Button>
             </Link>
           </div>
         </div>

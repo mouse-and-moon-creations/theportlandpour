@@ -63,8 +63,8 @@ const PostsBlock = props => {
 
   return (
     <div className={classes.root}>
-      <Gloss classes={{ gloss: classes.gloss }} label="Newest cocktails" />
-      <Typography className={classes.gloss} paragraph variant="headline">Our latest posts</Typography>
+      <Gloss classes={{ gloss: classes.gloss }} label="Newest posts" />
+      <Typography className={classes.gloss} paragraph variant="headline">Our latest cocktails</Typography>
       <div className={classes.paper}>
         {posts.map(post => {
           return (
