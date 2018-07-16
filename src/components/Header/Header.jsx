@@ -23,7 +23,8 @@ import {
   Home,
   Info,
   LocalBar,
-  Menu
+  Menu,
+  RssFeed
 } from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
 import {
@@ -134,6 +135,12 @@ class Header extends Component {
                   <Info />
                 </ListItemIcon>
                 <ListItemText primary="About" />
+              </ListItem>
+              <ListItem button component="a" href="https://blog.theportlandpour.com/rss/">
+                <ListItemIcon>
+                  <RssFeed />
+                </ListItemIcon>
+                <ListItemText primary="RSS Feed" />
               </ListItem>
             </List>
           </div>
