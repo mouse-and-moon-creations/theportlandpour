@@ -11,6 +11,7 @@ import {
   Tab,
   Tabs
 } from '@material-ui/core';
+import { RssFeed } from '@material-ui/icons';
 
 const Navigation = props => {
 
@@ -22,6 +23,7 @@ const Navigation = props => {
     <Tabs value={false} className={props.className ? props.className : ''}>
       <Tab onClick={() => handleClick('/page/1')} label="Cocktails" />
       <Tab onClick={() => handleClick('/about')} label="About" />
+      <Tab onClick={() => window.open('https://blog.theportlandpour.com/rss')} icon={<RssFeed />}/>
     </Tabs>
   );
 
