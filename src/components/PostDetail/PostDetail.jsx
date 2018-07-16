@@ -30,21 +30,6 @@ const defaultProps = {
 };
 
 const styles = theme => ({
-  root: {
-    marginBottom: '5%',
-    marginLeft: '3%',
-    marginTop: theme.local.headerPadding,
-    width: '70%',
-    [theme.breakpoints.only('md')]: {
-      marginLeft: '5%',
-      width: '60%'
-    },
-    [theme.breakpoints.down('sm')]: {
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      width: '90%'
-    }
-  },
   avatar: {
     display: 'inline-block',
     marginRight: '12px',

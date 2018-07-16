@@ -10,8 +10,10 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   Hidden,
-  LinearProgress
+  LinearProgress,
+  Typography
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import { blogActions } from 'actions';
 import {
   Footer,
@@ -20,6 +22,31 @@ import {
 } from 'components';
 import { blogHelper } from 'helpers';
 import { find, isEmpty } from 'lodash';
+
+const styles = theme => ({
+  post: {
+    padding: '0 24px',
+    width: '70%',
+    [theme.breakpoints.down('sm')]: {
+      width: 'auto'
+    }
+  },
+  root: {
+    display: 'flex',
+    marginBottom: '24px'
+  },
+  sidebar: {
+    paddingBottom: '24px',
+    paddingRight: '24px',
+    width: '30%'
+  },
+  title: {
+    paddingBottom: '24px',
+    paddingLeft: '36px',
+    paddingRight: '36px',
+    paddingTop: theme.local.headerPadding
+  }
+});
 
 /**
  * Blog view component
@@ -51,17 +78,27 @@ class PostView extends Component {
 
   render() {
 
+    const { classes } = this.props;
     const { post, users, waiting } = this.props.blog;
     const progress = <LinearProgress />;
 
     return (
       <React.Fragment>
         {waiting ? progress : null}
-        {isEmpty(post) ? null : <PostDetail post={post} user={find(users, { id: post.author })} />}
+        <div className={classes.title}>
+          <Typography className={classes.headline} variant="display1">Cocktails</Typography>
+        </div>
+        <div className={classes.root}>
+          <div className={classes.post}>
+            {isEmpty(post) ? null : <PostDetail post={post} user={find(users, { id: post.author })} />}
+          </div>
+          <Hidden smDown>
+            <div className={classes.sidebar}>
+              <Sidebar />
+            </div>
+          </Hidden>
+        </div>
         <Footer />
-        <Hidden smDown>
-          <Sidebar />
-        </Hidden>
       </React.Fragment>
     );
 
@@ -77,4 +114,6 @@ const mapStateToProps = state => {
 
 const routedComponent = withRouter(PostView);
 
-export default connect(mapStateToProps)(routedComponent);
+const styledComponent = withStyles(styles)(routedComponent);
+
+export default connect(mapStateToProps)(styledComponent);
