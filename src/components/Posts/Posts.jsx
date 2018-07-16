@@ -48,10 +48,6 @@ const Posts = props => {
 
   return (
     <div className={classes.posts}>
-      <div className={classes.title}>
-        <Typography className={classes.headline} variant="display1">Cocktails</Typography>
-        { tags.length ? <Typography className={classes.tags}>Tags:</Typography> : null }
-      </div>
       <div className={classes.paper}>
         {posts.map(post => {
           return (

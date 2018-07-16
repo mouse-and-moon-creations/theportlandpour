@@ -9,7 +9,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   Hidden,
-  LinearProgress
+  LinearProgress,
+  Typography
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { blogActions } from 'actions';
@@ -31,12 +32,17 @@ const styles = theme => ({
   },
   root: {
     display: 'flex',
-    paddingTop: theme.local.headerPadding
   },
   sidebar: {
     paddingBottom: '24px',
     paddingRight: '24px',
     width: '30%'
+  },
+  title: {
+    paddingBottom: '24px',
+    paddingLeft: '36px',
+    paddingRight: '36px',
+    paddingTop: theme.local.headerPadding
   }
 });
 
@@ -113,8 +119,11 @@ class BlogView extends Component {
 
     return (
       <React.Fragment>
+        {waiting ? progress : null}
+        <div className={classes.title}>
+          <Typography className={classes.headline} variant="display1">Cocktails</Typography>
+        </div>
         <div className={classes.root}>
-          {waiting ? progress : null}
           <div className={classes.posts}>
             <Posts posts={posts} users={users} />
             <Pager pagination={pagination} />
