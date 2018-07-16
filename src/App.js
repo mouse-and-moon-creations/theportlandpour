@@ -68,12 +68,12 @@ const AppRoot = props => {
               <span>
                 <Header />
                 <Switch>
-                  <Route path="/" exact component={WithTracker(HomeView)} />
                   <Route path="/page/:page" component={WithTracker(BlogView)} />
                   <Route path="/post/:slug" component={WithTracker(PostView)} />
                   <Route path="/about" component={WithTracker(AboutView)} />
                   <Route path="/build-your-bar" component={WithTracker(BarView)} />
                   <Route path="/contact" component={WithTracker(ContactView)} />
+                  <Route path="/" component={WithTracker(HomeView)} />
                 </Switch>
               </span>
             </ScrollContext>
