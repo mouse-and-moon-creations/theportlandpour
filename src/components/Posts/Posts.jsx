@@ -31,19 +31,7 @@ const styles = theme => ({
   paper: {
     display: 'flex',
     flexFlow: 'row wrap',
-    justifyContent: 'space-around',
-    [theme.breakpoints.only('md')]: {
-      marginRight: '30%'
-    },
-    [theme.breakpoints.down('sm')]: {
-      marginLeft: 'auto',
-      paddingTop: '98px',
-      width: '100%'
-    }
-  },
-  posts: {
-    margin: 'auto 27% auto 24px',
-    paddingTop: theme.local.headerPadding,
+    justifyContent: 'space-around'
   },
   tags: {
     verticalAlign: 'bottom'

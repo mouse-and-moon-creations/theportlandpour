@@ -38,22 +38,29 @@ const styles = theme => ({
     display: 'flex',
     flexFlow: 'row wrap',
     justifyContent: 'space-around',
-    margin: 'auto 27% auto 24px',
-    [theme.breakpoints.only('md')]: {
-      marginRight: '30%'
-    },
     [theme.breakpoints.down('sm')]: {
       margin: 'auto',
       width: '100%'
     }
+  },
+  posts: {
+    padding: '0 24px',
+    width: '70%',
+    [theme.breakpoints.down('md')]: {
+      width: 'auto'
+    }
+  },
+  postsRoot: {
+    display: 'flex',
   },
   root: {
     margin: '24px',
     position: 'relative'
   },
   sidebar: {
-    right: '0 ! important',
-    top: '96px ! important'
+    paddingBottom: '24px',
+    paddingRight: '24px',
+    width: '30%'
   }
 });
 
@@ -65,17 +72,23 @@ const PostsBlock = props => {
     <div className={classes.root}>
       <Gloss classes={{ gloss: classes.gloss }} label="Newest posts" />
       <Typography className={classes.gloss} paragraph variant="headline">Our latest cocktails</Typography>
-      <div className={classes.paper}>
-        {posts.map(post => {
-          return (
-            <Post post={post} user={find(users, { id: post.author })} key={post.id} />
-          );
-        })}
-        <PostFiller />
+      <div className={classes.postsRoot}>
+        <div className={classes.posts}>
+          <div className={classes.paper}>
+            {posts.map(post => {
+              return (
+                <Post post={post} user={find(users, { id: post.author })} key={post.id} />
+              );
+            })}
+            <PostFiller />
+          </div>
+        </div>
+        <Hidden mdDown>
+          <div className={classes.sidebar}>
+            <Sidebar />
+          </div>
+        </Hidden>
       </div>
-      <Hidden smDown>
-        <Sidebar classes={{ sidebar: classes.sidebar }} />
-      </Hidden>
     </div>
   );
 

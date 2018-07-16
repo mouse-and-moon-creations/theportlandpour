@@ -33,10 +33,7 @@ const defaultProps = {
 
 const styles = theme => ({
   card: {
-    marginRight: '26%',
-    marginTop: '-1.5%',
-    marginBottom: '1%',
-    marginLeft: '.5%',
+    marginBottom: '24px',
     [theme.breakpoints.down('sm')]: {
       margin: 'auto auto 1% auto',
       width: '98%'

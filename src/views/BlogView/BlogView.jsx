@@ -11,6 +11,7 @@ import {
   Hidden,
   LinearProgress
 } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import { blogActions } from 'actions';
 import {
   Footer,
@@ -19,6 +20,25 @@ import {
   Sidebar
 } from 'components';
 import { pull } from 'lodash';
+
+const styles = theme => ({
+  posts: {
+    padding: '0 24px',
+    width: '70%',
+    [theme.breakpoints.down('sm')]: {
+      width: 'auto'
+    }
+  },
+  root: {
+    display: 'flex',
+    paddingTop: theme.local.headerPadding
+  },
+  sidebar: {
+    paddingBottom: '24px',
+    paddingRight: '24px',
+    width: '30%'
+  }
+});
 
 /**
  * Blog view component
@@ -85,6 +105,7 @@ class BlogView extends Component {
 
   render() {
 
+    const { classes } = this.props;
     const { meta, posts, selectedTags, tags, users, waiting } = this.props.blog;
     const { pagination } = meta;
 
@@ -92,13 +113,19 @@ class BlogView extends Component {
 
     return (
       <React.Fragment>
-        {waiting ? progress : null}
-        <Posts posts={posts} users={users} />
-        <Pager pagination={pagination} />
+        <div className={classes.root}>
+          {waiting ? progress : null}
+          <div className={classes.posts}>
+            <Posts posts={posts} users={users} />
+            <Pager pagination={pagination} />
+          </div>
+          <Hidden smDown>
+            <div className={classes.sidebar}>
+              <Sidebar showSearch getPostsByTagCallback={this.getPostsByTag} selectedTags={selectedTags} tags={tags} />
+            </div>
+          </Hidden>
+        </div>
         <Footer />
-        <Hidden smDown>
-          <Sidebar showSearch getPostsByTagCallback={this.getPostsByTag} selectedTags={selectedTags} tags={tags} />
-        </Hidden>
       </React.Fragment>
     );
 
@@ -112,4 +139,6 @@ const mapStateToProps = state => {
 
 }
 
-export default connect(mapStateToProps)(BlogView);
+const styledComponent = withStyles(styles)(BlogView)
+
+export default connect(mapStateToProps)(styledComponent);

@@ -52,13 +52,6 @@ const styles = theme => ({
     margin: '6px'
   },
   sidebar: {
-    position: 'absolute',
-    right: '24px',
-    top: theme.local.headerPadding,
-    width: '24%',
-    [theme.breakpoints.down('md')]: {
-      width: '26%'
-    }
   },
   rootCompact: {
     width: 'auto'
