@@ -20,6 +20,7 @@ const initialState = {
   },
   post: {},
   posts: [],
+  selectedTags: [],
   tags: [],
   users: [],
   waiting: false
@@ -126,6 +127,18 @@ const blog = (state = initialState, action) => {
         {
           messaging: initialState.messaging,
           users: action.data,
+          waiting: false
+        }
+      );
+
+    case blogConstants.SET_SELECTED_TAGS:
+
+      return Object.assign(
+        {},
+        state,
+        {
+          messaging: initialState.messaging,
+          selectedTags: action.data,
           waiting: false
         }
       );

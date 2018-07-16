@@ -12,6 +12,7 @@ const blogConstants = {
   GET_USERS: 'blog_get_users',
   MAILCHIMP: 'blog_mailchimp',
   MESSAGE: 'blog_message',
+  SET_SELECTED_TAGS: 'blog_set_selected_tags',
   WAITING_MAILCHIMP: 'blog_waiting_mailchimp',
   WAITING_POSTS: 'blog_waiting_posts',
   WAITING_POST: 'blog_waiting_post',

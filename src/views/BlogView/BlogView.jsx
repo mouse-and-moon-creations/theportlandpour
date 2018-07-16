@@ -18,6 +18,7 @@ import {
   Posts,
   Sidebar
 } from 'components';
+import { pull } from 'lodash';
 
 /**
  * Blog view component
@@ -42,7 +43,7 @@ class BlogView extends Component {
     }
 
     if(this.props.blog.tags.length === 0) {
-      //this.props.dispatch(blogActions.getTags());
+      this.props.dispatch(blogActions.getTags());
     }
 
     if(+page !== +paginationPage) {
@@ -59,9 +60,26 @@ class BlogView extends Component {
 
   }
 
+  getPostsByTag = (tag, clear=false) => {
+
+    const { selectedTags } = this.props.blog;
+
+    if(clear) {
+      pull(selectedTags, tag);
+    }
+    else {
+      selectedTags.push(tag);
+    }
+
+    this.props.dispatch(blogActions.setSelectedTags(selectedTags));
+
+    this.props.dispatch(blogActions.getPosts({page: 1, filter: 'tags:[' + selectedTags.toString() + ']' }));
+
+  }
+
   render() {
 
-    const { meta, posts, tags, users, waiting } = this.props.blog;
+    const { meta, posts, selectedTags, tags, users, waiting } = this.props.blog;
     const { pagination } = meta;
 
     const progress = <LinearProgress />;
@@ -73,7 +91,7 @@ class BlogView extends Component {
         <Pager pagination={pagination} />
         <Footer />
         <Hidden smDown>
-          <Sidebar />
+          <Sidebar showSearch getPostsByTagCallback={this.getPostsByTag} selectedTags={selectedTags} tags={tags} />
         </Hidden>
       </React.Fragment>
     );

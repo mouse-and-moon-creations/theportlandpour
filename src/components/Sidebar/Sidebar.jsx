@@ -24,6 +24,7 @@ import {
   Gloss,
   Form
 } from 'components';
+import { find } from 'lodash';
 
 const propTypes = {
   getPostsByTagCallback: PropTypes.func,
@@ -37,11 +38,11 @@ const defaultProps = {
   selectedTags: [],
   showSearch: false,
   spirits: [
-    { name: 'Gin', slug: 'gin' },
-    { name: 'Rum', slug: 'rum' },
-    { name: 'Vermouth', slug: 'vermouth' },
-    { name: 'Vodka', slug: 'vodka' },
-    { name: 'Whiskey', slug: 'whiskey' },
+    { name: 'gin', slug: 'gin' },
+    { name: 'rum', slug: 'rum' },
+    { name: 'vermouth', slug: 'vermouth' },
+    { name: 'vodka', slug: 'vodka' },
+    { name: 'whiskey', slug: 'whiskey' },
   ],
   tags: []
 };
@@ -66,11 +67,9 @@ const styles = theme => ({
 
 const Sidebar = props => {
 
-  const { classes, getPostsByTagCallback, selectedTags, showSearch, spirits, tags } = props;
+  const { classes, clearSelectedTagCallback, getPostsByTagCallback, selectedTags, showSearch, spirits, tags } = props;
 
   const submitForm = fields => { return props.dispatch(blogActions.addToMailChimp(fields)); }
-
-  console.log(tags);
 
   return (
     <Paper className={classes.sidebar} elevation={0}>
@@ -81,15 +80,15 @@ const Sidebar = props => {
               <Gloss label="Search and refine" />
               { selectedTags.length ?
                 <React.Fragment>
-                  <Typography variant="headline" paragraph>Showing</Typography>
+                  <Typography variant="headline">Showing</Typography>
                   <div className={classes.chips}>
                     { selectedTags.map(selectedTag => {
-                      return <Chip className={classes.chip} clickable key={selectedTag.slug} label={selectedTag.name} onClick={() => getPostsByTagCallback(selectedTag.slug)} />
+                      return <Chip className={classes.chip} clickable key={selectedTag} label={find(tags, { slug: selectedTag }).name} onDelete={() => getPostsByTagCallback(selectedTag, true)} />
                     }) }
                   </div>
                 </React.Fragment>  : null
               }
-              <Typography variant="headline" paragraph>Base spirits</Typography>
+              <Typography variant="headline">Base spirits</Typography>
               <div className={classes.chips}>
                 { spirits.map(spirit => {
                   return <Chip className={classes.chip} clickable key={spirit.slug} label={spirit.name} onClick={() => getPostsByTagCallback(spirit.slug)} />

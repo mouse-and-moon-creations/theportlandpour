@@ -126,7 +126,7 @@ const getPosts = (opts = {}) => {
 
 const getTags = (opts={}) => {
 
-  const options = Object.assign({}, { limit: 'all', order: 'name' }, opts);
+  const options = Object.assign({}, { fields: 'name,slug', limit: 'all', order: 'name' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('tags', queryString);
 
@@ -143,7 +143,7 @@ const getTags = (opts={}) => {
           dispatch(fail(error));
         }
       );
-      
+
   }
 
 }
@@ -180,6 +180,16 @@ const getUsers = (opts={}) => {
           dispatch(fail(error));
         }
       );
+
+  }
+
+}
+
+const setSelectedTags = selectedTags => {
+
+  return dispatch => {
+
+    dispatch(success(blogConstants.SET_SELECTED_TAGS, selectedTags));
 
   }
 
@@ -230,7 +240,8 @@ const blogActions = {
   getPostBySlug,
   getPosts,
   getTags,
-  getUsers
+  getUsers,
+  setSelectedTags
 };
 
 export default blogActions;
