@@ -66,7 +66,7 @@ const AboutBlock = props => {
           <Typography variant="headline">The people</Typography>
           <Typography paragraph>The Portland Pour is created by the artists and makers of Mouse and Moon Creations, an art and creative studio in downtown Portland.</Typography>
           <div className={classes.cards}>
-            <Users users={users.reverse()} />
+            <Users users={users} />
           </div>
         </CardContent>
       </Card>

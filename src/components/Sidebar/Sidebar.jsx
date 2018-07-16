@@ -6,11 +6,13 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Button,
   Card,
   CardActions,
   CardContent,
+  Chip,
   Divider,
   Paper,
   TextField,
@@ -23,7 +25,31 @@ import {
   Form
 } from 'components';
 
+const propTypes = {
+  getPostsByTagCallback: PropTypes.func,
+  selectedTags: PropTypes.array,
+  showSearch: PropTypes.bool,
+  tags: PropTypes.array
+};
+
+const defaultProps = {
+  getPostsByTagCallback: null,
+  selectedTags: [],
+  showSearch: false,
+  spirits: [
+    { name: 'Gin', slug: 'gin' },
+    { name: 'Rum', slug: 'rum' },
+    { name: 'Vermouth', slug: 'vermouth' },
+    { name: 'Vodka', slug: 'vodka' },
+    { name: 'Whiskey', slug: 'whiskey' },
+  ],
+  tags: []
+};
+
 const styles = theme => ({
+  chip: {
+    margin: '6px'
+  },
   sidebar: {
     position: 'absolute',
     right: '24px',
@@ -39,20 +65,41 @@ const styles = theme => ({
 });
 
 const Sidebar = props => {
-  const { classes } = props;
+
+  const { classes, getPostsByTagCallback, selectedTags, showSearch, spirits, tags } = props;
 
   const submitForm = fields => { return props.dispatch(blogActions.addToMailChimp(fields)); }
 
+  console.log(tags);
+
   return (
     <Paper className={classes.sidebar} elevation={0}>
-      <Card elevation={0}>
-        <CardContent>
-          <Gloss label="Stay in touch" />
-          <Typography variant="headline">Get the newsletter</Typography>
-          <Form submitFormCallback={submitForm} form="hero" classes={{ submitButton: classes.submitButton, form: classes.form }} showCancel={false} buttonColor="default" submitLabel="Sign up" />
-        </CardContent>
-      </Card>
-      <Divider />
+      { showSearch ?
+        <React.Fragment>
+          <Card elevation={0}>
+            <CardContent>
+              <Gloss label="Search and refine" />
+              { selectedTags.length ?
+                <React.Fragment>
+                  <Typography variant="headline" paragraph>Showing</Typography>
+                  <div className={classes.chips}>
+                    { selectedTags.map(selectedTag => {
+                      return <Chip className={classes.chip} clickable key={selectedTag.slug} label={selectedTag.name} onClick={() => getPostsByTagCallback(selectedTag.slug)} />
+                    }) }
+                  </div>
+                </React.Fragment>  : null
+              }
+              <Typography variant="headline" paragraph>Base spirits</Typography>
+              <div className={classes.chips}>
+                { spirits.map(spirit => {
+                  return <Chip className={classes.chip} clickable key={spirit.slug} label={spirit.name} onClick={() => getPostsByTagCallback(spirit.slug)} />
+                }) }
+              </div>
+            </CardContent>
+          </Card>
+          <Divider />
+        </React.Fragment> : null
+      }
       <Card elevation={0}>
         <CardContent>
           <Gloss label="Pictures by Tony M" />
@@ -64,6 +111,14 @@ const Sidebar = props => {
             These photos began as an artistic series, designed for print, but have become more interesting when associated with their stories and recipes.
             We genuinely hope they may, in some small way, inspire you to try some of what Portland has to offer, and make more cocktails at home.
           </Typography>
+        </CardContent>
+      </Card>
+      <Divider />
+      <Card elevation={0}>
+        <CardContent>
+          <Gloss label="Stay in touch" />
+          <Typography variant="headline">Get the newsletter</Typography>
+          <Form submitFormCallback={submitForm} form="hero" classes={{ submitButton: classes.submitButton, form: classes.form }} showCancel={false} buttonColor="default" submitLabel="Sign up" />
         </CardContent>
       </Card>
       <Divider />
@@ -89,5 +144,8 @@ const Sidebar = props => {
   );
 
 }
+
+Sidebar.propTypes = propTypes;
+Sidebar.defaultProps = defaultProps;
 
 export default withStyles(styles)(Sidebar);

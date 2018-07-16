@@ -41,8 +41,8 @@ class BlogView extends Component {
       this.props.dispatch(blogActions.getUsers());
     }
 
-    if(this.props.blog.featuredPosts.length === 0) {
-      this.props.dispatch(blogActions.getFeaturedPosts());
+    if(this.props.blog.tags.length === 0) {
+      //this.props.dispatch(blogActions.getTags());
     }
 
     if(+page !== +paginationPage) {
@@ -61,7 +61,7 @@ class BlogView extends Component {
 
   render() {
 
-    const { meta, posts, users, waiting } = this.props.blog;
+    const { meta, posts, tags, users, waiting } = this.props.blog;
     const { pagination } = meta;
 
     const progress = <LinearProgress />;
@@ -73,7 +73,7 @@ class BlogView extends Component {
         <Pager pagination={pagination} />
         <Footer />
         <Hidden smDown>
-          <Sidebar {...this.props} />
+          <Sidebar />
         </Hidden>
       </React.Fragment>
     );
