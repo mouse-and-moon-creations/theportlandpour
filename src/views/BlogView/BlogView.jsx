@@ -64,6 +64,8 @@ class BlogView extends Component {
 
     const { selectedTags } = this.props.blog;
 
+    let query = { page: 1 }
+
     if(clear) {
       pull(selectedTags, tag);
     }
@@ -73,7 +75,11 @@ class BlogView extends Component {
 
     this.props.dispatch(blogActions.setSelectedTags(selectedTags));
 
-    this.props.dispatch(blogActions.getPosts({page: 1, filter: 'tags:[' + selectedTags.toString() + ']' }));
+    if(selectedTags.length) {
+      query.filter = 'tags:[' + selectedTags.toString() + ']'
+    }
+
+    this.props.dispatch(blogActions.getPosts(query));
 
   }
 

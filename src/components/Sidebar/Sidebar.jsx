@@ -67,7 +67,7 @@ const styles = theme => ({
 
 const Sidebar = props => {
 
-  const { classes, clearSelectedTagCallback, getPostsByTagCallback, selectedTags, showSearch, spirits, tags } = props;
+  const { classes, getPostsByTagCallback, selectedTags, showSearch, spirits, tags } = props;
 
   const submitForm = fields => { return props.dispatch(blogActions.addToMailChimp(fields)); }
 
@@ -91,7 +91,7 @@ const Sidebar = props => {
               <Typography variant="headline">Base spirits</Typography>
               <div className={classes.chips}>
                 { spirits.map(spirit => {
-                  return <Chip className={classes.chip} clickable key={spirit.slug} label={spirit.name} onClick={() => getPostsByTagCallback(spirit.slug)} />
+                  return selectedTags.includes(spirit.slug) ? null : <Chip className={classes.chip} clickable key={spirit.slug} label={spirit.name} onClick={() => getPostsByTagCallback(spirit.slug)} />
                 }) }
               </div>
             </CardContent>
