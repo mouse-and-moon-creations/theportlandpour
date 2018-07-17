@@ -33,6 +33,9 @@ const defaultProps = {
 };
 
 const styles = theme => ({
+  root: {
+    backgroundColor: theme.palette.grey[100]
+  },
   cardActions: {
     display: 'flex',
     paddingBottom: '24px',
@@ -52,6 +55,9 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center'
+  },
+  post: {
+    margin: '0 .25% 3% .25%'
   }
 });
 
@@ -60,14 +66,14 @@ const FeaturedPosts = props => {
   const { caption, classes, featuredPosts, title, users } = props;
 
   return (
-    <Card elevation={0} square>
+    <Card className={classes.root} elevation={0} square>
       <CardContent className={classes.cardContent}>
         <Gloss label="Featured cocktails" />
         <Typography variant="headline">{title}</Typography>
         <Typography variant="body1" paragraph>{caption}</Typography>
         <div className={classes.featuredPosts}>
           {featuredPosts.length ? featuredPosts.map(post => {
-            return <Post post={post} user={find(users, { id: post.author })} key={post.id} elevation={0} compact />;
+            return <Post classes={{ rootCompact: classes.post }} post={post} user={find(users, { id: post.author })} key={post.id} compact />;
           }) : null}
         </div>
       </CardContent>

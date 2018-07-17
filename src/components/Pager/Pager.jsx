@@ -29,6 +29,7 @@ const defaultProps = {
 
 const styles = theme => ({
   card: {
+    backgroundColor: theme.palette.grey[100],
     marginBottom: '24px',
     [theme.breakpoints.down('sm')]: {
       margin: 'auto auto 1% auto',
@@ -50,7 +51,7 @@ const Pager = props => {
   const nextUrl = pagination.next ? blogHelper.getUrl(pagination.next) : null;
 
   return (
-    <Card className={classes.card} elevation={0}>
+    <Card className={classes.card} elevation={0} square>
       <CardContent>
         <GridList cols={3} cellHeight="auto">
           <GridListTile>

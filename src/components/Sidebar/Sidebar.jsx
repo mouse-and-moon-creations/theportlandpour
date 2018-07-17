@@ -48,6 +48,7 @@ const styles = theme => ({
     margin: '6px'
   },
   sidebar: {
+    backgroundColor: theme.palette.grey[100]
   },
   rootCompact: {
     width: 'auto'
@@ -61,10 +62,10 @@ const Sidebar = props => {
   const submitForm = fields => { return props.dispatch(blogActions.addToMailChimp(fields)); }
 
   return (
-    <Paper className={classes.sidebar} elevation={0}>
+    <Paper className={classes.sidebar} elevation={0} square>
       { showSearch ?
         <React.Fragment>
-          <Card elevation={0}>
+          <Card className={classes.sidebar} elevation={0}>
             <CardContent>
               <Gloss label="Search and refine" />
               { selectedTags.length ?
@@ -88,7 +89,7 @@ const Sidebar = props => {
           <Divider />
         </React.Fragment> : null
       }
-      <Card elevation={0}>
+      <Card className={classes.sidebar} elevation={0}>
         <CardContent>
           <Gloss label="Pictures by Tony M" />
           <Typography variant="headline" paragraph>About the photos</Typography>
@@ -102,7 +103,7 @@ const Sidebar = props => {
         </CardContent>
       </Card>
       <Divider />
-      <Card elevation={0}>
+      <Card className={classes.sidebar} elevation={0}>
         <CardContent>
           <Gloss label="Stay in touch" />
           <Typography variant="headline">Get the newsletter</Typography>
@@ -110,7 +111,7 @@ const Sidebar = props => {
         </CardContent>
       </Card>
       <Divider />
-      <Card elevation={0}>
+      <Card className={classes.sidebar} elevation={0}>
         <CardContent>
           <Gloss label="Let's chat" />
           <Typography variant="headline">Contact us</Typography>
