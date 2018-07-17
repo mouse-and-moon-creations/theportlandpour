@@ -7,17 +7,13 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Card,
-  CardContent,
-  Divider,
-  Typography
-} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import {
-  Gloss,
-  Users
-} from 'components';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/core/styles/withStyles';
+import Gloss from 'components/Gloss';
+import Users from 'components/Users';
 
 const propTypes = {
   users: PropTypes.array

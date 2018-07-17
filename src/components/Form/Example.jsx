@@ -9,7 +9,7 @@
  * Your form will extend the FormCreator class, but React must be in scope for JSX
  */
 import React from 'react';
-import { FormCreator } from './FormCreator';
+import FormCreator from './FormCreator';
 
 /**
  * Import the compoonents you'll need for your form.

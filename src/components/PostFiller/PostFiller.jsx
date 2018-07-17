@@ -7,15 +7,13 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import {
-  Card,
-  CardContent,
-  IconButton,
-  Typography
-} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import { LocalBar } from '@material-ui/icons';
+import Link from 'react-router-dom/Link';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/core/styles/withStyles';
+import LocalBar from '@material-ui/icons/LocalBar';
 
 const propTypes = {
   url: PropTypes.string

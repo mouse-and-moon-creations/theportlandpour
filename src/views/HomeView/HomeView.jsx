@@ -7,17 +7,15 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Paper } from '@material-ui/core';
-import { blogActions } from 'actions';
-import {
-  AboutBlock,
-  FeaturedPosts,
-  Footer,
-  Hero,
-  PitchBlock,
-  PostsBlock
-} from 'components';
-import { blogHelper } from 'helpers';
+import Paper from '@material-ui/core/Paper';
+import blogActions from 'actions/blogActions';
+import AboutBlock from 'components/AboutBlock';
+import FeaturedPosts from 'components/FeaturedPosts';
+import Footer from 'components/Footer';
+import Hero from 'components/Hero';
+import PitchBlock from 'components/PitchBlock';
+import PostsBlock from 'components/PostsBlock';
+import blogHelper from 'helpers/blogHelper';
 
 /**
  * Blog view component

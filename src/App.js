@@ -7,30 +7,20 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import {
-  Button,
-  CssBaseline,
-  Snackbar
-} from '@material-ui/core';
-import {
-  MuiThemeProvider,
-  createMuiTheme,
-  withStyles
-} from '@material-ui/core/styles';
-import { blogActions } from 'actions';
-import { themeHelper } from 'helpers';
-import {
-  AboutView,
-  BarView,
-  BlogView,
-  ContactView,
-  HomeView,
-  PostView
-} from 'views';
-import {
-  Header,
-  WithTracker
-} from 'components';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import withStyles from '@material-ui/core/styles/withStyles';
+import blogActions from 'actions/blogActions';
+import themeHelper from 'helpers/themeHelper';
+import AboutView from 'views/AboutView';
+import BlogView from 'views/BlogView';
+import HomeView from 'views/HomeView';
+import PostView from 'views/PostView';
+import Header from 'components/Header';
+import WithTracker from 'components/WithTracker';
 import './App.css';
 
 const theme = createMuiTheme(themeHelper.getTheme());
@@ -71,8 +61,6 @@ const AppRoot = props => {
                   <Route path="/page/:page" component={WithTracker(BlogView)} />
                   <Route path="/post/:slug" component={WithTracker(PostView)} />
                   <Route path="/about" component={WithTracker(AboutView)} />
-                  <Route path="/build-your-bar" component={WithTracker(BarView)} />
-                  <Route path="/contact" component={WithTracker(ContactView)} />
                   <Route path="/" component={WithTracker(HomeView)} />
                 </Switch>
               </span>

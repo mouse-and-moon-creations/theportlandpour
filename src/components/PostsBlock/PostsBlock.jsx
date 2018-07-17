@@ -7,18 +7,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Hidden,
-  Typography
-} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import {
-  Gloss,
-  Post,
-  PostFiller,
-  Sidebar
-} from 'components';
-import { find } from 'lodash';
+import Hidden from '@material-ui/core/Hidden';
+import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/core/styles/withStyles';
+import Gloss from 'components/Gloss';
+import Post from 'components/Post';
+import PostFiller from 'components/PostFiller';
+import Sidebar from 'components/Sidebar';
+import find from 'lodash/find';
 
 const propTypes = {
   posts: PropTypes.array,

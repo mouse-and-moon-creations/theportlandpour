@@ -7,24 +7,20 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Chip,
-  Divider,
-  Paper,
-  TextField,
-  Typography
-} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import { blogActions } from 'actions';
-import {
-  Gloss,
-  Form
-} from 'components';
-import { find } from 'lodash';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Chip from '@material-ui/core/Chip';
+import Divider from '@material-ui/core/Divider';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/core/styles/withStyles';
+import blogActions from 'actions/blogActions';
+import Gloss from 'components/Gloss';
+import Form from 'components/Form';
+import find from 'lodash/find';
 
 const propTypes = {
   getPostsByTagCallback: PropTypes.func,

@@ -7,10 +7,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import { Post } from 'components';
-import { find } from 'lodash';
+import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/core/styles/withStyles';
+import Post from 'components/Post';
+import find from 'lodash/find';
 
 const propTypes = {
   posts: PropTypes.array,

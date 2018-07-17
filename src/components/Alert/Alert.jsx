@@ -16,11 +16,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  Snackbar
-} from '@material-ui/core';
-
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
 
 const PROPTYPES = {
   message: PropTypes.string,

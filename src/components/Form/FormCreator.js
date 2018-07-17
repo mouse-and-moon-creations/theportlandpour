@@ -8,13 +8,11 @@
  */
 
 import React, { Component } from 'react';
-import { FormValidator } from 'components';
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent
-} from '@material-ui/core';
+import FormValidator from 'components/FormValidator';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 import { PROPTYPES, DEFAULT_PROPS, SCHEMA_KEYS } from './config';
 
 class FormCreator extends Component {

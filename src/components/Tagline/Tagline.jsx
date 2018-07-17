@@ -6,11 +6,9 @@
  */
 
 import React from 'react';
-import {
-  Hidden,
-  Typography
-} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import Hidden from '@material-ui/core/Hidden';
+import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
   root: {

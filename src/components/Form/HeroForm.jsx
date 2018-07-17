@@ -50,4 +50,4 @@ class HeroForm extends FormCreator {
 HeroForm.propTypes = PROPTYPES;
 HeroForm.defaultProps = DEFAULT_PROPS;
 
-export { HeroForm };
+export default HeroForm;

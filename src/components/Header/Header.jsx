@@ -7,30 +7,24 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  AppBar,
-  Drawer,
-  Hidden,
-  IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListSubheader,
-  ListItemText,
-  Toolbar
-} from '@material-ui/core';
-import {
-  Home,
-  Info,
-  LocalBar,
-  Menu,
-  RssFeed
-} from '@material-ui/icons';
-import { withStyles } from '@material-ui/core/styles';
-import {
-  Navigation,
-  Tagline
-} from 'components';
+import AppBar from '@material-ui/core/AppBar';
+import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
+import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import ListItemText from '@material-ui/core/ListItemText';
+import Toolbar from '@material-ui/core/Toolbar';
+import Home from '@material-ui/icons/Home';
+import Info from '@material-ui/icons/Info';
+import LocalBar from '@material-ui/icons/LocalBar';
+import Menu from '@material-ui/icons/Menu';
+import RssFeed from '@material-ui/icons/RssFeed';
+import withStyles from '@material-ui/core/styles/withStyles';
+import Navigation from 'components/Navigation';
+import Tagline from 'components/Tagline';
 
 const styles = theme => ({
   appbar: {

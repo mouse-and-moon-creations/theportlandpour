@@ -6,12 +6,10 @@
  */
 
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import {
-  Tab,
-  Tabs
-} from '@material-ui/core';
-import { RssFeed } from '@material-ui/icons';
+import withRouter from 'react-router-dom/withRouter';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
+import RssFeed from '@material-ui/icons/RssFeed';
 
 const Navigation = props => {
 

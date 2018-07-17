@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { User } from 'components';
+import User from 'components/User';
 
 const propTypes = {
   compact: PropTypes.bool,

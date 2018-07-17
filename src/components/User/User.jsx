@@ -7,14 +7,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Avatar,
-  Card,
-  CardContent,
-  Typography
-} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import { blogHelper } from 'helpers';
+import Avatar from '@material-ui/core/Avatar';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/core/styles/withStyles';
+import blogHelper from 'helpers/blogHelper';
 
 const propTypes = {
   compact: PropTypes.bool,

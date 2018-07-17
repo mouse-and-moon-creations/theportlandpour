@@ -7,17 +7,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Avatar,
-  Card,
-  CardContent,
-  Typography
-} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/core/styles/withStyles';
 import Markdown from 'react-markdown';
-import { find } from 'lodash';
-import { TagList } from 'components';
-import { blogHelper } from 'helpers';
+import find from 'lodash/find';
+import TagList from 'components/TagList';
+import blogHelper from 'helpers/blogHelper';
 
 const propTypes = {
   post: PropTypes.object,

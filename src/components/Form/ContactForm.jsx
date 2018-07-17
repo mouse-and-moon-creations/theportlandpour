@@ -1,6 +1,6 @@
 import React from 'react';
 import FormCreator from './FormCreator';
-import { TextField } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 import { PROPTYPES, DEFAULT_PROPS } from './config';
 
 const VALIDATIONS = [
@@ -50,4 +50,4 @@ class ContactForm extends FormCreator {
 ContactForm.propTypes = PROPTYPES;
 ContactForm.defaultProps = DEFAULT_PROPS;
 
-export { ContactForm };
+export default ContactForm;

@@ -7,19 +7,15 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  Card,
-  CardContent,
-  Hidden,
-  Typography
-} from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import { blogActions } from 'actions';
-import {
-  Footer,
-  Sidebar,
-  Users
-} from 'components';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Hidden from '@material-ui/core/Hidden';
+import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/core/styles/withStyles';
+import blogActions from 'actions/blogActions';
+import Footer from 'components/Footer';
+import Sidebar from 'components/Sidebar';
+import Users from 'components/Users';
 
 const styles = theme => ({
   about: {

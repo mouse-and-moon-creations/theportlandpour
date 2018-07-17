@@ -3,8 +3,8 @@
  */
 
 import React, { Component } from 'react';
-import { HeroForm } from './HeroForm';
-import { ContactForm } from './ContactForm';
+import HeroForm from './HeroForm';
+import ContactForm from './ContactForm';
 import { PROPTYPES, DEFAULT_PROPS } from './config';
 
 class Form extends Component {
