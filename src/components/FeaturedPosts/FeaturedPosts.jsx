@@ -53,11 +53,11 @@ const styles = theme => ({
   },
   featuredPosts: {
     display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
+    flexFlow: 'row wrap',
+    justifyContent: 'space-around'
   },
   post: {
-    margin: '0 .25% 3% .25%'
+    marginBottom: '3%'
   }
 });
 
