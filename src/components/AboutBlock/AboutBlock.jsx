@@ -32,7 +32,7 @@ const styles = theme => ({
   },
   cards: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     [theme.breakpoints.down('md')]: {
       flexWrap: 'wrap',
       justifyContent: 'flex-start'

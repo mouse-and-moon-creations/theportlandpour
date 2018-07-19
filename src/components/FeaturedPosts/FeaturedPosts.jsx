@@ -57,7 +57,7 @@ const styles = theme => ({
     justifyContent: 'space-around'
   },
   post: {
-    marginBottom: '3%'
+    marginBottom: '3%',
   }
 });
 

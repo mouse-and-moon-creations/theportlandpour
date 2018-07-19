@@ -48,7 +48,7 @@ const styles = theme => ({
       width: '24%'
     },
     [theme.breakpoints.down('xs')]: {
-      width: '50%'
+      width: '48%'
     }
   },
   cardActions: {

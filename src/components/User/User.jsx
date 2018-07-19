@@ -30,7 +30,7 @@ const defaultProps = {
   website: ''
 };
 
-const styles = {
+const styles = theme => ({
   avatar: {
     marginRight: '12px'
   },
@@ -42,11 +42,16 @@ const styles = {
   },
   card: {
     minWidth: '240px',
+    width: '24%',
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '12px',
+      width: '98%'
+    }
   },
   cardContent: {
     display: 'flex'
   }
-};
+});
 
 const User = props => {
 
@@ -55,7 +60,7 @@ const User = props => {
   const absSrc = blogHelper.getAssetUrl(src);
 
   return (
-    <Card className={compact ? classes.cardCompact : classes.card} elevation={0}>
+    <Card className={compact ? classes.cardCompact : classes.card}>
       <CardContent className={classes.cardContent}>
         <Avatar className={classes.avatar} src={absSrc} />
         <div>

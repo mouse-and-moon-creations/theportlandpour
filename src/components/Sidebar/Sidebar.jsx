@@ -107,7 +107,9 @@ const Sidebar = props => {
         <CardContent>
           <Gloss label="Stay in touch" />
           <Typography variant="headline">Get the newsletter</Typography>
-          <Form submitFormCallback={submitForm} form="hero" classes={{ submitButton: classes.submitButton, form: classes.form }} showCancel={false} buttonColor="default" submitLabel="Sign up" />
+          <Card>
+            <Form submitFormCallback={submitForm} form="hero" classes={{ submitButton: classes.submitButton, form: classes.form }} showCancel={false} buttonColor="default" submitLabel="Sign up" />
+          </Card>
         </CardContent>
       </Card>
       <Divider />
@@ -115,18 +117,20 @@ const Sidebar = props => {
         <CardContent>
           <Gloss label="Let's chat" />
           <Typography variant="headline">Contact us</Typography>
-          <form action="https://formspree.io/info@theportlandpour.com" method="POST">
-            <Card elevation={0}>
-              <CardContent>
-                <TextField fullWidth type="text" name="name" label="Name" />
-                <TextField fullWidth type="email" name="_replyto" label="Email" />
-                <TextField fullWidth multiline rows={3} name="message" label="Message" />
-              </CardContent>
-              <CardActions>
-                <Button type="submit" variant="raised">Send</Button>
-              </CardActions>
-            </Card>
-          </form>
+          <Card>
+            <form action="https://formspree.io/info@theportlandpour.com" method="POST">
+              <Card elevation={0}>
+                <CardContent>
+                  <TextField fullWidth type="text" name="name" label="Name" />
+                  <TextField fullWidth type="email" name="_replyto" label="Email" />
+                  <TextField fullWidth multiline rows={3} name="message" label="Message" />
+                </CardContent>
+                <CardActions>
+                  <Button type="submit" variant="raised">Send</Button>
+                </CardActions>
+              </Card>
+            </form>
+          </Card>
         </CardContent>
       </Card>
     </Paper>
