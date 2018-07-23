@@ -50,7 +50,7 @@ const styles = theme => ({
     flexDirection: 'column',
     padding: '0 0 48px 48px',
     marginLeft: 'auto',
-    maxWidth: '30%',
+    maxWidth: '33%',
     [theme.breakpoints.down('md')]: {
       maxWidth: '100%',
       order: 1,
@@ -91,7 +91,10 @@ const styles = theme => ({
     }
   },
   image: {
-    width: '100%'
+    width: '100%',
+    [theme.breakpoints.up('lg')]: {
+      minWidth: '340px'
+    }
   },
   latestDescription: {
     display: 'flex',
@@ -192,7 +195,7 @@ const Hero = props => {
             <Gloss label="Recent posts" />
             <GridList cellHeight="auto" className={classes.gridList} cols={gridCols[width]}>
               {latestPosts.map((post, index) => {
-                return index === 0 ? null : (
+                return index === 0 || index === 5 ? null : (
                   <GridListTile key={post.id} cols={1}>
                     <Link to={blogHelper.getPostUrl(post.slug)}>
                       <img className={classes.recentImage} src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} />

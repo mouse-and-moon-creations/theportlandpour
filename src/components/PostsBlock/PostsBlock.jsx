@@ -7,12 +7,13 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'react-router-dom/Link';
+import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Gloss from 'components/Gloss';
 import Post from 'components/Post';
-import PostFiller from 'components/PostFiller';
 import Sidebar from 'components/Sidebar';
 import find from 'lodash/find';
 
@@ -27,6 +28,13 @@ const defaultProps = {
 };
 
 const styles = theme => ({
+  cardActions: {
+    display: 'flex',
+    paddingTop: '24px'
+  },
+  cardButton: {
+    margin: 'auto'
+  },
   gloss: {
     padding: '0 36px'
   },
@@ -79,7 +87,11 @@ const PostsBlock = props => {
                 <Post post={post} user={find(users, { id: post.author })} key={post.id} />
               );
             })}
-            <PostFiller />
+          </div>
+          <div className={classes.cardActions}>
+            <Link className={classes.cardButton} to="/page/1">
+              <Button color="secondary">See all the cocktails</Button>
+            </Link>
           </div>
         </div>
         <Hidden mdDown>
