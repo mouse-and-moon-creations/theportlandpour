@@ -6,16 +6,17 @@
  */
 
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import moment from 'moment';
 
 const styles = theme => ({
   footer: {
-    background: theme.palette.grey[800],
+    borderTopColor: theme.palette.grey[500],
+    borderTopStyle: 'solid',
+    borderTopWidth: '1px',
     bottom: 0,
-    color: theme.palette.common.white,
+    marginTop: '72px',
     padding: '48px',
     position: 'relative',
     textAlign: 'center',
@@ -28,11 +29,11 @@ const Footer = props => {
   const { classes } = props;
 
   return (
-    <Paper className={classes.footer} square>
+    <div className={classes.footer}>
       <Typography color="inherit" variant="body2">Please drink responsibly</Typography>
       <Typography color="inherit">The Portland Pour is made by the artists and designers of Mouse and Moon Creations, an art and photography studio in Portland, Oregon</Typography>
       <Typography color="inherit" variant="caption">&copy; 2017 - {moment().format('YYYY')}, Mouse and Moon Creations. All rights reserved.</Typography>
-    </Paper>
+    </div>
   );
 
 }

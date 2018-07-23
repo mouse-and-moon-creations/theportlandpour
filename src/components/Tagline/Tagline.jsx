@@ -18,15 +18,14 @@ const styles = theme => ({
       textOverflow: 'ellipsis'
     },
     [theme.breakpoints.down('sm')]: {
-      padding: '0 48px 48px 48px'
+      paddingBottom: '48px'
     }
   },
   tagline: {
     fontFamily: theme.local.typography.gloss.fontFamily,
-    fontSize: '2.2rem',
+    fontSize: '1.8rem',
     whiteSpace: 'nowrap',
     [theme.breakpoints.down('md')]: {
-      fontSize: '1.8rem',
       overflow: 'hidden',
       textOverflow: 'ellipsis'
     },

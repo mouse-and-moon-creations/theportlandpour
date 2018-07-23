@@ -20,7 +20,8 @@ const config = {
   },
   theme: {
     local: {
-      headerPadding: '148px',
+      headerPadding: '124px',
+      maxWidth: '1366px',
       typography: {
         gloss: {
           fontFamily: 'Italianno, cursive',

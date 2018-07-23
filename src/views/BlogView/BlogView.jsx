@@ -27,6 +27,11 @@ const styles = theme => ({
     }
   },
   root: {
+    margin: '0 auto',
+    maxWidth: theme.local.maxWidth,
+    position: 'relative'
+  },
+  rootContent: {
     display: 'flex',
   },
   sidebar: {
@@ -82,23 +87,23 @@ class BlogView extends Component {
 
   }
 
-  getPostsByTag = (tag, clear=false) => {
+  getPostsBySpirit = (spirit, clear=false) => {
 
-    const { selectedTags } = this.props.blog;
+    const { selectedSpirits } = this.props.blog;
 
     let query = { page: 1 }
 
     if(clear) {
-      pull(selectedTags, tag);
+      pull(selectedSpirits, spirit);
     }
     else {
-      selectedTags.push(tag);
+      selectedSpirits.push(spirit);
     }
 
-    this.props.dispatch(blogActions.setSelectedTags(selectedTags));
+    this.props.dispatch(blogActions.setSelectedSpirits(selectedSpirits));
 
-    if(selectedTags.length) {
-      query.filter = 'tags:[' + selectedTags.toString() + ']'
+    if(selectedSpirits.length) {
+      query.filter = 'tags:[' + selectedSpirits.toString() + ']'
     }
 
     this.props.dispatch(blogActions.getPosts(query));
@@ -108,27 +113,29 @@ class BlogView extends Component {
   render() {
 
     const { classes } = this.props;
-    const { meta, posts, selectedTags, tags, users, waiting } = this.props.blog;
+    const { meta, posts, selectedSpirits, tags, users, waiting } = this.props.blog;
     const { pagination } = meta;
 
     const progress = <LinearProgress />;
 
     return (
       <React.Fragment>
-        {waiting ? progress : null}
-        <div className={classes.title}>
-          <Typography className={classes.headline} variant="display1">Cocktails</Typography>
-        </div>
         <div className={classes.root}>
-          <div className={classes.posts}>
-            <Posts posts={posts} users={users} />
-            <Pager pagination={pagination} />
+          {waiting ? progress : null}
+          <div className={classes.title}>
+            <Typography className={classes.headline} variant="display1">Cocktails</Typography>
           </div>
-          <Hidden smDown>
-            <div className={classes.sidebar}>
-              <Sidebar showSearch getPostsByTagCallback={this.getPostsByTag} selectedTags={selectedTags} tags={tags} />
+          <div className={classes.rootContent}>
+            <div className={classes.posts}>
+              <Posts posts={posts} users={users} />
+              <Pager pagination={pagination} />
             </div>
-          </Hidden>
+            <Hidden smDown>
+              <div className={classes.sidebar}>
+                <Sidebar showSearch getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
+              </div>
+            </Hidden>
+          </div>
         </div>
         <Footer />
       </React.Fragment>

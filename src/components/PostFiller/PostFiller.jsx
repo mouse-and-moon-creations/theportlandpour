@@ -41,7 +41,6 @@ const styles = theme => ({
   },
   root: {
     marginBottom: '3%',
-    opacity: 0.4,
     textAlign: 'center',
     width: '32%',
     [theme.breakpoints.down('md')]: {

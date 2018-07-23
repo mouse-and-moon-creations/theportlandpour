@@ -11,11 +11,13 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const propTypes = {
-  label: PropTypes.string
+  label: PropTypes.string,
+  variant: PropTypes.string
 };
 
 const defaultProps = {
-  label: ''
+  label: '',
+  variant: 'display1'
 };
 
 const styles = theme => ({
@@ -26,11 +28,11 @@ const styles = theme => ({
 
 const Gloss = props => {
 
-  const { classes, label } = props;
+  const { classes, label, variant } = props;
 
   return (
     <React.Fragment>
-      <Typography className={classes.gloss} color="inherit" variant="display1">{label}</Typography>
+      <Typography className={classes.gloss} color="inherit" variant={variant}>{label}</Typography>
     </React.Fragment>
   );
 

@@ -50,7 +50,10 @@ const styles = theme => ({
     display: 'flex',
   },
   root: {
-    margin: '24px',
+    margin: '0 auto',
+    maxWidth: theme.local.maxWidth,
+    paddingBottom: '24px',
+    paddingTop: '24px',
     position: 'relative'
   },
   sidebar: {

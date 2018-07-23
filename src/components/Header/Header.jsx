@@ -35,7 +35,12 @@ const styles = theme => ({
   },
   toolbar: {
     background: theme.palette.common.white,
-    flexGrow: 1
+    flex: '1 1 auto',
+    margin: '0 auto',
+    maxWidth: theme.local.maxWidth,
+    minWidth: '1px',
+    position: 'relative',
+    width: '100%'
   },
   brand: {
     padding: '12px 0'
@@ -49,7 +54,7 @@ const styles = theme => ({
     marginRight: 20
   },
   navigation: {
-    paddingTop: '38px'
+    paddingTop: '24px'
   },
   tagline: {
     background: 'transparent',
@@ -86,12 +91,7 @@ class Header extends Component {
             </Hidden>
             <div className={classes.brand}>
               <Link to="/">
-                <Hidden mdDown>
-                  <img src="/assets/images/brand/tpp.brand.lg.png" alt=""/>
-                </Hidden>
-                <Hidden lgUp>
-                  <img src="/assets/images/brand/tpp.brand.md.png" alt=""/>
-                </Hidden>
+                <img src="/assets/images/brand/tpp.brand.md.png" alt=""/>
               </Link>
             </div>
             <Hidden mdDown>

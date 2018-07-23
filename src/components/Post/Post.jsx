@@ -47,7 +47,7 @@ const styles = theme => ({
     [theme.breakpoints.down('md')]: {
       width: '24%'
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       width: '48%'
     }
   },

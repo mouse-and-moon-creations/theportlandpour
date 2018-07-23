@@ -34,7 +34,9 @@ const defaultProps = {
 
 const styles = theme => ({
   root: {
-    backgroundColor: theme.palette.grey[100]
+    backgroundColor: theme.palette.grey[100],
+    margin: '0 auto',
+    maxWidth: theme.local.maxWidth
   },
   cardActions: {
     display: 'flex',
@@ -47,8 +49,6 @@ const styles = theme => ({
   cardContent: {
     paddingBottom: 0,
     [theme.breakpoints.up('lg')]: {
-      paddingLeft: '60px',
-      paddingRight: '60px'
     }
   },
   featuredPosts: {

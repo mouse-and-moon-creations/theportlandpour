@@ -20,7 +20,8 @@ const initialState = {
   },
   post: {},
   posts: [],
-  selectedTags: [],
+  selectedMixers: [],
+  selectedSpirits: [],
   tags: [],
   users: [],
   waiting: false
@@ -131,14 +132,26 @@ const blog = (state = initialState, action) => {
         }
       );
 
-    case blogConstants.SET_SELECTED_TAGS:
+    case blogConstants.SET_SELECTED_MIXERS:
 
       return Object.assign(
         {},
         state,
         {
           messaging: initialState.messaging,
-          selectedTags: action.data,
+          selectedMixers: action.data,
+          waiting: false
+        }
+      );
+
+    case blogConstants.SET_SELECTED_SPIRITS:
+
+      return Object.assign(
+        {},
+        state,
+        {
+          messaging: initialState.messaging,
+          selectedSpirits: action.data,
           waiting: false
         }
       );

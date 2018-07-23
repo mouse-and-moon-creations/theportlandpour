@@ -14,7 +14,6 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import blogActions from 'actions/blogActions';
 import Footer from 'components/Footer';
-import Sidebar from 'components/Sidebar';
 import Users from 'components/Users';
 
 const styles = theme => ({
@@ -22,17 +21,28 @@ const styles = theme => ({
     display: 'flex',
     flexFlow: 'row wrap',
     justifyContent: 'space-around',
-    margin: 'auto 24% auto auto',
     marginBottom: '24px',
-    marginLeft: '24px',
-    marginRight: '27%',
-    marginTop: theme.local.headerPadding,
+    marginLeft: 'auto',
+    marginRight: 'auto',
     [theme.breakpoints.only('md')]: {
       marginRight: '30%'
     },
     [theme.breakpoints.down('sm')]: {
       width: '100%'
     }
+  },
+  cards: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    [theme.breakpoints.down('md')]: {
+      flexWrap: 'wrap',
+      justifyContent: 'flex-start'
+    }
+  },
+  root: {
+    paddingTop: theme.local.headerPadding,
+    margin: '0 auto',
+    maxWidth: theme.local.maxWidth,
   }
 });
 
@@ -53,27 +63,28 @@ class AboutView extends Component {
 
     return (
       <React.Fragment>
-        <Card className={classes.about} elevation={0}>
-          <CardContent>
-            <Typography variant="headline" paragraph={true}>About The Portland Pour</Typography>
-            <Typography variant="title" paragraph={true}>The project</Typography>
-            <Typography paragraph={true}>
-              We're as passionate about the spirits and distilleries of Portland as we are about a skillfully crafted cocktail.
-              The Portland Pour is a celebration of Portland, the Northwest, and the wonderful products made here.
-              We use local ingredients wherever possible, craft them into delicious drinks, and photograph them at our studio in Downtown Portland.
-              We then share them with you, along with our thoughts and recommendations for creating your own version of our favorite drinks, both classic and modern.
-            </Typography>
-            <Typography paragraph={true}>
-              All the photos you see on The Portland Pour were made at Mouse and Moon Creations, our studio in downtown Portland.
-            </Typography>
-            <Typography variant="title" paragraph={true}>The people</Typography>
-            <Users users={users} />
-          </CardContent>
-        </Card>
+        <div className={classes.root}>
+          <Card className={classes.about} elevation={0}>
+            <CardContent>
+              <Typography variant="headline" paragraph={true}>About The Portland Pour</Typography>
+              <Typography variant="title" paragraph={true}>The project</Typography>
+              <Typography paragraph={true}>
+                We're as passionate about the spirits and distilleries of Portland as we are about a skillfully crafted cocktail.
+                The Portland Pour is a celebration of Portland, the Northwest, and the wonderful products made here.
+                We use local ingredients wherever possible, craft them into delicious drinks, and photograph them at our studio in Downtown Portland.
+                We then share them with you, along with our thoughts and recommendations for creating your own version of our favorite drinks, both classic and modern.
+              </Typography>
+              <Typography paragraph={true}>
+                All the photos you see on The Portland Pour were made at Mouse and Moon Creations, our studio in downtown Portland.
+              </Typography>
+              <Typography variant="title" paragraph={true}>The people</Typography>
+              <div className={classes.cards}>
+                <Users users={users} />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
         <Footer />
-        <Hidden smDown>
-          <Sidebar />
-        </Hidden>
       </React.Fragment>
     );
 

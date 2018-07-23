@@ -48,12 +48,13 @@ const styles = theme => ({
   cta: {
     display: 'flex',
     flexDirection: 'column',
-    padding: '0 48px 48px 48px',
+    padding: '0 0 48px 48px',
     marginLeft: 'auto',
     maxWidth: '30%',
     [theme.breakpoints.down('md')]: {
       maxWidth: '100%',
       order: 1,
+      paddingLeft: 0,
       width: '100%'
     }
   },
@@ -83,7 +84,8 @@ const styles = theme => ({
   heroContent: {
     display: 'flex',
     margin: 'auto',
-    maxWidth: '1800px',
+    padding: '0 24px',
+    maxWidth: theme.local.maxWidth,
     [theme.breakpoints.down('sm')]: {
       flexWrap: 'wrap'
     }
@@ -98,7 +100,7 @@ const styles = theme => ({
   },
   latestImage: {
     flexGrow: 1,
-    margin: '0 24px',
+    marginRight: '24px',
     width: '480px',
     padding: '0',
     [theme.breakpoints.down('md')]: {
@@ -109,13 +111,14 @@ const styles = theme => ({
   latestPost: {
     display: 'flex',
     flexBasis: 'auto',
-    padding: '0 48px 48px 48px',
+    padding: '0 48px 48px 0',
     [theme.breakpoints.down('md')]: {
       flexWrap: 'wrap',
       width: '100%'
     },
     [theme.breakpoints.down('sm')]: {
       order: 2,
+      paddingRight: 0
     }
   },
   latestTitle: {

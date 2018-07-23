@@ -23,15 +23,15 @@ import Form from 'components/Form';
 import find from 'lodash/find';
 
 const propTypes = {
-  getPostsByTagCallback: PropTypes.func,
-  selectedTags: PropTypes.array,
+  getPostsBySpiritCallback: PropTypes.func,
+  selectedSpirits: PropTypes.array,
   showSearch: PropTypes.bool,
   tags: PropTypes.array
 };
 
 const defaultProps = {
-  getPostsByTagCallback: null,
-  selectedTags: [],
+  getPostsBySpiritCallback: null,
+  selectedSpirits: [],
   showSearch: false,
   spirits: [
     { name: 'gin', slug: 'gin' },
@@ -47,8 +47,11 @@ const styles = theme => ({
   chip: {
     margin: '6px'
   },
+  form: {
+    backgroundColor: 'rgba(255,255,255,0.6)'
+  },
   sidebar: {
-    backgroundColor: theme.palette.grey[100]
+    backgroundColor: 'rgba(255,255,255,0.3)'
   },
   rootCompact: {
     width: 'auto'
@@ -57,31 +60,33 @@ const styles = theme => ({
 
 const Sidebar = props => {
 
-  const { classes, getPostsByTagCallback, selectedTags, showSearch, spirits, tags } = props;
+  console.log(props);
+
+  const { classes, getPostsBySpiritCallback, selectedSpirits, showSearch, spirits, tags } = props;
 
   const submitForm = fields => { return props.dispatch(blogActions.addToMailChimp(fields)); }
 
+  const variant = 'headline';
+
   return (
-    <Paper className={classes.sidebar} elevation={0} square>
+    <Paper className={classes.sidebar} elevation={0}>
       { showSearch ?
         <React.Fragment>
-          <Card className={classes.sidebar} elevation={0}>
+          <Card className={classes.sidebar} elevation={0} square>
             <CardContent>
-              <Gloss label="Search and refine" />
-              { selectedTags.length ?
-                <React.Fragment>
-                  <Typography variant="headline">Showing</Typography>
-                  <div className={classes.chips}>
-                    { selectedTags.map(selectedTag => {
-                      return <Chip className={classes.chip} clickable key={selectedTag} label={find(tags, { slug: selectedTag }).name} onDelete={() => getPostsByTagCallback(selectedTag, true)} />
-                    }) }
-                  </div>
-                </React.Fragment>  : null
-              }
-              <Typography variant="headline">Base spirits</Typography>
+              <Gloss label="Search and refine" variant={variant} />
+                <Typography variant="headline">Showing</Typography>
+                <Typography variant="subheading">Spirits:</Typography>
+                <div className={classes.chips}>
+                  { selectedSpirits.length ? selectedSpirits.map(selectedSpirit => {
+                    return <Chip className={classes.chip} clickable key={selectedSpirit} label={find(tags, { slug: selectedSpirit }).name} onDelete={() => getPostsBySpiritCallback(selectedSpirit, true)} />
+                  }) : <Typography>all</Typography> }
+                </div>
+              <Typography variant="headline">Select</Typography>
+              <Typography variant="subheading">Spirits:</Typography>
               <div className={classes.chips}>
                 { spirits.map(spirit => {
-                  return selectedTags.includes(spirit.slug) ? null : <Chip className={classes.chip} clickable key={spirit.slug} label={spirit.name} onClick={() => getPostsByTagCallback(spirit.slug)} />
+                  return selectedSpirits.includes(spirit.slug) ? null : <Chip className={classes.chip} clickable key={spirit.slug} label={spirit.name} onClick={() => getPostsBySpiritCallback(spirit.slug)} />
                 }) }
               </div>
             </CardContent>
@@ -89,9 +94,9 @@ const Sidebar = props => {
           <Divider />
         </React.Fragment> : null
       }
-      <Card className={classes.sidebar} elevation={0}>
+      <Card className={classes.sidebar} elevation={0} square>
         <CardContent>
-          <Gloss label="Pictures by Tony M" />
+          <Gloss label="Pictures by Tony M" variant={variant} />
           <Typography variant="headline" paragraph>About the photos</Typography>
           <Typography paragraph>
             All of the cocktail photos on The Portland Pour are by Creative Director, Tony M, published writer, artist, and photographer with over 20 years experience in advertising, publishing, technology, design and development.
@@ -103,34 +108,30 @@ const Sidebar = props => {
         </CardContent>
       </Card>
       <Divider />
-      <Card className={classes.sidebar} elevation={0}>
+      <Card className={classes.sidebar} elevation={0} square>
         <CardContent>
-          <Gloss label="Stay in touch" />
+          <Gloss label="Stay in touch" variant={variant} />
           <Typography variant="headline">Get the newsletter</Typography>
-          <Card>
-            <Form submitFormCallback={submitForm} form="hero" classes={{ submitButton: classes.submitButton, form: classes.form }} showCancel={false} buttonColor="default" submitLabel="Sign up" />
-          </Card>
+          <Form submitFormCallback={submitForm} form="hero" classes={{ submitButton: classes.submitButton, form: classes.form }} showCancel={false} buttonColor="default" submitLabel="Sign up" />
         </CardContent>
       </Card>
       <Divider />
-      <Card className={classes.sidebar} elevation={0}>
+      <Card className={classes.sidebar} elevation={0} square>
         <CardContent>
-          <Gloss label="Let's chat" />
+          <Gloss label="Let's chat" variant={variant} />
           <Typography variant="headline">Contact us</Typography>
-          <Card>
-            <form action="https://formspree.io/info@theportlandpour.com" method="POST">
-              <Card elevation={0}>
-                <CardContent>
-                  <TextField fullWidth type="text" name="name" label="Name" />
-                  <TextField fullWidth type="email" name="_replyto" label="Email" />
-                  <TextField fullWidth multiline rows={3} name="message" label="Message" />
-                </CardContent>
-                <CardActions>
-                  <Button type="submit" variant="raised">Send</Button>
-                </CardActions>
-              </Card>
-            </form>
-          </Card>
+          <form action="https://formspree.io/info@theportlandpour.com" method="POST">
+            <Card elevation={0} className={classes.form}>
+              <CardContent>
+                <TextField fullWidth type="text" name="name" label="Name" />
+                <TextField fullWidth type="email" name="_replyto" label="Email" />
+                <TextField fullWidth multiline rows={3} name="message" label="Message" />
+              </CardContent>
+              <CardActions>
+                <Button type="submit" variant="raised">Send</Button>
+              </CardActions>
+            </Card>
+          </form>
         </CardContent>
       </Card>
     </Paper>

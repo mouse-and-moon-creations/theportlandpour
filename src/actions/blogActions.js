@@ -185,11 +185,21 @@ const getUsers = (opts={}) => {
 
 }
 
-const setSelectedTags = selectedTags => {
+const setSelectedMixers = selectedMixers => {
 
   return dispatch => {
 
-    dispatch(success(blogConstants.SET_SELECTED_TAGS, selectedTags));
+    dispatch(success(blogConstants.SET_SELECTED_MIXERS, selectedMixers));
+
+  }
+
+}
+
+const setSelectedSpirits = selectedSpirits => {
+
+  return dispatch => {
+
+    dispatch(success(blogConstants.SET_SELECTED_SPIRITS, selectedSpirits));
 
   }
 
@@ -241,7 +251,8 @@ const blogActions = {
   getPosts,
   getTags,
   getUsers,
-  setSelectedTags
+  setSelectedMixers,
+  setSelectedSpirits
 };
 
 export default blogActions;
