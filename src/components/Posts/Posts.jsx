@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Post from 'components/Post';
 import find from 'lodash/find';
@@ -44,7 +43,7 @@ const styles = theme => ({
 
 const Posts = props => {
 
-  const { classes, posts, tags, users } = props;
+  const { classes, posts, users } = props;
 
   return (
     <div className={classes.posts}>
