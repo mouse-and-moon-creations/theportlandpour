@@ -28,6 +28,7 @@ import Tagline from 'components/Tagline';
 
 const styles = theme => ({
   appbar: {
+    background: theme.palette.common.white,
     zIndex: theme.zIndex.drawer + 1
   },
   drawer: {

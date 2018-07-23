@@ -34,7 +34,6 @@ const defaultProps = {
 
 const styles = theme => ({
   root: {
-    backgroundColor: theme.palette.grey[100],
     margin: '0 auto',
     maxWidth: theme.local.maxWidth
   },
