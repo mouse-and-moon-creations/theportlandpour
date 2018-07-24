@@ -29,18 +29,14 @@ const defaultProps = {
 
 const styles = theme => ({
   card: {
-    backgroundColor: theme.palette.grey[100],
-    marginBottom: '24px',
-    [theme.breakpoints.down('sm')]: {
-      margin: 'auto auto 1% auto',
-      width: '98%'
-    }
+    margin: '12px 0',
+  },
+  link : {
+    display: 'inline-block',
+    margin: '0 24px'
   },
   meta: {
     lineHeight: '48px'
-  },
-  next: {
-    textAlign: 'right'
   }
 });
 
@@ -51,21 +47,13 @@ const Pager = props => {
   const nextUrl = pagination.next ? blogHelper.getUrl(pagination.next) : null;
 
   return (
-    <Card className={classes.card} elevation={0} square>
-      <CardContent>
-        <GridList cols={3} cellHeight="auto">
-          <GridListTile>
-            {prevUrl ? <Link to={prevUrl}><IconButton><KeyboardArrowLeft/></IconButton></Link> : <IconButton disabled={true}><KeyboardArrowLeft/></IconButton>}
-          </GridListTile>
-          <GridListTile>
-            <Typography className={classes.meta} align="center" variant="caption">Page {pagination.page} of {pagination.pages}</Typography>
-          </GridListTile>
-          <GridListTile className={classes.next}>
-            {nextUrl ? <Link to={nextUrl}><IconButton><KeyboardArrowRight/></IconButton></Link> : <IconButton disabled={true}><KeyboardArrowRight/></IconButton>}
-          </GridListTile>
-        </GridList>
-      </CardContent>
-    </Card>
+    <div className={classes.card}>
+      <Typography className={classes.meta} align="center" variant="caption">
+        {prevUrl ? <Link to={prevUrl}><IconButton className={classes.link}><KeyboardArrowLeft/></IconButton></Link> : <IconButton className={classes.link} disabled={true}><KeyboardArrowLeft/></IconButton>}
+        Page {pagination.page} of {pagination.pages}
+        {nextUrl ? <Link to={nextUrl}><IconButton className={classes.link}><KeyboardArrowRight/></IconButton></Link> : <IconButton className={classes.link} disabled={true}><KeyboardArrowRight/></IconButton>}
+      </Typography>
+    </div>
   );
 
 }

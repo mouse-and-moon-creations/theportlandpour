@@ -19,6 +19,7 @@ import AboutView from 'views/AboutView';
 import BlogView from 'views/BlogView';
 import HomeView from 'views/HomeView';
 import PostView from 'views/PostView';
+import Footer from 'components/Footer';
 import Header from 'components/Header';
 import WithTracker from 'components/WithTracker';
 import './App.css';
@@ -63,6 +64,7 @@ const AppRoot = props => {
                   <Route path="/about" component={WithTracker(AboutView)} />
                   <Route path="/" component={WithTracker(HomeView)} />
                 </Switch>
+                <Footer />
               </span>
             </ScrollContext>
           </BrowserRouter>

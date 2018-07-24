@@ -48,10 +48,10 @@ const styles = theme => ({
     margin: '6px'
   },
   form: {
-    backgroundColor: 'rgba(255,255,255,0.6)'
+    backgroundColor: 'transparent'
   },
   sidebar: {
-    backgroundColor: 'rgba(255,255,255,0.3)'
+    backgroundColor: 'transparent'
   },
   rootCompact: {
     width: 'auto'

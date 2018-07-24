@@ -50,7 +50,7 @@ const styles = theme => ({
     flexDirection: 'column',
     padding: '0 0 48px 48px',
     marginLeft: 'auto',
-    maxWidth: '33%',
+    maxWidth: '36%',
     [theme.breakpoints.down('md')]: {
       maxWidth: '100%',
       order: 1,
@@ -83,6 +83,7 @@ const styles = theme => ({
   },
   heroContent: {
     display: 'flex',
+    filter: 'drop-shadow(5px 10px 10px #121)',
     margin: 'auto',
     padding: '0 24px',
     maxWidth: theme.local.maxWidth,
@@ -91,6 +92,7 @@ const styles = theme => ({
     }
   },
   image: {
+    border: '1px solid #333',
     width: '100%',
     [theme.breakpoints.up('lg')]: {
       minWidth: '340px'
@@ -125,9 +127,8 @@ const styles = theme => ({
     }
   },
   latestTitle: {
-    fontSize: '4rem',
     marginTop: 'auto',
-    [theme.breakpoints.only('lg')]: {
+    [theme.breakpoints.up('lg')]: {
       fontSize: '3rem'
     },
     [theme.breakpoints.down('md')]: {
@@ -183,7 +184,7 @@ const Hero = props => {
             <Typography color="inherit" paragraph variant="subheading">{ latestPost ? latestPost.custom_excerpt : null }</Typography>
             <Typography variant="caption" color="inherit" paragraph>{postDate} by {user ? user.name : null}</Typography>
             <Link to={postBySlug}>
-              <Button variant="raised">See how we make this with local ingredients</Button>
+              <Button variant="raised">Make it with local ingredients</Button>
             </Link>
             <Link to="/page/1">
               <Button classes={{ root: classes.buttonLink }} size="small">See all the cocktails</Button>

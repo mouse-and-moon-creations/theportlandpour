@@ -21,16 +21,21 @@ const config = {
   theme: {
     local: {
       headerPadding: '124px',
-      maxWidth: '1366px',
+      maxWidth: '1270px',
+      palette: {
+        background: {
+          dark: '#3D4545'
+        }
+      },
       typography: {
         gloss: {
-          fontFamily: 'Italianno, cursive',
+          fontFamily: 'Italianno, cursive'
         }
       }
     },
     palette: {
       background: {
-        default: '#BDD7D7'
+
       }
     },
     typography: {

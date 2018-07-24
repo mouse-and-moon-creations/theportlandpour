@@ -11,10 +11,10 @@ import Paper from '@material-ui/core/Paper';
 import blogActions from 'actions/blogActions';
 import AboutBlock from 'components/AboutBlock';
 import FeaturedPosts from 'components/FeaturedPosts';
-import Footer from 'components/Footer';
 import Hero from 'components/Hero';
 import PitchBlock from 'components/PitchBlock';
 import PostsBlock from 'components/PostsBlock';
+import RecipeBlock from 'components/RecipeBlock';
 import blogHelper from 'helpers/blogHelper';
 
 /**
@@ -46,15 +46,11 @@ class HomeView extends Component {
     return (
       <React.Fragment>
         <Hero {...this.props} />
-        <Paper elevation={0} square>
-          <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
-        </Paper>
+        <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
         <PitchBlock />
-        <Paper elevation={0} square>
-          <AboutBlock users={users} />
-        </Paper>
         <PostsBlock posts={latestPosts} users={users} />
-        <Footer />
+        <RecipeBlock />
+        <AboutBlock users={users} />
       </React.Fragment>
     );
 

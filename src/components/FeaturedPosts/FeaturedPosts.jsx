@@ -34,6 +34,7 @@ const defaultProps = {
 
 const styles = theme => ({
   root: {
+    background: 'transparent',
     margin: '0 auto',
     maxWidth: theme.local.maxWidth
   },

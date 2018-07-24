@@ -12,7 +12,6 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import blogActions from 'actions/blogActions';
-import Footer from 'components/Footer';
 import Pager from 'components/Pager';
 import Posts from 'components/Posts';
 import Sidebar from 'components/Sidebar';
@@ -29,6 +28,7 @@ const styles = theme => ({
   root: {
     margin: '0 auto',
     maxWidth: theme.local.maxWidth,
+    paddingTop: theme.local.headerPadding,
     position: 'relative'
   },
   rootContent: {
@@ -42,8 +42,7 @@ const styles = theme => ({
   title: {
     paddingBottom: '24px',
     paddingLeft: '36px',
-    paddingRight: '36px',
-    paddingTop: theme.local.headerPadding
+    paddingRight: '36px'
   }
 });
 
@@ -119,26 +118,21 @@ class BlogView extends Component {
     const progress = <LinearProgress />;
 
     return (
-      <React.Fragment>
-        <div className={classes.root}>
-          {waiting ? progress : null}
-          <div className={classes.title}>
-            <Typography className={classes.headline} variant="display1">Cocktails</Typography>
+      <div className={classes.root}>
+        {waiting ? progress : null}
+        <Pager pagination={pagination} />
+        <div className={classes.rootContent}>
+          <div className={classes.posts}>
+            <Posts posts={posts} users={users} />
           </div>
-          <div className={classes.rootContent}>
-            <div className={classes.posts}>
-              <Posts posts={posts} users={users} />
-              <Pager pagination={pagination} />
+          <Hidden smDown>
+            <div className={classes.sidebar}>
+              <Sidebar showSearch getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
             </div>
-            <Hidden smDown>
-              <div className={classes.sidebar}>
-                <Sidebar showSearch getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
-              </div>
-            </Hidden>
-          </div>
+          </Hidden>
         </div>
-        <Footer />
-      </React.Fragment>
+        <Pager pagination={pagination} />
+      </div>
     );
 
   }

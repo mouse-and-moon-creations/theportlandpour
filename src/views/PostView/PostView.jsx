@@ -28,9 +28,13 @@ const styles = theme => ({
       width: 'auto'
     }
   },
+  postRoot: {
+    display: 'flex'
+  },
   root: {
-    display: 'flex',
-    marginBottom: '24px'
+    margin: '0 auto',
+    maxWidth: theme.local.maxWidth,
+    paddingTop: theme.local.headerPadding
   },
   sidebar: {
     paddingBottom: '24px',
@@ -40,8 +44,7 @@ const styles = theme => ({
   title: {
     paddingBottom: '24px',
     paddingLeft: '36px',
-    paddingRight: '36px',
-    paddingTop: theme.local.headerPadding
+    paddingRight: '36px'
   }
 });
 
@@ -80,12 +83,9 @@ class PostView extends Component {
     const progress = <LinearProgress />;
 
     return (
-      <React.Fragment>
+      <div className={classes.root}>
         {waiting ? progress : null}
-        <div className={classes.title}>
-          <Typography className={classes.headline} variant="display1">Cocktails</Typography>
-        </div>
-        <div className={classes.root}>
+        <div className={classes.postRoot}>
           <div className={classes.post}>
             {isEmpty(post) ? null : <PostDetail post={post} user={find(users, { id: post.author })} />}
           </div>
@@ -95,8 +95,7 @@ class PostView extends Component {
             </div>
           </Hidden>
         </div>
-        <Footer />
-      </React.Fragment>
+      </div>
     );
 
   }

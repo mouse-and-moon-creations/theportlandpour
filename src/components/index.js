@@ -16,6 +16,7 @@ export { default as PostDetail } from './PostDetail';
 export { default as PostFiller } from './PostFiller';
 export { default as Posts } from './Posts';
 export { default as PostsBlock } from './PostsBlock';
+export { default as RecipeBlock } from './RecipeBlock';
 export { default as Sidebar } from './Sidebar';
 export { default as Tag } from './Tag';
 export { default as Tagline } from './Tagline';
