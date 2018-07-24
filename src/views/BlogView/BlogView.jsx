@@ -9,7 +9,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Hidden from '@material-ui/core/Hidden';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import blogActions from 'actions/blogActions';
 import Pager from 'components/Pager';
@@ -119,11 +118,12 @@ class BlogView extends Component {
 
     return (
       <div className={classes.root}>
-        {waiting ? progress : null}
-        <Pager pagination={pagination} />
         <div className={classes.rootContent}>
           <div className={classes.posts}>
+            <Pager pagination={pagination} />
+            {waiting ? progress : null}
             <Posts posts={posts} users={users} />
+            <Pager pagination={pagination} />
           </div>
           <Hidden smDown>
             <div className={classes.sidebar}>
@@ -131,7 +131,6 @@ class BlogView extends Component {
             </div>
           </Hidden>
         </div>
-        <Pager pagination={pagination} />
       </div>
     );
 

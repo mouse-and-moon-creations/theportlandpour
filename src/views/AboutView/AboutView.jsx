@@ -12,7 +12,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import blogActions from 'actions/blogActions';
-import Footer from 'components/Footer';
 import Users from 'components/Users';
 
 const styles = theme => ({

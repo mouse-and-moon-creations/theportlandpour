@@ -7,7 +7,6 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Paper from '@material-ui/core/Paper';
 import blogActions from 'actions/blogActions';
 import AboutBlock from 'components/AboutBlock';
 import FeaturedPosts from 'components/FeaturedPosts';
