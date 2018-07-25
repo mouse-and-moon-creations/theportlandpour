@@ -33,7 +33,7 @@ const defaultProps = {
 
 const styles = theme => ({
   root: {
-    marginBottom: '3%',
+    marginBottom: '12px',
     width: '32%',
     [theme.breakpoints.down('md')]: {
       width: '48%'

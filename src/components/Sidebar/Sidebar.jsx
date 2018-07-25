@@ -60,8 +60,6 @@ const styles = theme => ({
 
 const Sidebar = props => {
 
-  console.log(props);
-
   const { classes, getPostsBySpiritCallback, selectedSpirits, showSearch, spirits, tags } = props;
 
   const submitForm = fields => { return props.dispatch(blogActions.addToMailChimp(fields)); }
