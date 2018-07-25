@@ -2,6 +2,9 @@ Options -MultiViews
 
 <ifModule mod_headers.c>
     Header set Connection keep-alive
+    <FilesMatch ".(js|css|xml|gz|html)$">
+      Header append Vary: Accept-Encoding
+    </FilesMatch>
 </ifModule>
 
 RewriteEngine On
