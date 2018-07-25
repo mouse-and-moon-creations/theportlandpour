@@ -33,7 +33,7 @@ const getEndpoint = (endpoint, query='', slug='') =>  {
   ret += config.blog.api.path;
   ret += '/';
   ret += config.blog.api.endpoints[endpoint];
-  ret += slug ? '/' + slug : '';
+  ret += slug ? '/' + slug : '/';
   ret += '?';
   ret += 'client_id=' + config.blog.api.user;
   ret += '&client_secret=' + config.blog.api.secret;
