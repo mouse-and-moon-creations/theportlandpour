@@ -60,8 +60,8 @@ const styles = theme => ({
   root: {
     margin: '0 auto',
     maxWidth: theme.local.maxWidth,
-    paddingBottom: '24px',
-    paddingTop: '24px',
+    paddingBottom: '60px',
+    paddingTop: '60px',
     position: 'relative'
   },
   sidebar: {

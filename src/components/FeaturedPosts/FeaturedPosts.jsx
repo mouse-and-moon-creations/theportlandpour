@@ -36,7 +36,9 @@ const styles = theme => ({
   root: {
     background: 'transparent',
     margin: '0 auto',
-    maxWidth: theme.local.maxWidth
+    maxWidth: theme.local.maxWidth,
+    paddingBottom: '60px',
+    paddingTop: '60px'
   },
   cardActions: {
     display: 'flex',

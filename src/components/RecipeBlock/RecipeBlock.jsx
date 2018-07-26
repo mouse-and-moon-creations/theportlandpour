@@ -43,7 +43,9 @@ const styles = theme => ({
   },
   root: {
     backgroundColor: theme.local.palette.background.dark,
-    color: theme.palette.common.white
+    color: theme.palette.common.white,
+    paddingBottom: '60px',
+    paddingTop: '60px'
   }
 });
 

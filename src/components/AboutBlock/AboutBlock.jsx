@@ -43,7 +43,9 @@ const styles = theme => ({
     paddingBottom: 0
   },
   root: {
-    background: 'transparent'
+    background: 'transparent',
+    paddingBottom: '60px',
+    paddingTop: '60px'
   }
 });
 
