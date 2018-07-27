@@ -49,10 +49,6 @@ const styles = theme => ({
   },
   posts: {
     padding: '0 24px',
-    width: '70%',
-    [theme.breakpoints.down('md')]: {
-      width: 'auto'
-    }
   },
   postsRoot: {
     display: 'flex',
@@ -64,11 +60,6 @@ const styles = theme => ({
     paddingTop: '60px',
     position: 'relative'
   },
-  sidebar: {
-    paddingBottom: '24px',
-    paddingRight: '24px',
-    width: '30%'
-  }
 });
 
 const PostsBlock = props => {
@@ -77,8 +68,6 @@ const PostsBlock = props => {
 
   return (
     <div className={classes.root}>
-      <Gloss classes={{ gloss: classes.gloss }} label="Newest posts" />
-      <Typography className={classes.gloss} paragraph variant="headline">Our latest cocktails</Typography>
       <div className={classes.postsRoot}>
         <div className={classes.posts}>
           <div className={classes.paper}>
@@ -94,11 +83,6 @@ const PostsBlock = props => {
             </Link>
           </div>
         </div>
-        <Hidden mdDown>
-          <div className={classes.sidebar}>
-            <Sidebar />
-          </div>
-        </Hidden>
       </div>
     </div>
   );

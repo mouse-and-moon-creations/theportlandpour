@@ -102,7 +102,7 @@ const getLatestPosts = (opts = {}) => {
  */
 const getPosts = (opts = {}) => {
 
-  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags' }, opts);
+  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags', limit: 16 }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 

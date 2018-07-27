@@ -30,7 +30,7 @@ class HomeView extends Component {
 
     this.props.dispatch(blogActions.getFeaturedPosts());
 
-    this.props.dispatch(blogActions.getLatestPosts());
+    this.props.dispatch(blogActions.getPosts());
 
     return this;
 
@@ -38,16 +38,16 @@ class HomeView extends Component {
 
   render() {
 
-    const { featuredPosts, latestPosts, users } = this.props.blog;
+    const { featuredPosts, posts, users } = this.props.blog;
     const featuredPostsCaption = blogHelper.getFeaturedPostsCaption();
     const featuredPostsTitle = blogHelper.getFeaturedPostsTitle();
 
     return (
       <React.Fragment>
-        <Hero  latestPosts={latestPosts.slice(0,4)} users={users} />
+        <Hero  latestPosts={posts.slice(0,4)} users={users} />
         <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
         <PitchBlock />
-        <PostsBlock posts={latestPosts} users={users} />
+        <PostsBlock posts={posts.slice(4, posts.length)} users={users} />
         <RecipeBlock />
         <AboutBlock users={users} />
       </React.Fragment>

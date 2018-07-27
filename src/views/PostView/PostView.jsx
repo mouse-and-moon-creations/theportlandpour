@@ -8,12 +8,10 @@
 import React, { Component } from 'react';
 import withRouter from 'react-router-dom/withRouter';
 import { connect } from 'react-redux';
-import Hidden from '@material-ui/core/Hidden';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import withStyles from '@material-ui/core/styles/withStyles';
 import blogActions from 'actions/blogActions';
 import PostDetail from 'components/PostDetail';
-import Sidebar from 'components/Sidebar';
 import blogHelper from 'helpers/blogHelper';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
