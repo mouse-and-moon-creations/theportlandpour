@@ -36,9 +36,7 @@ const styles = theme => ({
   root: {
     background: 'transparent',
     margin: '0 auto',
-    maxWidth: theme.local.maxWidth,
-    paddingBottom: '60px',
-    paddingTop: '60px'
+    maxWidth: theme.local.maxWidth
   },
   cardActions: {
     display: 'flex',
@@ -58,8 +56,18 @@ const styles = theme => ({
     flexFlow: 'row wrap',
     justifyContent: 'space-around'
   },
+  flex: {
+    alignItems: 'center',
+    display: 'flex'
+  },
+  flexTitle: {
+    flexGrow: 1
+  },
   post: {
-    marginBottom: '3%',
+    marginBottom: 0,
+  },
+  title: {
+    lineHeight: 'inherit'
   }
 });
 
@@ -70,8 +78,13 @@ const FeaturedPosts = props => {
   return (
     <Card className={classes.root} elevation={0} square>
       <CardContent className={classes.cardContent}>
-        <Gloss label="Featured cocktails" />
-        <Typography variant="headline">{title}</Typography>
+        <div className={classes.flex}>
+          <div className={classes.flexTitle}>
+            <Gloss label="Featured" />
+            <Typography className={classes.title} variant="headline">{title}</Typography>
+          </div>
+          <Button color="secondary" size="small">See all the cocktails</Button>
+        </div>
         <Typography variant="body1" paragraph>{caption}</Typography>
         <div className={classes.featuredPosts}>
           {featuredPosts.length ? featuredPosts.map(post => {
@@ -79,11 +92,6 @@ const FeaturedPosts = props => {
           }) : null}
         </div>
       </CardContent>
-      <CardActions className={classes.cardActions}>
-        <Link className={classes.cardButton} to="/page/1">
-          <Button color="secondary">See all the cocktails</Button>
-        </Link>
-      </CardActions>
     </Card>
   );
 

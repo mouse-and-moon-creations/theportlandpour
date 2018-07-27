@@ -13,7 +13,7 @@ const styles = theme => ({
   pitch: {
     color: theme.palette.common.white,
     background: theme.local.palette.background.dark,
-    padding: '60px',
+    padding: '36px 0',
     width: '100%'
   }
 });
@@ -24,7 +24,7 @@ const PitchBlock = props => {
 
   return (
     <div className={classes.pitch}>
-      <Typography color="inherit" variant="headline" align="center">Celebrating the distillers, makers, and craft cocktails of Portland and the Pacific Northwest.</Typography>
+      <Typography color="inherit" variant="headline" align="center">Celebrating the spirits and craft cocktails of Portland and the Pacific Northwest.</Typography>
       <Typography color="inherit" variant="subheading" align="center">"We take the art in the glass and hang it on the wall"</Typography>
     </div>
   );

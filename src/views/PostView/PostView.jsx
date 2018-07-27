@@ -20,8 +20,9 @@ import isEmpty from 'lodash/isEmpty';
 
 const styles = theme => ({
   post: {
+    margin: '0 auto',
     padding: '0 24px',
-    width: '70%',
+    width: '80%',
     [theme.breakpoints.down('sm')]: {
       width: 'auto'
     }
@@ -87,11 +88,6 @@ class PostView extends Component {
           <div className={classes.post}>
             {isEmpty(post) ? null : <PostDetail post={post} user={find(users, { id: post.author })} />}
           </div>
-          <Hidden smDown>
-            <div className={classes.sidebar}>
-              <Sidebar />
-            </div>
-          </Hidden>
         </div>
       </div>
     );

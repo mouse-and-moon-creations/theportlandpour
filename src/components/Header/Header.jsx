@@ -23,8 +23,6 @@ import LocalBar from '@material-ui/icons/LocalBar';
 import Menu from '@material-ui/icons/Menu';
 import RssFeed from '@material-ui/icons/RssFeed';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Navigation from 'components/Navigation';
-import Tagline from 'components/Tagline';
 
 const styles = theme => ({
   appbar: {
@@ -32,7 +30,7 @@ const styles = theme => ({
     zIndex: theme.zIndex.drawer + 1
   },
   drawer: {
-    width: '200px'
+    width: '300px'
   },
   toolbar: {
     background: theme.palette.common.white,
@@ -81,28 +79,21 @@ class Header extends Component {
 
     const { classes } = this.props;
 
+    //const submitForm = fields => { return props.dispatch(blogActions.addToMailChimp(fields)); }
+    //const form = <Form submitFormCallback={submitForm} form="hero" classes={{ submitButton: classes.submitButton, form: classes.form }} showCancel={false} buttonColor="secondary" submitLabel="Sign up" />;
+    //const formSuccess = <Typography color="primary">Thank you for subscribing to our newsletter. Please check your email for confirmation.</Typography>;
     return (
       <React.Fragment>
         <AppBar className={classes.appbar} position="fixed" color="default">
           <Toolbar className={classes.toolbar}>
-            <Hidden lgUp>
-              <IconButton onClick={this.toggleDrawer} className={classes.menuButton} color="inherit" aria-label="Menu">
-                <Menu />
-              </IconButton>
-            </Hidden>
+            <IconButton onClick={this.toggleDrawer} className={classes.menuButton} color="inherit" aria-label="Menu">
+              <Menu />
+            </IconButton>
             <div className={classes.brand}>
               <Link to="/">
                 <img src="/assets/images/brand/tpp.brand.md.png" alt=""/>
               </Link>
             </div>
-            <Hidden mdDown>
-              <Navigation className={classes.navigation} />
-            </Hidden>
-            <Hidden smDown>
-              <div className={classes.tagline}>
-                <Tagline />
-              </div>
-            </Hidden>
           </Toolbar>
         </AppBar>
         <Drawer  open={this.state.drawer} onClose={this.toggleDrawer}>

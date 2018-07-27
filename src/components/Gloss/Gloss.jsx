@@ -17,12 +17,13 @@ const propTypes = {
 
 const defaultProps = {
   label: '',
-  variant: 'display1'
+  variant: 'headline'
 };
 
 const styles = theme => ({
   gloss: {
-    fontFamily: theme.local.typography.gloss.fontFamily
+    fontFamily: theme.local.typography.gloss.fontFamily,
+    lineHeight: 'inherit'
   }
 });
 

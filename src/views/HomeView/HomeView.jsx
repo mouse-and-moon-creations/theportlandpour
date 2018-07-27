@@ -44,7 +44,7 @@ class HomeView extends Component {
 
     return (
       <React.Fragment>
-        <Hero {...this.props} />
+        <Hero  latestPosts={latestPosts.slice(0,4)} users={users} />
         <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
         <PitchBlock />
         <PostsBlock posts={latestPosts} users={users} />
