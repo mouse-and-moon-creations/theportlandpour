@@ -7,6 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'react-router-dom/Link';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -79,7 +80,9 @@ const FeaturedPosts = props => {
             <Gloss label="Featured" />
             <Typography className={classes.title} variant="headline">{title}</Typography>
           </div>
-          <Button color="secondary" size="small">See all the cocktails</Button>
+          <Link to="/page/1">
+            <Button color="secondary" size="small">See all the cocktails</Button>
+          </Link>
         </div>
         <Typography variant="body1" paragraph>{caption}</Typography>
         <div className={classes.featuredPosts}>
