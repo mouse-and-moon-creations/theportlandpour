@@ -38,7 +38,7 @@ const styles = theme => ({
   gloss: {
     padding: '0 36px'
   },
-  paper: {
+  posts: {
     display: 'flex',
     flexFlow: 'row wrap',
     justifyContent: 'space-around',
@@ -46,12 +46,6 @@ const styles = theme => ({
       margin: 'auto',
       width: '100%'
     }
-  },
-  posts: {
-    padding: '0 24px',
-  },
-  postsRoot: {
-    display: 'flex',
   },
   root: {
     margin: '0 auto',
@@ -68,21 +62,17 @@ const PostsBlock = props => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.postsRoot}>
-        <div className={classes.posts}>
-          <div className={classes.paper}>
-            {posts.map(post => {
-              return (
-                <Post post={post} user={find(users, { id: post.author })} key={post.id} />
-              );
-            })}
-          </div>
-          <div className={classes.cardActions}>
-            <Link className={classes.cardButton} to="/page/1">
-              <Button color="secondary">See all the cocktails</Button>
-            </Link>
-          </div>
-        </div>
+      <div className={classes.posts}>
+        {posts.map(post => {
+          return (
+            <Post post={post} user={find(users, { id: post.author })} key={post.id} />
+          );
+        })}
+      </div>
+      <div className={classes.cardActions}>
+        <Link className={classes.cardButton} to="/page/1">
+          <Button color="secondary">See all the cocktails</Button>
+        </Link>
       </div>
     </div>
   );
