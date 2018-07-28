@@ -9,12 +9,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'react-router-dom/Link';
 import Button from '@material-ui/core/Button';
-import Hidden from '@material-ui/core/Hidden';
-import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Gloss from 'components/Gloss';
 import Post from 'components/Post';
-import Sidebar from 'components/Sidebar';
 import find from 'lodash/find';
 
 const propTypes = {
