@@ -7,13 +7,15 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Divider from '@material-ui/core/Divider';
 import blogActions from 'actions/blogActions';
 import AboutBlock from 'components/AboutBlock';
 import FeaturedPosts from 'components/FeaturedPosts';
 import Hero from 'components/Hero';
+import LocalBlock from 'components/LocalBlock';
+import PeopleBlock from 'components/PeopleBlock';
 import PitchBlock from 'components/PitchBlock';
 import PostsBlock from 'components/PostsBlock';
-import RecipeBlock from 'components/RecipeBlock';
 import blogHelper from 'helpers/blogHelper';
 
 /**
@@ -47,9 +49,13 @@ class HomeView extends Component {
         <Hero  latestPosts={posts.slice(0,4)} users={users} />
         <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
         <PitchBlock />
+        <LocalBlock />
+        <Divider />
         <PostsBlock posts={posts.slice(4, posts.length)} users={users} />
-        <RecipeBlock />
-        <AboutBlock users={users} />
+        <Divider />
+        <AboutBlock />
+        <Divider />
+        <PeopleBlock users={users} />
       </React.Fragment>
     );
 

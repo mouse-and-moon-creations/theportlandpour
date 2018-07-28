@@ -46,8 +46,6 @@ const styles = theme => ({
   },
   cardContent: {
     paddingBottom: 0,
-    [theme.breakpoints.up('lg')]: {
-    }
   },
   featuredPosts: {
     display: 'flex',
@@ -62,7 +60,7 @@ const styles = theme => ({
     flexGrow: 1
   },
   post: {
-    marginBottom: 0,
+    marginBottom: '12px',
   },
   title: {
     lineHeight: 'inherit'
