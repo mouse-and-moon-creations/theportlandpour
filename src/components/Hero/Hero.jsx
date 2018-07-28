@@ -81,7 +81,7 @@ const Hero = props => {
       <div className={classes.heroContent}>
         <Hidden mdDown>
           <div className={classes.heroHeader}>
-            <Gloss label="Cocktails with local ingredients" variant="display1" />
+            <Gloss label="We make cocktails with local ingredients" variant="display1" />
             <Typography align="right" className={classes.right} color="inherit" variant="subheading">Proudly made in Portland, Oregon</Typography>
           </div>
         </Hidden>
