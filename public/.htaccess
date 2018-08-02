@@ -1,4 +1,4 @@
-Options -MultiViews
+Options -Indexes -MultiViews
 
 <ifModule mod_headers.c>
     Header set Connection keep-alive
@@ -12,6 +12,7 @@ RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 Redirect 301 /content https://blog.theportlandpour.com/content
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [QSA,L]
 
 <IfModule mod_expires.c>
