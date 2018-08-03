@@ -10,10 +10,11 @@ Options -Indexes -MultiViews
 RewriteEngine On
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-Redirect 301 /content https://blog.theportlandpour.com/content
-RewriteCond %{REQUEST_FILENAME} !-f
+RewriteBase /
+RewriteRule ^index\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.html [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . /index.html [L]
 
 <IfModule mod_expires.c>
     # Enable expiration control

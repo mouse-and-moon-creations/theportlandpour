@@ -15,7 +15,7 @@ import moment from 'moment';
  */
 const getAssetUrl = asset => {
 
-  return config.blog.host + asset;
+  return config.blog.www + asset;
 
 }
 
