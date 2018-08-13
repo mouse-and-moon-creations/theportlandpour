@@ -2,7 +2,7 @@
  * @file Posts component
  * @description List of posts
  * @author tm
- * @copyright Inspec Digital, LLC
+ * @copyright Mouse and Moon Creations
  */
 
 import React from 'react';
