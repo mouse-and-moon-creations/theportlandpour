@@ -48,6 +48,7 @@ class HomeView extends Component {
     return (
       <React.Fragment>
         <Helmet>
+          <title>{blogHelper.getTitle()}</title>
           <link rel="canonical" href={blogHelper.getBaseUrl()} />
         </Helmet>
         <Hero  latestPosts={posts.slice(0,4)} users={users} />
