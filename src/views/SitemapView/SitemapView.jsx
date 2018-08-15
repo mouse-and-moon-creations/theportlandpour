@@ -8,7 +8,6 @@
 import React, { Component } from 'react';
 import ReactDomServer from 'react-dom/server';
 import { connect } from 'react-redux';
-import ReactElementToString from 'react-element-to-string';
 import blogActions from 'actions/blogActions';
 import moment from 'moment';
 import withStyles from '@material-ui/core/styles/withStyles';

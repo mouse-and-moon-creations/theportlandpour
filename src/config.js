@@ -4,6 +4,7 @@ const config = {
     featuredPostsTitle: 'Cocktails for Summer',
     host: 'https://blog.theportlandpour.com',
     www: 'https://www.theportlandpour.com',
+    title: 'The Portland Pour',
     api: {
       path: 'ghost/api/v0.1',
       user: 'ghost-frontend',

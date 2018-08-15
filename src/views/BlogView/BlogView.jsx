@@ -15,6 +15,8 @@ import Pager from 'components/Pager';
 import Posts from 'components/Posts';
 import Sidebar from 'components/Sidebar';
 import pull from 'lodash/pull';
+import blogHelper from 'helpers/blogHelper';
+import { Helmet } from 'react-helmet'
 
 const styles = theme => ({
   posts: {
@@ -110,7 +112,7 @@ class BlogView extends Component {
 
   render() {
 
-    const { classes } = this.props;
+    const { classes, match } = this.props;
     const { meta, posts, selectedSpirits, tags, users, waiting } = this.props.blog;
     const { pagination } = meta;
 
@@ -118,6 +120,10 @@ class BlogView extends Component {
 
     return (
       <div className={classes.root}>
+        <Helmet>
+          <title>{blogHelper.getTitle('Cocktails - Page ' + match.params.page)}</title>
+          <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
+        </Helmet>
         <div className={classes.rootContent}>
           <div className={classes.posts}>
             <Pager pagination={pagination} />

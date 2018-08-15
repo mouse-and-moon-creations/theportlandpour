@@ -67,6 +67,12 @@ const getUrl = page => {
 
 }
 
+const getBaseUrl = () => {
+
+  return config.blog.www;
+
+}
+
 const getPostDate = date => {
 
   return moment(date).format('LL');
@@ -76,6 +82,12 @@ const getPostDate = date => {
 const getPostUrl = slug => {
 
   return '/post/' + slug;
+
+}
+
+const getTitle = (title = null) => {
+
+  return config.blog.title + (title ? ' - ' + title : '');
 
 }
 
@@ -90,12 +102,14 @@ const postLinkHandler = e => {
 
 const blogHelper = {
   getAssetUrl,
+  getBaseUrl,
   getEndpoint,
   getFeaturedPostsCaption,
   getFeaturedPostsTitle,
   getMailChimpEndpoint,
   getPostDate,
   getPostUrl,
+  getTitle,
   getUrl,
   postLinkHandler
 };

@@ -15,6 +15,7 @@ import PostDetail from 'components/PostDetail';
 import blogHelper from 'helpers/blogHelper';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
+import { Helmet } from 'react-helmet'
 
 const styles = theme => ({
   post: {
@@ -75,12 +76,16 @@ class PostView extends Component {
 
   render() {
 
-    const { classes } = this.props;
+    const { classes, match } = this.props;
     const { post, users, waiting } = this.props.blog;
     const progress = <LinearProgress />;
 
     return (
       <div className={classes.root}>
+        <Helmet>
+          <title>{blogHelper.getTitle(post.title)}</title>
+          <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
+        </Helmet>
         {waiting ? progress : null}
         <div className={classes.postRoot}>
           <div className={classes.post}>

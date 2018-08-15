@@ -19,7 +19,6 @@ import AboutView from 'views/AboutView';
 import BlogView from 'views/BlogView';
 import HomeView from 'views/HomeView';
 import NoView from 'views/NoView';
-import SitemapView from 'views/SitemapView';
 import PostView from 'views/PostView';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
@@ -65,7 +64,6 @@ const AppRoot = props => {
                   <Route path="/page/:page" component={WithTracker(BlogView)} />
                   <Route path="/post/:slug" component={WithTracker(PostView)} />
                   <Route path="/about" component={WithTracker(AboutView)} />
-                  <Route path="/sitemap" component={WithTracker(SitemapView)} />
                   <Route component={WithTracker(NoView)} />
                 </Switch>
                 <Footer />

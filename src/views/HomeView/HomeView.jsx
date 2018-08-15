@@ -17,6 +17,7 @@ import PeopleBlock from 'components/PeopleBlock';
 import PitchBlock from 'components/PitchBlock';
 import PostsBlock from 'components/PostsBlock';
 import blogHelper from 'helpers/blogHelper';
+import { Helmet } from 'react-helmet'
 
 /**
  * Blog view component
@@ -46,6 +47,9 @@ class HomeView extends Component {
 
     return (
       <React.Fragment>
+        <Helmet>
+          <link rel="canonical" href={blogHelper.getBaseUrl()} />
+        </Helmet>
         <Hero  latestPosts={posts.slice(0,4)} users={users} />
         <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
         <PitchBlock />
