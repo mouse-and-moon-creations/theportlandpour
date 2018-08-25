@@ -19,6 +19,12 @@ const getAssetUrl = asset => {
 
 }
 
+const getDescription = () => {
+
+  return config.blog.description;
+
+}
+
 /**
  * Create an endpoint for the Ghost API
  * @param  {String} endpoint   The endpoint (such as 'posts' for posts, 'tags' for tags, etc.)
@@ -103,6 +109,7 @@ const postLinkHandler = e => {
 const blogHelper = {
   getAssetUrl,
   getBaseUrl,
+  getDescription,
   getEndpoint,
   getFeaturedPostsCaption,
   getFeaturedPostsTitle,

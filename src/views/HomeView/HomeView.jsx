@@ -50,6 +50,12 @@ class HomeView extends Component {
         <Helmet>
           <title>{blogHelper.getTitle()}</title>
           <link rel="canonical" href={blogHelper.getBaseUrl()} />
+          <meta name="description" content={blogHelper.getDescription()} />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={blogHelper.getTitle()} />
+          <meta property="og:url" content={blogHelper.getBaseUrl()} />
+          <meta property="og:site_name" content={blogHelper.getTitle()} />
+          <meta property="og:description" content={blogHelper.getDescription()} />
         </Helmet>
         <Hero  latestPosts={posts.slice(0,4)} users={users} />
         <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
