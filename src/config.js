@@ -1,7 +1,7 @@
 const config = {
   blog: {
-    featuredPostsCaption: 'The dog days are upon us, and it\'s time to reach for a refreshing Summer cooler. Fortunately, Portland distillers have us covered. Try some of our favorite Summer recipes.',
-    featuredPostsTitle: 'Cocktails for Summer',
+    featuredPostsCaption: 'Some of our favorite whiskey cocktails featuring some of Portland\'s local bourbon and rye.',
+    featuredPostsTitle: 'Whiskey cocktails',
     host: 'https://blog.theportlandpour.com',
     www: 'https://www.theportlandpour.com',
     title: 'The Portland Pour',
