@@ -49,7 +49,10 @@ const styles = theme => ({
     }
   },
   cardContent: {
-    display: 'flex'
+    display: 'flex',
+    '& a': {
+      textDecoration: 'underline'
+    }
   }
 });
 

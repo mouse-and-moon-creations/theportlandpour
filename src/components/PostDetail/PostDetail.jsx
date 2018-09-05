@@ -28,6 +28,11 @@ const defaultProps = {
 };
 
 const styles = theme => ({
+  root: {
+    '& a': {
+      textDecoration: 'underline'
+    }
+  },
   avatar: {
     display: 'inline-block',
     marginRight: '12px',
