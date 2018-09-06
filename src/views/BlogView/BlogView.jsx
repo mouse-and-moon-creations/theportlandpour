@@ -118,11 +118,25 @@ class BlogView extends Component {
 
     const progress = <LinearProgress />;
 
+  console.log(match);
+
     return (
       <div className={classes.root}>
         <Helmet>
           <title>{blogHelper.getTitle('Cocktails - Page ' + match.params.page)}</title>
           <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
+          <meta property="og:type" content="object" />
+          <meta property="og:description" content={blogHelper.getDescription()} />
+          <meta property="og:image" content={posts.length ? blogHelper.getBaseUrl() + posts[0].feature_image : null} />
+          <meta property="og:image:alt" content={blogHelper.getTitle()} />
+          <meta property="og:image:height" content="750" />
+          <meta property="og:image:secure_url" content={posts.length ? blogHelper.getBaseUrl() + posts[0].feature_image : null} />
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:width" content="600" />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:site_name" content={blogHelper.getTitle()} />
+          <meta property="og:title" content={'Cocktails - page ' + match.params.page} />
+          <meta property="og:url" content={blogHelper.getBaseUrl() + match.url} />
         </Helmet>
         <div className={classes.rootContent}>
           <div className={classes.posts}>

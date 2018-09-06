@@ -5,7 +5,8 @@ const config = {
     host: 'https://blog.theportlandpour.com',
     www: 'https://www.theportlandpour.com',
     title: 'The Portland Pour',
-    description: 'An art and cocktail blog celebrating the local spirits and ingredients of Portland and the Pacific Northwest. Local, tasty, fun.',
+    description: 'Improve your cocktail game with local products',
+    descriptionSuffix: 'at The Portland Pour, a blog celebrating the local spirits and ingredients of Portland and the Pacific Northwest.',
     api: {
       path: 'ghost/api/v0.1',
       user: 'ghost-frontend',

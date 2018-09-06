@@ -79,17 +79,40 @@ class PostView extends Component {
     const { classes, match } = this.props;
     const { post, users, waiting } = this.props.blog;
     const progress = <LinearProgress />;
+    const user = find(users, { id: post.author });
 
     return (
       <div className={classes.root}>
         <Helmet>
           <title>{blogHelper.getTitle(post.title)}</title>
           <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
+          <meta name="description" content={blogHelper.getPostDescription(post)} />
+          <meta property="og:type" content="article" />
+          <meta property="article:author" content={user ? user.name : null} />
+          <meta property="article:modified_time" content={post.updated_at} />
+          <meta property="article:published_time" content={post.published_at} />
+          <meta property="article:section" content="Cocktails" />
+          {post.tags ? post.tags.map(tag => {
+            return (
+              <meta key={tag.id} property="article:tag" content={tag.name} />
+            )
+          }) : null}
+          <meta property="og:description" content={post.custom_excerpt} />
+          <meta property="og:image" content={blogHelper.getBaseUrl() + post.feature_image} />
+          <meta property="og:image:alt" content={post.title + ' cocktail'} />
+          <meta property="og:image:height" content="750" />
+          <meta property="og:image:secure_url" content={blogHelper.getBaseUrl() + post.feature_image} />
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:width" content="600" />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:site_name" content={blogHelper.getTitle()} />
+          <meta property="og:title" content={post.title} />
+          <meta property="og:url" content={blogHelper.getBaseUrl() + match.url} />
         </Helmet>
         {waiting ? progress : null}
         <div className={classes.postRoot}>
           <div className={classes.post}>
-            {isEmpty(post) ? null : <PostDetail post={post} user={find(users, { id: post.author })} />}
+            {isEmpty(post) ? null : <PostDetail post={post} user={user} />}
           </div>
         </div>
       </div>

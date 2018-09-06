@@ -53,10 +53,17 @@ class HomeView extends Component {
           <link rel="canonical" href={blogHelper.getBaseUrl()} />
           <meta name="description" content={blogHelper.getDescription()} />
           <meta property="og:type" content="website" />
+          <meta property="og:description" content={blogHelper.getDescription()} />
+          <meta property="og:image" content={posts.length ? blogHelper.getBaseUrl() + posts[0].feature_image : null} />
+          <meta property="og:image:alt" content={blogHelper.getTitle()} />
+          <meta property="og:image:height" content="750" />
+          <meta property="og:image:secure_url" content={posts.length ? blogHelper.getBaseUrl() + posts[0].feature_image : null} />
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:width" content="600" />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:site_name" content={blogHelper.getTitle()} />
           <meta property="og:title" content={blogHelper.getTitle()} />
           <meta property="og:url" content={blogHelper.getBaseUrl()} />
-          <meta property="og:site_name" content={blogHelper.getTitle()} />
-          <meta property="og:description" content={blogHelper.getDescription()} />
         </Helmet>
         <Hero  latestPosts={posts.slice(0,4)} users={users} />
         <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />

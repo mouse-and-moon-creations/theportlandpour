@@ -21,7 +21,7 @@ const getAssetUrl = asset => {
 
 const getDescription = () => {
 
-  return config.blog.description;
+  return config.blog.description + ' ' + config.blog.descriptionSuffix;
 
 }
 
@@ -64,6 +64,18 @@ const getFeaturedPostsTitle = () => {
 const getMailChimpEndpoint = () => {
 
   return config.mailchimp.joinUrl;
+
+}
+
+const getPostDescription = post => {
+
+  let ret = 'Get the ';
+
+  ret += post.title;
+  ret += ' cocktail story and recipe ';
+  ret += config.blog.descriptionSuffix;
+
+  return ret;
 
 }
 
@@ -115,6 +127,7 @@ const blogHelper = {
   getFeaturedPostsTitle,
   getMailChimpEndpoint,
   getPostDate,
+  getPostDescription,
   getPostUrl,
   getTitle,
   getUrl,

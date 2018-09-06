@@ -62,6 +62,12 @@ class AboutView extends Component {
         <Helmet>
           <title>{blogHelper.getTitle('About')}</title>
           <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
+          <meta property="og:type" content="object" />
+          <meta property="og:description" content={blogHelper.getDescription()} />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:site_name" content={blogHelper.getTitle()} />
+          <meta property="og:title" content="About" />
+          <meta property="og:url" content={blogHelper.getBaseUrl() + match.url} />
         </Helmet>
         <Card className={classes.about} elevation={0}>
           <CardContent>
