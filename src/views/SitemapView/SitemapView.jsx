@@ -103,7 +103,7 @@ class SitemapView extends Component {
           return (
             post.status === 'published' ?
               <url>
-                <loc>{encodeURI(domain + post.url)}</loc>
+                <loc>{encodeURI(domain + '/post' + post.url)}</loc>
                 <changefreq>weekly</changefreq>
                 <priority>{post.featured ? 0.8 : 0.6}</priority>
                 <lastmod>{moment(post.published_at).format('YYYY-MM-DD')}</lastmod>
