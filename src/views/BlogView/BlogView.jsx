@@ -137,6 +137,11 @@ class BlogView extends Component {
           <meta property="og:site_name" content={blogHelper.getTitle()} />
           <meta property="og:title" content={'Cocktails - page ' + match.params.page} />
           <meta property="og:url" content={blogHelper.getBaseUrl() + match.url} />
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content={'Cocktails - page ' + match.params.page} />
+          <meta name="twitter:description" content={blogHelper.getDescription()} />
+          <meta name="twitter:image" content={posts.length ? blogHelper.getBaseUrl() + posts[0].feature_image : null} />
+          <meta name="twitter:image:alt" content={blogHelper.getTitle()} />
         </Helmet>
         <div className={classes.rootContent}>
           <div className={classes.posts}>

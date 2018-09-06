@@ -108,6 +108,11 @@ class PostView extends Component {
           <meta property="og:site_name" content={blogHelper.getTitle()} />
           <meta property="og:title" content={post.title} />
           <meta property="og:url" content={blogHelper.getBaseUrl() + match.url} />
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content={post.title} />
+          <meta name="twitter:description" content={post.custom_excerpt} />
+          <meta name="twitter:image" content={blogHelper.getBaseUrl() + post.feature_image} />
+          <meta name="twitter:image:alt" content={post.title + ' cocktail'} />
         </Helmet>
         {waiting ? progress : null}
         <div className={classes.postRoot}>

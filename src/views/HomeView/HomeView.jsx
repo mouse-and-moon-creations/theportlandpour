@@ -64,6 +64,11 @@ class HomeView extends Component {
           <meta property="og:site_name" content={blogHelper.getTitle()} />
           <meta property="og:title" content={blogHelper.getTitle()} />
           <meta property="og:url" content={blogHelper.getBaseUrl()} />
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content={blogHelper.getTitle()} />
+          <meta name="twitter:description" content={blogHelper.getDescription()} />
+          <meta name="twitter:image" content={posts.length ? blogHelper.getBaseUrl() + posts[0].feature_image : null} />
+          <meta name="twitter:image:alt" content={blogHelper.getTitle()} />
         </Helmet>
         <Hero  latestPosts={posts.slice(0,4)} users={users} />
         <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
