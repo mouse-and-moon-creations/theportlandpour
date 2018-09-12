@@ -16,7 +16,7 @@ import Posts from 'components/Posts';
 import Sidebar from 'components/Sidebar';
 import pull from 'lodash/pull';
 import blogHelper from 'helpers/blogHelper';
-import { Helmet } from 'react-helmet'
+import MetaTags from 'react-meta-tags';
 
 const styles = theme => ({
   posts: {
@@ -118,11 +118,9 @@ class BlogView extends Component {
 
     const progress = <LinearProgress />;
 
-  console.log(match);
-
     return (
       <div className={classes.root}>
-        <Helmet>
+        <MetaTags>
           <title>{blogHelper.getTitle('Cocktails - Page ' + match.params.page)}</title>
           <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
           <meta property="og:type" content="object" />
@@ -142,7 +140,7 @@ class BlogView extends Component {
           <meta name="twitter:description" content={blogHelper.getDescription()} />
           <meta name="twitter:image" content={posts.length ? blogHelper.getBaseUrl() + posts[0].feature_image : null} />
           <meta name="twitter:image:alt" content={blogHelper.getTitle()} />
-        </Helmet>
+        </MetaTags>
         <div className={classes.rootContent}>
           <div className={classes.posts}>
             <Pager pagination={pagination} />
