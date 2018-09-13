@@ -7,6 +7,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -47,12 +48,12 @@ const AppRoot = props => {
     return props.dispatch(blogActions.clearMessaging());
   }
 
-  const { classes } = props;
+  const { classes, history } = props;
 
   ReactGA.initialize(ga);
 
   return (
-    <BrowserRouter>
+    <ConnectedRouter history={history}>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <div className={classes.wrapper}>
@@ -77,7 +78,7 @@ const AppRoot = props => {
                   action={<Button onClick={actionCallback} color="secondary" size="small">Dismiss</Button>}
                   onClose={actionCallback} />
       </MuiThemeProvider>
-    </BrowserRouter>
+    </ConnectedRouter>
   );
 
 }

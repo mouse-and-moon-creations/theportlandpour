@@ -8,10 +8,11 @@ import { storeHelper } from 'helpers';
 require('es6-promise').polyfill();
 
 const store = storeHelper.getStore();
+const history = storeHelper.getHistory();
 
 ReactDOM.hydrate(
   <Provider store={store}>
-    <App />
+    <App history={history} />
   </Provider>,
   document.getElementById('root')
 );

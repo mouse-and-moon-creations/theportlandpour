@@ -1,10 +1,14 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createBrowserHistory } from 'history';
+import { compose, createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import rootReducer from '../reducers';
 
+const history = createBrowserHistory();
+
 const store = createStore(
-  rootReducer,
-  applyMiddleware(thunkMiddleware)
+  connectRouter(history)(rootReducer),
+  applyMiddleware(routerMiddleware(history), thunkMiddleware)
 );
 
 const getStore = () => {
@@ -13,7 +17,14 @@ const getStore = () => {
 
 };
 
+const getHistory = () => {
+
+  return history;
+
+}
+
 const storeHelper = {
+  getHistory,
   getStore
 }
 
