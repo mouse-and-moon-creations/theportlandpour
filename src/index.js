@@ -4,17 +4,32 @@ import  { Provider } from 'react-redux';
 import App from './App';
 import { unregister } from './registerServiceWorker';
 import { storeHelper } from 'helpers';
+import { ConnectedRouter } from 'connected-react-router';
+import { Frontload } from 'react-frontload';
+import Loadable from 'react-loadable';
 
 require('es6-promise').polyfill();
 
-const store = storeHelper.getStore();
-const history = storeHelper.getHistory();
+const { history, store } = storeHelper.getStore();
 
-ReactDOM.hydrate(
+const Application = (
   <Provider store={store}>
-    <App history={history} />
-  </Provider>,
-  document.getElementById('root')
+    <ConnectedRouter history={history}>
+      <Frontload noServerRender>
+        <App />
+      </Frontload>
+    </ConnectedRouter>
+  </Provider>
 );
+
+const root = document.getElementById('root');
+
+if (process.env.NODE_ENV === 'production') {
+  Loadable.preloadReady().then(() => {
+    ReactDOM.hydrate(Application, root);
+  });
+} else {
+  ReactDOM.render(Application, root);
+}
 
 unregister();

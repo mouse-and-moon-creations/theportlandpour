@@ -51,7 +51,7 @@ const NewsletterBlock = props => {
             <div className={classes.honeypot} aria-hidden="true">
               <input type="text" name="b_2b5f5ea27c2aeb60c18ebca53_d633c0fa8c" tabIndex="-1" value="" />
             </div>
-            <div className="clear" onClick={this.submit}>
+            <div className="clear">
               <Button color="secondary" type="submit" variant="raised" size="small">Sign up</Button>
             </div>
           </div>

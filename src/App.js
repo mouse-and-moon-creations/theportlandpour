@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import { connect } from 'react-redux';
-import { ScrollContext } from 'react-router-scroll-4';
 import {
   Route,
   Switch
 } from 'react-router-dom';
-import { ConnectedRouter } from 'connected-react-router';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -47,37 +45,33 @@ const AppRoot = props => {
     return props.dispatch(blogActions.clearMessaging());
   }
 
-  const { classes, history } = props;
+  const { classes } = props;
 
   ReactGA.initialize(ga);
 
   return (
-    <ConnectedRouter history={history}>
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <div className={classes.wrapper}>
-          <ScrollContext>
-            <span>
-              <Header />
-              <Switch>
-                <Route path="/" exact component={WithTracker(HomeView)} />
-                <Route path="/page/:page" component={WithTracker(BlogView)} />
-                <Route path="/post/:slug" component={WithTracker(PostView)} />
-                <Route path="/about" component={WithTracker(AboutView)} />
-                <Route path="/sitemap" component={NoView} />
-                <Route component={WithTracker(NoView)} />
-              </Switch>
-              <Footer />
-            </span>
-          </ScrollContext>
-        </div>
-        <Snackbar open={props.message ? true : false}
-                  message={props.message}
-                  autoHideDuration={6000}
-                  action={<Button onClick={actionCallback} color="secondary" size="small">Dismiss</Button>}
-                  onClose={actionCallback} />
-      </MuiThemeProvider>
-    </ConnectedRouter>
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className={classes.wrapper}>
+          <span>
+            <Header />
+            <Switch>
+              <Route path="/" exact component={WithTracker(HomeView)} />
+              <Route path="/page/:page" component={WithTracker(BlogView)} />
+              <Route path="/post/:slug" component={WithTracker(PostView)} />
+              <Route path="/about" component={WithTracker(AboutView)} />
+              <Route path="/sitemap" component={NoView} />
+              <Route component={WithTracker(NoView)} />
+            </Switch>
+            <Footer />
+          </span>
+      </div>
+      <Snackbar open={props.message ? true : false}
+                message={props.message}
+                autoHideDuration={6000}
+                action={<Button onClick={actionCallback} color="secondary" size="small">Dismiss</Button>}
+                onClose={actionCallback} />
+    </MuiThemeProvider>
   );
 
 }
