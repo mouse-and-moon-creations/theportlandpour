@@ -17,9 +17,9 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import blogActions from 'actions/blogActions';
-import Gloss from 'components/Gloss';
-import Form from 'components/Form';
+import blogActions from '../../actions/blogActions';
+import Gloss from '../Gloss';
+import Form from '../Form';
 import find from 'lodash/find';
 
 const propTypes = {

@@ -11,8 +11,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Gloss from 'components/Gloss';
-import Users from 'components/Users';
+import Gloss from '../Gloss';
+import Users from '../Users';
 
 const propTypes = {
   users: PropTypes.array

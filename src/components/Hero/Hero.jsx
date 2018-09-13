@@ -14,8 +14,8 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import withWidth from '@material-ui/core/withWidth';
-import Gloss from 'components/Gloss';
-import blogHelper from 'helpers/blogHelper';
+import Gloss from '../Gloss';
+import blogHelper from '../../helpers/blogHelper';
 
 const gridCols = {
   lg: 4,

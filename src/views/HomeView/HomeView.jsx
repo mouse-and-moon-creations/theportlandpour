@@ -8,16 +8,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Divider from '@material-ui/core/Divider';
-import blogActions from 'actions/blogActions';
-import AboutBlock from 'components/AboutBlock';
-import FeaturedPosts from 'components/FeaturedPosts';
-import Hero from 'components/Hero';
-import LocalBlock from 'components/LocalBlock';
-import NewsletterBlock from 'components/NewsletterBlock';
-import PeopleBlock from 'components/PeopleBlock';
-import PitchBlock from 'components/PitchBlock';
-import PostsBlock from 'components/PostsBlock';
-import blogHelper from 'helpers/blogHelper';
+import blogActions from '../../actions/blogActions';
+import AboutBlock from '../../components/AboutBlock';
+import FeaturedPosts from '../../components/FeaturedPosts';
+import Hero from '../../components/Hero';
+import LocalBlock from '../../components/LocalBlock';
+import NewsletterBlock from '../../components/NewsletterBlock';
+import PeopleBlock from '../../components/PeopleBlock';
+import PitchBlock from '../../components/PitchBlock';
+import PostsBlock from '../../components/PostsBlock';
+import blogHelper from '../../helpers/blogHelper';
 import MetaTags from 'react-meta-tags';
 
 /**

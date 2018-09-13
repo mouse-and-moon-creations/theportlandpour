@@ -5,9 +5,9 @@
  * @copyright Inspec Digital, LLC
  */
 
-import blogConstants from 'constants/blogConstants';
-import blogHelper from 'helpers/blogHelper';
-import API from 'services/API';
+import blogConstants from '../constants/blogConstants';
+import blogHelper from '../helpers/blogHelper';
+import API from '../services/API';
 
 const request = (type) => { return { type: type }; }
 

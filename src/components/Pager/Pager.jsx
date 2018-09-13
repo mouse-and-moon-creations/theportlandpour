@@ -13,7 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import blogHelper from 'helpers/blogHelper';
+import blogHelper from '../../helpers/blogHelper';
 
 const propTypes = {
   pagination: PropTypes.object

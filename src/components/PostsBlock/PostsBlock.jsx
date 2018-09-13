@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import Link from 'react-router-dom/Link';
 import Button from '@material-ui/core/Button';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Post from 'components/Post';
+import Post from '../Post';
 import find from 'lodash/find';
 
 const propTypes = {

@@ -8,7 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Tag from 'components/Tag';
+import Tag from '../Tag';
 
 const propTypes = {
   tags: PropTypes.array

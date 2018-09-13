@@ -1,4 +1,4 @@
-import blogConstants from 'constants/blogConstants';
+import blogConstants from '../constants/blogConstants';
 
 const initialState = {
   featuredPosts: [],

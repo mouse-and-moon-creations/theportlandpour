@@ -11,9 +11,9 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import blogActions from 'actions/blogActions';
-import Users from 'components/Users';
-import blogHelper from 'helpers/blogHelper';
+import blogActions from '../../actions/blogActions';
+import Users from '../../components/Users';
+import blogHelper from '../../helpers/blogHelper';
 import MetaTags from 'react-meta-tags';
 
 const styles = theme => ({

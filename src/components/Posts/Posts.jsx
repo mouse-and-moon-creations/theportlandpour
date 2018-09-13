@@ -8,7 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Post from 'components/Post';
+import Post from '../Post';
 import find from 'lodash/find';
 
 const propTypes = {

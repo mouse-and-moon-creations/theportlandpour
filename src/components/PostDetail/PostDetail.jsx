@@ -14,8 +14,8 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Markdown from 'react-markdown';
 import find from 'lodash/find';
-import TagList from 'components/TagList';
-import blogHelper from 'helpers/blogHelper';
+import TagList from '../TagList';
+import blogHelper from '../../helpers/blogHelper';
 
 const propTypes = {
   post: PropTypes.object,

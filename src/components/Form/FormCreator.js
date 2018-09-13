@@ -8,7 +8,7 @@
  */
 
 import React, { Component } from 'react';
-import FormValidator from 'components/FormValidator';
+import FormValidator from '../FormValidator';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';

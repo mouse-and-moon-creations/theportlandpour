@@ -10,12 +10,12 @@ import { connect } from 'react-redux';
 import Hidden from '@material-ui/core/Hidden';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import withStyles from '@material-ui/core/styles/withStyles';
-import blogActions from 'actions/blogActions';
-import Pager from 'components/Pager';
-import Posts from 'components/Posts';
-import Sidebar from 'components/Sidebar';
+import blogActions from '../../actions/blogActions';
+import Pager from '../../components/Pager';
+import Posts from '../../components/Posts';
+import Sidebar from '../../components/Sidebar';
 import pull from 'lodash/pull';
-import blogHelper from 'helpers/blogHelper';
+import blogHelper from '../../helpers/blogHelper';
 import MetaTags from 'react-meta-tags';
 
 const styles = theme => ({
