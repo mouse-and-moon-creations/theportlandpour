@@ -3,7 +3,6 @@ import ReactGA from 'react-ga';
 import { connect } from 'react-redux';
 import { ScrollContext } from 'react-router-scroll-4';
 import {
-  BrowserRouter,
   Route,
   Switch
 } from 'react-router-dom';
@@ -52,34 +51,30 @@ const AppRoot = props => {
   ReactGA.initialize(ga);
 
   return (
-    <React.Fragment>
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <div className={classes.wrapper}>
-          <BrowserRouter>
-            <ScrollContext>
-              <span>
-                <Header />
-                <Switch>
-                  <Route path="/" exact component={WithTracker(HomeView)} />
-                  <Route path="/page/:page" component={WithTracker(BlogView)} />
-                  <Route path="/post/:slug" component={WithTracker(PostView)} />
-                  <Route path="/about" component={WithTracker(AboutView)} />
-                  <Route path="/sitemap" component={NoView} />
-                  <Route component={WithTracker(NoView)} />
-                </Switch>
-                <Footer />
-              </span>
-            </ScrollContext>
-          </BrowserRouter>
-        </div>
-        <Snackbar open={props.message ? true : false}
-                  message={props.message}
-                  autoHideDuration={6000}
-                  action={<Button onClick={actionCallback} color="secondary" size="small">Dismiss</Button>}
-                  onClose={actionCallback} />
-      </MuiThemeProvider>
-    </React.Fragment>
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className={classes.wrapper}>
+        <ScrollContext>
+          <span>
+            <Header />
+            <Switch>
+              <Route path="/" exact component={WithTracker(HomeView)} />
+              <Route path="/page/:page" component={WithTracker(BlogView)} />
+              <Route path="/post/:slug" component={WithTracker(PostView)} />
+              <Route path="/about" component={WithTracker(AboutView)} />
+              <Route path="/sitemap" component={NoView} />
+              <Route component={WithTracker(NoView)} />
+            </Switch>
+            <Footer />
+          </span>
+        </ScrollContext>
+      </div>
+      <Snackbar open={props.message ? true : false}
+                message={props.message}
+                autoHideDuration={6000}
+                action={<Button onClick={actionCallback} color="secondary" size="small">Dismiss</Button>}
+                onClose={actionCallback} />
+    </MuiThemeProvider>
   );
 
 }
