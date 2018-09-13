@@ -3,7 +3,6 @@ import ReactGA from 'react-ga';
 import { connect } from 'react-redux';
 import { ScrollContext } from 'react-router-scroll-4';
 import {
-  BrowserRouter,
   Route,
   Switch
 } from 'react-router-dom';
