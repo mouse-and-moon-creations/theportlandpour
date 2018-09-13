@@ -6,6 +6,7 @@ if (typeof Promise === 'undefined') {
   // and the user has no idea what causes React's erratic future behavior.
   require('promise/lib/rejection-tracking').enable();
   window.Promise = require('promise/lib/es6-extensions.js');
+  require("babel-polyfill");
 }
 
 // fetch() polyfill for making API calls.
