@@ -14,7 +14,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import blogActions from '../../actions/blogActions';
 import Users from '../../components/Users';
 import blogHelper from '../../helpers/blogHelper';
-import MetaTags from 'react-meta-tags';
+import Helmet from 'react-helmet';
 
 const styles = theme => ({
   about: {
@@ -59,7 +59,7 @@ class AboutView extends Component {
 
     return (
       <React.Fragment>
-        <MetaTags>
+        <Helmet>
           <title>{blogHelper.getTitle('About')}</title>
           <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
           <meta property="og:type" content="object" />
@@ -68,7 +68,7 @@ class AboutView extends Component {
           <meta property="og:site_name" content={blogHelper.getTitle()} />
           <meta property="og:title" content="About" />
           <meta property="og:url" content={blogHelper.getBaseUrl() + match.url} />
-        </MetaTags>
+        </Helmet>
         <Card className={classes.about} elevation={0}>
           <CardContent>
             <Typography variant="headline" paragraph={true}>About The Portland Pour</Typography>

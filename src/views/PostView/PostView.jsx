@@ -15,7 +15,7 @@ import PostDetail from '../../components/PostDetail';
 import blogHelper from '../../helpers/blogHelper';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
-import MetaTags from 'react-meta-tags';
+import Helmet from 'react-helmet';
 
 const styles = theme => ({
   post: {
@@ -83,7 +83,7 @@ class PostView extends Component {
 
     return (
       <div className={classes.root}>
-        <MetaTags>
+        <Helmet>
           <title>{blogHelper.getTitle(post.title)}</title>
           <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
           <meta name="description" content={blogHelper.getPostDescription(post)} />
@@ -113,7 +113,7 @@ class PostView extends Component {
           <meta name="twitter:description" content={post.custom_excerpt} />
           <meta name="twitter:image" content={blogHelper.getBaseUrl() + post.feature_image} />
           <meta name="twitter:image:alt" content={post.title + ' cocktail'} />
-        </MetaTags>
+        </Helmet>
         {waiting ? progress : null}
         <div className={classes.postRoot}>
           <div className={classes.post}>
