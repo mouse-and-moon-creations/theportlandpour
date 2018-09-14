@@ -39,7 +39,7 @@ const ga = {
   }
 }
 
-const AppRoot = props => {
+const App = props => {
 
   const actionCallback = () => {
     return props.dispatch(blogActions.clearMessaging());
@@ -53,35 +53,20 @@ const AppRoot = props => {
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <div className={classes.wrapper}>
-          <span>
-            <Header />
-            <Switch>
-              <Route path="/" exact component={WithTracker(HomeView)} />
-              <Route path="/page/:page" component={WithTracker(BlogView)} />
-              <Route path="/post/:slug" component={WithTracker(PostView)} />
-              <Route path="/about" component={WithTracker(AboutView)} />
-              <Route path="/sitemap" component={NoView} />
-              <Route component={WithTracker(NoView)} />
-            </Switch>
-            <Footer />
-          </span>
+        <Header />
+        <Switch>
+          <Route path="/" exact component={WithTracker(HomeView)} />
+          <Route path="/page/:page" component={WithTracker(BlogView)} />
+          <Route path="/post/:slug" component={WithTracker(PostView)} />
+          <Route path="/about" component={WithTracker(AboutView)} />
+          <Route path="/sitemap" component={NoView} />
+          <Route component={WithTracker(NoView)} />
+        </Switch>
+        <Footer />
       </div>
-      <Snackbar open={props.message ? true : false}
-                message={props.message}
-                autoHideDuration={6000}
-                action={<Button onClick={actionCallback} color="secondary" size="small">Dismiss</Button>}
-                onClose={actionCallback} />
     </MuiThemeProvider>
   );
 
 }
 
-const mapStateToProps = state => {
-
-  return state.blog.messaging;
-
-};
-
-const App = withStyles(styles)(AppRoot);
-
-export default connect(mapStateToProps)(App);
+export default withStyles(styles)(App);
