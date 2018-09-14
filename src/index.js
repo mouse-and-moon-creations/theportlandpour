@@ -12,24 +12,15 @@ require('es6-promise').polyfill();
 
 const { history, store } = storeHelper.getStore();
 
-const Application = (
+ReactDOM.hydrate(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Frontload noServerRender>
         <App />
       </Frontload>
     </ConnectedRouter>
-  </Provider>
+  </Provider>,
+  document.getElementById('root')
 );
-
-const root = document.getElementById('root');
-
-if (process.env.NODE_ENV === 'production') {
-  Loadable.preloadReady().then(() => {
-    ReactDOM.hydrate(Application, root);
-  });
-} else {
-  ReactDOM.render(Application, root);
-}
 
 unregister();
