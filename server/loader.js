@@ -19,6 +19,8 @@ import manifest from '../build/asset-manifest.json';
 // Some optional Redux functions related to user authentication
 import { setCurrentUser, logoutUser } from '../src/helpers/authHelper';
 
+global.fetch = require("node-fetch");
+
 // LOADER
 export default (req, res) => {
   /*
@@ -74,7 +76,7 @@ export default (req, res) => {
           3. Inside of a Redux <StaticRouter /> (since we're on the server), given a location and context to write to
           4. Inside of the store provider
           5. Inside of the React Loadable HOC to make sure we have the right scripts depending on page
-          6. Render all of this sexiness
+          6. Render all of it
           7. Make sure that when rendering Frontload knows to get all the appropriate preloaded requests
         In English, we basically need to know what page we're dealing with, and then load all the appropriate scripts and
         data for that page. We take all that information and compute the appropriate state to send to the user. This is

@@ -7,18 +7,27 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { frontloadConnect } from 'react-frontload';
 import Divider from '@material-ui/core/Divider';
 import blogActions from '../../actions/blogActions';
 import AboutBlock from '../../components/AboutBlock';
 import FeaturedPosts from '../../components/FeaturedPosts';
+import Footer from '../../components/Footer';
 import Hero from '../../components/Hero';
 import LocalBlock from '../../components/LocalBlock';
 import NewsletterBlock from '../../components/NewsletterBlock';
 import PeopleBlock from '../../components/PeopleBlock';
 import PitchBlock from '../../components/PitchBlock';
 import PostsBlock from '../../components/PostsBlock';
+import blogConstants from '../../constants/blogConstants';
 import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
+
+const frontload = async props => {
+  props.dispatch(blogActions.request(blogConstants.WAITING_POSTS));
+  const posts = await blogActions.getPosts();
+  await props.dispatch(posts);
+}
 
 /**
  * Blog view component
@@ -33,10 +42,6 @@ class HomeView extends Component {
     }
 
     this.props.dispatch(blogActions.getFeaturedPosts());
-
-    this.props.dispatch(blogActions.getPosts());
-
-    return this;
 
   }
 
@@ -82,6 +87,7 @@ class HomeView extends Component {
         <AboutBlock />
         <Divider />
         <PeopleBlock users={users} />
+        <Footer />
       </React.Fragment>
     );
 
@@ -95,4 +101,4 @@ const mapStateToProps = state => {
 
 }
 
-export default connect(mapStateToProps)(HomeView);
+export default connect(mapStateToProps)(frontloadConnect(frontload, {onMount: true, onUpdate: false})(HomeView));

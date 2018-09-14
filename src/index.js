@@ -8,19 +8,26 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Frontload } from 'react-frontload';
 import Loadable from 'react-loadable';
 
-require('es6-promise').polyfill();
-
 const { history, store } = storeHelper.getStore();
 
-ReactDOM.hydrate(
+const root = document.getElementById('root');
+
+const application = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Frontload noServerRender>
         <App />
       </Frontload>
     </ConnectedRouter>
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
 );
+
+if (process.env.NODE_ENV === 'production') {
+  Loadable.preloadReady().then(() => {
+    ReactDOM.hydrate(application, root);
+  });
+} else {
+  ReactDOM.render(application, root);
+}
 
 unregister();

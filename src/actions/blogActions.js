@@ -23,6 +23,41 @@ const clearPostDetail = () => {
 
 }
 
+const fetchUsers = (opts={}) => {
+
+  const options = Object.assign({}, { limit: 'all' }, opts);
+  const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
+  const endpoint = blogHelper.getEndpoint('users', queryString);
+
+  return new Promise((resolve, reject) => {
+
+    API.get(endpoint)
+      .then(
+        users => {
+          users.users.sort((a, b) => {
+            const nameA = a.name.toUpperCase();
+            const nameB = b.name.toUpperCase();
+            if(nameA > nameB) {
+              return 1;
+            }
+            else if (nameA < nameB) {
+              return -1;
+            }
+            else {
+              return 0;
+            }
+          });
+          resolve(success(blogConstants.GET_USERS, users.users.reverse()));
+        },
+        error => {
+          reject(fail(error));
+        }
+      );
+
+  });
+
+}
+
 const getPostBySlug = (slug, opts={}) => {
 
   const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags' }, opts);
@@ -44,6 +79,28 @@ const getPostBySlug = (slug, opts={}) => {
       );
 
   }
+
+}
+
+const fetchPostBySlug = (slug, opts={}) => {
+
+  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags' }, opts);
+  const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
+  const endpoint = blogHelper.getEndpoint('postBySlug', queryString, slug);
+
+  return new Promise((resolve, reject) => {
+
+    API.get(endpoint)
+      .then(
+        posts => {
+          resolve(success(blogConstants.GET_POST, posts.posts[0]));
+        },
+        error => {
+          reject(fail(error));
+        }
+      );
+
+  });
 
 }
 
@@ -95,11 +152,28 @@ const getLatestPosts = (opts = {}) => {
 
 }
 
-/**
- * Get a list of posts from Ghost
- * @param  {String}  [posts='posts']         The endpoint
- * @return {Promise} { meta: {}, posts: [] } Promise object contains posts array and meta object
- */
+const fetchPosts = (opts = {}) => {
+
+  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags', limit: 16 }, opts);
+  const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
+  const endpoint = blogHelper.getEndpoint('posts', queryString);
+
+  return  new Promise((resolve, reject) => {
+
+    API.get(endpoint)
+      .then(
+        posts => {
+          resolve(success(blogConstants.GET_POSTS, posts));
+        },
+        error => {
+          reject(fail(error));
+        }
+      );
+
+  });
+
+}
+
 const getPosts = (opts = {}) => {
 
   const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags', limit: 16 }, opts);
@@ -245,12 +319,16 @@ const blogActions = {
   clearMessaging,
   clearPostDetail,
   addToMailChimp,
+  fetchPostBySlug,
+  fetchPosts,
+  fetchUsers,
   getFeaturedPosts,
   getLatestPosts,
   getPostBySlug,
   getPosts,
   getTags,
   getUsers,
+  request,
   setSelectedMixers,
   setSelectedSpirits
 };

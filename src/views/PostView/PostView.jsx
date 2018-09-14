@@ -8,14 +8,29 @@
 import React, { Component } from 'react';
 import withRouter from 'react-router-dom/withRouter';
 import { connect } from 'react-redux';
+import { frontloadConnect } from 'react-frontload';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import withStyles from '@material-ui/core/styles/withStyles';
 import blogActions from '../../actions/blogActions';
 import PostDetail from '../../components/PostDetail';
+import blogConstants from '../../constants/blogConstants';
 import blogHelper from '../../helpers/blogHelper';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
 import Helmet from 'react-helmet';
+import Footer from '../../components/Footer';
+
+const frontload = async props => {
+  const slug = props.location.pathname.split('/');
+  props.dispatch(blogActions.request(blogConstants.WAITING_POST));
+  const post = await blogActions.fetchPostBySlug(slug.pop());
+  await props.dispatch(post);
+  if(props.blog.users.length === 0) {
+    props.dispatch(blogActions.request(blogConstants.WAITING_USERS));
+    const users = await blogActions.fetchUsers();
+    await props.dispatch(users);
+  }
+}
 
 const styles = theme => ({
   post: {
@@ -34,11 +49,6 @@ const styles = theme => ({
     maxWidth: theme.local.maxWidth,
     paddingTop: theme.local.headerPadding
   },
-  sidebar: {
-    paddingBottom: '24px',
-    paddingRight: '24px',
-    width: '30%'
-  },
   title: {
     paddingBottom: '24px',
     paddingLeft: '36px',
@@ -53,14 +63,6 @@ const styles = theme => ({
 class PostView extends Component {
 
   componentDidMount() {
-
-    const slug = this.props.location.pathname.split('/');
-
-    if(this.props.blog.users.length === 0) {
-      this.props.dispatch(blogActions.getUsers());
-    }
-
-    this.props.dispatch(blogActions.getPostBySlug(slug.pop()));
 
     document.body.addEventListener('click', blogHelper.postLinkHandler);
 
@@ -82,6 +84,7 @@ class PostView extends Component {
     const user = find(users, { id: post.author });
 
     return (
+      <React.Fragment>
       <div className={classes.root}>
         <Helmet>
           <title>{blogHelper.getTitle(post.title)}</title>
@@ -121,6 +124,8 @@ class PostView extends Component {
           </div>
         </div>
       </div>
+      <Footer />
+    </React.Fragment>
     );
 
   }
@@ -137,4 +142,4 @@ const routedComponent = withRouter(PostView);
 
 const styledComponent = withStyles(styles)(routedComponent);
 
-export default connect(mapStateToProps)(styledComponent);
+export default connect(mapStateToProps)(frontloadConnect(frontload, {onMount: true, onUpdate: false})(styledComponent));;

@@ -1,17 +1,14 @@
 import React from 'react';
 import ReactGA from 'react-ga';
-import { connect } from 'react-redux';
 import {
   Route,
   Switch
 } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Snackbar from '@material-ui/core/Snackbar';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import withStyles from '@material-ui/core/styles/withStyles';
-import blogActions from './actions/blogActions';
+//import blogActions from './actions/blogActions';
 import themeHelper from './helpers/themeHelper';
 import AboutView from './views/AboutView';
 import BlogView from './views/BlogView';
@@ -19,7 +16,6 @@ import HomeView from './views/HomeView';
 import NoView from './views/NoView';
 import PostView from './views/PostView';
 //import SitemapView from './views/SitemapView';
-import Footer from './components/Footer';
 import Header from './components/Header';
 import WithTracker from './components/WithTracker';
 import './App.css';
@@ -27,7 +23,20 @@ import './App.css';
 const theme = createMuiTheme(themeHelper.getTheme());
 
 const styles = theme => ({
+  curtain: {
+    background: theme.palette.common.white,
+    height: '100%',
+    left: 0,
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+    zIndex: 100000
+  },
+  hidden: {
+    display: 'none'
+  },
   wrapper: {
+    visibility: 'visible ! important',
     width: '100%'
   }
 });
@@ -41,9 +50,9 @@ const ga = {
 
 const App = props => {
 
-  const actionCallback = () => {
-    return props.dispatch(blogActions.clearMessaging());
-  }
+//  const actionCallback = () => {
+//    return props.dispatch(blogActions.clearMessaging());
+//  }
 
   const { classes } = props;
 
@@ -52,7 +61,7 @@ const App = props => {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <div className={classes.wrapper}>
+      <div className={classes.wrapper} style={{visibility:'hidden'}}>
         <Header />
         <Switch>
           <Route path="/" exact component={WithTracker(HomeView)} />
@@ -62,7 +71,6 @@ const App = props => {
           <Route path="/sitemap" component={NoView} />
           <Route component={WithTracker(NoView)} />
         </Switch>
-        <Footer />
       </div>
     </MuiThemeProvider>
   );
