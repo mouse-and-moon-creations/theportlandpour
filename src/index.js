@@ -7,6 +7,7 @@ import { storeHelper } from 'helpers';
 import { ConnectedRouter } from 'connected-react-router';
 import { Frontload } from 'react-frontload';
 import Loadable from 'react-loadable';
+import { ScrollContext } from 'react-router-scroll-4';
 
 const { history, store } = storeHelper.getStore();
 
@@ -15,9 +16,11 @@ const root = document.getElementById('root');
 const application = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Frontload noServerRender>
-        <App />
-      </Frontload>
+      <ScrollContext>
+        <Frontload noServerRender>
+          <App />
+        </Frontload>
+      </ScrollContext>
     </ConnectedRouter>
   </Provider>
 );

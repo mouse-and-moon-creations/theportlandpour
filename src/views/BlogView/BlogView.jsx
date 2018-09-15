@@ -7,6 +7,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { frontloadConnect } from 'react-frontload';
 import Hidden from '@material-ui/core/Hidden';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -16,8 +17,24 @@ import Pager from '../../components/Pager';
 import Posts from '../../components/Posts';
 import Sidebar from '../../components/Sidebar';
 import pull from 'lodash/pull';
+import blogConstants from '../../constants/blogConstants';
 import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
+
+const frontload = async props => {
+  const page = props.match.params.page;
+  const paginationPage = props.blog.meta.pagination.page;
+  if(+page !== +paginationPage) {
+    props.dispatch(blogActions.request(blogConstants.WAITING_POSTS));
+    const posts = await blogActions.fetchPosts({page: page});
+    await props.dispatch(posts);
+  }
+  if(props.blog.users.length === 0) {
+    props.dispatch(blogActions.request(blogConstants.WAITING_USERS));
+    const users = await blogActions.fetchUsers();
+    await props.dispatch(users);
+  }
+}
 
 const styles = theme => ({
   posts: {
@@ -63,22 +80,9 @@ class BlogView extends Component {
       return page ? this.props.dispatch(blogActions.getPosts({page: page})) : null;
     });
 
-    const page = this.props.match.params.page;
-    const paginationPage = this.props.blog.meta.pagination.page;
-
-    if(this.props.blog.users.length === 0) {
-      this.props.dispatch(blogActions.getUsers());
-    }
-
     if(this.props.blog.tags.length === 0) {
       this.props.dispatch(blogActions.getTags());
     }
-
-    if(+page !== +paginationPage) {
-      this.props.dispatch(blogActions.getPosts({page: page}));
-    }
-
-    return this;
 
   }
 
@@ -173,4 +177,4 @@ const mapStateToProps = state => {
 
 const styledComponent = withStyles(styles)(BlogView)
 
-export default connect(mapStateToProps)(styledComponent);
+export default connect(mapStateToProps)(frontloadConnect(frontload, {onMount: true, onUpdate: false})(styledComponent));

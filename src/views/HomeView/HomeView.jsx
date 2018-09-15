@@ -25,7 +25,7 @@ import Helmet from 'react-helmet';
 
 const frontload = async props => {
   props.dispatch(blogActions.request(blogConstants.WAITING_POSTS));
-  const posts = await blogActions.getPosts();
+  const posts = await blogActions.fetchPosts();
   await props.dispatch(posts);
 }
 
