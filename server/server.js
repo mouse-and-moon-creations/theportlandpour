@@ -23,14 +23,14 @@ const PORT = process.env.PORT || 3000;
   https://mydomain.com
   Resolve to: https://www.mydomain.com
 */
-//if (process.env.NODE_ENV === 'production') {
-//  app.use(
-//    forceDomain({
-//      hostname: 'www.theportlandpour.com',
-//      protocol: 'https'
-//    })
-//  );
-//}
+if (process.env.NODE_ENV === 'production') {
+  app.use(
+    forceDomain({
+      hostname: 'www.theportlandpour.com',
+      protocol: 'https'
+    })
+  );
+}
 
 // Compress, parse, log, and raid the cookie jar
 app.use(compression());
