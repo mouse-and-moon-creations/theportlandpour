@@ -151,12 +151,6 @@ class Header extends Component {
                 </ListItemIcon>
                 <ListItemText primary="Cocktails" />
               </ListItem>
-              <ListItem button component="a" href="/about">
-                <ListItemIcon>
-                  <Info />
-                </ListItemIcon>
-                <ListItemText primary="About" />
-              </ListItem>
               <ListItem button component="a" href="https://blog.theportlandpour.com/rss/">
                 <ListItemIcon>
                   <RssFeed />

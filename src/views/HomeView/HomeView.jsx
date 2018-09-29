@@ -19,6 +19,7 @@ import NewsletterBlock from '../../components/NewsletterBlock';
 import PeopleBlock from '../../components/PeopleBlock';
 import PitchBlock from '../../components/PitchBlock';
 import PostsBlock from '../../components/PostsBlock';
+import WorkWithUsBlock from '../../components/WorkWithUsBlock';
 import blogConstants from '../../constants/blogConstants';
 import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
@@ -85,6 +86,7 @@ class HomeView extends Component {
         <PostsBlock posts={posts.slice(10, posts.length)} users={users} />
         <Divider />
         <AboutBlock />
+        <WorkWithUsBlock />
         <Divider />
         <PeopleBlock users={users} />
         <Footer />

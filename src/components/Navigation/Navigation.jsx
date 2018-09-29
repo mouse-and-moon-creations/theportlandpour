@@ -20,7 +20,6 @@ const Navigation = props => {
   return (
     <Tabs value={false} className={props.className ? props.className : ''}>
       <Tab onClick={() => handleClick('/page/1')} label="Cocktails" />
-      <Tab onClick={() => handleClick('/about')} label="About" />
       <Tab onClick={() => window.open('https://blog.theportlandpour.com/rss')} icon={<RssFeed />}/>
     </Tabs>
   );
