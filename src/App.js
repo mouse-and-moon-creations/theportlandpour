@@ -12,6 +12,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import themeHelper from './helpers/themeHelper';
 import AboutView from './views/AboutView';
 import BlogView from './views/BlogView';
+import ContactView from './views/ContactView';
 import HomeView from './views/HomeView';
 import NoView from './views/NoView';
 import PostView from './views/PostView';
@@ -68,6 +69,7 @@ const App = props => {
           <Route path="/page/:page" component={WithTracker(BlogView)} />
           <Route path="/post/:slug" component={WithTracker(PostView)} />
           <Route path="/about" component={WithTracker(AboutView)} />
+          <Route path="/contact" component={WithTracker(ContactView)} />
           <Route path="/sitemap" component={NoView} />
           <Route component={WithTracker(NoView)} />
         </Switch>

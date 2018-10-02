@@ -20,6 +20,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItemText from '@material-ui/core/ListItemText';
 import Toolbar from '@material-ui/core/Toolbar';
+import Email from '@material-ui/icons/Email';
 import Home from '@material-ui/icons/Home';
 import LocalBar from '@material-ui/icons/LocalBar';
 import Menu from '@material-ui/icons/Menu';
@@ -174,6 +175,12 @@ class Header extends Component {
                   <LocalBar />
                 </ListItemIcon>
                 <ListItemText primary="Cocktails" />
+              </ListItem>
+              <ListItem button component="a" href="/contact">
+                <ListItemIcon>
+                  <Email />
+                </ListItemIcon>
+                <ListItemText primary="Contact" />
               </ListItem>
               <ListItem button component="a" href="https://blog.theportlandpour.com/rss/">
                 <ListItemIcon>
