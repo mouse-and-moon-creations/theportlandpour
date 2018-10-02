@@ -7,6 +7,8 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faPinterest } from '@fortawesome/free-brands-svg-icons';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Drawer from '@material-ui/core/Drawer';
@@ -72,6 +74,21 @@ const styles = theme => ({
   navigation: {
     paddingTop: '24px'
   },
+  socialIcon: {
+    marginLeft: '12px',
+    verticalAlign: '0.75em ! important'
+  },
+  socialIconLink: {
+    color: theme.palette.grey[500],
+    textDecoration: 'none',
+    '&:hover': {
+      color: theme.palette.common.black
+    }
+  },
+  socialIcons: {
+    display: 'inline-block',
+    paddingLeft: '12px'
+  },
   tagline: {
     background: 'transparent',
     flexGrow: 1
@@ -111,6 +128,14 @@ class Header extends Component {
               <Link to="/">
                 <img src="/assets/images/brand/tpp.brand.md.png" alt=""/>
               </Link>
+              <div className={classes.socialIcons}>
+                <a href="https://www.instagram.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                  <FontAwesomeIcon className={classes.socialIcon} icon={faInstagram} size="lg" />
+                </a>
+                <a href="https://www.pinterest.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                  <FontAwesomeIcon className={classes.socialIcon} icon={faPinterest} size="lg" />
+                </a>
+              </div>
             </div>
             <Hidden smDown>
               <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css" />

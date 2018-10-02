@@ -35,7 +35,11 @@ const styles = theme => ({
   root: {
     background: 'transparent',
     margin: '0 auto',
-    maxWidth: theme.local.maxWidth
+    maxWidth: theme.local.maxWidth,
+    paddingBottom: '24px'
+  },
+  caption: {
+    paddingBottom: '12px'
   },
   cardActions: {
     display: 'flex',
@@ -58,7 +62,8 @@ const styles = theme => ({
     display: 'flex'
   },
   flexTitle: {
-    flexGrow: 1
+    flexGrow: 1,
+    padding: '24px 0 12px 0'
   },
   post: {
     marginBottom: '12px',
@@ -84,7 +89,7 @@ const FeaturedPosts = props => {
             <Button color="secondary" size="small">See all the cocktails</Button>
           </Link>
         </div>
-        <Typography variant="body1" paragraph>{caption}</Typography>
+        <Typography className={classes.caption} variant="body1" paragraph>{caption}</Typography>
         <div className={classes.featuredPosts}>
           {featuredPosts.length ? featuredPosts.map(post => {
             return <Post classes={{ rootCompact: classes.post }} post={post} user={find(users, { id: post.author })} key={post.id} compact />;

@@ -37,7 +37,11 @@ const styles = theme => ({
     backgroundColor: theme.local.palette.background.dark,
     color: theme.palette.common.white,
     minHeight: '400px',
-    paddingTop: '90px'
+    paddingBottom: '24px',
+    paddingTop: '90px',
+    [theme.breakpoints.down('md')]: {
+      paddingBottom: 0
+    }
   },
   heroContent: {
     margin: '0 auto',
