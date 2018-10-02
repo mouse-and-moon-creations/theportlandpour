@@ -53,7 +53,7 @@ const styles = theme => ({
   heroHeader: {
     alignItems: 'center',
     display: 'flex',
-    padding: '12px 0'
+    padding: '24px 0'
   },
   heroTagline: {
     alignItems: 'center',
