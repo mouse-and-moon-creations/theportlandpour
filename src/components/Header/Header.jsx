@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faPinterest } from '@fortawesome/free-brands-svg-icons';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
@@ -24,6 +25,7 @@ import Email from '@material-ui/icons/Email';
 import Home from '@material-ui/icons/Home';
 import LocalBar from '@material-ui/icons/LocalBar';
 import Menu from '@material-ui/icons/Menu';
+import OpenInNew from '@material-ui/icons/OpenInNew';
 import RssFeed from '@material-ui/icons/RssFeed';
 import withStyles from '@material-ui/core/styles/withStyles';
 
@@ -129,14 +131,16 @@ class Header extends Component {
               <Link to="/">
                 <img src="/assets/images/brand/tpp.brand.md.png" alt=""/>
               </Link>
-              <div className={classes.socialIcons}>
-                <a href="https://www.instagram.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                  <FontAwesomeIcon className={classes.socialIcon} icon={faInstagram} size="lg" />
-                </a>
-                <a href="https://www.pinterest.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                  <FontAwesomeIcon className={classes.socialIcon} icon={faPinterest} size="lg" />
-                </a>
-              </div>
+              <Hidden smDown>
+                <div className={classes.socialIcons}>
+                  <a href="https://www.instagram.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                    <FontAwesomeIcon className={classes.socialIcon} icon={faInstagram} size="lg" />
+                  </a>
+                  <a href="https://www.pinterest.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                    <FontAwesomeIcon className={classes.socialIcon} icon={faPinterest} size="lg" />
+                  </a>
+                </div>
+              </Hidden>
             </div>
             <Hidden smDown>
               <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css" />
@@ -182,6 +186,26 @@ class Header extends Component {
                 </ListItemIcon>
                 <ListItemText primary="Contact" />
               </ListItem>
+              <Hidden mdUp>
+                <Divider />
+                <a href="https://www.instagram.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <OpenInNew />
+                    </ListItemIcon>
+                    <ListItemText primary="Instagram" />
+                  </ListItem>
+                </a>
+                <a href="https://www.pinterest.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <OpenInNew />
+                    </ListItemIcon>
+                    <ListItemText primary="Pinterest" />
+                  </ListItem>
+                </a>
+              </Hidden>
+              <Divider />
               <ListItem button component="a" href="https://blog.theportlandpour.com/rss/">
                 <ListItemIcon>
                   <RssFeed />

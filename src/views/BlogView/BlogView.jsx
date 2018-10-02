@@ -10,12 +10,13 @@ import { connect } from 'react-redux';
 import { frontloadConnect } from 'react-frontload';
 import Hidden from '@material-ui/core/Hidden';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import blogActions from '../../actions/blogActions';
+import Filter from '../../components/Filter';
 import Footer from '../../components/Footer';
 import Pager from '../../components/Pager';
 import Posts from '../../components/Posts';
-import Sidebar from '../../components/Sidebar';
 import pull from 'lodash/pull';
 import blogConstants from '../../constants/blogConstants';
 import blogHelper from '../../helpers/blogHelper';
@@ -39,7 +40,7 @@ const frontload = async props => {
 const styles = theme => ({
   posts: {
     padding: '0 24px',
-    width: '70%',
+    width: '100%',
     [theme.breakpoints.down('sm')]: {
       width: 'auto'
     }
@@ -149,16 +150,19 @@ class BlogView extends Component {
           </Helmet>
           <div className={classes.rootContent}>
             <div className={classes.posts}>
+              <Typography align="center" variant="headline">Cocktail posts</Typography>
+              <Typography align="center" variant="subheading">Cocktail pictures, stories, and recipes featuring local ingredients</Typography>
+              <Hidden smDown>
+                <Filter getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
+              </Hidden>
               <Pager pagination={pagination} />
               {waiting ? progress : null}
               <Posts posts={posts} users={users} />
+              <Hidden smDown>
+                <Filter getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
+              </Hidden>
               <Pager pagination={pagination} />
             </div>
-            <Hidden smDown>
-              <div className={classes.sidebar}>
-                <Sidebar showSearch getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
-              </div>
-            </Hidden>
           </div>
         </div>
         <Footer />

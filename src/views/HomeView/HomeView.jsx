@@ -83,7 +83,7 @@ class HomeView extends Component {
         <Divider />
         <PostsBlock posts={posts.slice(4, 10)} users={users} />
         <NewsletterBlock />
-        <PostsBlock posts={posts.slice(10, posts.length)} users={users} />
+        <PostsBlock posts={posts.slice(10, posts.length - 2)} users={users} />
         <Divider />
         <AboutBlock />
         <WorkWithUsBlock />

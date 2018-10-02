@@ -154,7 +154,7 @@ const getLatestPosts = (opts = {}) => {
 
 const fetchPosts = (opts = {}) => {
 
-  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags', limit: 16 }, opts);
+  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags', limit: 18 }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 
@@ -176,7 +176,7 @@ const fetchPosts = (opts = {}) => {
 
 const getPosts = (opts = {}) => {
 
-  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags', limit: 16 }, opts);
+  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags', limit: 18 }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 
