@@ -41,6 +41,9 @@ const styles = theme => ({
     width: '24%'
   },
   card: {
+    borderColor: theme.palette.grey[300],
+    borderWidth: '1px',
+    borderStyle: 'solid',
     minWidth: '240px',
     width: '24%',
     [theme.breakpoints.down('md')]: {
@@ -63,7 +66,7 @@ const User = props => {
   const absSrc = blogHelper.getAssetUrl(src);
 
   return (
-    <Card className={compact ? classes.cardCompact : classes.card}>
+    <Card className={compact ? classes.card : classes.card} elevation={0}>
       <CardContent className={classes.cardContent}>
         <Avatar className={classes.avatar} src={absSrc} />
         <div>

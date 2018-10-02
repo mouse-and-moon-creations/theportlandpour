@@ -19,7 +19,6 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItemText from '@material-ui/core/ListItemText';
 import Toolbar from '@material-ui/core/Toolbar';
 import Home from '@material-ui/icons/Home';
-import Info from '@material-ui/icons/Info';
 import LocalBar from '@material-ui/icons/LocalBar';
 import Menu from '@material-ui/icons/Menu';
 import RssFeed from '@material-ui/icons/RssFeed';

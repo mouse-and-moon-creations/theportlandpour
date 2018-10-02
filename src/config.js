@@ -39,7 +39,7 @@ const config = {
     },
     palette: {
       background: {
-
+        default: '#fff'
       }
     },
     typography: {

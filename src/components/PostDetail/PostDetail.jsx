@@ -71,7 +71,7 @@ const PostDetail = props => {
   const absSrc = blogHelper.getAssetUrl(user.profile_image);
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} elevation={0}>
       <CardContent className={classes.cardBody}>
         <Typography variant="display2" color="default" align="center" className={classes.cardTitle}>{post.title}</Typography>
         <Typography className={classes.cardSubheading} align="center" variant="subheading" color="textSecondary" component="div">"{ post.custom_excerpt }"</Typography>

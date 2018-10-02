@@ -33,6 +33,9 @@ const defaultProps = {
 
 const styles = theme => ({
   root: {
+    borderColor: theme.palette.grey[300],
+    borderWidth: '1px',
+    borderStyle: 'solid',
     marginBottom: '12px',
     width: '32%',
     [theme.breakpoints.down('md')]: {
@@ -43,6 +46,9 @@ const styles = theme => ({
     }
   },
   rootCompact: {
+    borderColor: theme.palette.grey[300],
+    borderWidth: '1px',
+    borderStyle: 'solid',
     width: '16%',
     [theme.breakpoints.down('md')]: {
       width: '24%'
@@ -78,7 +84,7 @@ const Post = props => {
   const postBySlug = blogHelper.getPostUrl(post.slug)
 
   return (
-    <Card className={compact ? classes.rootCompact : classes.root} {...props} classes={{}} compact="" showactions="">
+    <Card className={compact ? classes.rootCompact : classes.root} {...props} classes={{}} compact="" showactions="" elevation={0}>
       <Link to={postBySlug}>
         <CardContent>
           <Typography align="center">
