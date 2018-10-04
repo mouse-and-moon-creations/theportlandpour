@@ -9,8 +9,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'react-router-dom/Link';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Gloss from '../Gloss';
@@ -19,6 +17,7 @@ import find from 'lodash/find';
 
 const propTypes = {
   caption: PropTypes.string,
+  compact: PropTypes.bool,
   featuredPosts: PropTypes.array,
   title: PropTypes.string,
   users: PropTypes.array
@@ -26,6 +25,7 @@ const propTypes = {
 
 const defaultProps = {
   caption: '',
+  compact: true,
   featuredPosts: [],
   title: '',
   users: []
@@ -75,11 +75,11 @@ const styles = theme => ({
 
 const FeaturedPosts = props => {
 
-  const { caption, classes, featuredPosts, title, users } = props;
+  const { caption, classes, compact, featuredPosts, title, users } = props;
 
   return (
-    <Card className={classes.root} elevation={0} square>
-      <CardContent className={classes.cardContent}>
+    <div className={classes.root}>
+      {title ?
         <div className={classes.flex}>
           <div className={classes.flexTitle}>
             <Gloss label="Featured" />
@@ -88,15 +88,15 @@ const FeaturedPosts = props => {
           <Link to="/page/1">
             <Button color="secondary" size="small">See all the cocktails</Button>
           </Link>
-        </div>
-        <Typography className={classes.caption} variant="body1" paragraph>{caption}</Typography>
-        <div className={classes.featuredPosts}>
-          {featuredPosts.length ? featuredPosts.map(post => {
-            return <Post classes={{ rootCompact: classes.post }} post={post} user={find(users, { id: post.author })} key={post.id} compact />;
-          }) : null}
-        </div>
-      </CardContent>
-    </Card>
+        </div> : null
+      }
+      {caption ? <Typography className={classes.caption} variant="body1" paragraph>{caption}</Typography> : null }
+      <div className={classes.featuredPosts}>
+        {featuredPosts.length ? featuredPosts.map(post => {
+          return <Post classes={{ rootCompact: classes.post }} post={post} user={find(users, { id: post.author })} key={post.id} compact={compact} />;
+        }) : null}
+      </div>
+    </div>
   );
 
 }

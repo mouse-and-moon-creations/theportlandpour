@@ -8,8 +8,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Markdown from 'react-markdown';
@@ -41,9 +39,6 @@ const styles = theme => ({
   cardActions: {
     display: 'flex'
   },
-  cardBody: {
-    padding: '0 10%'
-  },
   cardButton: {
     marginLeft: 'auto'
   },
@@ -55,9 +50,6 @@ const styles = theme => ({
   },
   cardSubheading: {
     paddingBottom: '24px'
-  },
-  cardTitle: {
-    padding: '24px 0 12px 0'
   }
 });
 
@@ -71,22 +63,20 @@ const PostDetail = props => {
   const absSrc = blogHelper.getAssetUrl(user.profile_image);
 
   return (
-    <Card className={classes.root} elevation={0}>
-      <CardContent className={classes.cardBody}>
-        <Typography variant="display2" color="default" align="center" className={classes.cardTitle}>{post.title}</Typography>
-        <Typography className={classes.cardSubheading} align="center" variant="subheading" color="textSecondary" component="div">"{ post.custom_excerpt }"</Typography>
-        <Typography className={classes.cardSubheading} variant="subheading" color="textSecondary" align="center" paragraph={true}>
-          <Avatar className={classes.avatar} component="span" src={absSrc} />
-          {user.name} on {postDate}</Typography>
-        <Typography align="center">
-          <img src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} className={classes.image} />
-        </Typography>
-        <Typography component="div">
-          <Markdown escapeHtml={true} source={markdown.markdown} />
-        </Typography>
-        <TagList tags={post.tags} />
-      </CardContent>
-    </Card>
+    <div className={classes.root}>
+      <Typography variant="display2" color="default" align="center" className={classes.cardTitle}>{post.title}</Typography>
+      <Typography className={classes.cardSubheading} align="center" variant="subheading" color="textSecondary" component="div">"{ post.custom_excerpt }"</Typography>
+      <Typography className={classes.cardSubheading} variant="subheading" color="textSecondary" align="center" paragraph={true}>
+        <Avatar className={classes.avatar} component="span" src={absSrc} />
+        {user.name} on {postDate}</Typography>
+      <Typography align="center">
+        <img src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} className={classes.image} />
+      </Typography>
+      <Typography component="div">
+        <Markdown escapeHtml={true} source={markdown.markdown} />
+      </Typography>
+      <TagList tags={post.tags} />
+    </div>
   );
 
 }

@@ -65,7 +65,7 @@ const styles = theme => ({
     overflow: 'hidden'
   },
   cardButton: {
-    marginLeft: 'auto'
+    margin: 'auto'
   },
   image: {
     border: '1px solid #D3DBDF',
@@ -74,6 +74,9 @@ const styles = theme => ({
   },
   cardTitle: {
     padding: '24px 0'
+  },
+  cardTitleCompact: {
+    padding: '0'
   }
 });
 
@@ -90,13 +93,15 @@ const Post = props => {
           <Typography align="center">
             <img src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} className={classes.image} />
           </Typography>
-          <Typography variant={compact ? 'subheading' : 'title'} align="center" className={classes.cardTitle}>{post.title}</Typography>
-          <Typography variant="caption" align="center" paragraph={true}>{postDate} by {user.name}</Typography>
+          <Typography variant={compact ? 'subheading' : 'title'} align="center" className={compact ? classes.cardTitleCompact : classes.cardTitle}>{post.title}</Typography>
           {compact ? null : (
-            <Typography className={classes.cardBody} component="div">{ post.custom_excerpt }</Typography>
+            <React.Fragment>
+              <Typography variant="caption" align="center" paragraph={true}>{postDate} by {user.name}</Typography>
+              <Typography className={classes.cardBody} component="div">{ post.custom_excerpt }</Typography>
+            </React.Fragment>
           )}
         </CardContent>
-        {showactions && !compact ? (
+        {showactions ? (
           <CardActions className={classes.cardActions}>
             <Button className={classes.cardButton} color="secondary" disableRipple disableFocusRipple>Read more</Button>
           </CardActions>
