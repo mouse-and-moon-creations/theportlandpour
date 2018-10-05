@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 
@@ -32,10 +33,7 @@ const WorkWithUsBlock = props => {
         {"We're Mouse and Moon Creations, makers of The Portland Pour."}
       </Typography>
       <Typography color="inherit" variant="subheading" align="center" paragraph>
-        Visit MouseAndMoonCreations.com and find out more.
-      </Typography>
-      <Typography color="inherit" variant="subheading" align="center" paragraph>
-        <a href="https://www.mouseandmooncreations.com" rel="noopener noreferrer" target="_blank">Visit Mouse and Moon Creations and learn how we can help</a>
+        <Link to="/work-with-us">Learn how we can help</Link>
       </Typography>
     </div>
   );
