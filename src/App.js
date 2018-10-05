@@ -10,13 +10,13 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import withStyles from '@material-ui/core/styles/withStyles';
 //import blogActions from './actions/blogActions';
 import themeHelper from './helpers/themeHelper';
-import AboutView from './views/AboutView';
 import BlogView from './views/BlogView';
 import ContactView from './views/ContactView';
 import HomeView from './views/HomeView';
 import NoView from './views/NoView';
 import PostView from './views/PostView';
 //import SitemapView from './views/SitemapView';
+import WorkWithUsView from './views/WorkWithUsView';
 import Header from './components/Header';
 import WithTracker from './components/WithTracker';
 import './App.css';
@@ -68,8 +68,8 @@ const App = props => {
           <Route path="/" exact component={WithTracker(HomeView)} />
           <Route path="/page/:page" component={WithTracker(BlogView)} />
           <Route path="/post/:slug" component={WithTracker(PostView)} />
-          <Route path="/about" component={WithTracker(AboutView)} />
           <Route path="/contact" component={WithTracker(ContactView)} />
+          <Route path="/work-with-us" component={WithTracker(WorkWithUsView)} />
           <Route path="/sitemap" component={NoView} />
           <Route component={WithTracker(NoView)} />
         </Switch>

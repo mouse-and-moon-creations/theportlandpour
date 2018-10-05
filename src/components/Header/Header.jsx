@@ -27,6 +27,7 @@ import LocalBar from '@material-ui/icons/LocalBar';
 import Menu from '@material-ui/icons/Menu';
 import OpenInNew from '@material-ui/icons/OpenInNew';
 import RssFeed from '@material-ui/icons/RssFeed';
+import Work from '@material-ui/icons/Work';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
@@ -185,6 +186,12 @@ class Header extends Component {
                   <Email />
                 </ListItemIcon>
                 <ListItemText primary="Contact" />
+              </ListItem>
+              <ListItem button component="a" href="/work-with-us">
+                <ListItemIcon>
+                  <Work />
+                </ListItemIcon>
+                <ListItemText primary="work-with-us" />
               </ListItem>
               <Hidden mdUp>
                 <Divider />
