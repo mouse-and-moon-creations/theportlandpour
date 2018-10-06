@@ -85,8 +85,6 @@ const Hero = props => {
 
   const { classes, latestPosts, width } = props;
 
-  console.log(width);
-
   return (
     <div className={classes.hero}>
       <div className={classes.heroContent}>
