@@ -35,13 +35,14 @@ const styles = theme => ({
     transform: 'translateZ(0)'
   },
   hero: {
-    background: 'url(/assets/images/wood.jpg)',
+    backgroundImage: 'url(/assets/images/wood.jpg)',
     backgroundColor: theme.local.palette.background.dark,
     color: theme.palette.common.white,
     minHeight: '400px',
     paddingBottom: '24px',
     paddingTop: '90px',
     [theme.breakpoints.down('md')]: {
+      backgroundImage: 'none',
       paddingBottom: 0
     }
   },
@@ -77,7 +78,7 @@ const styles = theme => ({
     flexGrow: 1
   },
   tileBar: {
-    background: 'rgba(85,20,0,0.5)'
+    background: 'rgba(85,20,0,0.6)'
   }
 });
 
