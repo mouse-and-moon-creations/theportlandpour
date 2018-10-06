@@ -18,6 +18,7 @@ import Gloss from '../Gloss';
 import blogHelper from '../../helpers/blogHelper';
 
 const gridCols = {
+  xl: 4,
   lg: 4,
   md: 3.5,
   sm: 2.5,
@@ -83,6 +84,8 @@ const styles = theme => ({
 const Hero = props => {
 
   const { classes, latestPosts, width } = props;
+
+  console.log(width);
 
   return (
     <div className={classes.hero}>
