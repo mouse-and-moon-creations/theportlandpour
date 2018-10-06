@@ -12,7 +12,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import blogActions from '../../actions/blogActions';
 import Footer from '../../components/Footer';
 import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
@@ -38,17 +37,9 @@ const styles = theme => ({
 
 class WorkWithUsView extends Component {
 
-  componentDidMount = () => {
-
-    if(this.props.users.length === 0) {
-      this.props.dispatch(blogActions.getUsers());
-    }
-
-  }
-
   render() {
 
-    const { classes, match, users } = this.props;
+    const { classes, match } = this.props;
 
     return (
       <React.Fragment>

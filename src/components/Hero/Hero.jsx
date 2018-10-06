@@ -34,6 +34,7 @@ const styles = theme => ({
     transform: 'translateZ(0)'
   },
   hero: {
+    background: 'url(/assets/images/wood.jpg)',
     backgroundColor: theme.local.palette.background.dark,
     color: theme.palette.common.white,
     minHeight: '400px',
@@ -73,6 +74,9 @@ const styles = theme => ({
   },
   right: {
     flexGrow: 1
+  },
+  tileBar: {
+    background: 'rgba(85,20,0,0.5)'
   }
 });
 
@@ -97,6 +101,7 @@ const Hero = props => {
                   <Link to={blogHelper.getPostUrl(post.slug)}>
                     <img className={classes.recentImage} src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} />
                     <GridListTileBar
+                      className={classes.tileBar}
                       subtitle={<span>{post.custom_excerpt}</span>}
                       title={<span>*New* {post.title}</span>}
                     />
