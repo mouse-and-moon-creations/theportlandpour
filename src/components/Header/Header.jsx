@@ -23,6 +23,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Toolbar from '@material-ui/core/Toolbar';
 import Email from '@material-ui/icons/Email';
 import Home from '@material-ui/icons/Home';
+import Info from '@material-ui/icons/Info';
 import LocalBar from '@material-ui/icons/LocalBar';
 import Menu from '@material-ui/icons/Menu';
 import OpenInNew from '@material-ui/icons/OpenInNew';
@@ -180,6 +181,12 @@ class Header extends Component {
                   <LocalBar />
                 </ListItemIcon>
                 <ListItemText primary="Cocktails" />
+              </ListItem>
+              <ListItem button component="a" href="/about">
+                <ListItemIcon>
+                  <Info />
+                </ListItemIcon>
+                <ListItemText primary="About" />
               </ListItem>
               <ListItem button component="a" href="/contact">
                 <ListItemIcon>
