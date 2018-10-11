@@ -77,7 +77,10 @@ const PostDetail = props => {
       <Typography className={classes.cardSubheading} align="center" variant="subheading" color="textSecondary" component="div">"{ post.custom_excerpt }"</Typography>
       <Typography className={classes.cardSubheading} variant="subheading" color="textSecondary" align="center">
         <Avatar className={classes.avatar} component="span" src={absSrc} />
-        {user.name} on {postDate}
+        posted by {user.name} on {postDate}
+      </Typography>
+      <Typography align="center" paragraph>
+        <img src={assetUrl} alt={post.title} className={classes.image} />
       </Typography>
       <Typography align="center" variant="headline" paragraph>
         <a className={classes.shareLink} href={facebookShare} rel="noopener noreferrer" target="_blank">
@@ -94,9 +97,6 @@ const PostDetail = props => {
         </a>
       </Typography>
       <Typography align="center" variant="caption" paragraph>permalink: {permalink}</Typography>
-      <Typography align="center">
-        <img src={assetUrl} alt={post.title} className={classes.image} />
-      </Typography>
       <Typography component="div">
         <div dangerouslySetInnerHTML={{__html: post.html}} />
       </Typography>
