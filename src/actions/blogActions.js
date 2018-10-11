@@ -60,7 +60,7 @@ const fetchUsers = (opts={}) => {
 
 const getPostBySlug = (slug, opts={}) => {
 
-  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags' }, opts);
+  const options = Object.assign({}, { formats: 'html', include: 'tags' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('postBySlug', queryString, slug);
 
@@ -84,7 +84,7 @@ const getPostBySlug = (slug, opts={}) => {
 
 const fetchPostBySlug = (slug, opts={}) => {
 
-  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags' }, opts);
+  const options = Object.assign({}, { formats: 'html', include: 'tags' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('postBySlug', queryString, slug);
 
@@ -106,7 +106,8 @@ const fetchPostBySlug = (slug, opts={}) => {
 
 const getFeaturedPosts = (opts = {}) => {
 
-  const options = Object.assign({}, { filter: 'featured:true', formats: 'mobiledoc', include: 'tags', limit: 6 }, opts);
+  const options = Object.assign({}, { filter: 'featured:true', include: 'tags', limit: 6 }, opts);
+  console.log(options);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 
@@ -130,7 +131,7 @@ const getFeaturedPosts = (opts = {}) => {
 
 const getLatestPosts = (opts = {}) => {
 
-  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags', limit: 6 }, opts);
+  const options = Object.assign({}, { include: 'tags', limit: 6 }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 
@@ -154,7 +155,7 @@ const getLatestPosts = (opts = {}) => {
 
 const fetchPosts = (opts = {}) => {
 
-  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags', limit: 18 }, opts);
+  const options = Object.assign({}, { include: 'tags', limit: 18 }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 
@@ -176,7 +177,7 @@ const fetchPosts = (opts = {}) => {
 
 const getPosts = (opts = {}) => {
 
-  const options = Object.assign({}, { formats: 'mobiledoc', include: 'tags', limit: 18 }, opts);
+  const options = Object.assign({}, { include: 'tags', limit: 18 }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 

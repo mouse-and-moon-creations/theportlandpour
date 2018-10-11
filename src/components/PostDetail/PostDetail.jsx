@@ -10,8 +10,6 @@ import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Markdown from 'react-markdown';
-import find from 'lodash/find';
 import TagList from '../TagList';
 import blogHelper from '../../helpers/blogHelper';
 
@@ -56,9 +54,6 @@ const styles = theme => ({
 const PostDetail = props => {
 
   const { classes, post, user } = props;
-  const mobiledoc = JSON.parse(post.mobiledoc);
-  const card = mobiledoc.cards[0];
-  const markdown = find(card, { cardName: card[0] });
   const postDate = blogHelper.getPostDate(post.published_at);
   const absSrc = blogHelper.getAssetUrl(user.profile_image);
 
@@ -73,7 +68,7 @@ const PostDetail = props => {
         <img src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} className={classes.image} />
       </Typography>
       <Typography component="div">
-        <Markdown escapeHtml={true} source={markdown.markdown} />
+        <div dangerouslySetInnerHTML={{__html: post.html}} />
       </Typography>
       <TagList tags={post.tags} />
     </div>
