@@ -19,8 +19,17 @@ const config = {
       }
     }
   },
+  facebook: {
+    share: 'https://www.facebook.com/sharer/sharer.php?u='
+  },
+  googlePlus: {
+    share: 'https://plus.google.com/share?url='
+  },
   mailchimp: {
     joinUrl: '//inspecdigital.us10.list-manage.com/subscribe/post-json?u=2b5f5ea27c2aeb60c18ebca53&amp;id=d633c0fa8c&b_2b5f5ea27c2aeb60c18ebca53_d633c0fa8c='
+  },
+  pinterest: {
+    share: 'https://pinterest.com/pin/create/button/'
   },
   theme: {
     local: {
@@ -60,6 +69,9 @@ const config = {
       },
       fontSize: 16
     }
+  },
+  twitter: {
+    share: 'https://twitter.com/intent/tweet'
   }
 };
 

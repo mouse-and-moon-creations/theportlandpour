@@ -109,6 +109,40 @@ const getTitle = (title = null) => {
 
 }
 
+const getFacebookShare = url => {
+
+  return config.facebook.share + url;
+
+}
+
+const getGooglePlusShare = url => {
+
+  return config.googlePlus.share + url;
+
+}
+
+const getTwitterShare = (url = '', tweet = '') => {
+
+  const query = '?url=' + url + '&text=' + tweet;
+
+  return config.twitter.share + query;
+
+}
+
+const getPinterestShare = (url, media, description = '') => {
+
+  const query = '?url=' + url + '&media=' + media + '&description=' + description;
+
+  return config.pinterest.share + query;
+
+}
+
+const getEmailShare = (url, subject, body) => {
+
+  return 'mailto:%20?subject=' + subject + '&body=' + body + ' ' + url;
+
+}
+
 const postLinkHandler = e => {
 
   if(e.target && e.target.nodeName === 'A') {
@@ -122,14 +156,19 @@ const blogHelper = {
   getAssetUrl,
   getBaseUrl,
   getDescription,
+  getEmailShare,
   getEndpoint,
+  getFacebookShare,
   getFeaturedPostsCaption,
   getFeaturedPostsTitle,
+  getGooglePlusShare,
   getMailChimpEndpoint,
+  getPinterestShare,
   getPostDate,
   getPostDescription,
   getPostUrl,
   getTitle,
+  getTwitterShare,
   getUrl,
   postLinkHandler
 };
