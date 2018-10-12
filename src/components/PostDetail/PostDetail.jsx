@@ -72,15 +72,20 @@ const PostDetail = props => {
   const emailShare = blogHelper.getEmailShare(permalink, blogHelper.getTitle(post.title), post.custom_excerpt);
 
   return (
-    <div className={classes.root}>
-      <Typography variant="display1" color="default" align="center" className={classes.cardTitle}>{post.title}</Typography>
-      <Typography className={classes.cardSubheading} align="center" variant="subheading" color="textSecondary" component="div">"{ post.custom_excerpt }"</Typography>
+    <div itemScope itemType="http://schema.org/Recipe" className={classes.root}>
+      <meta itemProp="url" content={permalink} />
+      <Typography variant="display1" color="default" align="center" className={classes.cardTitle}>
+        <span itemProp="name">{post.title}</span>
+      </Typography>
+      <Typography className={classes.cardSubheading} align="center" variant="subheading" color="textSecondary" component="div">
+        <span itemProp="description">"{ post.custom_excerpt }"</span>
+      </Typography>
       <Typography className={classes.cardSubheading} variant="subheading" color="textSecondary" align="center">
         <Avatar className={classes.avatar} component="span" src={absSrc} />
-        posted by {user.name} on {postDate}
+        posted by <span itemProp="author">{user.name}</span> on <span itemProp="datePublished">{postDate}</span>
       </Typography>
       <Typography align="center" paragraph>
-        <img src={assetUrl} alt={post.title} className={classes.image} />
+        <img itemProp="image" src={assetUrl} alt={post.title} className={classes.image} />
       </Typography>
       <Typography align="center" variant="headline" paragraph>
         <a className={classes.shareLink} href={facebookShare} rel="noopener noreferrer" target="_blank">

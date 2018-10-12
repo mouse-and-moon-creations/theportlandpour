@@ -107,7 +107,6 @@ const fetchPostBySlug = (slug, opts={}) => {
 const getFeaturedPosts = (opts = {}) => {
 
   const options = Object.assign({}, { filter: 'featured:true', include: 'tags', limit: 6 }, opts);
-  console.log(options);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 
