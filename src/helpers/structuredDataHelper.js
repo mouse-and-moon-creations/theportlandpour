@@ -24,7 +24,7 @@ const getArticleData = (props) => {
     "dateModified": "${post.updated_at}",
     "author": {
       "@type": "Person",
-      "name": "${name}""
+      "name": "${name}"
     },
      "publisher": {
       "@type": "Organization",
