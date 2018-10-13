@@ -163,7 +163,7 @@ class PostView extends Component {
     const progress = <LinearProgress />;
     const user = find(users, { id: post.author });
     const articleData = structuredDataHelper.getArticleData({post: post, match: match, user: user});
-console.log(articleData);
+
     return (
       <React.Fragment>
       <div className={classes.root}>

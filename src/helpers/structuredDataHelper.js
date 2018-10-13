@@ -20,7 +20,7 @@ const getArticleData = (props) => {
     "image": [
       "${image}"
      ],
-    "datePublished": "${post.published_at}"",
+    "datePublished": "${post.published_at}",
     "dateModified": "${post.updated_at}",
     "author": {
       "@type": "Person",
