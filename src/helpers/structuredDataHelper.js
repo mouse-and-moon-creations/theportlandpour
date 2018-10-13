@@ -16,16 +16,22 @@ const getArticleData = (props) => {
       "@id": "${url}"
     },
     "headline": "${post.title}",
-    "image": [
-      "${image}"
-     ],
+    "thumbnailUrl": "${image}",
+    "image": {
+      "@type": "ImageObject",
+      "url": "${image}",
+      "thumbnail": {
+        "@type": "ImageObject",
+        "name": "${image}"
+      }
+    },
     "datePublished": "${post.published_at}",
     "dateModified": "${post.updated_at}",
     "author": {
       "@type": "Person",
       "name": "${name}"
     },
-     "publisher": {
+   "publisher": {
       "@type": "Organization",
       "name": "${title}",
       "logo": {
