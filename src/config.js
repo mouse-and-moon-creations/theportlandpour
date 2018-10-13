@@ -1,12 +1,13 @@
 const config = {
   blog: {
-    featuredPostsCaption: 'Some of our favorite whiskey cocktails featuring some of Portland\'s local bourbon and rye.',
+    featuredPostsCaption: 'Some of our favorite whiskey cocktails and cocktail recipes featuring some of Portland\'s local craft distilling bourbon and rye.',
     featuredPostsTitle: 'Whiskey cocktails',
     host: 'https://blog.theportlandpour.com',
     www: 'https://www.theportlandpour.com',
     title: 'The Portland Pour',
-    description: 'Improve your cocktail game with local products',
-    descriptionSuffix: 'at The Portland Pour, a blog celebrating the local spirits and ingredients of Portland and the Pacific Northwest.',
+    longTitle: 'Cocktails, Recipes, Craft Distilling',
+    description: 'Improve your cocktail recipes with local products',
+    descriptionSuffix: 'at The Portland Pour, a blog celebrating the craft distilleries Portland and the Pacific Northwest.',
     api: {
       path: 'ghost/api/v0.1',
       user: 'ghost-frontend',

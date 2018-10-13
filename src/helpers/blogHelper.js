@@ -105,7 +105,7 @@ const getPostUrl = slug => {
 
 const getTitle = (title = null) => {
 
-  return config.blog.title + (title ? ' - ' + title : '');
+  return config.blog.title + (title ? ' - ' + title : ' - ' + config.blog.longTitle);
 
 }
 
