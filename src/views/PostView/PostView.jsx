@@ -181,7 +181,7 @@ class PostView extends Component {
               <meta key={tag.id} property="article:tag" content={tag.name} />
             )
           }) : null}
-          <meta property="og:description" content={blogHelper.getPostDescription(post)} />
+          <meta property="og:description" content={post.custom_excerpt} />
           <meta property="og:image" content={blogHelper.getBaseUrl() + post.feature_image} />
           <meta property="og:image:alt" content={post.title + ' cocktail'} />
           <meta property="og:image:height" content="750" />
@@ -194,7 +194,7 @@ class PostView extends Component {
           <meta property="og:url" content={blogHelper.getBaseUrl() + match.url} />
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:title" content={post.title} />
-          <meta name="twitter:description" content={blogHelper.getPostDescription(post)} />
+          <meta name="twitter:description" content={post.custom_excerpt} />
           <meta name="twitter:image" content={blogHelper.getBaseUrl() + post.feature_image} />
           <meta name="twitter:image:alt" content={post.title + ' cocktail'} />
           <script type="application/ld+json">{articleData}</script>

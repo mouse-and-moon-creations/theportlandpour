@@ -7,7 +7,6 @@ const getArticleData = (props) => {
   const image = blogHelper.getBaseUrl() + post.feature_image;
   const name = user ? user.name : null;
   const title = blogHelper.getTitle();
-  const description = blogHelper.getPostDescription(post);
 
   const article = `{
     "@context": "http://schema.org",
@@ -34,7 +33,7 @@ const getArticleData = (props) => {
         "url": "https://www.theportlandpour.com/assets/images/brand/tpp.brand.md.png"
       }
     },
-    "description": "${description}"
+    "description": "${post.custom_excerpt}"
   }`;
 
   return article;
