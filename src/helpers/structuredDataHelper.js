@@ -11,12 +11,24 @@ const getArticleData = (props) => {
   const article = `{
     "@context": "http://schema.org",
     "@type": "Article",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "${url}"
-    },
+    "url": "${url}",
+    "dateModified": "${post.updated_at}",
+    "datePublished": "${post.published_at}",
     "headline": "${post.title}",
     "thumbnailUrl": "${image}",
+    "description": "${post.custom_excerpt}",
+    "publisher": {
+       "@type": "Organization",
+       "name": "${title}",
+       "logo": {
+         "@type": "ImageObject",
+         "url": "https://www.theportlandpour.com/assets/images/brand/tpp.brand.md.png"
+       }
+     },
+     "author": {
+       "@type": "Person",
+       "name": "${name}"
+     },
     "image": {
       "@type": "ImageObject",
       "url": "${image}",
@@ -25,21 +37,10 @@ const getArticleData = (props) => {
         "name": "${image}"
       }
     },
-    "datePublished": "${post.published_at}",
-    "dateModified": "${post.updated_at}",
-    "author": {
-      "@type": "Person",
-      "name": "${name}"
-    },
-   "publisher": {
-      "@type": "Organization",
-      "name": "${title}",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.theportlandpour.com/assets/images/brand/tpp.brand.md.png"
-      }
-    },
-    "description": "${post.custom_excerpt}"
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "${url}"
+    }
   }`;
 
   return article;
