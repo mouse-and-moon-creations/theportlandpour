@@ -30,6 +30,9 @@ const styles = theme => ({
     display: 'block',
     margin: 'auto'
   },
+  flexGrow: {
+    flexGrow: 1
+  },
   gridList: {
     flexWrap: 'nowrap',
     transform: 'translateZ(0)'
@@ -60,6 +63,7 @@ const styles = theme => ({
   heroHeader: {
     alignItems: 'center',
     display: 'flex',
+    flexWrap: 'wrap',
     padding: '24px 0'
   },
   heroTagline: {
@@ -74,9 +78,6 @@ const styles = theme => ({
     height: '100%',
     width: '100%'
   },
-  right: {
-    flexGrow: 1
-  },
   tileBar: {
     background: 'rgba(85,20,0,0.6)'
   }
@@ -89,12 +90,12 @@ const Hero = props => {
   return (
     <div className={classes.hero}>
       <div className={classes.heroContent}>
-        <Hidden mdDown>
-          <div className={classes.heroHeader}>
-            <Gloss label="A cocktail art and recipe blog." variant="display1" />
-            <Typography align="right" className={classes.right} color="inherit" variant="subheading">Proudly made in Portland, Oregon</Typography>
+        <div className={classes.heroHeader}>
+          <div className={classes.flexGrow}>
+            <Gloss label="Cocktail recipes, local ingredients" variant="display1" />
           </div>
-        </Hidden>
+          <Typography color="inherit" variant="subheading">Proudly made in Portland, Oregon</Typography>
+        </div>
         <div className={classes.recent}>
           <GridList cellHeight="auto" className={classes.gridList} cols={gridCols[width]}>
             {latestPosts.map((post, index) => {

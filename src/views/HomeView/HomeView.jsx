@@ -16,7 +16,6 @@ import Footer from '../../components/Footer';
 import Hero from '../../components/Hero';
 import LocalBlock from '../../components/LocalBlock';
 import NewsletterBlock from '../../components/NewsletterBlock';
-import PeopleBlock from '../../components/PeopleBlock';
 import PitchBlock from '../../components/PitchBlock';
 import PostsBlock from '../../components/PostsBlock';
 import WorkWithUsBlock from '../../components/WorkWithUsBlock';
@@ -102,7 +101,6 @@ class HomeView extends Component {
         <AboutBlock />
         <WorkWithUsBlock />
         <Divider />
-        <PeopleBlock users={users} />
         <Footer />
       </React.Fragment>
     );

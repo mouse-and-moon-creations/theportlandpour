@@ -47,12 +47,12 @@ const LocalBlock = props => {
       <div className={classes.flexItem}>
         <LocalBar className={classes.icon} />
         <Typography variant="headline">Tasty</Typography>
-        <Typography>Use recipes we've tried, tested, and perfected, selecting just the right local goods for the best sip possible</Typography>
+        <Typography>Use cocktail recipes we've tried, tested, and perfected, selecting just the right local ingredients for the best mixed drink at home</Typography>
       </div>
       <div className={classes.flexItem}>
         <Mood className={classes.icon} />
         <Typography variant="headline">Fun</Typography>
-        <Typography>Mixing cocktails is fun! Experiment with us and remember, it's all about having fun and supporting local products</Typography>
+        <Typography>Mixing cocktails at home is fun! Our recipes are fun, can be made by anyone, regardless of skill level and support local products</Typography>
       </div>
     </div>
   );

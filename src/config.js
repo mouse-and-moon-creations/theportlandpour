@@ -5,9 +5,9 @@ const config = {
     host: 'https://blog.theportlandpour.com',
     www: 'https://www.theportlandpour.com',
     title: 'The Portland Pour',
-    longTitle: 'Cocktails, Recipes, Craft Distilling',
-    description: 'Improve your cocktail recipes with local products',
-    descriptionSuffix: 'at The Portland Pour, a blog celebrating the craft distilleries Portland and the Pacific Northwest.',
+    longTitle: 'Cocktail recipes, local ingredients,',
+    description: 'Cocktail recipes with local ingredients',
+    descriptionSuffix: 'at The Portland Pour, a collection of classic and modern cocktail recipes celebrating the craft spirits and ingredients of Portland, Oregon. All of our recipes include local ingredients and can be made at home, regardless of skill level.',
     api: {
       path: 'ghost/api/v0.1',
       user: 'ghost-frontend',

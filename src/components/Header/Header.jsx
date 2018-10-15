@@ -198,7 +198,7 @@ class Header extends Component {
                 <ListItemIcon>
                   <Work />
                 </ListItemIcon>
-                <ListItemText primary="work-with-us" />
+                <ListItemText primary="Work with us" />
               </ListItem>
               <Hidden mdUp>
                 <Divider />

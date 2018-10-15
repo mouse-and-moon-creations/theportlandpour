@@ -44,7 +44,7 @@ const AboutBlock = props => {
           <Typography paragraph>
             The Portland Pour is a collection of classic and modern cocktail recipes, their stories, and artistic photography celebrating the craft spirits and ingredients of Portland, Oregon.
             All of our recipes include local ingredients, distilled in or near Portland, and can be made at home, regardless of skill level.
-            Visit ThePortlandPour.com and learn how to make the recipes you know and love with the craft spirits made in Oregon.
+            Learn how to make the cocktail recipes you know and love with the local ingredients and craft spirits made in Oregon.
           </Typography>
         </div>
       </div>

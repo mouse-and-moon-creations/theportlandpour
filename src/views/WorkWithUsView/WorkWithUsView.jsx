@@ -64,7 +64,7 @@ class WorkWithUsView extends Component {
             <Typography variant="title" paragraph={true}>Who we are</Typography>
             <Typography paragraph>
               The Portland Pour is a passion project by the artists of Mouse and Moon Creations, a product photography and creative studio in beautiful downtown Portland, Oregon.
-              We're huge fans of the portland craft cocktail scene, and are properly honored to be part of it.
+              We're huge fans of the Portland craft cocktail scene, and are properly honored to be part of it.
               We produce all of the content for The Portland Pour, as well as content for both print and web.
               We're specialists in beverage photography, and have had our photography, art, and writing published in various places, in one form or another, over the years.
               Check out the <a href="https://www.mouseandmooncreations.com" rel="noopener noreferrer" target="_blank">Mouse and Moon website</a> for our full portfolio, and information on who we are and what we do.

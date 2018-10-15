@@ -69,10 +69,10 @@ const getMailChimpEndpoint = () => {
 
 const getPostDescription = post => {
 
-  let ret = 'Get the ';
+  let ret = 'Cocktail recipe - ';
 
   ret += post.title;
-  ret += ' cocktail story and recipe ';
+  ret += '. Get the ' + post.title + ' cocktail recipe and story ';
   ret += config.blog.descriptionSuffix;
 
   return ret;
@@ -105,7 +105,7 @@ const getPostUrl = slug => {
 
 const getTitle = (title = null) => {
 
-  return config.blog.title + (title ? ' - ' + title : ' - ' + config.blog.longTitle);
+  return (title ? 'Cocktail recipe for ' + title : config.blog.longTitle + ' ' + config.blog.title);
 
 }
 
