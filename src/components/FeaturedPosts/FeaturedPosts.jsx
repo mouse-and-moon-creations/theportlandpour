@@ -82,8 +82,8 @@ const FeaturedPosts = props => {
       {title ?
         <div className={classes.flex}>
           <div className={classes.flexTitle}>
-            <Gloss label="Featured" />
-            <Typography className={classes.title} variant="headline">{title}</Typography>
+            <Gloss component="p" label="Featured" />
+            <Typography className={classes.title} component="p" variant="headline">{title}</Typography>
           </div>
           <Link to="/page/1">
             <Button color="secondary" size="small">See all the cocktails</Button>
