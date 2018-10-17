@@ -25,7 +25,7 @@ const WorkWithUsBlock = props => {
 
   return (
     <div className={classes.root}>
-      <Typography color="inherit" component="h2" variant="headline" align="center" paragraph>Work with us</Typography>
+      <Typography color="inherit" component="p" variant="headline" align="center" paragraph>Work with us</Typography>
       <Typography color="inherit" variant="subheading" align="center">
         Are you in the beverage industry? We are, and we specialize in product photography and creative services.
       </Typography>

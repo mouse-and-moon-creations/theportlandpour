@@ -41,7 +41,7 @@ const NewsletterBlock = props => {
 
   return (
     <div className={classes.root}>
-      <Typography color="inherit" component="h2" variant="headline" align="center">Build a better bar</Typography>
+      <Typography color="inherit" component="p" variant="headline" align="center">Build a better bar</Typography>
       <Typography color="inherit" variant="subheading" align="center">Join our newsletter and get tips, recomendations, and cocktail recipes for stocking your home bar with local ingredients and spirits.</Typography>
       <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css" />
       <div id="mc_embed_signup" className={classes.newsletter}>

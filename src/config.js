@@ -7,7 +7,7 @@ const config = {
     title: 'The Portland Pour',
     longTitle: 'Cocktail recipes, local ingredients,',
     description: 'Cocktail recipes with local ingredients',
-    descriptionSuffix: 'at The Portland Pour, a collection of classic and modern cocktail recipes celebrating the craft spirits and ingredients of Portland, Oregon. All of our recipes include local ingredients and can be made at home, regardless of skill level.',
+    descriptionSuffix: 'The Portland Pour, is a collection of classic and modern cocktail recipes using the craft spirits and ingredients of Portland, Oregon.',
     api: {
       path: 'ghost/api/v0.1',
       user: 'ghost-frontend',

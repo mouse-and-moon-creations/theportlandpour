@@ -41,17 +41,17 @@ const LocalBlock = props => {
     <div className={classes.root}>
       <div className={classes.flexItem}>
         <LocalGroceryStore className={classes.icon} />
-        <Typography component="h2" variant="headline">Local</Typography>
+        <Typography component="p" variant="headline">Local</Typography>
         <Typography>All our cocktails are made with local spirits, and as many locally made or grown ingredients as we can find</Typography>
       </div>
       <div className={classes.flexItem}>
         <LocalBar className={classes.icon} />
-        <Typography component="h2" variant="headline">Tasty</Typography>
+        <Typography component="p" variant="headline">Tasty</Typography>
         <Typography>Use cocktail recipes we've tried, tested, and perfected, selecting just the right local ingredients for the best mixed drink at home</Typography>
       </div>
       <div className={classes.flexItem}>
         <Mood className={classes.icon} />
-        <Typography component="h2" variant="headline">Fun</Typography>
+        <Typography component="p" variant="headline">Fun</Typography>
         <Typography>Mixing cocktails at home is fun! Our recipes are fun, can be made by anyone, regardless of skill level and support local products</Typography>
       </div>
     </div>
