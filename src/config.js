@@ -6,8 +6,8 @@ const config = {
     www: 'https://www.theportlandpour.com',
     title: 'The Portland Pour',
     longTitle: 'Cocktail recipes, local ingredients,',
-    description: 'Cocktail recipes with local ingredients',
-    descriptionSuffix: 'The Portland Pour, is a collection of classic and modern cocktail recipes using the craft spirits and ingredients of Portland, Oregon.',
+    description: 'Cocktail recipes with local ingredients.',
+    descriptionSuffix: 'A collection of classic and modern cocktail recipes using the craft spirits and ingredients of Portland, Oregon.',
     api: {
       path: 'ghost/api/v0.1',
       user: 'ghost-frontend',
