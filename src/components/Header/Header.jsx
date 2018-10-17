@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faPinterest } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faTwitter, faInstagram, faPinterest } from '@fortawesome/free-brands-svg-icons';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
@@ -138,6 +138,12 @@ class Header extends Component {
                   <a href="https://www.instagram.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
                     <FontAwesomeIcon className={classes.socialIcon} icon={faInstagram} size="lg" />
                   </a>
+                  <a href="https://www.facebook.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                    <FontAwesomeIcon className={classes.socialIcon} icon={faFacebook} size="lg" />
+                  </a>
+                  <a href="https://twitter.com/PortlandPour" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                    <FontAwesomeIcon className={classes.socialIcon} icon={faTwitter} size="lg" />
+                  </a>
                   <a href="https://www.pinterest.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
                     <FontAwesomeIcon className={classes.socialIcon} icon={faPinterest} size="lg" />
                   </a>
@@ -208,6 +214,22 @@ class Header extends Component {
                       <OpenInNew />
                     </ListItemIcon>
                     <ListItemText primary="Instagram" />
+                  </ListItem>
+                </a>
+                <a href="https://www.facebook.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <OpenInNew />
+                    </ListItemIcon>
+                    <ListItemText primary="Facebook" />
+                  </ListItem>
+                </a>
+                <a href="https://twitter.com/PortlandPour" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <OpenInNew />
+                    </ListItemIcon>
+                    <ListItemText primary="Twitter" />
                   </ListItem>
                 </a>
                 <a href="https://www.pinterest.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
