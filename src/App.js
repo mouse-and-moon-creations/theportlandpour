@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import {
+  Redirect,
   Route,
   Switch
 } from 'react-router-dom';
@@ -72,6 +73,7 @@ const App = props => {
           <Route path="/about" component={WithTracker(AboutView)} />
           <Route path="/contact" component={WithTracker(ContactView)} />
           <Route path="/work-with-us" component={WithTracker(WorkWithUsView)} />
+          <Redirect from="/blog/:slug" to="/post/:slug" />
           <Route path="/sitemap" component={NoView} />
           <Route component={WithTracker(NoView)} />
         </Switch>
