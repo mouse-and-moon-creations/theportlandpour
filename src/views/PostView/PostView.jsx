@@ -193,6 +193,7 @@ class PostView extends Component {
           <meta property="og:title" content={post.title} />
           <meta property="og:url" content={blogHelper.getBaseUrl() + match.url} />
           <meta name="twitter:card" content="summary" />
+          <meta name="twitter:creator" content={blogHelper.getHandle('twitter')} />
           <meta name="twitter:title" content={post.title} />
           <meta name="twitter:description" content={post.custom_excerpt} />
           <meta name="twitter:image" content={blogHelper.getBaseUrl() + post.feature_image} />

@@ -188,9 +188,8 @@ class WorkWithUsView extends Component {
               </ul>
               <Typography paragraph>
                 So what about pay?
-                Well, it sucks.
-                In fact, it sucks for all of us because we're still growing, but it will get better.
-                Also, we only pay for your words, but, if you have a passion to write, and a passion for cocktails, and a desire to share your work with the world, we also hope you have the vision to know what it means to be part of an early stage startup with a great deal of potential.
+                Well, it's a paid gig.
+                We only pay for your words, but, if you have a passion to write, and a passion for cocktails, and a desire to share your work with the world, we also hope you have the vision to know what it means to be part of an early stage startup with a great deal of potential.
                 On the plus side, you will get some remarkable things on your resume, and we are super fun to work with!
                 And the monthly happy hour is always on us!
               </Typography>

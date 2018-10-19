@@ -67,7 +67,7 @@ const PostDetail = props => {
   const assetUrl = blogHelper.getAssetUrl(post.feature_image);
   const permalink = blogHelper.getBaseUrl() + blogHelper.getPostUrl(post.slug);
   const facebookShare = blogHelper.getFacebookShare(permalink);
-  const twitterShare = blogHelper.getTwitterShare(permalink, blogHelper.getTitle(post.title));
+  const twitterShare = blogHelper.getTwitterShare(permalink, blogHelper.getTitle(post.title) + ' - ' + post.custom_excerpt, blogHelper.getHashtags('twitter'));
   const pinterestShare = blogHelper.getPinterestShare(permalink, assetUrl, post.title + ' - ' + post.custom_excerpt);
   const emailShare = blogHelper.getEmailShare(permalink, blogHelper.getTitle(post.title), post.custom_excerpt);
 

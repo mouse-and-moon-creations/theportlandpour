@@ -5,7 +5,7 @@ const config = {
     host: 'https://blog.theportlandpour.com',
     www: 'https://www.theportlandpour.com',
     title: 'The Portland Pour',
-    longTitle: 'Cocktail recipes, local ingredients,',
+    longTitle: 'Cocktail recipes, local ingredients',
     description: 'Cocktail recipes with local ingredients.',
     descriptionSuffix: 'A collection of classic and modern cocktail recipes using the craft spirits and ingredients of Portland, Oregon.',
     api: {
@@ -72,6 +72,8 @@ const config = {
     }
   },
   twitter: {
+    handle: '@PortlandPour',
+    hashtags: 'cocktails,theportlandpour,booze,pdxnow,pdxdrinks,craftcocktails,portland,pdx',
     share: 'https://twitter.com/intent/tweet'
   }
 };

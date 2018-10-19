@@ -105,7 +105,7 @@ const getPostUrl = slug => {
 
 const getTitle = (title = null) => {
 
-  return (title ? 'Cocktail recipe for ' + title : config.blog.longTitle + ' ' + config.blog.title);
+  return (config.blog.title + ' - ' + (title ? title : config.blog.longTitle));
 
 }
 
@@ -121,9 +121,21 @@ const getGooglePlusShare = url => {
 
 }
 
-const getTwitterShare = (url = '', tweet = '') => {
+const getHandle = site => {
 
-  const query = '?url=' + url + '&text=' + tweet;
+  return config[site].handle;
+
+}
+
+const getHashtags = site => {
+
+  return config[site].hashtags;
+
+}
+
+const getTwitterShare = (url = '', tweet = '', hashtags = '') => {
+
+  const query = '?url=' + url + '&text=' + tweet + '&hashtags=' + hashtags;
 
   return config.twitter.share + query;
 
@@ -162,6 +174,8 @@ const blogHelper = {
   getFeaturedPostsCaption,
   getFeaturedPostsTitle,
   getGooglePlusShare,
+  getHandle,
+  getHashtags,
   getMailChimpEndpoint,
   getPinterestShare,
   getPostDate,
