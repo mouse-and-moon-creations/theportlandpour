@@ -60,7 +60,7 @@ const fetchUsers = (opts={}) => {
 
 const getPostBySlug = (slug, opts={}) => {
 
-  const options = Object.assign({}, { formats: 'html', include: 'tags' }, opts);
+  const options = Object.assign({}, { formats: 'html', include: 'tags', filter: 'page[true,false]' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('postBySlug', queryString, slug);
 

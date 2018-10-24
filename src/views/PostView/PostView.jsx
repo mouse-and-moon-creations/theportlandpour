@@ -163,7 +163,8 @@ class PostView extends Component {
     const progress = <LinearProgress />;
     const user = find(users, { id: post.author });
     const articleData = structuredDataHelper.getArticleData({post: post, match: match, user: user});
-
+    console.log(post.page)
+;
     return (
       <React.Fragment>
       <div className={classes.root}>
@@ -201,6 +202,17 @@ class PostView extends Component {
           <script type="application/ld+json">{articleData}</script>
         </Helmet>
         {waiting ? progress : null}
+        {post.page ? null :
+          <div className={classes.sidebar}>
+            <Typography align="center" variant="headline" paragraph>Related</Typography>
+            <Typography align="center" variant="subheading" paragraph>Try these cocktails</Typography>
+            <FeaturedPosts classes={{ featuredPosts: classes.featuredPosts, post: classes.relatedPost }} featuredPosts={featuredPosts} users={users} />
+          </div>}
+        <div className={classes.postRoot}>
+          <div className={classes.post}>
+            {isEmpty(post) ? null : <PostDetail post={post} user={user} />}
+          </div>
+        </div>
         <div className={classes.sidebar}>
           <Typography align="center" variant="headline" paragraph>More</Typography>
           <Typography align="center" variant="subheading" paragraph>Suggested reading</Typography>
@@ -221,16 +233,6 @@ class PostView extends Component {
               <img src={link.pixel} className={classes.pixel} width="0" height="0" border="0" alt="" />
             </Card>
           ))}
-        </div>
-        <div className={classes.postRoot}>
-          <div className={classes.post}>
-            {isEmpty(post) ? null : <PostDetail post={post} user={user} />}
-          </div>
-        </div>
-        <div className={classes.sidebar}>
-          <Typography align="center" variant="headline" paragraph>Related</Typography>
-          <Typography align="center" variant="subheading" paragraph>Try these cocktails</Typography>
-          <FeaturedPosts classes={{ featuredPosts: classes.featuredPosts, post: classes.relatedPost }} featuredPosts={featuredPosts} users={users} />
         </div>
       </div>
       <Footer />
