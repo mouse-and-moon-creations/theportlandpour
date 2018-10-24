@@ -188,6 +188,12 @@ class Header extends Component {
                 </ListItemIcon>
                 <ListItemText primary="Cocktails" />
               </ListItem>
+              <ListItem button component="a" href="/post/getting-started-with-local-craft-spirits-and-cocktail-recipes-at-home">
+                <ListItemIcon>
+                  <Info />
+                </ListItemIcon>
+                <ListItemText primary="Getting started" />
+              </ListItem>
               <ListItem button component="a" href="/about">
                 <ListItemIcon>
                   <Info />

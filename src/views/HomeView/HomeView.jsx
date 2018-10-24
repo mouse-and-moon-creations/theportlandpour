@@ -13,6 +13,7 @@ import blogActions from '../../actions/blogActions';
 import AboutBlock from '../../components/AboutBlock';
 import FeaturedPosts from '../../components/FeaturedPosts';
 import Footer from '../../components/Footer';
+import GettingStartedBlock from '../../components/GettingStartedBlock';
 import Hero from '../../components/Hero';
 import LocalBlock from '../../components/LocalBlock';
 import NewsletterBlock from '../../components/NewsletterBlock';
@@ -93,6 +94,7 @@ class HomeView extends Component {
         <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
         <PitchBlock />
         <LocalBlock />
+        <GettingStartedBlock />
         <Divider />
         <PostsBlock posts={posts.slice(4, 10)} users={users} />
         <NewsletterBlock />

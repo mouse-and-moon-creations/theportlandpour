@@ -1,1 +1,1 @@
-export { default } from './PitchBlock';
+export { default } from './GettingStartedBlock';

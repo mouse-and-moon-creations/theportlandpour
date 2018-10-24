@@ -16,6 +16,9 @@ const styles = theme => ({
     background: theme.local.palette.background.dark,
     padding: '36px 0',
     width: '100%'
+  },
+  badge: {
+    marginRight: theme.spacing.unit
   }
 });
 
@@ -25,11 +28,13 @@ const GettingStartedBlock = props => {
 
   return (
     <div className={classes.pitch}>
-      <img src="https://www.theportlandpour.com/assets/images/new.png" alt="new badge" />
-      <Typography color="inherit" component="p" variant="headline" align="center">Learn how to build a home bar with local spirits</Typography>
+      <Typography color="inherit" component="p" variant="headline" align="center">
+        <img className={classes.badge} src="https://www.theportlandpour.com/assets/images/new.png" alt="new badge" />
+        Learn how to build a home bar with local spirits
+      </Typography>
       <Typography color="inherit" variant="subheading" align="center">
         <Link to="/post/getting-started-with-local-craft-spirits-and-cocktail-recipes-at-home">
-          Read our "getting started" guide and make craft cocktails at home
+          Read our "Getting Started" guide and make craft cocktails at home
         </Link>
       </Typography>
     </div>
