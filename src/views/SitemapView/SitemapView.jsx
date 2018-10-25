@@ -22,7 +22,7 @@ class SitemapView extends Component {
 
   componentDidMount = () => {
 
-    this.props.dispatch(blogActions.getPosts({ limit: 'all' }));
+    this.props.dispatch(blogActions.getPosts({ limit: 'all', filter: 'page:[true,false]' }));
 
   }
 
