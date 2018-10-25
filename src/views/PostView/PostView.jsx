@@ -86,6 +86,10 @@ const styles = theme => ({
   featuredPosts: {
     flexDirection: 'column'
   },
+  badge: {
+    maxHeight: '140px',
+    maxWidth: '140px'
+  },
   button: {
     margin: 'auto'
   },
@@ -233,6 +237,9 @@ class PostView extends Component {
               <img src={link.pixel} className={classes.pixel} width="0" height="0" border="0" alt="" />
             </Card>
           ))}
+          <Typography align="center" paragraph>
+            <a href="http://drinkwire.liquor.com" rel="noopener noreferrer" target="_blank"><img className={classes.badge} src="http://badges.tid.al/badge/get/tony-m/drinkwire-contributor" alt="liquor.com badge" /></a>
+          </Typography>
         </div>
       </div>
       <Footer />
