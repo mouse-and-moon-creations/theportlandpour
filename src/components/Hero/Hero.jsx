@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Link from 'react-router-dom/Link';
 import withStyles from '@material-ui/core/styles/withStyles';
 import GridList from '@material-ui/core/GridList';
@@ -15,6 +16,14 @@ import Typography from '@material-ui/core/Typography';
 import withWidth from '@material-ui/core/withWidth';
 import Gloss from '../Gloss';
 import blogHelper from '../../helpers/blogHelper';
+
+const propTypes = {
+  latestPosts: PropTypes.array
+};
+
+const defaultProps = {
+  latestPosts: []
+};
 
 const gridCols = {
   xl: 4,
@@ -118,6 +127,9 @@ const Hero = props => {
   );
 
 }
+
+Hero.propTypes = propTypes;
+Hero.defaultProps = defaultProps;
 
 const styledComponent = withStyles(styles)(Hero);
 

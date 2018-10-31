@@ -90,7 +90,7 @@ class HomeView extends Component {
             }`}
           </script>
         </Helmet>
-        <Hero  latestPosts={posts.slice(0,4)} users={users} />
+        <Hero latestPosts={posts.slice(0,4)} />
         <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
         <PitchBlock />
         <LocalBlock />

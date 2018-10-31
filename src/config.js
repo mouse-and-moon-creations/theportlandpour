@@ -58,6 +58,11 @@ const config = {
         main: '#ef6c00'
       }
     },
+    props: {
+      MuiWithWidth: {
+        initialWidth: 'lg'
+      }
+    },
     typography: {
       body1: {
         lineHeight: '1.7em'
