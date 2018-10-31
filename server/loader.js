@@ -1,6 +1,7 @@
 // Express requirements
 import path from 'path';
 import fs from 'fs';
+import ms from 'ms';
 
 // React requirements
 import React from 'react';
@@ -56,7 +57,7 @@ export default (req, res) => {
       }
 
       // Create a store (with a memory history) from our current url
-      const { history, store } = storeHelper.getStore(req.url);
+      const { store } = storeHelper.getStore(req.url);
 
       // If the user has a cookie (i.e. they're signed in) - set them as the current user
       // Otherwise, we want to set the current state to be logged out, just in case this isn't the default
@@ -129,6 +130,9 @@ export default (req, res) => {
             scripts: extraChunks,
             state: JSON.stringify(store.getState()).replace(/</g, '\\u003c')
           });
+
+          res.set('Cache-Control', 'public, max-age=' + ms('3 hours'));
+          res.set('Expires', new Date(Date.now() + ms('3 hours')).toUTCString());
 
           // We have all the final HTML, let's send it to the user already!
           res.send(html);

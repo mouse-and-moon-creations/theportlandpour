@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import compression from 'compression';
 import express from 'express';
 import morgan from 'morgan';
+import ms from 'ms';
 import path from 'path';
 import forceDomain from 'forcedomain';
 import Loadable from 'react-loadable';
@@ -32,6 +33,17 @@ if (process.env.NODE_ENV === 'production') {
   );
 }
 
+const setHeaders = (res, path, stat) => {
+  if(path.indexOf('css') >= 0 || path.indexOf('js') >= 0) {
+    res.set('Cache-Control', 'public, max-age=' + ms('3 hours'));
+    res.set('Expires', new Date(Date.now() + ms('3 hours')).toUTCString());
+  }
+  else {
+    res.set('Cache-Control', 'public, max-age=' + ms('30 days'));
+    res.set('Expires', new Date(Date.now() + ms('30 days')).toUTCString());
+  }
+}
+
 // Compress, parse, log, and raid the cookie jar
 app.use(compression());
 app.use(bodyParser.json());
@@ -41,7 +53,8 @@ app.use(cookieParser());
 
 // Set up homepage, static assets, and capture everything else
 app.use(express.Router().get('/', loader));
-app.use(express.static(path.resolve(__dirname, '../build')));
+
+app.use(express.static(path.resolve(__dirname, '../build'), { setHeaders: setHeaders }));
 app.use(loader);
 
 // We tell React Loadable to load all required assets and start listening - ROCK AND ROLL!
