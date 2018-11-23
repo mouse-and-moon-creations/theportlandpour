@@ -64,7 +64,7 @@ const PostDetail = props => {
   const { classes, post, user } = props;
   const postDate = blogHelper.getPostDate(post.published_at);
   const absSrc = blogHelper.getAssetUrl(user.profile_image);
-  const assetUrl = blogHelper.getAssetUrl(post.feature_image);
+  const assetUrl = post.feature_image ? blogHelper.getAssetUrl(post.feature_image) : null;
   const permalink = blogHelper.getBaseUrl() + blogHelper.getPostUrl(post.slug);
   const facebookShare = blogHelper.getFacebookShare(permalink);
   const twitterShare = blogHelper.getTwitterShare(permalink, blogHelper.getTitle(post.title) + ' - ' + post.custom_excerpt, blogHelper.getHashtags('twitter'));
@@ -84,7 +84,7 @@ const PostDetail = props => {
         posted by {user.name} on {postDate}
       </Typography>
       <Typography align="center" paragraph>
-        <img src={assetUrl} alt={post.title} className={classes.image} />
+        {assetUrl ? <img src={assetUrl} alt={post.title} className={classes.image} /> : null}
       </Typography>
       <Typography align="center" variant="headline" paragraph>
         <a className={classes.shareLink} href={facebookShare} rel="noopener noreferrer" target="_blank">

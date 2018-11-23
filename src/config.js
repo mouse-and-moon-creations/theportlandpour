@@ -38,7 +38,7 @@ const config = {
       maxWidth: '1270px',
       palette: {
         background: {
-          dark: '#551400'
+          dark: '#455A64'
         }
       },
       typography: {
@@ -52,10 +52,7 @@ const config = {
         default: '#fff'
       },
       primary: {
-        main: '#706344'
-      },
-      secondary: {
-        main: '#ef6c00'
+        main: '#47679D'
       }
     },
     props: {
@@ -80,6 +77,9 @@ const config = {
     handle: '@PortlandPour',
     hashtags: 'cocktails,theportlandpour,booze,pdxnow,pdxdrinks,craftcocktails,portland,pdx',
     share: 'https://twitter.com/intent/tweet'
+  },
+  zapier: {
+    catchHook: 'https://hooks.zapier.com/hooks/catch/45902/efpw2m/'
   }
 };
 

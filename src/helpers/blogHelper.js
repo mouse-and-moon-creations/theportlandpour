@@ -19,6 +19,12 @@ const getAssetUrl = asset => {
 
 }
 
+const getCatchHook = () => {
+
+  return config.zapier.catchHook;
+
+}
+
 const getDescription = () => {
 
   return config.blog.description + ' ' + config.blog.descriptionSuffix;
@@ -167,6 +173,7 @@ const postLinkHandler = e => {
 const blogHelper = {
   getAssetUrl,
   getBaseUrl,
+  getCatchHook,
   getDescription,
   getEmailShare,
   getEndpoint,

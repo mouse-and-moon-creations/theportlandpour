@@ -46,8 +46,9 @@ const styles = theme => ({
     transform: 'translateZ(0)'
   },
   hero: {
-    backgroundImage: 'url(/assets/images/wood.jpg)',
+    backgroundImage: 'url(/assets/images/winter.jpg)',
     backgroundColor: theme.local.palette.background.dark,
+//    backgroundSize: 'cover',
     color: theme.palette.common.white,
     minHeight: '400px',
     paddingBottom: '24px',
@@ -87,7 +88,7 @@ const styles = theme => ({
     width: '100%'
   },
   tileBar: {
-    background: 'rgba(85,20,0,0.6)'
+    background: 'rgba(96,125,139,0.6)'
   }
 });
 
@@ -100,7 +101,7 @@ const Hero = props => {
       <div className={classes.heroContent}>
         <div className={classes.heroHeader}>
           <div className={classes.flexGrow}>
-            <Gloss label="Cocktail recipes, local ingredients" variant="display1" />
+            <Gloss label="Craft cocktails at home" variant="display1" />
           </div>
           <Typography color="inherit" variant="subheading">Proudly made in Portland, Oregon</Typography>
         </div>

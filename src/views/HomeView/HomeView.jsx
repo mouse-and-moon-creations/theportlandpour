@@ -11,7 +11,6 @@ import { frontloadConnect } from 'react-frontload';
 import Divider from '@material-ui/core/Divider';
 import blogActions from '../../actions/blogActions';
 import AboutBlock from '../../components/AboutBlock';
-import FeaturedPosts from '../../components/FeaturedPosts';
 import Footer from '../../components/Footer';
 import GettingStartedBlock from '../../components/GettingStartedBlock';
 import Hero from '../../components/Hero';
@@ -91,7 +90,6 @@ class HomeView extends Component {
           </script>
         </Helmet>
         <Hero latestPosts={posts.slice(0,4)} />
-        <FeaturedPosts caption={featuredPostsCaption} featuredPosts={featuredPosts} title={featuredPostsTitle} users={users} />
         <PitchBlock />
         <LocalBlock />
         <GettingStartedBlock />

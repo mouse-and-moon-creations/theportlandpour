@@ -10,6 +10,8 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import InputLabel from '@material-ui/core/InputLabel';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -73,11 +75,21 @@ const styles = theme => ({
 
 class ContactView extends Component {
 
+  state = {
+    subscribe: true
+  };
+
   componentDidMount = () => {
 
     if(this.props.users.length === 0) {
       this.props.dispatch(blogActions.getUsers());
     }
+
+  }
+
+  handleChange = name => event => {
+
+    this.setState({ [name] : event.target.checked });
 
   }
 
@@ -125,6 +137,16 @@ class ContactView extends Component {
                   <input className={classes.field} defaultValue="" type="email" name="_replyto" />
                   <InputLabel shrink htmlFor="message" className={classes.label}>Message</InputLabel>
                   <textarea className={classes.textArea} name="message" rows="3"></textarea>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.state.subscribe}
+                        onChange={this.handleChange('subscribe')}
+                        value="subscribe"
+                      />
+                    }
+                    label="Yes! Send me The Portland Pour Newsletter"
+                  />
                 </div>
                 <div className={classes.buttonBlock}>
                   <Button className={classes.button} color="secondary" type="submit" variant="raised">Send</Button>
