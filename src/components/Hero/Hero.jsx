@@ -101,7 +101,7 @@ const Hero = props => {
       <div className={classes.heroContent}>
         <div className={classes.heroHeader}>
           <div className={classes.flexGrow}>
-            <Gloss label="Craft cocktails at home" variant="display1" />
+            <Gloss label="Craft cocktail recipes, art, and more" variant="display1" />
           </div>
           <Typography color="inherit" variant="subheading">Proudly made in Portland, Oregon</Typography>
         </div>
