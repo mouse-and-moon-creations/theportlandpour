@@ -40,7 +40,7 @@ const AboutBlock = props => {
       <div className={classes.flex}>
         <div className={classes.flexItem}>
           <Gloss component="p" label="About The Portland Pour" />
-          <Typography component="h2" variant="headline">The blog</Typography>
+          <Typography component="h2" variant="headline">The cocktail recipes</Typography>
           <Typography paragraph>
             The Portland Pour is a collection of classic and modern cocktail recipes, their stories, and artistic photography celebrating the craft spirits and ingredients of Portland, Oregon.
             All of our recipes include local ingredients, distilled in or near Portland, and can be made at home, regardless of skill level.
