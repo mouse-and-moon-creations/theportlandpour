@@ -53,7 +53,7 @@ class HomeView extends Component {
       <React.Fragment>
         <Helmet>
           <title>{blogHelper.getTitle()}</title>
-          <link rel="canonical" href={blogHelper.getBaseUrl()} />
+          <link rel="canonical" href={blogHelper.getBaseUrl(true)} />
           <meta name="description" content={blogHelper.getDescription()} />
           <meta property="og:type" content="website" />
           <meta property="og:description" content={blogHelper.getDescription()} />

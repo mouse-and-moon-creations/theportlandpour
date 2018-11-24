@@ -167,14 +167,13 @@ class PostView extends Component {
     const progress = <LinearProgress />;
     const user = find(users, { id: post.author });
     const articleData = structuredDataHelper.getArticleData({post: post, match: match, user: user});
-    console.log(post.page)
-;
+
     return (
       <React.Fragment>
       <div className={classes.root}>
         <Helmet>
           <title>{blogHelper.getTitle(post.title)}</title>
-          <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
+          <link rel="canonical" href={blogHelper.getBaseUrl() + match.url + '/'} />
           <meta name="description" content={blogHelper.getPostDescription(post)} />
           <meta property="og:type" content="article" />
           <meta property="article:author" content={user ? user.name : null} />

@@ -91,9 +91,9 @@ const getUrl = page => {
 
 }
 
-const getBaseUrl = () => {
+const getBaseUrl = (trailing = false) => {
 
-  return config.blog.www;
+  return config.blog.www + (trailing ? '/' : '');
 
 }
 
