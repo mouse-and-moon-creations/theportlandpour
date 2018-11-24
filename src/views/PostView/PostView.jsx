@@ -173,7 +173,7 @@ class PostView extends Component {
       <div className={classes.root}>
         <Helmet>
           <title>{blogHelper.getTitle(post.title)}</title>
-          <link rel="canonical" href={blogHelper.getBaseUrl() + match.url + '/'} />
+          <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
           <meta name="description" content={blogHelper.getPostDescription(post)} />
           <meta property="og:type" content="article" />
           <meta property="article:author" content={user ? user.name : null} />
