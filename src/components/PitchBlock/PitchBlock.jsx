@@ -24,8 +24,8 @@ const PitchBlock = props => {
 
   return (
     <div className={classes.pitch}>
-      <Typography color="inherit" component="p" variant="headline" align="center">Cocktail recipes using the local ingredients of Portland and the Pacific Northwest.</Typography>
-      <Typography color="inherit" variant="subheading" align="center">"We take the art in the glass and hang it on the wall"</Typography>
+      <Typography color="inherit" component="p" variant="headline" align="center">Craft cocktails using the ingredients of Portland and the Pacific Northwest.</Typography>
+      <Typography color="inherit" variant="subheading" align="center">"Articles, news, and recipes you can make at home"</Typography>
     </div>
   );
 

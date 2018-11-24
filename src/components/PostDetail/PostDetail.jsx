@@ -52,6 +52,17 @@ const styles = theme => ({
   cardSubheading: {
     paddingBottom: '24px'
   },
+  postContent: {
+    '& img': {
+      border: '1px solid #D3DBDF',
+      display: 'block',
+      height: 'auto',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      maxWidth: '600px',
+      width: '100%'
+    }
+  },
   shareLink: {
     color: theme.palette.text.hint,
     marginLeft: theme.spacing.unit,
@@ -101,7 +112,7 @@ const PostDetail = props => {
         </a>
       </Typography>
       <Typography align="center" variant="caption" paragraph>permalink: {permalink}</Typography>
-      <Typography component="div">
+      <Typography component="div" className={classes.postContent}>
         <div dangerouslySetInnerHTML={{__html: post.html}} />
       </Typography>
       <TagList tags={post.tags} />

@@ -47,9 +47,7 @@ class HomeView extends Component {
 
   render() {
 
-    const { featuredPosts, posts, users } = this.props.blog;
-    const featuredPostsCaption = blogHelper.getFeaturedPostsCaption();
-    const featuredPostsTitle = blogHelper.getFeaturedPostsTitle();
+    const { posts, users } = this.props.blog;
 
     return (
       <React.Fragment>
@@ -89,14 +87,14 @@ class HomeView extends Component {
             }`}
           </script>
         </Helmet>
-        <Hero latestPosts={posts.slice(0,4)} />
+        <Hero latestPosts={posts.slice(0,3)} />
         <PitchBlock />
         <LocalBlock />
-        <GettingStartedBlock />
-        <Divider />
-        <PostsBlock posts={posts.slice(4, 10)} users={users} />
         <NewsletterBlock />
-        <PostsBlock posts={posts.slice(10, posts.length - 2)} users={users} />
+        <Divider />
+        <PostsBlock posts={posts.slice(3, 9)} users={users} />
+        <GettingStartedBlock />
+        <PostsBlock posts={posts.slice(9, posts.length - 3)} users={users} />
         <Divider />
         <AboutBlock />
         <WorkWithUsBlock />
