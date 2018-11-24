@@ -79,7 +79,7 @@ class SitemapView extends Component {
     }
 
     const sitemap = ReactDomServer.renderToStaticMarkup(
-      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9/" {...namespaces}>
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" {...namespaces}>
         <url>
           <loc>{encodeURI(domain + '/')}</loc>
           <changefreq>weekly</changefreq>
@@ -87,21 +87,21 @@ class SitemapView extends Component {
           <priority>1.0</priority>
         </url>
         <url>
-          <loc>{encodeURI(domain + 'about')}</loc>
+          <loc>{encodeURI(domain + '/about')}</loc>
           <priority>0.1</priority>
         </url>
         <url>
-          <loc>{encodeURI(domain + 'contact')}</loc>
+          <loc>{encodeURI(domain + '/contact')}</loc>
           <priority>0.1</priority>
         </url>
         <url>
-          <loc>{encodeURI(domain + 'work-with-us')}</loc>
+          <loc>{encodeURI(domain + '/work-with-us')}</loc>
           <priority>0.1</priority>
         </url>
         {pages.map(page => {
           return (
             <url>
-              <loc>{encodeURI(domain + 'page/' + page)}</loc>
+              <loc>{encodeURI(domain + '/page/' + page)}</loc>
               <changefreq>weekly</changefreq>
               <lastmod>{moment().format('YYYY-MM-DD')}</lastmod>
             </url>
@@ -111,7 +111,7 @@ class SitemapView extends Component {
           return (
             post.status === 'published' ?
               <url>
-                <loc>{encodeURI(domain + 'post/' + post.slug)}</loc>
+                <loc>{encodeURI(domain + '/post/' + post.slug)}</loc>
                 <changefreq>weekly</changefreq>
                 <priority>{post.featured ? 0.8 : 0.6}</priority>
                 <lastmod>{moment(post.published_at).format('YYYY-MM-DD')}</lastmod>

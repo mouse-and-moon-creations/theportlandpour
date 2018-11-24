@@ -14,7 +14,7 @@ const styles = theme => ({
   root: {
     margin: '0 auto',
     maxWidth: theme.local.maxWidth,
-    padding: '60px 12px',
+    padding: '60px 12px 0 12px',
   },
   flex: {
     display: 'flex',

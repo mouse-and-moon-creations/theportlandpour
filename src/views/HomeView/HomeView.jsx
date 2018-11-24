@@ -92,7 +92,6 @@ class HomeView extends Component {
         <LocalBlock />
         <NewsletterBlock />
         <AboutBlock />
-        <Divider />
         <PostsBlock posts={posts.slice(3, 9)} users={users} />
         <GettingStartedBlock />
         <PostsBlock posts={posts.slice(9, posts.length - 3)} users={users} />
