@@ -11,42 +11,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faPinterest } from '@fortawesome/free-brands-svg-icons';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import ListItemText from '@material-ui/core/ListItemText';
+import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
 import Toolbar from '@material-ui/core/Toolbar';
-import Email from '@material-ui/icons/Email';
-import Home from '@material-ui/icons/Home';
-import Info from '@material-ui/icons/Info';
-import LocalBar from '@material-ui/icons/LocalBar';
-import Menu from '@material-ui/icons/Menu';
-import OpenInNew from '@material-ui/icons/OpenInNew';
-import RssFeed from '@material-ui/icons/RssFeed';
-import Work from '@material-ui/icons/Work';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
   appbar: {
     background: theme.palette.common.white,
     zIndex: theme.zIndex.drawer + 1
-  },
-  drawer: {
-    width: '300px'
-  },
-  toolbar: {
-    background: theme.palette.common.white,
-    flex: '1 1 auto',
-    margin: '0 auto',
-    maxWidth: theme.local.maxWidth,
-    minWidth: '1px',
-    position: 'relative',
-    width: '100%'
   },
   brand: {
     flexGrow: 1,
@@ -72,12 +46,18 @@ const styles = theme => ({
     position: 'absolute',
     zIndex: -100
   },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
+  label: {
+    opacity: '1 ! important',
   },
-  navigation: {
-    paddingTop: '24px'
+  navbar: {
+    backgroundColor: '#607D8B',
+    color: theme.palette.common.white,
+    minWidth: '1px',
+    position: 'relative',
+    width: '100%',
+    '& a': {
+      color: theme.palette.common.white
+    }
   },
   socialIcon: {
     marginLeft: '12px',
@@ -94,23 +74,37 @@ const styles = theme => ({
     display: 'inline-block',
     paddingLeft: '12px'
   },
+  tabIndicator: {
+    opacity: 0
+  },
+  tabs: {
+    margin: '0 auto',
+    maxWidth: theme.local.maxWidth,
+  },
   tagline: {
     background: 'transparent',
     flexGrow: 1
+  },
+  toolbar: {
+    background: theme.palette.common.white,
+    flex: '1 1 auto',
+    margin: '0 auto',
+    maxWidth: theme.local.maxWidth,
+    minWidth: '1px',
+    position: 'relative',
+    width: '100%'
   }
 });
 
 class Header extends Component {
 
   state = {
-    drawer: false
+    tab: 0
   };
 
-  toggleDrawer = () => {
+  setTab = (event, value) => {
 
-    const drawer = !this.state.drawer;
-
-    return this.setState({ drawer: drawer });
+    this.setState({ tab: value });
 
   }
 
@@ -126,29 +120,24 @@ class Header extends Component {
       <React.Fragment>
         <AppBar className={classes.appbar} position="fixed" color="default">
           <Toolbar className={classes.toolbar}>
-            <IconButton onClick={this.toggleDrawer} className={classes.menuButton} color="inherit" aria-label="Menu">
-              <Menu />
-            </IconButton>
             <div className={classes.brand}>
               <Link to="/">
                 <img src="/assets/images/brand/tpp.brand.md.png" alt=""/>
               </Link>
-              <Hidden smDown>
-                <div className={classes.socialIcons}>
-                  <a href="https://www.instagram.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                    <FontAwesomeIcon className={classes.socialIcon} icon={faInstagram} size="lg" />
-                  </a>
-                  <a href="https://www.facebook.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                    <FontAwesomeIcon className={classes.socialIcon} icon={faFacebook} size="lg" />
-                  </a>
-                  <a href="https://twitter.com/PortlandPour" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                    <FontAwesomeIcon className={classes.socialIcon} icon={faTwitter} size="lg" />
-                  </a>
-                  <a href="https://www.pinterest.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                    <FontAwesomeIcon className={classes.socialIcon} icon={faPinterest} size="lg" />
-                  </a>
-                </div>
-              </Hidden>
+              <div className={classes.socialIcons}>
+                <a href="https://www.instagram.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                  <FontAwesomeIcon className={classes.socialIcon} icon={faInstagram} size="lg" />
+                </a>
+                <a href="https://www.facebook.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                  <FontAwesomeIcon className={classes.socialIcon} icon={faFacebook} size="lg" />
+                </a>
+                <a href="https://twitter.com/PortlandPour" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                  <FontAwesomeIcon className={classes.socialIcon} icon={faTwitter} size="lg" />
+                </a>
+                <a href="https://www.pinterest.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                  <FontAwesomeIcon className={classes.socialIcon} icon={faPinterest} size="lg" />
+                </a>
+              </div>
             </div>
             <Hidden smDown>
               <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css" />
@@ -167,96 +156,26 @@ class Header extends Component {
               </div>
             </Hidden>
           </Toolbar>
-        </AppBar>
-        <Drawer  open={this.state.drawer} onClose={this.toggleDrawer}>
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.toggleDrawer}
-            onKeyDown={this.toggleDrawer}
-          >
-            <List className={classes.drawer} component="nav" subheader={<ListSubheader>Menu</ListSubheader>}>
-              <ListItem button component="a" href="/">
-                <ListItemIcon>
-                  <Home />
-                </ListItemIcon>
-                <ListItemText primary="Home" />
-              </ListItem>
-              <ListItem button component="a" href="/page/1">
-                <ListItemIcon>
-                  <LocalBar />
-                </ListItemIcon>
-                <ListItemText primary="Cocktails" />
-              </ListItem>
-              <ListItem button component="a" href="/post/getting-started-with-local-craft-spirits-and-cocktail-recipes-at-home">
-                <ListItemIcon>
-                  <Info />
-                </ListItemIcon>
-                <ListItemText primary="Getting started" />
-              </ListItem>
-              <ListItem button component="a" href="/about">
-                <ListItemIcon>
-                  <Info />
-                </ListItemIcon>
-                <ListItemText primary="About" />
-              </ListItem>
-              <ListItem button component="a" href="/contact">
-                <ListItemIcon>
-                  <Email />
-                </ListItemIcon>
-                <ListItemText primary="Contact" />
-              </ListItem>
-              <ListItem button component="a" href="/work-with-us">
-                <ListItemIcon>
-                  <Work />
-                </ListItemIcon>
-                <ListItemText primary="Work with us" />
-              </ListItem>
-              <Hidden mdUp>
-                <Divider />
-                <a href="https://www.instagram.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                  <ListItem button>
-                    <ListItemIcon>
-                      <OpenInNew />
-                    </ListItemIcon>
-                    <ListItemText primary="Instagram" />
-                  </ListItem>
-                </a>
-                <a href="https://www.facebook.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                  <ListItem button>
-                    <ListItemIcon>
-                      <OpenInNew />
-                    </ListItemIcon>
-                    <ListItemText primary="Facebook" />
-                  </ListItem>
-                </a>
-                <a href="https://twitter.com/PortlandPour" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                  <ListItem button>
-                    <ListItemIcon>
-                      <OpenInNew />
-                    </ListItemIcon>
-                    <ListItemText primary="Twitter" />
-                  </ListItem>
-                </a>
-                <a href="https://www.pinterest.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                  <ListItem button>
-                    <ListItemIcon>
-                      <OpenInNew />
-                    </ListItemIcon>
-                    <ListItemText primary="Pinterest" />
-                  </ListItem>
-                </a>
-              </Hidden>
-              <Divider />
-              <ListItem button component="a" href="https://blog.theportlandpour.com/rss/">
-                <ListItemIcon>
-                  <RssFeed />
-                </ListItemIcon>
-                <ListItemText primary="RSS Feed" />
-              </ListItem>
-            </List>
+          <div className={classes.navbar}>
+            <Tabs
+              classes={{indicator: classes.tabIndicator}}
+              className={classes.tabs}
+              onChange={this.setTab}
+              scrollable={true}
+              scrollButtons="off"
+              indicatorColor="primary"
+              value={this.state.tab}
+            >
+              <Tab classes={{ textColorInherit: classes.label }} label={<Link to="/">Home</Link>}  />
+              <Tab classes={{ textColorInherit: classes.label }} label={<Link to="/page/1">Recipes</Link>} />
+              <Tab classes={{ textColorInherit: classes.label }} label={<Link to="/post/getting-started-with-local-craft-spirits-and-cocktail-recipes-at-home">Basics</Link>}  />
+              <Tab classes={{ textColorInherit: classes.label }} label={<Link to="/about">About</Link>} />
+              <Tab classes={{ textColorInherit: classes.label }} label={<Link to="/contact">Contact</Link>} />
+              <Tab classes={{ textColorInherit: classes.label }} label={<Link to="/work-with-us">Work with us</Link>} />
+              <Tab classes={{ textColorInherit: classes.label }} label={<a href="https://blog.theportlandpour.com/rss/">RSS</a>} />
+            </Tabs>
           </div>
-        </Drawer>
+        </AppBar>
       </React.Fragment>
     );
 

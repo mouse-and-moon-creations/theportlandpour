@@ -52,10 +52,11 @@ const styles = theme => ({
     color: theme.palette.common.white,
     minHeight: '400px',
     paddingBottom: '24px',
-    paddingTop: '90px',
+    paddingTop: theme.local.headerPadding,
     [theme.breakpoints.down('md')]: {
       backgroundImage: 'none',
-      paddingBottom: 0
+      paddingBottom: 0,
+      paddingLeft: '12px',
     }
   },
   heroContent: {
@@ -73,7 +74,7 @@ const styles = theme => ({
     alignItems: 'center',
     display: 'flex',
     flexWrap: 'wrap',
-    padding: '24px 0'
+    paddingBottom: '36px'
   },
   heroTagline: {
     alignItems: 'center',

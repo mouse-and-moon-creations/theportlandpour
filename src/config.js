@@ -34,7 +34,7 @@ const config = {
   },
   theme: {
     local: {
-      headerPadding: '124px',
+      headerPadding: '168px',
       maxWidth: '1270px',
       palette: {
         background: {
@@ -52,7 +52,7 @@ const config = {
         default: '#fff'
       },
       primary: {
-        main: '#47679D'
+        main: '#fff'
       }
     },
     props: {

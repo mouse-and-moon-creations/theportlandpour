@@ -41,10 +41,10 @@ class SitemapView extends Component {
     const { posts } = this.props.blog;
 
     const domain = 'https://www.theportlandpour.com';
-    const license = 'https://creativecommons.org/licenses/by-nc-nd/4.0/';
+    const license = 'https://creativecommons.org/licenses/by-nc-nd/4.0';
 
     const namespaces = {
-      "xmlns:image": "http://www.google.com/schemas/sitemap-image/1.1/"
+      "xmlns:image": "http://www.google.com/schemas/sitemap-image/1.1"
     };
 
     const urlset = props => React.createElement('urlset', props);

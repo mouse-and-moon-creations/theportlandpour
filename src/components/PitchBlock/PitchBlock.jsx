@@ -13,7 +13,7 @@ const styles = theme => ({
   pitch: {
     color: theme.palette.common.white,
     background: theme.local.palette.background.dark,
-    padding: '36px 0',
+    padding: '36px 0 60px 0',
     width: '100%'
   }
 });

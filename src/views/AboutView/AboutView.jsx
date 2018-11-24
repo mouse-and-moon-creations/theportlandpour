@@ -81,12 +81,14 @@ class AboutView extends Component {
               After spending time writing for various publications, and landing at a Portland based magazine, he moved to visual art and began a number of creative projects, including painting, drawing, and photography.
               But he never stopped being a storyteller, and today spends his time telling stories in creative conceptual images, creating product photography for local clients, and writing about booze.
             </Typography>
+            <Typography align="center" variant="subheading">Jack Wang</Typography>
+            <Typography align="center" variant="caption" paragraph>Staff writer</Typography>
             <Typography align="center" variant="subheading">Chelsea SN</Typography>
-            <Typography align="center" variant="caption" paragraph>Bartender, product stylist, writer, assistant photographer</Typography>
+            <Typography align="center" variant="caption" paragraph>Bartender, product stylist, contributing writer, assistant photographer</Typography>
             <Typography align="center" variant="subheading">S.P. Burke</Typography>
-            <Typography align="center" variant="caption" paragraph>Artist, writer, assistant photographer</Typography>
+            <Typography align="center" variant="caption" paragraph>Artist, contributing writer, assistant photographer</Typography>
             <Typography align="center" variant="subheading">Allegra Herdklotz-Yasutake</Typography>
-            <Typography align="center" variant="caption" paragraph>Writer, researcher</Typography>
+            <Typography align="center" variant="caption" paragraph>Contributing writer, researcher</Typography>
           </CardContent>
         </Card>
         <Footer />

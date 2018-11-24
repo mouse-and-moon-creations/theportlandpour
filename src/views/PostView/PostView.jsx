@@ -146,15 +146,7 @@ const styles = theme => ({
  */
 class PostView extends Component {
 
-  componentDidMount() {
-
-    document.body.addEventListener('click', blogHelper.postLinkHandler);
-
-  }
-
   componentWillUnmount() {
-
-    document.body.removeEventListener('click', blogHelper.postLinkHandler);
 
     return this.props.dispatch(blogActions.clearPostDetail());
 
@@ -170,7 +162,7 @@ class PostView extends Component {
 
     return (
       <React.Fragment>
-      <div className={classes.root}>
+      <div className={classes.root} onClick={blogHelper.postLinkHandler}>
         <Helmet>
           <title>{blogHelper.getTitle(post.title)}</title>
           <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
@@ -210,7 +202,8 @@ class PostView extends Component {
             <Typography align="center" variant="headline" paragraph>Related</Typography>
             <Typography align="center" variant="subheading" paragraph>Try these cocktails</Typography>
             <FeaturedPosts classes={{ featuredPosts: classes.featuredPosts, post: classes.relatedPost }} featuredPosts={featuredPosts} users={users} />
-          </div>}
+          </div>
+        }
         <div className={classes.postRoot}>
           <div className={classes.post}>
             {isEmpty(post) ? null : <PostDetail post={post} user={user} />}

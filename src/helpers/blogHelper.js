@@ -164,8 +164,10 @@ const getEmailShare = (url, subject, body) => {
 const postLinkHandler = e => {
 
   if(e.target && e.target.nodeName === 'A') {
-    e.preventDefault();
-    window.open(e.target.href, '_blank');
+    if(e.target.href.indexOf('theportlandpour.com') === -1) {
+      e.preventDefault();
+      window.open(e.target.href, '_blank');
+    }
   }
 
 }
