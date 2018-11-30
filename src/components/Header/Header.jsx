@@ -166,13 +166,13 @@ class Header extends Component {
               indicatorColor="primary"
               value={this.state.tab}
             >
-              <Tab classes={{ textColorInherit: classes.label }} label={<Link to="/">Home</Link>}  />
-              <Tab classes={{ textColorInherit: classes.label }} label={<Link to="/page/1">Recipes</Link>} />
-              <Tab classes={{ textColorInherit: classes.label }} label={<Link to="/post/getting-started-with-local-craft-spirits-and-cocktail-recipes-at-home">Basics</Link>}  />
-              <Tab classes={{ textColorInherit: classes.label }} label={<Link to="/about">About</Link>} />
-              <Tab classes={{ textColorInherit: classes.label }} label={<Link to="/contact">Contact</Link>} />
-              <Tab classes={{ textColorInherit: classes.label }} label={<Link to="/work-with-us">Work with us</Link>} />
-              <Tab classes={{ textColorInherit: classes.label }} label={<a href="https://blog.theportlandpour.com/rss/">RSS</a>} />
+              <Link to="/"><Tab classes={{ textColorInherit: classes.label }} label="Home" /></Link>
+              <Link to="/page/1"><Tab classes={{ textColorInherit: classes.label }} label="Recipes" /></Link>
+              <Link to="/post/getting-started-with-local-craft-spirits-and-cocktail-recipes-at-home"><Tab classes={{ textColorInherit: classes.label }} label="Basics" /></Link>
+              <Link to="/about"><Tab classes={{ textColorInherit: classes.label }} label="About" /></Link>
+              <Link to="/contact"><Tab classes={{ textColorInherit: classes.label }} label="Contact" /></Link>
+              <Link to="/work-with-us"><Tab classes={{ textColorInherit: classes.label }} label="Work with us" /></Link>
+              <a href="https://blog.theportlandpour.com/rss/"><Tab classes={{ textColorInherit: classes.label }} label="RSS" /></a>
             </Tabs>
           </div>
         </AppBar>
