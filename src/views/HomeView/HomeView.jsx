@@ -87,14 +87,14 @@ class HomeView extends Component {
             }`}
           </script>
         </Helmet>
-        <Hero latestPosts={posts.slice(0,3)} />
+        <Hero latestPosts={posts.slice(0,4)} />
         <PitchBlock />
         <LocalBlock />
         <NewsletterBlock />
         <AboutBlock />
-        <PostsBlock posts={posts.slice(3, 9)} users={users} />
+        <PostsBlock posts={posts.slice(4, 10)} users={users} />
         <GettingStartedBlock />
-        <PostsBlock posts={posts.slice(9, posts.length - 3)} users={users} />
+        <PostsBlock posts={posts.slice(10, posts.length - 2)} users={users} />
         <Divider />
         <WorkWithUsBlock />
         <Divider />

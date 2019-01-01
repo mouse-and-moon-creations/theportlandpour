@@ -108,16 +108,6 @@ const Hero = props => {
         </div>
         <div className={classes.recent}>
           <GridList cellHeight="auto" className={classes.gridList} cols={gridCols[width]}>
-            <GridListTile className={classes.gridListTile} cols={1}>
-              <Link to={blogHelper.getPostUrl('2018-holiday-gift-guide')}>
-                <img className={classes.recentImage} src="/assets/images/holiday-gift-guide.png" alt="2018 holiday gift guide"/>
-                <GridListTileBar
-                  className={classes.tileBar}
-                  subtitle={<span>Best gifts for the cocktail lover</span>}
-                  title={<span>*New* Holiday gift guide</span>}
-                />
-              </Link>
-            </GridListTile>
             {latestPosts.map((post, index) => {
               return (
                 <GridListTile className={classes.gridListTile} key={post.id} cols={1}>
