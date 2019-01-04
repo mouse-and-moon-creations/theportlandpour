@@ -12,7 +12,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import Typography from '@material-ui/core/Typography';
 import withWidth from '@material-ui/core/withWidth';
 import Gloss from '../Gloss';
 import blogHelper from '../../helpers/blogHelper';

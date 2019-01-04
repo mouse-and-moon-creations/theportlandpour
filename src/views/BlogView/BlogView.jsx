@@ -151,8 +151,7 @@ class BlogView extends Component {
           </Helmet>
           <div className={classes.rootContent}>
             <div className={classes.posts}>
-              <Typography align="center" variant="headline">Cocktail posts</Typography>
-              <Typography align="center" variant="subheading">Cocktail pictures, stories, and recipes featuring local ingredients</Typography>
+              <Typography align="center" variant="display2">Cocktails</Typography>
               <Hidden smDown>
                 <Filter getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
               </Hidden>

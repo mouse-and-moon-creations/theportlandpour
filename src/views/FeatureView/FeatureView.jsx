@@ -8,16 +8,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { frontloadConnect } from 'react-frontload';
-import Hidden from '@material-ui/core/Hidden';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import blogActions from '../../actions/blogActions';
-import Filter from '../../components/Filter';
 import Footer from '../../components/Footer';
 import Pager from '../../components/Pager';
 import Posts from '../../components/Posts';
-import pull from 'lodash/pull';
 import blogConstants from '../../constants/blogConstants';
 import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
@@ -97,7 +94,7 @@ class FeatureView extends Component {
   render() {
 
     const { classes, match } = this.props;
-    const { meta, features, selectedSpirits, tags, users, waiting } = this.props.blog;
+    const { meta, features, users, waiting } = this.props.blog;
     const { pagination } = meta;
 
     const progress = <LinearProgress />;
@@ -128,17 +125,10 @@ class FeatureView extends Component {
           </Helmet>
           <div className={classes.rootContent}>
             <div className={classes.features}>
-              <Typography align="center" variant="headline">Cocktail posts</Typography>
-              <Typography align="center" variant="subheading">Cocktail pictures, stories, and recipes featuring local ingredients</Typography>
-              <Hidden smDown>
-                <Filter getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
-              </Hidden>
+              <Typography align="center" variant="display2">Features</Typography>
               <Pager pagination={pagination} />
               {waiting ? progress : null}
               <Posts posts={features} users={users} />
-              <Hidden smDown>
-                <Filter getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
-              </Hidden>
               <Pager pagination={pagination} />
             </div>
           </div>
