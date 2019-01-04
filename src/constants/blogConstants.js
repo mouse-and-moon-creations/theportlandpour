@@ -3,6 +3,7 @@ const blogConstants = {
   CLEAR_POST_DETAIL: 'clear_post_detail',
   ERROR: 'blog_error',
   GET_FEATURED_POSTS: 'get_featured_posts',
+  GET_FEATURES: 'get_features',
   GET_LATEST_POSTS: 'get_latest_posts',
   GET_NEXT_POSTS: 'blog_get_next_posts',
   GET_POST: 'blog_get_post',

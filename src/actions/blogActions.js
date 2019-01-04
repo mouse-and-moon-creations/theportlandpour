@@ -152,6 +152,28 @@ const getLatestPosts = (opts = {}) => {
 
 }
 
+const fetchFeatures = (opts = {}) => {
+
+  const options = Object.assign({}, { include: 'tags', limit: 18, filter: 'page:true' }, opts);
+  const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
+  const endpoint = blogHelper.getEndpoint('posts', queryString);
+
+  return  new Promise((resolve, reject) => {
+
+    API.get(endpoint)
+      .then(
+        features => {
+          resolve(success(blogConstants.GET_FEATURES, features));
+        },
+        error => {
+          reject(fail(error));
+        }
+      );
+
+  });
+
+}
+
 const fetchPosts = (opts = {}) => {
 
   const options = Object.assign({}, { include: 'tags', limit: 18 }, opts);
@@ -171,6 +193,30 @@ const fetchPosts = (opts = {}) => {
       );
 
   });
+
+}
+
+const getFeatures = (opts = {}) => {
+
+  const options = Object.assign({}, { include: 'tags', limit: 18, filter: 'page:true' }, opts);
+  const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
+  const endpoint = blogHelper.getEndpoint('posts', queryString);
+
+  return dispatch => {
+
+    dispatch(request(blogConstants.WAITING_POSTS));
+
+    API.get(endpoint)
+      .then(
+        features => {
+          dispatch(success(blogConstants.GET_FEATURES, features));
+        },
+        error => {
+          dispatch(fail(error));
+        }
+      );
+
+  }
 
 }
 
@@ -319,10 +365,12 @@ const blogActions = {
   clearMessaging,
   clearPostDetail,
   addToMailChimp,
+  fetchFeatures,
   fetchPostBySlug,
   fetchPosts,
   fetchUsers,
   getFeaturedPosts,
+  getFeatures,
   getLatestPosts,
   getPostBySlug,
   getPosts,

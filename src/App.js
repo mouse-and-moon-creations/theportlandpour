@@ -14,6 +14,7 @@ import themeHelper from './helpers/themeHelper';
 import AboutView from './views/AboutView';
 import BlogView from './views/BlogView';
 import ContactView from './views/ContactView';
+import FeatureView from './views/FeatureView';
 import HomeView from './views/HomeView';
 import NoView from './views/NoView';
 import PostView from './views/PostView';
@@ -68,6 +69,7 @@ const App = props => {
         <Header />
         <Switch>
           <Route path="/" exact component={WithTracker(HomeView)} />
+          <Route path="/feature-page/:page" component={WithTracker(FeatureView)} />
           <Route path="/page/:page" component={WithTracker(BlogView)} />
           <Route path="/post/:slug" component={WithTracker(PostView)} />
           <Route path="/about" component={WithTracker(AboutView)} />

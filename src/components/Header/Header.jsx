@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faPinterest } from '@fortawesome/free-brands-svg-icons';
+import { faRss } from '@fortawesome/free-solid-svg-icons';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
@@ -137,6 +138,9 @@ class Header extends Component {
                 <a href="https://www.pinterest.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
                   <FontAwesomeIcon className={classes.socialIcon} icon={faPinterest} size="lg" />
                 </a>
+                <a href="https://blog.theportlandpour.com/rss/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
+                  <FontAwesomeIcon className={classes.socialIcon} icon={faRss} size="lg" />
+                </a>
               </div>
             </div>
             <Hidden smDown>
@@ -167,12 +171,12 @@ class Header extends Component {
               value={this.state.tab}
             >
               <Link to="/"><Tab classes={{ textColorInherit: classes.label }} label="Home" /></Link>
-              <Link to="/page/1"><Tab classes={{ textColorInherit: classes.label }} label="Recipes" /></Link>
+              <Link to="/page/1"><Tab classes={{ textColorInherit: classes.label }} label="Cocktails" /></Link>
+              <Link to="/feature-page/1"><Tab classes={{ textColorInherit: classes.label }} label="Features" /></Link>
               <Link to="/post/getting-started-with-local-craft-spirits-and-cocktail-recipes-at-home"><Tab classes={{ textColorInherit: classes.label }} label="Basics" /></Link>
               <Link to="/about"><Tab classes={{ textColorInherit: classes.label }} label="About" /></Link>
               <Link to="/contact"><Tab classes={{ textColorInherit: classes.label }} label="Contact" /></Link>
               <Link to="/work-with-us"><Tab classes={{ textColorInherit: classes.label }} label="Work with us" /></Link>
-              <a href="https://blog.theportlandpour.com/rss/"><Tab classes={{ textColorInherit: classes.label }} label="RSS" /></a>
             </Tabs>
           </div>
         </AppBar>

@@ -2,6 +2,7 @@ import blogConstants from '../constants/blogConstants';
 
 const initialState = {
   featuredPosts: [],
+  features: [],
   latestPosts: [],
   mailchimp: false,
   meta: {
@@ -68,6 +69,18 @@ const blog = (state = initialState, action) => {
         {
           featuredPosts: action.data.posts,
           messaging: initialState.messaging,
+          waiting: false
+        }
+      );
+
+    case blogConstants.GET_FEATURES:
+      return Object.assign(
+        {},
+        state,
+        {
+          features: action.data.posts,
+          messaging: initialState.messaging,
+          meta: action.data.meta,
           waiting: false
         }
       );

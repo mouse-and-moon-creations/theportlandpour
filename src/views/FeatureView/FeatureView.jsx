@@ -25,11 +25,11 @@ import Helmet from 'react-helmet';
 const frontload = async props => {
   const page = props.match.params.page;
   const paginationPage = props.blog.meta.pagination.page;
-  const { posts } = props.blog;
-  if(+page !== +paginationPage || posts.length === 0) {
+  const { features } = props.blog;
+  if(+page !== +paginationPage || features.length === 0) {
     props.dispatch(blogActions.request(blogConstants.WAITING_POSTS));
-    const posts = await blogActions.fetchPosts({page: page});
-    await props.dispatch(posts);
+    const features = await blogActions.fetchFeatures({page: page});
+    await props.dispatch(features);
   }
   if(props.blog.users.length === 0) {
     props.dispatch(blogActions.request(blogConstants.WAITING_USERS));
@@ -71,15 +71,15 @@ const styles = theme => ({
  * Blog view component
  * @extends Component
  */
-class BlogView extends Component {
+class FeatureView extends Component {
 
   componentDidMount() {
 
-    this.historyUnlisten = this.props.history.listen((location, action) => {
+    this.historyFeaturesUnlisten = this.props.history.listen((location, action) => {
       const path = location.pathname.split('/');
-      const page = path[path.indexOf('page') + 1];
+      const page = path[path.indexOf('feature-page') + 1];
       //window.scrollTo(0, 0);
-      return page ? this.props.dispatch(blogActions.getPosts({page: page})) : null;
+      return page ? this.props.dispatch(blogActions.getFeatures({page: page})) : null;
     });
 
     if(this.props.blog.tags.length === 0) {
@@ -90,37 +90,14 @@ class BlogView extends Component {
 
   componentWillUnmount() {
 
-    return this.historyUnlisten();
-
-  }
-
-  getPostsBySpirit = (spirit, clear=false) => {
-
-    const { selectedSpirits } = this.props.blog;
-
-    let query = { page: 1 }
-
-    if(clear) {
-      pull(selectedSpirits, spirit);
-    }
-    else {
-      selectedSpirits.push(spirit);
-    }
-
-    this.props.dispatch(blogActions.setSelectedSpirits(selectedSpirits));
-
-    if(selectedSpirits.length) {
-      query.filter = 'tags:[' + selectedSpirits.toString() + ']'
-    }
-
-    this.props.dispatch(blogActions.getPosts(query));
+    return this.historyFeaturesUnlisten();
 
   }
 
   render() {
 
     const { classes, match } = this.props;
-    const { meta, posts, selectedSpirits, tags, users, waiting } = this.props.blog;
+    const { meta, features, selectedSpirits, tags, users, waiting } = this.props.blog;
     const { pagination } = meta;
 
     const progress = <LinearProgress />;
@@ -133,10 +110,10 @@ class BlogView extends Component {
             <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
             <meta property="og:type" content="object" />
             <meta property="og:description" content={blogHelper.getDescription()} />
-            <meta property="og:image" content={posts.length ? blogHelper.getBaseUrl() + posts[0].feature_image : null} />
+            <meta property="og:image" content={features.length ? blogHelper.getBaseUrl() + features[0].feature_image : null} />
             <meta property="og:image:alt" content={blogHelper.getTitle()} />
             <meta property="og:image:height" content="750" />
-            <meta property="og:image:secure_url" content={posts.length ? blogHelper.getBaseUrl() + posts[0].feature_image : null} />
+            <meta property="og:image:secure_url" content={features.length ? blogHelper.getBaseUrl() + features[0].feature_image : null} />
             <meta property="og:image:type" content="image/jpeg" />
             <meta property="og:image:width" content="600" />
             <meta property="og:locale" content="en_US" />
@@ -146,11 +123,11 @@ class BlogView extends Component {
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:title" content={'Cocktails - page ' + match.params.page} />
             <meta name="twitter:description" content={blogHelper.getDescription()} />
-            <meta name="twitter:image" content={posts.length ? blogHelper.getBaseUrl() + posts[0].feature_image : null} />
+            <meta name="twitter:image" content={features.length ? blogHelper.getBaseUrl() + features[0].feature_image : null} />
             <meta name="twitter:image:alt" content={blogHelper.getTitle()} />
           </Helmet>
           <div className={classes.rootContent}>
-            <div className={classes.posts}>
+            <div className={classes.features}>
               <Typography align="center" variant="headline">Cocktail posts</Typography>
               <Typography align="center" variant="subheading">Cocktail pictures, stories, and recipes featuring local ingredients</Typography>
               <Hidden smDown>
@@ -158,7 +135,7 @@ class BlogView extends Component {
               </Hidden>
               <Pager pagination={pagination} />
               {waiting ? progress : null}
-              <Posts posts={posts} users={users} />
+              <Posts posts={features} users={users} />
               <Hidden smDown>
                 <Filter getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
               </Hidden>
@@ -180,6 +157,6 @@ const mapStateToProps = state => {
 
 }
 
-const styledComponent = withStyles(styles)(BlogView)
+const styledComponent = withStyles(styles)(FeatureView)
 
 export default connect(mapStateToProps)(frontloadConnect(frontload, {onMount: true, onUpdate: false})(styledComponent));

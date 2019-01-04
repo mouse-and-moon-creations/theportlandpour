@@ -11,11 +11,11 @@ import { frontloadConnect } from 'react-frontload';
 import Divider from '@material-ui/core/Divider';
 import blogActions from '../../actions/blogActions';
 import AboutBlock from '../../components/AboutBlock';
+import FeatureBlock from '../../components/FeatureBlock';
 import Footer from '../../components/Footer';
-import GettingStartedBlock from '../../components/GettingStartedBlock';
 import Hero from '../../components/Hero';
-import LocalBlock from '../../components/LocalBlock';
 import NewsletterBlock from '../../components/NewsletterBlock';
+import PatreonBlock from '../../components/PatreonBlock';
 import PitchBlock from '../../components/PitchBlock';
 import PostsBlock from '../../components/PostsBlock';
 import WorkWithUsBlock from '../../components/WorkWithUsBlock';
@@ -27,6 +27,8 @@ const frontload = async props => {
   props.dispatch(blogActions.request(blogConstants.WAITING_POSTS));
   const posts = await blogActions.fetchPosts();
   await props.dispatch(posts);
+  const features = await blogActions.fetchFeatures();
+  await props.dispatch(features);
 }
 
 /**
@@ -47,7 +49,7 @@ class HomeView extends Component {
 
   render() {
 
-    const { posts, users } = this.props.blog;
+    const { features, posts, users } = this.props.blog;
 
     return (
       <React.Fragment>
@@ -89,11 +91,11 @@ class HomeView extends Component {
         </Helmet>
         <Hero latestPosts={posts.slice(0,4)} />
         <PitchBlock />
-        <LocalBlock />
+        <FeatureBlock latestPosts={features.slice(0,4)} />
         <NewsletterBlock />
         <AboutBlock />
         <PostsBlock posts={posts.slice(4, 10)} users={users} />
-        <GettingStartedBlock />
+        <PatreonBlock />
         <PostsBlock posts={posts.slice(10, posts.length - 2)} users={users} />
         <Divider />
         <WorkWithUsBlock />
