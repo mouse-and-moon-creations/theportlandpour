@@ -24,8 +24,8 @@ import Helmet from 'react-helmet';
 
 const frontload = async props => {
   const page = props.match.params.page;
-  const paginationPage = props.blog.meta.pagination.page;
-  const { posts } = props.blog;
+  const paginationPage = props.blog.posts.meta.pagination.page;
+  const { posts } = props.blog.posts;
   if(+page !== +paginationPage || posts.length === 0) {
     props.dispatch(blogActions.request(blogConstants.WAITING_POSTS));
     const posts = await blogActions.fetchPosts({page: page});
@@ -120,7 +120,8 @@ class BlogView extends Component {
   render() {
 
     const { classes, match } = this.props;
-    const { meta, posts, selectedSpirits, tags, users, waiting } = this.props.blog;
+    const { selectedSpirits, tags, users, waiting } = this.props.blog;
+    const { meta, posts } = this.props.blog.posts;
     const { pagination } = meta;
 
     const progress = <LinearProgress />;

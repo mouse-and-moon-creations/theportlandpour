@@ -2,25 +2,39 @@ import blogConstants from '../constants/blogConstants';
 
 const initialState = {
   featuredPosts: [],
-  features: [],
+  features: {
+    meta: {
+      pagination: {
+        limit: null,
+        next: null,
+        page: null,
+        pages: null,
+        prev: null,
+        total: null
+      }
+    },
+    features: []
+  },
   latestPosts: [],
   mailchimp: false,
-  meta: {
-    pagination: {
-      limit: null,
-      next: null,
-      page: null,
-      pages: null,
-      prev: null,
-      total: null
-    }
-  },
   messaging: {
     error: {},
     message: null
   },
   post: {},
-  posts: [],
+  posts: {
+    meta: {
+      pagination: {
+        limit: null,
+        next: null,
+        page: null,
+        pages: null,
+        prev: null,
+        total: null
+      }
+    },
+    posts: []
+  },
   selectedMixers: [],
   selectedSpirits: [],
   tags: [],
@@ -78,9 +92,11 @@ const blog = (state = initialState, action) => {
         {},
         state,
         {
-          features: action.data.posts,
+          features: {
+            features: action.data.posts,
+            meta: action.data.meta
+          },
           messaging: initialState.messaging,
-          meta: action.data.meta,
           waiting: false
         }
       );
@@ -116,9 +132,9 @@ const blog = (state = initialState, action) => {
         state,
         {
           messaging: initialState.messaging,
+          posts: action.data,
           waiting: false
-        },
-        action.data
+        }
       );
 
     case blogConstants.GET_TAGS:
@@ -195,9 +211,36 @@ const blog = (state = initialState, action) => {
         }
       );
 
+    case blogConstants.WAITING_FEATURES:
+
+      state.features.meta.pagination.total = initialState.features.meta.pagination.total;
+
+      return Object.assign(
+        {},
+        state,
+        {
+          messaging: initialState.messaging,
+          posts: initialState.posts,
+          waiting: true
+        }
+      );
+
+    case blogConstants.WAITING_FEATURE:
+
+      state.features.meta.pagination.total = initialState.features.meta.pagination.total;
+
+      return Object.assign(
+        {},
+        state,
+        {
+          messaging: initialState.messaging,
+          waiting: true
+        }
+      );
+
     case blogConstants.WAITING_POSTS:
 
-      state.meta.pagination.total = initialState.meta.pagination.total;
+      state.posts.meta.pagination.total = initialState.posts.meta.pagination.total;
 
       return Object.assign(
         {},
@@ -211,7 +254,7 @@ const blog = (state = initialState, action) => {
 
     case blogConstants.WAITING_POST:
 
-      state.meta.pagination.total = initialState.meta.pagination.total;
+      state.posts.meta.pagination.total = initialState.posts.meta.pagination.total;
 
       return Object.assign(
         {},

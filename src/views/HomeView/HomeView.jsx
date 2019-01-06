@@ -25,6 +25,7 @@ import Helmet from 'react-helmet';
 
 const frontload = async props => {
   props.dispatch(blogActions.request(blogConstants.WAITING_POSTS));
+  props.dispatch(blogActions.request(blogConstants.WAITING_FEATURES));
   const posts = await blogActions.fetchPosts();
   await props.dispatch(posts);
   const features = await blogActions.fetchFeatures();
@@ -49,7 +50,9 @@ class HomeView extends Component {
 
   render() {
 
-    const { features, posts, users } = this.props.blog;
+    const { features } = this.props.blog.features;
+    const { posts } = this.props.blog.posts;
+    const { users } = this.props.blog;
 
     return (
       <React.Fragment>

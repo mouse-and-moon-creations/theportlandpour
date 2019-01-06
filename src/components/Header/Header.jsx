@@ -7,9 +7,6 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram, faPinterest } from '@fortawesome/free-brands-svg-icons';
-import { faRss } from '@fortawesome/free-solid-svg-icons';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
@@ -48,7 +45,7 @@ const styles = theme => ({
     zIndex: -100
   },
   label: {
-    opacity: '1 ! important',
+    whiteSpace: 'nowrap'
   },
   navbar: {
     backgroundColor: '#607D8B',
@@ -60,21 +57,6 @@ const styles = theme => ({
       color: theme.palette.common.white
     }
   },
-  socialIcon: {
-    marginLeft: '12px',
-    verticalAlign: '0.75em ! important'
-  },
-  socialIconLink: {
-    color: theme.palette.grey[500],
-    textDecoration: 'none',
-    '&:hover': {
-      color: theme.palette.common.black
-    }
-  },
-  socialIcons: {
-    display: 'inline-block',
-    paddingLeft: '12px'
-  },
   tabIndicator: {
     opacity: 0
   },
@@ -85,6 +67,9 @@ const styles = theme => ({
   tagline: {
     background: 'transparent',
     flexGrow: 1
+  },
+  textColorInherit: {
+    opacity: '1 ! important',
   },
   toolbar: {
     background: theme.palette.common.white,
@@ -125,23 +110,6 @@ class Header extends Component {
               <Link to="/">
                 <img src="/assets/images/brand/tpp.brand.md.png" alt=""/>
               </Link>
-              <div className={classes.socialIcons}>
-                <a href="https://www.instagram.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                  <FontAwesomeIcon className={classes.socialIcon} icon={faInstagram} size="lg" />
-                </a>
-                <a href="https://www.facebook.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                  <FontAwesomeIcon className={classes.socialIcon} icon={faFacebook} size="lg" />
-                </a>
-                <a href="https://twitter.com/PortlandPour" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                  <FontAwesomeIcon className={classes.socialIcon} icon={faTwitter} size="lg" />
-                </a>
-                <a href="https://www.pinterest.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                  <FontAwesomeIcon className={classes.socialIcon} icon={faPinterest} size="lg" />
-                </a>
-                <a href="https://blog.theportlandpour.com/rss/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-                  <FontAwesomeIcon className={classes.socialIcon} icon={faRss} size="lg" />
-                </a>
-              </div>
             </div>
             <Hidden smDown>
               <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css" />
@@ -170,13 +138,12 @@ class Header extends Component {
               indicatorColor="primary"
               value={this.state.tab}
             >
-              <Link to="/"><Tab classes={{ textColorInherit: classes.label }} label="Home" /></Link>
-              <Link to="/page/1"><Tab classes={{ textColorInherit: classes.label }} label="Cocktails" /></Link>
-              <Link to="/feature-page/1"><Tab classes={{ textColorInherit: classes.label }} label="Features" /></Link>
-              <Link to="/post/getting-started-with-local-craft-spirits-and-cocktail-recipes-at-home"><Tab classes={{ textColorInherit: classes.label }} label="Basics" /></Link>
-              <Link to="/about"><Tab classes={{ textColorInherit: classes.label }} label="About" /></Link>
-              <Link to="/contact"><Tab classes={{ textColorInherit: classes.label }} label="Contact" /></Link>
-              <Link to="/work-with-us"><Tab classes={{ textColorInherit: classes.label }} label="Work with us" /></Link>
+              <Link to="/"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Home" /></Link>
+              <Link to="/page/1"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Cocktails" /></Link>
+              <Link to="/feature-page/1"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Features" /></Link>
+              <Link to="/about"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="About" /></Link>
+              <Link to="/contact"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Contact" /></Link>
+              <Link to="/work-with-us"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Work with us" /></Link>
             </Tabs>
           </div>
         </AppBar>

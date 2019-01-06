@@ -16,8 +16,10 @@ const blogConstants = {
   SET_SELECTED_MIXERS: 'blog_set_selected_mixers',
   SET_SELECTED_SPIRITS: 'blog_set_selected_spirits',
   WAITING_MAILCHIMP: 'blog_waiting_mailchimp',
-  WAITING_POSTS: 'blog_waiting_posts',
+  WAITING_FEATURE: 'blog_waiting_feature',
+  WAITING_FEATURES: 'blog_waiting_features',
   WAITING_POST: 'blog_waiting_post',
+  WAITING_POSTS: 'blog_waiting_posts',
   WAITING_USERS: 'blog_waiting_users'
 }
 

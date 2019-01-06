@@ -50,9 +50,7 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit * 6,
     paddingTop:  theme.spacing.unit * 4,
     [theme.breakpoints.down('md')]: {
-      backgroundImage: 'none',
-      paddingBottom: 0,
-      paddingLeft: '12px',
+      paddingLeft: '12px'
     }
   },
   heroContent: {

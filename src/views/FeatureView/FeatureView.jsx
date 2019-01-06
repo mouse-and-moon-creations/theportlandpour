@@ -21,8 +21,8 @@ import Helmet from 'react-helmet';
 
 const frontload = async props => {
   const page = props.match.params.page;
-  const paginationPage = props.blog.meta.pagination.page;
-  const { features } = props.blog;
+  const paginationPage = props.blog.features.meta.pagination.page;
+  const { features } = props.blog.features;
   if(+page !== +paginationPage || features.length === 0) {
     props.dispatch(blogActions.request(blogConstants.WAITING_POSTS));
     const features = await blogActions.fetchFeatures({page: page});
@@ -94,7 +94,8 @@ class FeatureView extends Component {
   render() {
 
     const { classes, match } = this.props;
-    const { meta, features, users, waiting } = this.props.blog;
+    const { users, waiting } = this.props.blog;
+    const { features, meta } = this.props.blog.features;
     const { pagination } = meta;
 
     const progress = <LinearProgress />;
