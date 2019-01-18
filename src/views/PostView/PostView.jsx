@@ -19,27 +19,19 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import blogActions from '../../actions/blogActions';
 import PostDetail from '../../components/PostDetail';
 import FeaturedPosts from '../../components/FeaturedPosts';
-import blogConstants from '../../constants/blogConstants';
 import blogHelper from '../../helpers/blogHelper';
 import structuredDataHelper from '../../helpers/structuredDataHelper';
-import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
 import Helmet from 'react-helmet';
 import Footer from '../../components/Footer';
 
 const frontload = async props => {
   const slug = props.location.pathname.split('/');
-  props.dispatch(blogActions.request(blogConstants.WAITING_POST));
   const post = await blogActions.fetchPostBySlug(slug.pop());
   await props.dispatch(post);
   const related = { filter: encodeURIComponent('tags:[' + post.data.tags.map(tag => tag.slug).join(',') + ']+id:-' + post.data.id) };
   const relatedPosts = await blogActions.getFeaturedPosts(related);
   await props.dispatch(relatedPosts);
-  if(props.blog.users.length === 0) {
-    props.dispatch(blogActions.request(blogConstants.WAITING_USERS));
-    const users = await blogActions.fetchUsers();
-    await props.dispatch(users);
-  }
 }
 
 const amazonLinks = [
@@ -155,10 +147,9 @@ class PostView extends Component {
   render() {
 
     const { classes, match } = this.props;
-    const { featuredPosts, post, users, waiting } = this.props.blog;
+    const { featuredPosts, post, waiting } = this.props.blog;
     const progress = <LinearProgress />;
-    const user = find(users, { id: post.author });
-    const articleData = structuredDataHelper.getArticleData({post: post, match: match, user: user});
+    const articleData = structuredDataHelper.getArticleData({post: post, match: match});
 
     return (
       <React.Fragment>
@@ -168,7 +159,7 @@ class PostView extends Component {
           <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
           <meta name="description" content={blogHelper.getPostDescription(post)} />
           <meta property="og:type" content="article" />
-          <meta property="article:author" content={user ? user.name : null} />
+          <meta property="article:author" content={post.primary_author ? post.primary_author.name : null} />
           <meta property="article:modified_time" content={post.updated_at} />
           <meta property="article:published_time" content={post.published_at} />
           <meta property="article:section" content="Cocktails" />
@@ -197,16 +188,16 @@ class PostView extends Component {
           <script type="application/ld+json">{articleData}</script>
         </Helmet>
         {waiting ? progress : null}
-        {post.page ? null :
+        {post.featured ? null :
           <div className={classes.sidebar}>
             <Typography align="center" variant="headline" paragraph>Related</Typography>
             <Typography align="center" variant="subheading" paragraph>Try these cocktails</Typography>
-            <FeaturedPosts classes={{ featuredPosts: classes.featuredPosts, post: classes.relatedPost }} featuredPosts={featuredPosts} users={users} />
+            <FeaturedPosts classes={{ featuredPosts: classes.featuredPosts, post: classes.relatedPost }} featuredPosts={featuredPosts} />
           </div>
         }
         <div className={classes.postRoot}>
           <div className={classes.post}>
-            {isEmpty(post) ? null : <PostDetail post={post} user={user} />}
+            {isEmpty(post) ? null : <PostDetail post={post} />}
           </div>
         </div>
         <div className={classes.sidebar}>

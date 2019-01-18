@@ -2,7 +2,7 @@ import blogConstants from '../constants/blogConstants';
 
 const initialState = {
   featuredPosts: [],
-  features: {
+  pages: {
     meta: {
       pagination: {
         limit: null,
@@ -13,7 +13,7 @@ const initialState = {
         total: null
       }
     },
-    features: []
+    pages: []
   },
   latestPosts: [],
   mailchimp: false,
@@ -54,6 +54,14 @@ const blog = (state = initialState, action) => {
         { messaging: initialState.messaging }
       );
 
+    case blogConstants.CLEAR_POSTS:
+
+      return Object.assign(
+        {},
+        state,
+        { posts: initialState.posts }
+      );
+
     case blogConstants.CLEAR_POST_DETAIL:
 
       return Object.assign(
@@ -87,13 +95,13 @@ const blog = (state = initialState, action) => {
         }
       );
 
-    case blogConstants.GET_FEATURES:
+    case blogConstants.GET_PAGES:
       return Object.assign(
         {},
         state,
         {
-          features: {
-            features: action.data.posts,
+          pages: {
+            pages: action.data.pages,
             meta: action.data.meta
           },
           messaging: initialState.messaging,
@@ -211,9 +219,9 @@ const blog = (state = initialState, action) => {
         }
       );
 
-    case blogConstants.WAITING_FEATURES:
+    case blogConstants.WAITING_PAGES:
 
-      state.features.meta.pagination.total = initialState.features.meta.pagination.total;
+      state.pages.meta.pagination.total = initialState.pages.meta.pagination.total;
 
       return Object.assign(
         {},
@@ -225,9 +233,9 @@ const blog = (state = initialState, action) => {
         }
       );
 
-    case blogConstants.WAITING_FEATURE:
+    case blogConstants.WAITING_PAGE:
 
-      state.features.meta.pagination.total = initialState.features.meta.pagination.total;
+      state.pages.meta.pagination.total = initialState.pages.meta.pagination.total;
 
       return Object.assign(
         {},

@@ -15,24 +15,14 @@ import blogActions from '../../actions/blogActions';
 import Footer from '../../components/Footer';
 import Pager from '../../components/Pager';
 import Posts from '../../components/Posts';
-import blogConstants from '../../constants/blogConstants';
 import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
 
 const frontload = async props => {
   const page = props.match.params.page;
-  const paginationPage = props.blog.features.meta.pagination.page;
-  const { features } = props.blog.features;
-  if(+page !== +paginationPage || features.length === 0) {
-    props.dispatch(blogActions.request(blogConstants.WAITING_POSTS));
-    const features = await blogActions.fetchFeatures({page: page});
-    await props.dispatch(features);
-  }
-  if(props.blog.users.length === 0) {
-    props.dispatch(blogActions.request(blogConstants.WAITING_USERS));
-    const users = await blogActions.fetchUsers();
-    await props.dispatch(users);
-  }
+  await props.dispatch(blogActions.clearPosts());
+  const posts = await blogActions.fetchPosts({filter: 'featured:true', page: page});
+  await props.dispatch(posts);
 }
 
 const styles = theme => ({
@@ -76,7 +66,7 @@ class FeatureView extends Component {
       const path = location.pathname.split('/');
       const page = path[path.indexOf('feature-page') + 1];
       //window.scrollTo(0, 0);
-      return page ? this.props.dispatch(blogActions.getFeatures({page: page})) : null;
+      return page ? this.props.dispatch(blogActions.getPosts({filter: 'featured:true', page: page})) : null;
     });
 
     if(this.props.blog.tags.length === 0) {
@@ -94,8 +84,8 @@ class FeatureView extends Component {
   render() {
 
     const { classes, match } = this.props;
-    const { users, waiting } = this.props.blog;
-    const { features, meta } = this.props.blog.features;
+    const { waiting } = this.props.blog;
+    const { posts, meta } = this.props.blog.posts;
     const { pagination } = meta;
 
     const progress = <LinearProgress />;
@@ -108,10 +98,10 @@ class FeatureView extends Component {
             <link rel="canonical" href={blogHelper.getBaseUrl() + match.url} />
             <meta property="og:type" content="object" />
             <meta property="og:description" content={blogHelper.getDescription()} />
-            <meta property="og:image" content={features.length ? blogHelper.getBaseUrl() + features[0].feature_image : null} />
+            <meta property="og:image" content={posts.length ? blogHelper.getBaseUrl() + posts[0].feature_image : null} />
             <meta property="og:image:alt" content={blogHelper.getTitle()} />
             <meta property="og:image:height" content="750" />
-            <meta property="og:image:secure_url" content={features.length ? blogHelper.getBaseUrl() + features[0].feature_image : null} />
+            <meta property="og:image:secure_url" content={posts.length ? blogHelper.getBaseUrl() + posts[0].feature_image : null} />
             <meta property="og:image:type" content="image/jpeg" />
             <meta property="og:image:width" content="600" />
             <meta property="og:locale" content="en_US" />
@@ -121,7 +111,7 @@ class FeatureView extends Component {
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:title" content={'Cocktails - page ' + match.params.page} />
             <meta name="twitter:description" content={blogHelper.getDescription()} />
-            <meta name="twitter:image" content={features.length ? blogHelper.getBaseUrl() + features[0].feature_image : null} />
+            <meta name="twitter:image" content={posts.length ? blogHelper.getBaseUrl() + posts[0].feature_image : null} />
             <meta name="twitter:image:alt" content={blogHelper.getTitle()} />
           </Helmet>
           <div className={classes.rootContent}>
@@ -129,7 +119,7 @@ class FeatureView extends Component {
               <Typography align="center" variant="display2">Features</Typography>
               <Pager pagination={pagination} />
               {waiting ? progress : null}
-              <Posts posts={features} users={users} />
+              <Posts posts={posts} features />
               <Pager pagination={pagination} />
             </div>
           </div>

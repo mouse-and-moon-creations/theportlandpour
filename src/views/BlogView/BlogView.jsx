@@ -18,24 +18,14 @@ import Footer from '../../components/Footer';
 import Pager from '../../components/Pager';
 import Posts from '../../components/Posts';
 import pull from 'lodash/pull';
-import blogConstants from '../../constants/blogConstants';
 import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
 
 const frontload = async props => {
   const page = props.match.params.page;
-  const paginationPage = props.blog.posts.meta.pagination.page;
-  const { posts } = props.blog.posts;
-  if(+page !== +paginationPage || posts.length === 0) {
-    props.dispatch(blogActions.request(blogConstants.WAITING_POSTS));
-    const posts = await blogActions.fetchPosts({page: page});
-    await props.dispatch(posts);
-  }
-  if(props.blog.users.length === 0) {
-    props.dispatch(blogActions.request(blogConstants.WAITING_USERS));
-    const users = await blogActions.fetchUsers();
-    await props.dispatch(users);
-  }
+  await props.dispatch(blogActions.clearPosts());
+  const posts = await blogActions.fetchPosts({page: page});
+  await props.dispatch(posts);
 }
 
 const styles = theme => ({
@@ -120,7 +110,7 @@ class BlogView extends Component {
   render() {
 
     const { classes, match } = this.props;
-    const { selectedSpirits, tags, users, waiting } = this.props.blog;
+    const { selectedSpirits, tags, waiting } = this.props.blog;
     const { meta, posts } = this.props.blog.posts;
     const { pagination } = meta;
 
@@ -158,7 +148,7 @@ class BlogView extends Component {
               </Hidden>
               <Pager pagination={pagination} />
               {waiting ? progress : null}
-              <Posts posts={posts} users={users} />
+              <Posts posts={posts} />
               <Hidden smDown>
                 <Filter getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
               </Hidden>

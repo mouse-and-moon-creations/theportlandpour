@@ -15,7 +15,7 @@ import moment from 'moment';
  */
 const getAssetUrl = asset => {
 
-  return config.blog.www + asset;
+  return asset.match(config.blog.www) ? asset : config.blog.www + asset;
 
 }
 
@@ -47,8 +47,7 @@ const getEndpoint = (endpoint, query='', slug='') =>  {
   ret += config.blog.api.endpoints[endpoint];
   ret += slug ? '/' + slug : '/';
   ret += '?';
-  ret += 'client_id=' + config.blog.api.user;
-  ret += '&client_secret=' + config.blog.api.secret;
+  ret += 'key=' + config.blog.api.key;
   ret += query ? '&' + query : '';
 
   return ret;

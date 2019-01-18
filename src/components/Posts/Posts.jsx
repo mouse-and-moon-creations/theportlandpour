@@ -13,14 +13,12 @@ import find from 'lodash/find';
 
 const propTypes = {
   posts: PropTypes.array,
-  tags: PropTypes.array,
-  users: PropTypes.array
+  tags: PropTypes.array
 };
 
 const defaultProps = {
   posts: [],
-  tags: [],
-  users: []
+  tags: []
 };
 
 const styles = theme => ({
@@ -43,14 +41,14 @@ const styles = theme => ({
 
 const Posts = props => {
 
-  const { classes, posts, users } = props;
+  const { classes, posts } = props;
 
   return (
     <div className={classes.posts}>
       <div className={classes.paper}>
         {posts.map(post => {
           return (
-            <Post post={post} user={find(users, { id: post.author })} key={post.id} />
+            <Post post={post} key={post.id} />
           );
         })}
       </div>

@@ -11,16 +11,13 @@ import Link from 'react-router-dom/Link';
 import Button from '@material-ui/core/Button';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Post from '../Post';
-import find from 'lodash/find';
 
 const propTypes = {
-  posts: PropTypes.array,
-  users: PropTypes.array
+  posts: PropTypes.array
 };
 
 const defaultProps = {
-  posts: [],
-  users: []
+  posts: []
 };
 
 const styles = theme => ({
@@ -54,14 +51,14 @@ const styles = theme => ({
 
 const PostsBlock = props => {
 
-  const { classes, posts, users } = props;
+  const { classes, posts } = props;
 
   return (
     <div className={classes.root}>
       <div className={classes.posts}>
         {posts.map(post => {
           return (
-            <Post post={post} user={find(users, { id: post.author })} key={post.id} />
+            <Post post={post} key={post.id} />
           );
         })}
       </div>

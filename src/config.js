@@ -9,14 +9,16 @@ const config = {
     description: 'Cocktail recipes with local ingredients.',
     descriptionSuffix: 'A collection of classic and modern cocktail recipes using the craft spirits and ingredients of Portland, Oregon.',
     api: {
-      path: 'ghost/api/v0.1',
+      key: 'ff0a6045dcf8a57fae3d429136',
+      path: 'ghost/api/v2/content',
       user: 'ghost-frontend',
       secret: 'a26d5ff404ed',
       endpoints: {
+        pages: 'pages',
         postBySlug: 'posts/slug',
         posts: 'posts',
         tags: 'tags',
-        users: 'users'
+        users: 'authors'
       }
     }
   },

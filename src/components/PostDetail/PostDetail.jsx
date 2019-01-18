@@ -72,9 +72,9 @@ const styles = theme => ({
 
 const PostDetail = props => {
 
-  const { classes, post, user } = props;
+  const { classes, post } = props;
   const postDate = blogHelper.getPostDate(post.published_at);
-  const absSrc = blogHelper.getAssetUrl(user.profile_image);
+  const absSrc = blogHelper.getAssetUrl(post.primary_author.profile_image);
   const assetUrl = post.feature_image ? blogHelper.getAssetUrl(post.feature_image) : null;
   const permalink = blogHelper.getBaseUrl() + blogHelper.getPostUrl(post.slug);
   const facebookShare = blogHelper.getFacebookShare(permalink);
@@ -92,7 +92,7 @@ const PostDetail = props => {
       </Typography>
       <Typography className={classes.cardSubheading} variant="subheading" color="textSecondary" align="center">
         <Avatar className={classes.avatar} component="span" src={absSrc} />
-        posted by {user.name} on {postDate}
+        posted by {post.primary_author.name} on {postDate}
       </Typography>
       <Typography align="center" paragraph>
         {assetUrl ? <img src={assetUrl} alt={post.title} className={classes.image} /> : null}

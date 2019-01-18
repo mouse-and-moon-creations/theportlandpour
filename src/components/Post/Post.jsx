@@ -20,15 +20,13 @@ import blogHelper from '../../helpers/blogHelper';
 const propTypes = {
   compact: PropTypes.bool,
   post: PropTypes.object,
-  showactions: PropTypes.bool,
-  user: PropTypes.object
+  showactions: PropTypes.bool
 };
 
 const defaultProps = {
   compact: false,
   post: {},
-  showactions: true,
-  user: {}
+  showactions: true
 };
 
 const styles = theme => ({
@@ -82,9 +80,9 @@ const styles = theme => ({
 
 const Post = props => {
 
-  const { classes, compact, post, showactions, user } = props;
+  const { classes, compact, post, showactions } = props;
   const postDate = moment(post.published_at).format('LL');
-  const postBySlug = blogHelper.getPostUrl(post.slug)
+  const postBySlug = blogHelper.getPostUrl(post.slug);
 
   return (
     <Card className={compact ? classes.rootCompact : classes.root} {...props} classes={{}} compact="" showactions="" elevation={0}>
@@ -96,7 +94,7 @@ const Post = props => {
           <Typography variant={compact ? 'subheading' : 'title'} align="center" className={compact ? classes.cardTitleCompact : classes.cardTitle}>{post.title}</Typography>
           {compact ? null : (
             <React.Fragment>
-              <Typography variant="caption" align="center" paragraph={true}>{postDate} by {user.name}</Typography>
+              <Typography variant="caption" align="center" paragraph={true}>{postDate} by {post.primary_author.name}</Typography>
               <Typography className={classes.cardBody} component="div">{ post.custom_excerpt }</Typography>
             </React.Fragment>
           )}

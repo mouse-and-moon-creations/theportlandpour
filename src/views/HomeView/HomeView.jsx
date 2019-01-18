@@ -19,17 +19,14 @@ import NewsletterBlock from '../../components/NewsletterBlock';
 import PitchBlock from '../../components/PitchBlock';
 import PostsBlock from '../../components/PostsBlock';
 import WorkWithUsBlock from '../../components/WorkWithUsBlock';
-import blogConstants from '../../constants/blogConstants';
 import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
 
 const frontload = async props => {
-  props.dispatch(blogActions.request(blogConstants.WAITING_POSTS));
-  props.dispatch(blogActions.request(blogConstants.WAITING_FEATURES));
-  const posts = await blogActions.fetchPosts();
+  const posts = await blogActions.fetchPosts({filter: ''});
   await props.dispatch(posts);
-  const features = await blogActions.fetchFeatures();
-  await props.dispatch(features);
+  const pages = await blogActions.fetchPages();
+  await props.dispatch(pages);
 }
 
 /**
@@ -38,21 +35,10 @@ const frontload = async props => {
  */
 class HomeView extends Component {
 
-  componentDidMount() {
-
-    if(this.props.blog.users.length === 0) {
-      this.props.dispatch(blogActions.getUsers());
-    }
-
-    this.props.dispatch(blogActions.getFeaturedPosts());
-
-  }
-
   render() {
 
-    const { features } = this.props.blog.features;
+    const { pages } = this.props.blog.pages;
     const { posts } = this.props.blog.posts;
-    const { users } = this.props.blog;
 
     return (
       <React.Fragment>
@@ -94,12 +80,12 @@ class HomeView extends Component {
         </Helmet>
         <Hero latestPosts={posts.slice(0,4)} />
         <PitchBlock />
-        <FeatureBlock latestPosts={features.slice(0,4)} />
+        <FeatureBlock latestPosts={pages.slice(0,4)} />
         <NewsletterBlock />
         <AboutBlock />
-        <PostsBlock posts={posts.slice(4, 10)} users={users} />
+        <PostsBlock posts={posts.slice(4, 10)} />
         <GettingStartedBlock />
-        <PostsBlock posts={posts.slice(10, posts.length - 2)} users={users} />
+        <PostsBlock posts={posts.slice(10, posts.length - 2)} />
         <Divider />
         <WorkWithUsBlock />
         <Divider />

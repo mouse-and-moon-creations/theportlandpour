@@ -34,7 +34,7 @@ const fetchUsers = (opts={}) => {
     API.get(endpoint)
       .then(
         users => {
-          users.users.sort((a, b) => {
+          users.authors.sort((a, b) => {
             const nameA = a.name.toUpperCase();
             const nameB = b.name.toUpperCase();
             if(nameA > nameB) {
@@ -47,7 +47,7 @@ const fetchUsers = (opts={}) => {
               return 0;
             }
           });
-          resolve(success(blogConstants.GET_USERS, users.users.reverse()));
+          resolve(success(blogConstants.GET_USERS, users.authors.reverse()));
         },
         error => {
           reject(fail(error));
@@ -60,7 +60,7 @@ const fetchUsers = (opts={}) => {
 
 const getPostBySlug = (slug, opts={}) => {
 
-  const options = Object.assign({}, { formats: 'html', include: 'tags', filter: 'page[true,false]' }, opts);
+  const options = Object.assign({}, { formats: 'html', include: 'authors,tags', filter: 'page[true,false]' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('postBySlug', queryString, slug);
 
@@ -84,7 +84,7 @@ const getPostBySlug = (slug, opts={}) => {
 
 const fetchPostBySlug = (slug, opts={}) => {
 
-  const options = Object.assign({}, { formats: 'html', include: 'tags' }, opts);
+  const options = Object.assign({}, { formats: 'html', include: 'authors,tags' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('postBySlug', queryString, slug);
 
@@ -106,7 +106,7 @@ const fetchPostBySlug = (slug, opts={}) => {
 
 const getFeaturedPosts = (opts = {}) => {
 
-  const options = Object.assign({}, { filter: 'featured:true', include: 'tags', limit: 6 }, opts);
+  const options = Object.assign({}, { filter: 'featured:true', include: 'authors,tags', limit: 6, order: 'published_at%20DESC' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 
@@ -130,7 +130,7 @@ const getFeaturedPosts = (opts = {}) => {
 
 const getLatestPosts = (opts = {}) => {
 
-  const options = Object.assign({}, { include: 'tags', limit: 6 }, opts);
+  const options = Object.assign({}, { include: 'authors,tags', limit: 6, order: 'published_at%20DESC' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 
@@ -152,18 +152,18 @@ const getLatestPosts = (opts = {}) => {
 
 }
 
-const fetchFeatures = (opts = {}) => {
+const fetchPages = (opts = {}) => {
 
-  const options = Object.assign({}, { include: 'tags', limit: 18, filter: 'page:true' }, opts);
+  const options = Object.assign({}, { include: 'authors,tags', limit: 18, order: 'published_at%20DESC' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
-  const endpoint = blogHelper.getEndpoint('posts', queryString);
+  const endpoint = blogHelper.getEndpoint('pages', queryString);
 
   return  new Promise((resolve, reject) => {
 
     API.get(endpoint)
       .then(
-        features => {
-          resolve(success(blogConstants.GET_FEATURES, features));
+        pages => {
+          resolve(success(blogConstants.GET_PAGES, pages));
         },
         error => {
           reject(fail(error));
@@ -176,7 +176,7 @@ const fetchFeatures = (opts = {}) => {
 
 const fetchPosts = (opts = {}) => {
 
-  const options = Object.assign({}, { include: 'tags', limit: 18 }, opts);
+  const options = Object.assign({}, { filter: 'featured:false', include: 'authors,tags', limit: 18, order: 'published_at%20DESC' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 
@@ -196,20 +196,20 @@ const fetchPosts = (opts = {}) => {
 
 }
 
-const getFeatures = (opts = {}) => {
+const getPages = (opts = {}) => {
 
-  const options = Object.assign({}, { include: 'tags', limit: 18, filter: 'page:true' }, opts);
+  const options = Object.assign({}, { include: 'authors,tags', limit: 18, order: 'published_at%20DESC' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
-  const endpoint = blogHelper.getEndpoint('posts', queryString);
+  const endpoint = blogHelper.getEndpoint('pages', queryString);
 
   return dispatch => {
 
-    dispatch(request(blogConstants.WAITING_POSTS));
+    dispatch(request(blogConstants.WAITING_PAGES));
 
     API.get(endpoint)
       .then(
-        features => {
-          dispatch(success(blogConstants.GET_FEATURES, features));
+        pages => {
+          dispatch(success(blogConstants.GET_PAGES, pages));
         },
         error => {
           dispatch(fail(error));
@@ -222,7 +222,7 @@ const getFeatures = (opts = {}) => {
 
 const getPosts = (opts = {}) => {
 
-  const options = Object.assign({}, { include: 'tags', limit: 18 }, opts);
+  const options = Object.assign({}, { filter: 'featured:false', include: 'authors,tags', limit: 18, order: 'published_at%20DESC' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 
@@ -281,7 +281,7 @@ const getUsers = (opts={}) => {
     API.get(endpoint)
       .then(
         users => {
-          users.users.sort((a, b) => {
+          users.authors.sort((a, b) => {
             const nameA = a.name.toUpperCase();
             const nameB = b.name.toUpperCase();
             if(nameA > nameB) {
@@ -294,7 +294,7 @@ const getUsers = (opts={}) => {
               return 0;
             }
           });
-          dispatch(success(blogConstants.GET_USERS, users.users.reverse()));
+          dispatch(success(blogConstants.GET_USERS, users.authors.reverse()));
         },
         error => {
           dispatch(fail(error));
@@ -361,16 +361,25 @@ const clearMessaging = () => {
 
 }
 
+const clearPosts = () => {
+
+  return dispatch => {
+    dispatch(success(blogConstants.CLEAR_POSTS));
+  }
+
+}
+
 const blogActions = {
   clearMessaging,
+  clearPosts,
   clearPostDetail,
   addToMailChimp,
-  fetchFeatures,
+  fetchPages,
   fetchPostBySlug,
   fetchPosts,
   fetchUsers,
   getFeaturedPosts,
-  getFeatures,
+  getPages,
   getLatestPosts,
   getPostBySlug,
   getPosts,
