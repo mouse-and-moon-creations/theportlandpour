@@ -13,9 +13,9 @@ import blogActions from '../../actions/blogActions';
 import AboutBlock from '../../components/AboutBlock';
 import FeatureBlock from '../../components/FeatureBlock';
 import Footer from '../../components/Footer';
+import GettingStartedBlock from '../../components/GettingStartedBlock';
 import Hero from '../../components/Hero';
 import NewsletterBlock from '../../components/NewsletterBlock';
-import PatreonBlock from '../../components/PatreonBlock';
 import PitchBlock from '../../components/PitchBlock';
 import PostsBlock from '../../components/PostsBlock';
 import WorkWithUsBlock from '../../components/WorkWithUsBlock';
@@ -98,7 +98,7 @@ class HomeView extends Component {
         <NewsletterBlock />
         <AboutBlock />
         <PostsBlock posts={posts.slice(4, 10)} users={users} />
-        <PatreonBlock />
+        <GettingStartedBlock />
         <PostsBlock posts={posts.slice(10, posts.length - 2)} users={users} />
         <Divider />
         <WorkWithUsBlock />
