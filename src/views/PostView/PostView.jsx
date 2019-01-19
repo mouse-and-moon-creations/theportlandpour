@@ -9,10 +9,6 @@ import React, { Component } from 'react';
 import withRouter from 'react-router-dom/withRouter';
 import { connect } from 'react-redux';
 import { frontloadConnect } from 'react-frontload';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -34,7 +30,7 @@ const frontload = async props => {
   await props.dispatch(relatedPosts);
 }
 
-const amazonLinks = [
+/*const amazonLinks = [
   {
     author: 'Karen Locke',
     href: 'https://amzn.to/2pCw6oO',
@@ -63,7 +59,7 @@ const amazonLinks = [
     src: '//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=0393089037&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL170_&tag=theportlandpo-20',
     title: 'Liquid Intelligence'
   },
-];
+]; */
 
 const styles = theme => ({
   card: {
