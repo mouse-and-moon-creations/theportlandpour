@@ -90,6 +90,12 @@ const styles = theme => ({
   },
   tileBar: {
     background: 'rgba(96,125,139,0.6)'
+  },
+  tileTop: {
+    background: 'transparent'
+  },
+  tileType: {
+    fontFamily: theme.local.typography.gloss.fontFamily,
   }
 });
 
@@ -115,8 +121,8 @@ const Hero = props => {
                     <img className={classes.recentImage} src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} />
                     <GridListTileBar
                       className={classes.tileBar}
-                      subtitle={<span>{post.custom_excerpt}</span>}
-                      title={<span>*New* {post.title}</span>}
+                      subtitle={<span>{post.featured ? 'Feature' : 'Cocktail'}</span>}
+                      title={<span>{post.title}</span>}
                     />
                   </Link>
                 </GridListTile>

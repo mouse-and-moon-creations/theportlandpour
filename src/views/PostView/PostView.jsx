@@ -188,6 +188,11 @@ class PostView extends Component {
           <script type="application/ld+json">{articleData}</script>
         </Helmet>
         {waiting ? progress : null}
+        <div className={classes.postRoot}>
+          <div className={classes.post}>
+            {isEmpty(post) ? null : <PostDetail post={post} />}
+          </div>
+        </div>
         {post.featured ? null :
           <div className={classes.sidebar}>
             <Typography align="center" variant="headline" paragraph>Related</Typography>
@@ -195,35 +200,6 @@ class PostView extends Component {
             <FeaturedPosts classes={{ featuredPosts: classes.featuredPosts, post: classes.relatedPost }} featuredPosts={featuredPosts} />
           </div>
         }
-        <div className={classes.postRoot}>
-          <div className={classes.post}>
-            {isEmpty(post) ? null : <PostDetail post={post} />}
-          </div>
-        </div>
-        <div className={classes.sidebar}>
-          <Typography align="center" variant="headline" paragraph>More</Typography>
-          <Typography align="center" variant="subheading" paragraph>Suggested reading</Typography>
-          {amazonLinks.map(link => (
-            <Card className={classes.card} key={link.href} elevation={0}>
-              <a href={link.href} target="_blank">
-                <CardContent>
-                  <Typography align="center">
-                    <img src={link.src} alt={link.title}/>
-                  </Typography>
-                  <Typography align="center" variant="subheading">{link.title}</Typography>
-                  <Typography align="center" variant="caption">{link.author}</Typography>
-                </CardContent>
-                <CardActions className={classes.cardActions}>
-                  <Button className={classes.button} color="secondary">Buy now</Button>
-                </CardActions>
-              </a>
-              <img src={link.pixel} className={classes.pixel} width="0" height="0" border="0" alt="" />
-            </Card>
-          ))}
-          <Typography align="center" paragraph>
-            <a href="http://drinkwire.liquor.com" rel="noopener noreferrer" target="_blank"><img className={classes.badge} src="http://badges.tid.al/badge/get/tony-m/drinkwire-contributor" alt="liquor.com badge" /></a>
-          </Typography>
-        </div>
       </div>
       <Footer />
     </React.Fragment>

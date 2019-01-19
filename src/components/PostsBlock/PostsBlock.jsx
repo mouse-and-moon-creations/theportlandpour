@@ -62,11 +62,6 @@ const PostsBlock = props => {
           );
         })}
       </div>
-      <div className={classes.cardActions}>
-        <Link className={classes.cardButton} to="/page/1">
-          <Button color="secondary">See all the cocktails</Button>
-        </Link>
-      </div>
     </div>
   );
 

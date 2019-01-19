@@ -81,7 +81,7 @@ const styles = theme => ({
 const Post = props => {
 
   const { classes, compact, post, showactions } = props;
-  const postDate = moment(post.published_at).format('LL');
+  const postDate = moment(post.published_at).format('ll');
   const postBySlug = blogHelper.getPostUrl(post.slug);
 
   return (
@@ -94,7 +94,7 @@ const Post = props => {
           <Typography variant={compact ? 'subheading' : 'title'} align="center" className={compact ? classes.cardTitleCompact : classes.cardTitle}>{post.title}</Typography>
           {compact ? null : (
             <React.Fragment>
-              <Typography variant="caption" align="center" paragraph={true}>{postDate} by {post.primary_author.name}</Typography>
+              <Typography variant="caption" align="center" paragraph={true}>{post.featured ? 'Feature' : 'Cocktail'} by {post.primary_author.name}, {postDate}</Typography>
               <Typography className={classes.cardBody} component="div">{ post.custom_excerpt }</Typography>
             </React.Fragment>
           )}
