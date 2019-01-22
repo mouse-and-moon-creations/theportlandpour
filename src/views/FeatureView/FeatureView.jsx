@@ -30,6 +30,8 @@ const styles = theme => ({
     padding: '0 24px',
     width: '100%',
     [theme.breakpoints.down('sm')]: {
+      paddingLeft: theme.spacing.unit,
+      paddingRight: theme.spacing.unit,
       width: 'auto'
     }
   },
@@ -38,9 +40,6 @@ const styles = theme => ({
     maxWidth: theme.local.maxWidth,
     paddingTop: theme.local.headerPadding,
     position: 'relative'
-  },
-  rootContent: {
-    display: 'flex',
   },
   sidebar: {
     paddingBottom: '24px',
@@ -115,7 +114,7 @@ class FeatureView extends Component {
             <meta name="twitter:image:alt" content={blogHelper.getTitle()} />
           </Helmet>
           <div className={classes.rootContent}>
-            <div className={classes.features}>
+            <div className={classes.posts}>
               <Typography align="center" variant="display2">Features</Typography>
               <Pager pagination={pagination} />
               {waiting ? progress : null}

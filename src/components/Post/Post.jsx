@@ -31,9 +31,8 @@ const defaultProps = {
 
 const styles = theme => ({
   root: {
-    borderColor: theme.palette.grey[300],
-    borderWidth: '1px',
-    borderStyle: 'solid',
+    border: 0,
+    boxShadow: theme.shadows[1],
     marginBottom: '12px',
     width: '32%',
     [theme.breakpoints.down('md')]: {
@@ -56,25 +55,30 @@ const styles = theme => ({
     }
   },
   cardActions: {
-    display: 'flex'
+    display: 'block',
+    paddingLeft: '8px'
   },
   cardBody: {
-    height: '80px',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap'
   },
   cardButton: {
     margin: 'auto'
   },
   image: {
-    border: '1px solid #D3DBDF',
+    display: 'block',
     height: 'auto',
     width: '100%'
   },
-  cardTitle: {
-    padding: '24px 0'
-  },
   cardTitleCompact: {
     padding: '0'
+  },
+  borderFeatured: {
+    borderTop: '6px solid #f44336'
+  },
+  borderCocktail: {
+    borderTop: '6px solid #607d8b'
   }
 });
 
@@ -87,19 +91,26 @@ const Post = props => {
   return (
     <Card className={compact ? classes.rootCompact : classes.root} {...props} classes={{}} compact="" showactions="" elevation={0}>
       <Link to={postBySlug}>
-        <CardContent>
-          <Typography align="center">
-            <img src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} className={classes.image} />
+        <img src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} className={classes.image} />
+        <CardContent className={post.featured ? classes.borderFeatured : classes.borderCocktail}>
+          {compact ? null : (
+            <Typography variant="caption" gutterBottom>{postDate}</Typography>
+          )}
+          <Typography gutterBottom={compact ? false : false} variant={compact ? 'subtitle2' : 'h6'} component="h2" className={compact ? classes.cardTitleCompact : classes.cardTitle}>{post.title}</Typography>
+          <Typography className={classes.cardBody} variant="caption" paragraph>
+            {post.featured ? <span>{'\u00A0'}</span> :
+              post.tags.map((tag, index, tags) => {
+                return <span key={post.id + tag.id} className={classes.tag}>{tag.name + (index === tags.length - 1 ? '' : ', ') }</span>
+              })
+            }
           </Typography>
-          <Typography variant={compact ? 'subheading' : 'title'} align="center" className={compact ? classes.cardTitleCompact : classes.cardTitle}>{post.title}</Typography>
           {compact ? null : (
             <React.Fragment>
-              <Typography variant="caption" align="center" paragraph={true}>{post.featured ? 'Feature' : 'Cocktail'} by {post.primary_author.name}, {postDate}</Typography>
-              <Typography className={classes.cardBody} component="div">{ post.custom_excerpt }</Typography>
+              <Typography className={classes.cardBody} component="p">{ post.custom_excerpt }</Typography>
             </React.Fragment>
           )}
         </CardContent>
-        {showactions ? (
+        {showactions && !compact ? (
           <CardActions className={classes.cardActions}>
             <Button className={classes.cardButton} color="secondary" disableRipple disableFocusRipple>Read more</Button>
           </CardActions>

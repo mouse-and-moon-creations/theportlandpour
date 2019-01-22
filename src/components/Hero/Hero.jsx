@@ -88,8 +88,11 @@ const styles = theme => ({
     height: '100%',
     width: '100%'
   },
-  tileBar: {
+  tileBarCocktail: {
     background: 'rgba(96,125,139,0.6)'
+  },
+  tileBarFeatured: {
+    background: 'rgba(135,85,94,0.6)'
   },
   tileTop: {
     background: 'transparent'
@@ -120,7 +123,7 @@ const Hero = props => {
                   <Link to={blogHelper.getPostUrl(post.slug)}>
                     <img className={classes.recentImage} src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} />
                     <GridListTileBar
-                      className={classes.tileBar}
+                      className={post.featured ? classes.tileBarFeatured : classes.tileBarCocktail}
                       subtitle={<span>{post.featured ? 'Feature' : 'Cocktail'}</span>}
                       title={<span>{post.title}</span>}
                     />

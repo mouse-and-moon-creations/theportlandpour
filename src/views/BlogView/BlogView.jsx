@@ -33,6 +33,8 @@ const styles = theme => ({
     padding: '0 24px',
     width: '100%',
     [theme.breakpoints.down('sm')]: {
+      paddingLeft: theme.spacing.unit,
+      paddingRight: theme.spacing.unit,
       width: 'auto'
     }
   },
@@ -41,9 +43,6 @@ const styles = theme => ({
     maxWidth: theme.local.maxWidth,
     paddingTop: theme.local.headerPadding,
     position: 'relative'
-  },
-  rootContent: {
-    display: 'flex',
   },
   sidebar: {
     paddingBottom: '24px',

@@ -8,13 +8,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
+import Gloss from '../Gloss';
 import Post from '../Post';
 
 const propTypes = {
+  label: PropTypes.string,
   posts: PropTypes.array
 };
 
 const defaultProps = {
+  label: '',
   posts: []
 };
 
@@ -27,7 +30,7 @@ const styles = theme => ({
     margin: 'auto'
   },
   gloss: {
-    padding: '0 36px'
+    padding: '0 0 24px 12px'
   },
   posts: {
     display: 'flex',
@@ -35,6 +38,8 @@ const styles = theme => ({
     justifyContent: 'space-around',
     [theme.breakpoints.down('sm')]: {
       margin: 'auto',
+      paddingLeft: theme.spacing.unit,
+      paddingRight: theme.spacing.unit,
       width: '100%'
     }
   },
@@ -49,10 +54,11 @@ const styles = theme => ({
 
 const PostsBlock = props => {
 
-  const { classes, posts } = props;
+  const { classes, label, posts } = props;
 
   return (
     <div className={classes.root}>
+      {label ? <Gloss classes={{gloss: classes.gloss}} label={label} variant="h4" /> : null}
       <div className={classes.posts}>
         {posts.map(post => {
           return (
