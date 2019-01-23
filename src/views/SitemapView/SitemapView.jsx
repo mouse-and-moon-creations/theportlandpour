@@ -22,13 +22,13 @@ class SitemapView extends Component {
 
   componentDidMount = () => {
 
-    this.props.dispatch(blogActions.getPosts({ limit: 'all', filter: 'page:[true,false]' }));
+    this.props.dispatch(blogActions.getPosts({ limit: 'all', filter: '' }));
 
   }
 
   prepareSitemap = () => {
 
-    const pageCount = Math.ceil(+this.props.blog.meta.pagination.total / 16);
+    const pageCount = Math.ceil(+this.props.blog.posts.meta.pagination.total / 16);
 
     let pages = [];
 
@@ -38,7 +38,7 @@ class SitemapView extends Component {
       }
     }
 
-    const { posts } = this.props.blog;
+    const { posts } = this.props.blog.posts;
 
     const domain = 'https://www.theportlandpour.com';
     const license = 'https://creativecommons.org/licenses/by-nc-nd/4.0';
@@ -109,21 +109,19 @@ class SitemapView extends Component {
         })}
         {posts.map(post => {
           return (
-            post.status === 'published' ?
-              <url>
-                <loc>{encodeURI(domain + '/post/' + post.slug)}</loc>
-                <changefreq>weekly</changefreq>
-                <priority>{post.featured ? 0.8 : 0.6}</priority>
-                <lastmod>{moment(post.published_at).format('YYYY-MM-DD')}</lastmod>
-                <ImageImage>
-                  <ImageLoc>{encodeURI(domain + post.feature_image)}</ImageLoc>
-                  <ImageCaption>{post.custom_excerpt}</ImageCaption>
-                  <ImageTitle>{post.title}</ImageTitle>
-                  <ImageLicense>{encodeURI(license)}</ImageLicense>
-                  <ImageGeo_location>Portland, Oregon</ImageGeo_location>
-                </ImageImage>
-              </url> :
-              null
+            <url>
+              <loc>{encodeURI(domain + '/post/' + post.slug)}</loc>
+              <changefreq>weekly</changefreq>
+              <priority>{post.featured ? 0.8 : 0.6}</priority>
+              <lastmod>{moment(post.published_at).format('YYYY-MM-DD')}</lastmod>
+              <ImageImage>
+                <ImageLoc>{encodeURI(post.feature_image)}</ImageLoc>
+                <ImageCaption>{post.custom_excerpt}</ImageCaption>
+                <ImageTitle>{post.title}</ImageTitle>
+                <ImageLicense>{encodeURI(license)}</ImageLicense>
+                <ImageGeo_location>Portland, Oregon</ImageGeo_location>
+              </ImageImage>
+            </url>
           )
         })}
       </urlset>
@@ -137,8 +135,6 @@ class SitemapView extends Component {
 
     const { classes } = this.props;
     const preparedSitemap = this.prepareSitemap();
-
-    console.log(this.props);
 
     return (
       <div className={classes.root}>{preparedSitemap}</div>
