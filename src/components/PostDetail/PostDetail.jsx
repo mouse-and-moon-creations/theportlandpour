@@ -13,6 +13,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import {readingTime} from '@tryghost/helpers';
 import TagList from '../TagList';
 import blogHelper from '../../helpers/blogHelper';
 
@@ -28,6 +29,8 @@ const defaultProps = {
 
 const styles = theme => ({
   root: {
+    maxWidth: '620px',
+    padding: '20px 10px',
     '& a': {
       textDecoration: 'underline'
     }
@@ -42,6 +45,11 @@ const styles = theme => ({
   },
   cardButton: {
     marginLeft: 'auto'
+  },
+  flexContainer: {
+    display: 'flex',
+    paddingBottom: theme.spacing.unit * 4,
+    paddingTop: theme.spacing.unit * 2
   },
   image: {
     border: '1px solid #D3DBDF',
@@ -65,8 +73,7 @@ const styles = theme => ({
   },
   shareLink: {
     color: theme.palette.text.hint,
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing.unit * 2
   }
 });
 
@@ -84,20 +91,29 @@ const PostDetail = props => {
 
   return (
     <div className={classes.root}>
-      <Typography variant="display1" color="default" align="center" className={classes.cardTitle}>
+      <Typography gutterBottom  variant="h4" color="default" className={classes.cardTitle}>
         {post.title}
       </Typography>
-      <Typography className={classes.cardSubheading} align="center" variant="subheading" color="textSecondary" component="div">
-        "{ post.custom_excerpt }"
+      <Typography gutterBottom variant="subtitle1" component="div">
+        {post.custom_excerpt}
       </Typography>
-      <Typography className={classes.cardSubheading} variant="subheading" color="textSecondary" align="center">
-        <Avatar className={classes.avatar} component="span" src={absSrc} />
-        posted by {post.primary_author.name} on {postDate}
-      </Typography>
+      <div className={classes.flexContainer}>
+        <div>
+          <Avatar className={classes.avatar} component="span" src={absSrc} />
+        </div>
+        <div>
+          <Typography variant="subtitle2" component="div">
+            {post.primary_author.name}
+          </Typography>
+          <Typography variant="caption" component="div">
+            {postDate} - {readingTime(post, {minute: '1 min read', minutes: '% min read'})}
+          </Typography>
+        </div>
+      </div>
       <Typography align="center" paragraph>
         {assetUrl ? <img src={assetUrl} alt={post.title} className={classes.image} /> : null}
       </Typography>
-      <Typography align="center" variant="headline" paragraph>
+      <Typography variant="h5" paragraph>
         <a className={classes.shareLink} href={facebookShare} rel="noopener noreferrer" target="_blank">
           <FontAwesomeIcon className={classes.socialIcon} icon={faFacebook} />
         </a>
@@ -111,11 +127,10 @@ const PostDetail = props => {
           <FontAwesomeIcon className={classes.socialIcon} icon={faEnvelope} />
         </a>
       </Typography>
-      <Typography align="center" variant="caption" paragraph>permalink: {permalink}</Typography>
+      <Typography variant="caption" paragraph>permalink: {permalink}</Typography>
       <Typography component="div" className={classes.postContent}>
         <div dangerouslySetInnerHTML={{__html: post.html}} />
       </Typography>
-      <TagList tags={post.tags} />
     </div>
   );
 

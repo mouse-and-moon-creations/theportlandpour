@@ -98,7 +98,7 @@ const getBaseUrl = (trailing = false) => {
 
 const getPostDate = date => {
 
-  return moment(date).format('LL');
+  return moment(date).format('ll');
 
 }
 
