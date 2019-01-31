@@ -13,8 +13,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import {readingTime} from '@tryghost/helpers';
-import TagList from '../TagList';
+import readingTime from '@tryghost/helpers/lib/reading-time';
 import blogHelper from '../../helpers/blogHelper';
 
 const propTypes = {
