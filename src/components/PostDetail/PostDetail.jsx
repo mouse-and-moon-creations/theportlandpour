@@ -104,7 +104,7 @@ const PostDetail = props => {
             {post.primary_author.name}
           </Typography>
           <Typography variant="caption" component="div">
-            {postDate}
+            {postDate} - {blogHelper.getPostReadingTime(post.html)} min. read
           </Typography>
         </div>
       </div>

@@ -84,6 +84,38 @@ const getPostDescription = post => {
 
 }
 
+const getPostReadingTime = (content = '') => {
+
+  const wordsPerMinute = 275;
+  const wordsPerSecond = wordsPerMinute / 60;
+  const imageCount = content ? (content.match(/<img(.|\n)*?>/g) || []).length + 1 : 0;
+  const text = content.replace(/<(.|\n)*?>/g, ' '); // strip any HTML tags
+  const pattern = /[a-zA-ZÀ-ÿ0-9_\u0392-\u03c9\u0410-\u04F9]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]+/g;
+  const match = text.match(pattern);
+  let wordCount = 0;
+  let readingTimeSeconds = 0;
+
+  if(match) {
+    for (var i = 0; i < match.length; i++) {
+      if (match[i].charCodeAt(0) >= 0x4e00) {
+        wordCount += match[i].length;
+      }
+      else {
+        wordCount += 1;
+      }
+    }
+  }
+
+  readingTimeSeconds = wordCount / wordsPerSecond;
+
+  for (var j = 12; j > 12 - imageCount; j--) {
+      readingTimeSeconds += Math.max(j, 3);
+  }
+
+  return Math.round(readingTimeSeconds / 60);
+
+}
+
 const getUrl = page => {
 
   return '/page/' + page;
@@ -98,7 +130,7 @@ const getBaseUrl = (trailing = false) => {
 
 const getPostDate = date => {
 
-  return moment(date).format('LL');
+  return moment(date).format('ll');
 
 }
 
@@ -188,6 +220,7 @@ const blogHelper = {
   getPinterestShare,
   getPostDate,
   getPostDescription,
+  getPostReadingTime,
   getPostUrl,
   getTitle,
   getTwitterShare,
