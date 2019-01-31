@@ -13,7 +13,6 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import readingTime from '@tryghost/helpers/lib/reading-time';
 import blogHelper from '../../helpers/blogHelper';
 
 const propTypes = {
@@ -105,7 +104,7 @@ const PostDetail = props => {
             {post.primary_author.name}
           </Typography>
           <Typography variant="caption" component="div">
-            {postDate} - {readingTime(post, {minute: '1 min read', minutes: '% min read'})}
+            {postDate}
           </Typography>
         </div>
       </div>
