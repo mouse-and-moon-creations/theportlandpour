@@ -226,6 +226,8 @@ const getPosts = (opts = {}) => {
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 
+  console.log(endpoint);
+
   return dispatch => {
 
     dispatch(request(blogConstants.WAITING_POSTS));

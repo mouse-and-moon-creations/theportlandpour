@@ -23,8 +23,13 @@ import Helmet from 'react-helmet';
 
 const frontload = async props => {
   const page = props.match.params.page;
+  const { selectedSpirits } = props.blog;
   await props.dispatch(blogActions.clearPosts());
-  const posts = await blogActions.fetchPosts({page: page});
+  let query = {page: page};
+  if(selectedSpirits.length) {
+    query.filter = 'tags:[' + selectedSpirits.toString() + ']';
+  }
+  const posts = await blogActions.fetchPosts(query);
   await props.dispatch(posts);
 }
 
@@ -64,22 +69,9 @@ class BlogView extends Component {
 
   componentDidMount() {
 
-    this.historyUnlisten = this.props.history.listen((location, action) => {
-      const path = location.pathname.split('/');
-      const page = path[path.indexOf('page') + 1];
-      //window.scrollTo(0, 0);
-      return page ? this.props.dispatch(blogActions.getPosts({page: page})) : null;
-    });
-
     if(this.props.blog.tags.length === 0) {
       this.props.dispatch(blogActions.getTags());
     }
-
-  }
-
-  componentWillUnmount() {
-
-    return this.historyUnlisten();
 
   }
 
@@ -141,7 +133,7 @@ class BlogView extends Component {
           </Helmet>
           <div className={classes.rootContent}>
             <div className={classes.posts}>
-              <Typography align="center" variant="display2">Cocktails</Typography>
+              <Typography align="center" variant="h4">Cocktails</Typography>
               <Hidden smDown>
                 <Filter getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
               </Hidden>

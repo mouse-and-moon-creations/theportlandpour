@@ -143,7 +143,6 @@ class Header extends Component {
               <Link to="/feature-page/1"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Features" /></Link>
               <Link to="/about"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="About" /></Link>
               <Link to="/contact"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Contact" /></Link>
-              <Link to="/work-with-us"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Work with us" /></Link>
             </Tabs>
           </div>
         </AppBar>

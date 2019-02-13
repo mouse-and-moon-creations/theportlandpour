@@ -61,22 +61,9 @@ class FeatureView extends Component {
 
   componentDidMount() {
 
-    this.historyFeaturesUnlisten = this.props.history.listen((location, action) => {
-      const path = location.pathname.split('/');
-      const page = path[path.indexOf('feature-page') + 1];
-      //window.scrollTo(0, 0);
-      return page ? this.props.dispatch(blogActions.getPosts({filter: 'featured:true', page: page})) : null;
-    });
-
     if(this.props.blog.tags.length === 0) {
       this.props.dispatch(blogActions.getTags());
     }
-
-  }
-
-  componentWillUnmount() {
-
-    return this.historyFeaturesUnlisten();
 
   }
 
@@ -115,7 +102,7 @@ class FeatureView extends Component {
           </Helmet>
           <div className={classes.rootContent}>
             <div className={classes.posts}>
-              <Typography align="center" variant="display2">Features</Typography>
+              <Typography align="center" variant="h4">Features</Typography>
               <Pager pagination={pagination} />
               {waiting ? progress : null}
               <Posts posts={posts} features />
