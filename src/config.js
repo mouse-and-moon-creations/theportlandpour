@@ -1,7 +1,5 @@
 const config = {
   blog: {
-    featuredPostsCaption: 'Some of our favorite whiskey cocktails and cocktail recipes featuring some of Portland\'s local craft distilling bourbon and rye.',
-    featuredPostsTitle: 'Whiskey cocktails',
     host: 'https://blog.theportlandpour.com',
     www: 'https://www.theportlandpour.com',
     title: 'The Portland Pour',
@@ -9,10 +7,7 @@ const config = {
     description: 'Cocktail recipes with local ingredients.',
     descriptionSuffix: 'A collection of classic and modern cocktail recipes using the craft spirits and ingredients of Portland, Oregon.',
     api: {
-      key: 'ff0a6045dcf8a57fae3d429136',
       path: 'ghost/api/v2/content',
-      user: 'ghost-frontend',
-      secret: 'a26d5ff404ed',
       endpoints: {
         pages: 'pages',
         postBySlug: 'posts/slug',
@@ -33,6 +28,12 @@ const config = {
   },
   pinterest: {
     share: 'https://pinterest.com/pin/create/button/'
+  },
+  search: {
+    api: {
+      cx: '002626567065139467304:i70ufd-18es',
+      path: 'https://www.googleapis.com/customsearch/v1'
+    }
   },
   theme: {
     local: {

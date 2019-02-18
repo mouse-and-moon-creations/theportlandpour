@@ -2,7 +2,7 @@
  * @file blog helper
  * @description Helper methods for blog stuff
  * @author tm
- * @copyright Inspec Digital, LLC
+ * @copyright Mouse and Moon Creations, LLC
  */
 
 import config from '../config';
@@ -47,7 +47,7 @@ const getEndpoint = (endpoint, query='', slug='') =>  {
   ret += config.blog.api.endpoints[endpoint];
   ret += slug ? '/' + slug : '/';
   ret += '?';
-  ret += 'key=' + config.blog.api.key;
+  ret += 'key=' + process.env.REACT_APP_API_KEY_BLOG;
   ret += query ? '&' + query : '';
 
   return ret;

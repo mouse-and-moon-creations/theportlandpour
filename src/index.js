@@ -9,6 +9,8 @@ import { Frontload } from 'react-frontload';
 import Loadable from 'react-loadable';
 import { ScrollContext } from 'react-router-scroll-4';
 
+require('dotenv').config();
+
 const { history, store } = storeHelper.getStore();
 
 const root = document.getElementById('root');
