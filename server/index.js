@@ -36,5 +36,7 @@ require('babel-register')({
   ]
 });
 
+require('dotenv').config();
+
 // Now that the nonsense is over... load up the server entry point
 require('./server');
