@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import  { Provider } from 'react-redux';
+import dotenv from 'dotenv';
 import App from './App';
 import { unregister } from './registerServiceWorker';
 import { storeHelper } from 'helpers';
@@ -9,7 +10,7 @@ import { Frontload } from 'react-frontload';
 import Loadable from 'react-loadable';
 import { ScrollContext } from 'react-router-scroll-4';
 
-require('dotenv').config();
+dotenv.config();
 
 const { history, store } = storeHelper.getStore();
 
