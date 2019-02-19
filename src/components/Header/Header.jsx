@@ -6,14 +6,28 @@
  */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
+import IconButton from '@material-ui/core/IconButton';
+import Input from '@material-ui/core/Input';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Toolbar from '@material-ui/core/Toolbar';
 import withStyles from '@material-ui/core/styles/withStyles';
+import Check from '@material-ui/icons/Check';
+import Close from '@material-ui/icons/Close';
+import Search from '@material-ui/icons/Search';
+
+const propTypes = {
+  searchCallback: PropTypes.func
+};
+
+const defaultProps = {
+  searchCallback: null
+}
 
 const styles = theme => ({
   appbar: {
@@ -57,6 +71,56 @@ const styles = theme => ({
       color: theme.palette.common.white
     }
   },
+  searchBar: {
+    alignItems: 'center',
+    display: 'flex',
+    background: theme.palette.common.white,
+    height: '100%',
+    justifyContent: 'flex-end',
+    paddingLeft: theme.spacing.unit * 3,
+    paddingRight: theme.spacing.unit * 3,
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    width: '50%',
+    zIndex: 1000,
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: 0,
+      width: '100%'
+    },
+  },
+  searchButton: {
+    borderRadius: theme.spacing.unit / 2,
+    marginLeft: theme.spacing.unit * 2,
+    padding: theme.spacing.unit / 2
+  },
+  searchIcon: {
+    height: theme.spacing.unit * 5,
+    width: theme.spacing.unit * 5
+  },
+  searchContainer: {
+    fontSize: '24px',
+    flexGrow: 1,
+    height: '100%',
+    paddingLeft: theme.spacing.unit * 3
+  },
+  searchInput: {
+    [theme.breakpoints.up('md')]: {
+      borderColor: theme.palette.grey[500],
+      borderRadius: theme.spacing.unit / 2,
+      borderStyle: 'solid',
+      borderWidth: '1px',
+      marginRight: theme.spacing.unit,
+      padding: theme.spacing.unit
+    },
+  },
+  searchSubmit: {
+    color: theme.palette.common.white,
+    background: theme.palette.secondary.main,
+    borderRadius: theme.spacing.unit / 2,
+    marginLeft: theme.spacing.unit * 2,
+    padding: theme.spacing.unit / 2
+  },
   tabIndicator: {
     opacity: 0
   },
@@ -74,6 +138,7 @@ const styles = theme => ({
   toolbar: {
     background: theme.palette.common.white,
     flex: '1 1 auto',
+    height: theme.spacing.unit * 11,
     margin: '0 auto',
     maxWidth: theme.local.maxWidth,
     minWidth: '1px',
@@ -85,8 +150,17 @@ const styles = theme => ({
 class Header extends Component {
 
   state = {
+    search: false,
     tab: 0
   };
+
+  setSearch = () => {
+
+    this.setState({
+      search: !this.state.search
+    })
+
+  }
 
   setTab = (event, value) => {
 
@@ -106,6 +180,19 @@ class Header extends Component {
       <React.Fragment>
         <AppBar className={classes.appbar} position="fixed" color="default">
           <Toolbar className={classes.toolbar}>
+            {this.state.search ?
+              <div className={classes.searchBar}>
+                <Input autoFocus className={classes.searchContainer} classes={{input: classes.searchInput}} disableUnderline placeholder="Search" />
+                <Hidden smDown>
+                  <Button color="secondary" variant="raised">
+                    <Search /> Search
+                  </Button>
+                </Hidden>
+                <IconButton className={classes.searchButton}>
+                  <Close className={classes.searchIcon} onClick={this.setSearch} />
+                </IconButton>
+              </div> : null
+            }
             <div className={classes.brand}>
               <Link to="/">
                 <img src="/assets/images/brand/tpp.brand.md.png" alt=""/>
@@ -127,6 +214,9 @@ class Header extends Component {
                 </form>
               </div>
             </Hidden>
+            <IconButton className={classes.searchButton}>
+              <Search className={classes.searchIcon} onClick={this.setSearch} />
+            </IconButton>
           </Toolbar>
           <div className={classes.navbar}>
             <Tabs
@@ -152,5 +242,8 @@ class Header extends Component {
   }
 
 }
+
+Header.propTypes = propTypes;
+Header.defaultProps = defaultProps;
 
 export default withStyles(styles)(Header);
