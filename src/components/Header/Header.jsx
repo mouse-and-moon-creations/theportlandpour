@@ -73,36 +73,45 @@ const styles = theme => ({
   },
   searchBar: {
     alignItems: 'center',
-    display: 'flex',
     background: theme.palette.common.white,
+    display: 'flex',
+    flexGrow: 2,
     height: '100%',
     justifyContent: 'flex-end',
     paddingLeft: theme.spacing.unit * 3,
-    paddingRight: theme.spacing.unit * 3,
-    position: 'absolute',
-    right: 0,
-    top: 0,
-    width: '50%',
     zIndex: 1000,
     [theme.breakpoints.down('sm')]: {
       paddingLeft: 0,
+      paddingRight: theme.spacing.unit * 2,
+      position: 'absolute',
+      right: 0,
+      top: 0,
       width: '100%'
-    },
+    }
   },
   searchButton: {
-    borderRadius: theme.spacing.unit / 2,
     marginLeft: theme.spacing.unit * 2,
-    padding: theme.spacing.unit / 2
+    marginRight: theme.spacing.unit * 2,
+    [theme.breakpoints.down('sm')]: {
+      marginRight: 0
+    }
   },
   searchIcon: {
-    height: theme.spacing.unit * 5,
-    width: theme.spacing.unit * 5
+    height: theme.spacing.unit * 4,
+    width: theme.spacing.unit * 4,
+    [theme.breakpoints.down('sm')]: {
+      height: theme.spacing.unit * 5,
+      width: theme.spacing.unit * 5
+    }
   },
   searchContainer: {
     fontSize: '24px',
     flexGrow: 1,
     height: '100%',
-    paddingLeft: theme.spacing.unit * 3
+    paddingLeft: theme.spacing.unit * 3,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '24px'
+    }
   },
   searchInput: {
     [theme.breakpoints.up('md')]: {
@@ -180,25 +189,28 @@ class Header extends Component {
       <React.Fragment>
         <AppBar className={classes.appbar} position="fixed" color="default">
           <Toolbar className={classes.toolbar}>
+            <div className={classes.brand}>
+              <Link to="/">
+                <img src="/assets/images/brand/tpp.brand.md.png" alt=""/>
+              </Link>
+            </div>
             {this.state.search ?
               <div className={classes.searchBar}>
                 <Input autoFocus className={classes.searchContainer} classes={{input: classes.searchInput}} disableUnderline placeholder="Search" />
                 <Hidden smDown>
-                  <Button color="secondary" variant="raised">
+                  <Button color="primary" size="small" variant="contained">
                     <Search /> Search
                   </Button>
                 </Hidden>
                 <IconButton className={classes.searchButton}>
                   <Close className={classes.searchIcon} onClick={this.setSearch} />
                 </IconButton>
-              </div> : null
+              </div> :
+              <IconButton className={classes.searchButton}>
+                <Search className={classes.searchIcon} onClick={this.setSearch} />
+              </IconButton>
             }
-            <div className={classes.brand}>
-              <Link to="/">
-                <img src="/assets/images/brand/tpp.brand.md.png" alt=""/>
-              </Link>
-            </div>
-            <Hidden smDown>
+            <Hidden mdDown>
               <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css" />
               <div id="mc_embed_signup" className={classes.newsletter}>
                 <form action="https://inspecdigital.us10.list-manage.com/subscribe/post?u=2b5f5ea27c2aeb60c18ebca53&amp;id=d633c0fa8c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
@@ -214,9 +226,6 @@ class Header extends Component {
                 </form>
               </div>
             </Hidden>
-            <IconButton className={classes.searchButton}>
-              <Search className={classes.searchIcon} onClick={this.setSearch} />
-            </IconButton>
           </Toolbar>
           <div className={classes.navbar}>
             <Tabs
