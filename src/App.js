@@ -18,6 +18,7 @@ import FeatureView from './views/FeatureView';
 import HomeView from './views/HomeView';
 import NoView from './views/NoView';
 import PostView from './views/PostView';
+import SearchView from './views/SearchView';
 //import SitemapView from './views/SitemapView';
 import WorkWithUsView from './views/WorkWithUsView';
 import Header from './components/Header';
@@ -75,6 +76,7 @@ const App = props => {
           <Route path="/about" component={WithTracker(AboutView)} />
           <Route path="/contact" component={WithTracker(ContactView)} />
           <Route path="/work-with-us" component={WithTracker(WorkWithUsView)} />
+          <Route path="/search/:q" component={WithTracker(SearchView)} />
           <Redirect from="/blog/:slug" to="/post/:slug" />
           <Route path="/sitemap" component={NoView} />
           <Route component={WithTracker(NoView)} />

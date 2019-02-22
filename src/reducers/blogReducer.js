@@ -35,6 +35,11 @@ const initialState = {
     },
     posts: []
   },
+  search: {
+    q: null,
+    raw: {},
+    slugs: []
+  },
   selectedMixers: [],
   selectedSpirits: [],
   tags: [],
@@ -169,6 +174,16 @@ const blog = (state = initialState, action) => {
         }
       );
 
+    case blogConstants.SEARCH:
+
+      return Object.assign(
+        {},
+        state,
+        {
+          search: action.data
+        }
+      );
+
     case blogConstants.SET_SELECTED_MIXERS:
 
       return Object.assign(
@@ -261,6 +276,19 @@ const blog = (state = initialState, action) => {
       );
 
     case blogConstants.WAITING_POST:
+
+      state.posts.meta.pagination.total = initialState.posts.meta.pagination.total;
+
+      return Object.assign(
+        {},
+        state,
+        {
+          messaging: initialState.messaging,
+          waiting: true
+        }
+      );
+
+    case blogConstants.WAITING_SEARCH:
 
       state.posts.meta.pagination.total = initialState.posts.meta.pagination.total;
 

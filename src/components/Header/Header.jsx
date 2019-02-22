@@ -8,6 +8,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import withRouter from 'react-router-dom/withRouter';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
@@ -17,7 +18,6 @@ import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Toolbar from '@material-ui/core/Toolbar';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Check from '@material-ui/icons/Check';
 import Close from '@material-ui/icons/Close';
 import Search from '@material-ui/icons/Search';
 
@@ -105,7 +105,6 @@ const styles = theme => ({
     }
   },
   searchContainer: {
-    fontSize: '24px',
     flexGrow: 1,
     height: '100%',
     paddingLeft: theme.spacing.unit * 3,
@@ -159,9 +158,35 @@ const styles = theme => ({
 class Header extends Component {
 
   state = {
+    q: '',
     search: false,
     tab: 0
   };
+
+  handleChange = (e) => {
+
+    this.setState({q: e.target.value});
+
+  }
+
+  handleKeyPress = (e) => {
+
+    if(e.key === 'Enter') {
+      this.search();
+    }
+
+  }
+
+  search = () => {
+
+    if(this.state.q.length) {
+
+      //this.setSearch();
+      this.props.history.push('/search/' + this.state.q);
+
+    }
+
+  }
 
   setSearch = () => {
 
@@ -196,9 +221,9 @@ class Header extends Component {
             </div>
             {this.state.search ?
               <div className={classes.searchBar}>
-                <Input autoFocus className={classes.searchContainer} classes={{input: classes.searchInput}} disableUnderline placeholder="Search" />
+                <Input value={this.state.q} onChange={this.handleChange} onKeyPress={this.handleKeyPress} autoFocus className={classes.searchContainer} classes={{input: classes.searchInput}} disableUnderline placeholder="Search" />
                 <Hidden smDown>
-                  <Button color="primary" size="small" variant="contained">
+                  <Button onClick={this.search} color="primary" size="small" variant="contained">
                     <Search /> Search
                   </Button>
                 </Hidden>
@@ -255,4 +280,6 @@ class Header extends Component {
 Header.propTypes = propTypes;
 Header.defaultProps = defaultProps;
 
-export default withStyles(styles)(Header);
+const styledComponent = withStyles(styles)(Header);
+
+export default withRouter(styledComponent);

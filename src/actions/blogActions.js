@@ -7,6 +7,7 @@
 
 import blogConstants from '../constants/blogConstants';
 import blogHelper from '../helpers/blogHelper';
+import searchHelper from '../helpers/searchHelper';
 import API from '../services/API';
 
 const request = (type) => { return { type: type }; }
@@ -305,6 +306,35 @@ const getUsers = (opts={}) => {
 
 }
 
+const search = (q) => {
+
+
+  const endpoint = searchHelper.getEndpoint(q);
+
+  return new Promise((resolve, reject) => {
+
+    API.get(endpoint)
+      .then(
+        search => {
+          const data = {};
+          data.raw = search;
+          data.q = search.queries.request[0].searchTerms;
+          data.slugs = search.items ? search.items.filter(item => {
+            return item.formattedUrl.includes('post');
+          }).map(item => {
+            return item.formattedUrl.split('/').pop();
+          }) : [];
+          resolve(success(blogConstants.SEARCH, data));
+        },
+        error => {
+          reject(fail(error));
+        }
+      );
+
+  });
+
+}
+
 const setSelectedMixers = selectedMixers => {
 
   return dispatch => {
@@ -386,6 +416,7 @@ const blogActions = {
   getTags,
   getUsers,
   request,
+  search,
   setSelectedMixers,
   setSelectedSpirits
 };

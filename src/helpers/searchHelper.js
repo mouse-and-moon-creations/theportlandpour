@@ -7,12 +7,11 @@
 
 import config from '../config';
 
-const getEndpoint = (options = {}) => {
+const getEndpoint = (q) => {
 
   const { cx, path } = config.search.api;
-  const query = Object.keys(options).map(key => key + '=' + options[key]).join('&')
 
-  return path + '?key=' + process.env.REACT_APP_API_KEY_SEARCH + '&cx=' + cx + '&' + query;
+  return path + '?key=' + process.env.REACT_APP_API_KEY_SEARCH + '&cx=' + cx + '&q=' + q +'&num=10';
 
 }
 
