@@ -222,7 +222,7 @@ class Header extends Component {
             </div>
             {this.state.search ?
               <div className={classes.searchBar}>
-                <Input value={this.state.q} onChange={this.handleChange} onKeyPress={this.handleKeyPress} autoFocus className={classes.searchContainer} classes={{input: classes.searchInput}} disableUnderline placeholder="Search" />
+                <Input value={this.state.q} type="search" onChange={this.handleChange} onKeyPress={this.handleKeyPress} autoFocus className={classes.searchContainer} classes={{input: classes.searchInput}} disableUnderline placeholder="Search" />
                 <Hidden smDown>
                   <Button onClick={this.search} color="primary" size="small" variant="contained">
                     <Search /> Search
