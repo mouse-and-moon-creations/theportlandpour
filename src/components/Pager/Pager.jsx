@@ -16,11 +16,17 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import blogHelper from '../../helpers/blogHelper';
 
 const propTypes = {
-  pagination: PropTypes.object
+  next: PropTypes.number,
+  path: PropTypes.string,
+  page: PropTypes.number,
+  pages: PropTypes.number,
+  prev: PropTypes.number
 };
 
 const defaultProps = {
-  pagination: {}
+  next: null,
+  path: '/page/',
+  prev: null
 };
 
 const styles = theme => ({
@@ -38,15 +44,15 @@ const styles = theme => ({
 
 const Pager = props => {
 
-  const { classes, pagination } = props;
-  const prevUrl = pagination.prev ? blogHelper.getUrl(pagination.prev) : null;
-  const nextUrl = pagination.next ? blogHelper.getUrl(pagination.next) : null;
+  const { classes, next, page, pages, path, prev } = props;
+  const prevUrl = prev ? blogHelper.getUrl(prev, path) : null;
+  const nextUrl = next ? blogHelper.getUrl(next, path) : null;
 
   return (
     <div className={classes.card}>
       <Typography className={classes.meta} align="center" variant="caption">
         {prevUrl ? <Link to={prevUrl}><IconButton className={classes.link}><KeyboardArrowLeft/></IconButton></Link> : <IconButton className={classes.link} disabled={true}><KeyboardArrowLeft/></IconButton>}
-        Page {pagination.page} of {pagination.pages}
+        Page {page} of {pages}
         {nextUrl ? <Link to={nextUrl}><IconButton className={classes.link}><KeyboardArrowRight/></IconButton></Link> : <IconButton className={classes.link} disabled={true}><KeyboardArrowRight/></IconButton>}
       </Typography>
     </div>

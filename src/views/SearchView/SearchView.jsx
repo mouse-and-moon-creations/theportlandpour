@@ -8,28 +8,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { frontloadConnect } from 'react-frontload';
-import Hidden from '@material-ui/core/Hidden';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import blogActions from '../../actions/blogActions';
-import Filter from '../../components/Filter';
 import Footer from '../../components/Footer';
 import Pager from '../../components/Pager';
 import Posts from '../../components/Posts';
-import pull from 'lodash/pull';
 import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
 import find from 'lodash/find';
 
 const frontload = async props => {
-  const q = props.match.params.q;
-  //await props.dispatch(request(blogConstants.WAITING_SEARCH));
+  await props.dispatch(blogActions.waiting());
   await props.dispatch(blogActions.clearPosts());
-  const search = await blogActions.search(q);
+  const q = props.match.params.q;
+  const start = ((props.match.params.page - 1) * 9) + 1;
+  const req = 'q=' + q + '&num=9&start=' + start;
+  const search = await blogActions.search(req);
+  await props.dispatch(search);
   if(search.data.slugs.length) {
     const query = {filter: 'slug:[' + search.data.slugs.toString() + ']'}
-    await props.dispatch(search);
     const posts = await blogActions.fetchPosts(query);
     await props.dispatch(posts);
   }
@@ -74,11 +73,55 @@ class BlogView extends Component {
     const { posts } = this.props.blog.posts;
     const { slugs } = this.props.blog.search;
 
-    const ret = posts.length ? slugs.map(slug => {
+    const sortedBySlugs = posts.length ? slugs.map(slug => {
       return find(posts, { slug: slug });
     }) : [];
 
+    let ret = [];
+
+    for(let i = 0; i < sortedBySlugs.length; i++) {
+      if(sortedBySlugs[i]) {
+        ret.push(sortedBySlugs[i]);
+      }
+    }
+
     return ret;
+
+  }
+
+  getNext = () => {
+
+    const next = +this.props.match.params.page + 1;
+    const pages = this.getPages();
+
+    return next <= pages ? next : null;
+
+  }
+
+  getPages = () => {
+
+    const { totalResults } = this.props.blog.search.raw.searchInformation;
+    const pages = Math.ceil(+totalResults / 9);
+
+    return pages;
+
+  }
+
+  getPath = () => {
+
+    const { match } = this.props;
+    const { q } = match.params;
+    const path = '/search/' + q + '/';
+
+    return path;
+
+  }
+
+  getPrev = () => {
+
+    const prev = +this.props.match.params.page - 1;
+
+    return prev > 0 ? prev : null;
 
   }
 
@@ -86,10 +129,15 @@ class BlogView extends Component {
 
     const { classes, match } = this.props;
     const { waiting } = this.props.blog;
-    const { meta } = this.props.blog.posts;
     const { q } = this.props.blog.search;
-    const { pagination } = meta;
     const posts = this.sortPosts();
+    const pagination = {
+      next: this.getNext(),
+      page: match.params.page,
+      pages: this.getPages(),
+      path: this.getPath(),
+      prev: this.getPrev()
+    };
 
     return (
       <React.Fragment>
@@ -117,11 +165,12 @@ class BlogView extends Component {
           </Helmet>
           <div className={classes.rootContent}>
             <div className={classes.posts}>
-              <Typography variant="h4">Search results for: {q}</Typography>
-              <Pager pagination={pagination} />
+              <Typography align="center" variant="h6">Search results for</Typography>
+              <Typography align="center" variant="h4">{q}</Typography>
+              <Pager {...pagination} />
               {waiting ? <LinearProgress color="secondary" /> : null}
-              <Posts posts={posts} />
-              <Pager pagination={pagination} />
+              {posts.length ? <Posts posts={posts} /> : <Typography align="center" paragraph>No results</Typography>}
+              <Pager {...pagination} />
             </div>
           </div>
         </div>

@@ -177,7 +177,7 @@ const fetchPages = (opts = {}) => {
 
 const fetchPosts = (opts = {}) => {
 
-  const options = Object.assign({}, { filter: 'featured:false', include: 'authors,tags', limit: 18, order: 'published_at%20DESC' }, opts);
+  const options = Object.assign({}, { filter: 'featured:false', include: 'authors,tags', limit: 9, order: 'published_at%20DESC' }, opts);
   const queryString = Object.keys(options).map(key => key + '=' + options[key]).join('&');
   const endpoint = blogHelper.getEndpoint('posts', queryString);
 
@@ -320,9 +320,9 @@ const search = (q) => {
           data.raw = search;
           data.q = search.queries.request[0].searchTerms;
           data.slugs = search.items ? search.items.filter(item => {
-            return item.formattedUrl.includes('post');
+            return item.link.includes('post');
           }).map(item => {
-            return item.formattedUrl.split('/').pop();
+            return item.link.split('/').pop();
           }) : [];
           resolve(success(blogConstants.SEARCH, data));
         },
@@ -383,6 +383,14 @@ const addToMailChimp = (fields) => {
 
 }
 
+const waiting = () => {
+
+  return dispatch => {
+    dispatch(success(blogConstants.WAITING_POSTS));
+  };
+
+}
+
 const clearMessaging = () => {
 
   return dispatch => {
@@ -418,7 +426,8 @@ const blogActions = {
   request,
   search,
   setSelectedMixers,
-  setSelectedSpirits
+  setSelectedSpirits,
+  waiting
 };
 
 export default blogActions;

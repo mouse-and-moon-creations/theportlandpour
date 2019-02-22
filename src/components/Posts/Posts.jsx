@@ -47,7 +47,7 @@ const Posts = props => {
       <div className={classes.paper}>
         {posts.map(post => {
           return (
-            <Post post={post} key={post.id} />
+            post ? <Post post={post} key={post.id} /> : null
           );
         })}
       </div>

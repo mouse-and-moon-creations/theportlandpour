@@ -19,6 +19,8 @@ import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
 
 const frontload = async props => {
+  await props.dispatch(blogActions.waiting());
+  await props.dispatch(blogActions.clearPosts());
   const page = props.match.params.page;
   await props.dispatch(blogActions.clearPosts());
   const posts = await blogActions.fetchPosts({filter: 'featured:true', page: page});
@@ -59,11 +61,9 @@ const styles = theme => ({
  */
 class FeatureView extends Component {
 
-  componentDidMount() {
+  async componentWillUnmount() {
 
-    if(this.props.blog.tags.length === 0) {
-      this.props.dispatch(blogActions.getTags());
-    }
+    await this.props.dispatch(blogActions.clearPosts());
 
   }
 
@@ -73,8 +73,7 @@ class FeatureView extends Component {
     const { waiting } = this.props.blog;
     const { posts, meta } = this.props.blog.posts;
     const { pagination } = meta;
-
-    const progress = <LinearProgress />;
+    const path = '/feature-page/'
 
     return (
       <React.Fragment>
@@ -103,10 +102,10 @@ class FeatureView extends Component {
           <div className={classes.rootContent}>
             <div className={classes.posts}>
               <Typography align="center" variant="h4">Features</Typography>
-              <Pager pagination={pagination} />
-              {waiting ? progress : null}
+              <Pager {...pagination} path={path} />
+              {waiting ? <LinearProgress color="secondary" /> : null}
               <Posts posts={posts} features />
-              <Pager pagination={pagination} />
+              <Pager {...pagination} path={path} />
             </div>
           </div>
         </div>

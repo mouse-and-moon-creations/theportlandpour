@@ -8,12 +8,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { frontloadConnect } from 'react-frontload';
-import Hidden from '@material-ui/core/Hidden';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import blogActions from '../../actions/blogActions';
-import Filter from '../../components/Filter';
 import Footer from '../../components/Footer';
 import Pager from '../../components/Pager';
 import Posts from '../../components/Posts';
@@ -22,6 +20,8 @@ import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
 
 const frontload = async props => {
+  await props.dispatch(blogActions.waiting());
+  await props.dispatch(blogActions.clearPosts());
   const page = props.match.params.page;
   const { selectedSpirits } = props.blog;
   await props.dispatch(blogActions.clearPosts());
@@ -67,45 +67,12 @@ const styles = theme => ({
  */
 class BlogView extends Component {
 
-  componentDidMount() {
-
-    if(this.props.blog.tags.length === 0) {
-      this.props.dispatch(blogActions.getTags());
-    }
-
-  }
-
-  getPostsBySpirit = (spirit, clear=false) => {
-
-    const { selectedSpirits } = this.props.blog;
-
-    let query = { page: 1 }
-
-    if(clear) {
-      pull(selectedSpirits, spirit);
-    }
-    else {
-      selectedSpirits.push(spirit);
-    }
-
-    this.props.dispatch(blogActions.setSelectedSpirits(selectedSpirits));
-
-    if(selectedSpirits.length) {
-      query.filter = 'tags:[' + selectedSpirits.toString() + ']'
-    }
-
-    this.props.dispatch(blogActions.getPosts(query));
-
-  }
-
   render() {
 
     const { classes, match } = this.props;
-    const { selectedSpirits, tags, waiting } = this.props.blog;
+    const { waiting } = this.props.blog;
     const { meta, posts } = this.props.blog.posts;
     const { pagination } = meta;
-
-    const progress = <LinearProgress />;
 
     return (
       <React.Fragment>
@@ -134,16 +101,10 @@ class BlogView extends Component {
           <div className={classes.rootContent}>
             <div className={classes.posts}>
               <Typography align="center" variant="h4">Cocktails</Typography>
-              <Hidden smDown>
-                <Filter getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
-              </Hidden>
-              <Pager pagination={pagination} />
-              {waiting ? progress : null}
+              <Pager {...pagination} />
+              {waiting ? <LinearProgress color="secondary" /> : null}
               <Posts posts={posts} />
-              <Hidden smDown>
-                <Filter getPostsBySpiritCallback={this.getPostsBySpirit} selectedSpirits={selectedSpirits} tags={tags} />
-              </Hidden>
-              <Pager pagination={pagination} />
+              <Pager {...pagination} />
             </div>
           </div>
         </div>

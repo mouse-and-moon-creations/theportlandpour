@@ -37,7 +37,11 @@ const initialState = {
   },
   search: {
     q: null,
-    raw: {},
+    raw: {
+      searchInformation: {
+        totalResults: 0
+      }
+    },
     slugs: []
   },
   selectedMixers: [],
@@ -180,7 +184,9 @@ const blog = (state = initialState, action) => {
         {},
         state,
         {
-          search: action.data
+          messaging: initialState.messaging,
+          search: action.data,
+          waiting: false
         }
       );
 

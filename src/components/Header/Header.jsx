@@ -181,8 +181,9 @@ class Header extends Component {
 
     if(this.state.q.length) {
 
-      //this.setSearch();
-      this.props.history.push('/search/' + this.state.q);
+      this.setSearch();
+      this.props.history.push('/search/' + this.state.q + '/1');
+      this.setState({q: ''})
 
     }
 

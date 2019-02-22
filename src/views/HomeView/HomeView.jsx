@@ -19,7 +19,9 @@ import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
 
 const frontload = async props => {
-  const posts = await blogActions.fetchPosts({filter: ''});
+  await props.dispatch(blogActions.waiting());
+  await props.dispatch(blogActions.clearPosts());
+  const posts = await blogActions.fetchPosts({filter: '', limit: 18});
   await props.dispatch(posts);
 }
 

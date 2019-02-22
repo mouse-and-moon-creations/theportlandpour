@@ -116,9 +116,9 @@ const getPostReadingTime = (content = '') => {
 
 }
 
-const getUrl = page => {
+const getUrl = (page, path = '/page/') => {
 
-  return '/page/' + page;
+  return path + page;
 
 }
 

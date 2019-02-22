@@ -11,7 +11,7 @@ const getEndpoint = (q) => {
 
   const { cx, path } = config.search.api;
 
-  return path + '?key=' + process.env.REACT_APP_API_KEY_SEARCH + '&cx=' + cx + '&q=' + q +'&num=10';
+  return path + '?key=' + process.env.REACT_APP_API_KEY_SEARCH + '&cx=' + cx + '&' + q;
 
 }
 

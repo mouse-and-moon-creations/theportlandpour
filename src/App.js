@@ -76,7 +76,7 @@ const App = props => {
           <Route path="/about" component={WithTracker(AboutView)} />
           <Route path="/contact" component={WithTracker(ContactView)} />
           <Route path="/work-with-us" component={WithTracker(WorkWithUsView)} />
-          <Route path="/search/:q" component={WithTracker(SearchView)} />
+          <Route path="/search/:q/:page" component={WithTracker(SearchView)} />
           <Redirect from="/blog/:slug" to="/post/:slug" />
           <Route path="/sitemap" component={NoView} />
           <Route component={WithTracker(NoView)} />
