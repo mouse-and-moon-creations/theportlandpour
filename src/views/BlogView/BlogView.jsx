@@ -15,7 +15,6 @@ import blogActions from '../../actions/blogActions';
 import Footer from '../../components/Footer';
 import Pager from '../../components/Pager';
 import Posts from '../../components/Posts';
-import pull from 'lodash/pull';
 import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
 

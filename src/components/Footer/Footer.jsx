@@ -53,9 +53,6 @@ const Footer = props => {
           <a href="https://www.instagram.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
             <FontAwesomeIcon className={classes.socialIcon} icon={faInstagram} size="lg" />
           </a>
-          <a href="https://www.facebook.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
-            <FontAwesomeIcon className={classes.socialIcon} icon={faFacebook} size="lg" />
-          </a>
           <a href="https://twitter.com/PortlandPour" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
             <FontAwesomeIcon className={classes.socialIcon} icon={faTwitter} size="lg" />
           </a>

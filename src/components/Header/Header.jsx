@@ -12,14 +12,10 @@ import withRouter from 'react-router-dom/withRouter';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import Input from '@material-ui/core/Input';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
 import Toolbar from '@material-ui/core/Toolbar';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Close from '@material-ui/icons/Close';
-import Search from '@material-ui/icons/Search';
+import Navigation from '../Navigation';
+import SearchBar from '../SearchBar';
 
 const propTypes = {
   searchCallback: PropTypes.func
@@ -58,90 +54,9 @@ const styles = theme => ({
     position: 'absolute',
     zIndex: -100
   },
-  label: {
-    whiteSpace: 'nowrap'
-  },
-  navbar: {
-    backgroundColor: '#607D8B',
-    color: theme.palette.common.white,
-    minWidth: '1px',
-    position: 'relative',
-    width: '100%',
-    '& a': {
-      color: theme.palette.common.white
-    }
-  },
-  searchBar: {
-    alignItems: 'center',
-    background: theme.palette.common.white,
-    display: 'flex',
-    flexGrow: 2,
-    height: '100%',
-    justifyContent: 'flex-end',
-    paddingLeft: theme.spacing.unit * 3,
-    zIndex: 1000,
-    [theme.breakpoints.down('sm')]: {
-      paddingLeft: 0,
-      paddingRight: theme.spacing.unit * 2,
-      position: 'absolute',
-      right: 0,
-      top: 0,
-      width: '100%'
-    }
-  },
-  searchButton: {
-    marginLeft: theme.spacing.unit * 2,
-    marginRight: theme.spacing.unit * 2,
-    [theme.breakpoints.down('sm')]: {
-      marginRight: 0
-    }
-  },
-  searchIcon: {
-    height: theme.spacing.unit * 4,
-    width: theme.spacing.unit * 4,
-    [theme.breakpoints.down('sm')]: {
-      height: theme.spacing.unit * 5,
-      width: theme.spacing.unit * 5
-    }
-  },
-  searchContainer: {
-    flexGrow: 1,
-    height: '100%',
-    paddingLeft: theme.spacing.unit * 3,
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '24px'
-    }
-  },
-  searchInput: {
-    [theme.breakpoints.up('md')]: {
-      borderColor: theme.palette.grey[500],
-      borderRadius: theme.spacing.unit / 2,
-      borderStyle: 'solid',
-      borderWidth: '1px',
-      marginRight: theme.spacing.unit,
-      padding: theme.spacing.unit
-    },
-  },
-  searchSubmit: {
-    color: theme.palette.common.white,
-    background: theme.palette.secondary.main,
-    borderRadius: theme.spacing.unit / 2,
-    marginLeft: theme.spacing.unit * 2,
-    padding: theme.spacing.unit / 2
-  },
-  tabIndicator: {
-    opacity: 0
-  },
-  tabs: {
-    margin: '0 auto',
-    maxWidth: theme.local.maxWidth,
-  },
   tagline: {
     background: 'transparent',
     flexGrow: 1
-  },
-  textColorInherit: {
-    opacity: '1 ! important',
   },
   toolbar: {
     background: theme.palette.common.white,
@@ -157,59 +72,9 @@ const styles = theme => ({
 
 class Header extends Component {
 
-  state = {
-    q: '',
-    search: false,
-    tab: 0
-  };
-
-  handleChange = (e) => {
-
-    this.setState({q: e.target.value});
-
-  }
-
-  handleKeyPress = (e) => {
-
-    if(e.key === 'Enter') {
-      this.search();
-    }
-
-  }
-
-  search = () => {
-
-    if(this.state.q.length) {
-
-      this.setSearch();
-      this.props.history.push('/search/' + this.state.q + '/1');
-      this.setState({q: ''})
-
-    }
-
-  }
-
-  setSearch = () => {
-
-    this.setState({
-      search: !this.state.search
-    })
-
-  }
-
-  setTab = (event, value) => {
-
-    this.setState({ tab: value });
-
-  }
-
   render() {
 
     const { classes } = this.props;
-
-    //const submitForm = fields => { return props.dispatch(blogActions.addToMailChimp(fields)); }
-    //const form = <Form submitFormCallback={submitForm} form="hero" classes={{ submitButton: classes.submitButton, form: classes.form }} showCancel={false} buttonColor="secondary" submitLabel="Sign up" />;
-    //const formSuccess = <Typography color="primary">Thank you for subscribing to our newsletter. Please check your email for confirmation.</Typography>;
 
     return (
       <React.Fragment>
@@ -220,22 +85,7 @@ class Header extends Component {
                 <img src="/assets/images/brand/tpp.brand.md.png" alt=""/>
               </Link>
             </div>
-            {this.state.search ?
-              <div className={classes.searchBar}>
-                <Input value={this.state.q} type="search" onChange={this.handleChange} onKeyPress={this.handleKeyPress} autoFocus className={classes.searchContainer} classes={{input: classes.searchInput}} disableUnderline placeholder="Search" />
-                <Hidden smDown>
-                  <Button onClick={this.search} color="primary" size="small" variant="contained">
-                    <Search /> Search
-                  </Button>
-                </Hidden>
-                <IconButton className={classes.searchButton}>
-                  <Close className={classes.searchIcon} onClick={this.setSearch} />
-                </IconButton>
-              </div> :
-              <IconButton className={classes.searchButton}>
-                <Search className={classes.searchIcon} onClick={this.setSearch} />
-              </IconButton>
-            }
+            <SearchBar />
             <Hidden mdDown>
               <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css" />
               <div id="mc_embed_signup" className={classes.newsletter}>
@@ -253,23 +103,7 @@ class Header extends Component {
               </div>
             </Hidden>
           </Toolbar>
-          <div className={classes.navbar}>
-            <Tabs
-              classes={{indicator: classes.tabIndicator}}
-              className={classes.tabs}
-              onChange={this.setTab}
-              scrollable={true}
-              scrollButtons="off"
-              indicatorColor="primary"
-              value={this.state.tab}
-            >
-              <Link to="/"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Home" /></Link>
-              <Link to="/page/1"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Cocktails" /></Link>
-              <Link to="/feature-page/1"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Features" /></Link>
-              <Link to="/about"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="About" /></Link>
-              <Link to="/contact"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Contact" /></Link>
-            </Tabs>
-          </div>
+          <Navigation />
         </AppBar>
       </React.Fragment>
     );
