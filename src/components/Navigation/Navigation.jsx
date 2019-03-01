@@ -14,7 +14,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
   root: {
-    backgroundColor: '#607D8B',
+    backgroundColor: theme.local.palette.background.light,
     color: theme.palette.common.white,
     minWidth: '1px',
     position: 'relative',
@@ -68,7 +68,8 @@ class Navigation extends Component {
           <Link to="/"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Home" /></Link>
           <Link to="/page/1"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Cocktails" /></Link>
           <Link to="/feature-page/1"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Features" /></Link>
-          <Link to="/about"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Shop" /></Link>
+          <Link to="/about"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="About" /></Link>
+          <Link to="/contact"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Contact" /></Link>
         </Tabs>
       </div>
     );

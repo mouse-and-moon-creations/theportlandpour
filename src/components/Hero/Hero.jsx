@@ -6,57 +6,23 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import Link from 'react-router-dom/Link';
 import withStyles from '@material-ui/core/styles/withStyles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
+import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
-import withWidth from '@material-ui/core/withWidth';
 import Gloss from '../Gloss';
-import blogHelper from '../../helpers/blogHelper';
-
-const propTypes = {
-  latestPosts: PropTypes.array
-};
-
-const defaultProps = {
-  latestPosts: []
-};
-
-const gridCols = {
-  xl: 4,
-  lg: 4,
-  md: 3.5,
-  sm: 2.5,
-  xs: 1.5
-};
 
 const styles = theme => ({
-  button: {
-    display: 'block',
-    margin: 'auto'
-  },
-  flexGrow: {
-    flexGrow: 1
-  },
-  gridList: {
-    flexWrap: 'nowrap',
-    transform: 'translateZ(0)'
-  },
   hero: {
-//    backgroundImage: 'url(/assets/images/winter.jpg)',
+    backgroundImage: 'url(/assets/images/bg-wheat.jpg)',
     backgroundColor: theme.local.palette.background.dark,
-//    backgroundSize: 'cover',
+    backgroundSize: 'cover',
     color: theme.palette.common.white,
-    minHeight: '400px',
-    paddingBottom: '24px',
-    paddingTop: theme.local.headerPadding,
-    [theme.breakpoints.down('md')]: {
-      backgroundImage: 'none',
+    position: 'relative',
+    [theme.breakpoints.down('sm')]: {
       paddingBottom: 0,
-      paddingLeft: '12px',
+    },
+    [theme.breakpoints.down('xs')]: {
+      backgroundImage: 'none',
     }
   },
   heroContent: {
@@ -65,73 +31,44 @@ const styles = theme => ({
     overflow: 'hidden',
     paddingLeft: '24px',
     paddingRight: '24px',
+    textAlign: 'center',
+  },
+  heroStripe: {
+    backgroundColor: 'rgba(65, 54, 40, 0.6)',
+    bottom: 0,
+    height: '100%',
+    paddingBottom: '100px',
+    paddingTop: '230px',
+    width: '100%',
     [theme.breakpoints.down('md')]: {
-      paddingLeft: 0,
-      paddingRight: 0
+      paddingBottom: '40px',
+      paddingTop: '180px'
     }
   },
-  heroHeader: {
-    alignItems: 'center',
-    display: 'flex',
-    flexWrap: 'wrap',
-    paddingBottom: '36px'
+  gutterBottom: {
+    paddingBottom: theme.spacing.unit * 2
   },
-  heroTagline: {
-    alignItems: 'center',
-    display: 'flex',
-    paddingBottom: '24px'
-  },
-  recent: {
-    display: 'flex',
-  },
-  recentImage: {
-    height: '100%',
-    width: '100%'
-  },
-  tileBarCocktail: {
-    background: 'rgba(96,125,139,0.6)'
-  },
-  tileBarFeatured: {
-    background: 'rgba(135,85,94,0.6)'
-  },
-  tileTop: {
-    background: 'transparent'
-  },
-  tileType: {
-    fontFamily: theme.local.typography.gloss.fontFamily,
+  thin: {
+    fontWeight: '400'
   }
 });
 
 const Hero = props => {
 
-  const { classes, latestPosts, width } = props;
+  const { classes } = props;
 
   return (
     <div className={classes.hero}>
-      <div className={classes.heroContent}>
-        <div className={classes.heroHeader}>
-          <div className={classes.flexGrow}>
-            <Gloss label="Craft cocktail recipes, art, and more" variant="display1" />
-          </div>
-          <Typography color="inherit" variant="subheading">Proudly made in Portland, Oregon</Typography>
-        </div>
-        <div className={classes.recent}>
-          <GridList cellHeight="auto" className={classes.gridList} cols={gridCols[width]}>
-            {latestPosts.map((post, index) => {
-              return (
-                <GridListTile className={classes.gridListTile} key={post.id} cols={1}>
-                  <Link to={blogHelper.getPostUrl(post.slug)}>
-                    <img className={classes.recentImage} src={blogHelper.getAssetUrl(post.feature_image)} alt={post.title} />
-                    <GridListTileBar
-                      className={post.featured ? classes.tileBarFeatured : classes.tileBarCocktail}
-                      subtitle={<span>{post.featured ? 'Feature' : 'Cocktail'}</span>}
-                      title={<span>{post.title}</span>}
-                    />
-                  </Link>
-                </GridListTile>
-              );
-            })}
-          </GridList>
+      <div className={classes.heroStripe}>
+        <div className={classes.heroContent}>
+          <Hidden only="xs">
+            <Gloss classes={{gutterBottom: classes.gutterBottom}} color="inherit" gutterBottom variant="h3" label="From grain to bottle, and garden to glass" />
+          </Hidden>
+          <Typography classes={{gutterBottom: classes.gutterBottom}} gutterBottom>
+            <img src="/assets/images/drink-local.png" alt="drink local logo"/>
+          </Typography>
+          <Typography color="inherit">News, articles, tips, and craft cocktail recipes you can make at home</Typography>
+          <Typography className={classes.thin} classes={{gutterBottom: classes.gutterBottom}} color="inherit" gutterBottom variant="h6">Proudly made in Portland, Oregon</Typography>
         </div>
       </div>
     </div>
@@ -139,9 +76,4 @@ const Hero = props => {
 
 }
 
-Hero.propTypes = propTypes;
-Hero.defaultProps = defaultProps;
-
-const styledComponent = withStyles(styles)(Hero);
-
-export default withWidth()(styledComponent);
+export default withStyles(styles)(Hero);

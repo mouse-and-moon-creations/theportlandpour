@@ -41,7 +41,8 @@ const config = {
       maxWidth: '1270px',
       palette: {
         background: {
-          dark: '#253C4E'
+          dark: '#413628',
+          light: '#816A4E'
         }
       },
       typography: {

@@ -73,11 +73,10 @@ class HomeView extends Component {
             }`}
           </script>
         </Helmet>
-        <Hero latestPosts={posts.slice(0,4)} />
-        <PitchBlock />
-        <PostsBlock posts={posts.slice(4, 10)} label="Recent cocktails and features" />
+        <Hero />
+        <PostsBlock posts={posts.slice(0, 6)} />
         <NewsletterBlock />
-        <PostsBlock posts={posts.slice(10, posts.length - 2)} />
+        <PostsBlock posts={posts.slice(7, posts.length - 2)} />
         <AboutBlock />
         <Footer />
       </React.Fragment>

@@ -67,8 +67,6 @@ const Footer = props => {
           <Typography classes={{gutterBottom: classes.gutterBottom}} gutterBottom>
             <Link className={classes.link} to="/about">About</Link>
             <Link className={classes.link} to="/contact">Contact</Link>
-            <Link className={classes.link} to="/contact">Sponsor us</Link>
-            <Link className={classes.link} to="/contact">Affiliate program</Link>
           </Typography>
         </div>
         <div className={classes.socialIcons}>

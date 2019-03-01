@@ -35,7 +35,7 @@ const Gloss = props => {
 
   return (
     <React.Fragment>
-      <Typography className={classes.gloss} component={component} color="inherit" variant={variant}>{label}</Typography>
+      <Typography className={classes.gloss} color="inherit" {...props}>{label}</Typography>
     </React.Fragment>
   );
 
