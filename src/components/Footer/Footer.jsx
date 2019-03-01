@@ -6,8 +6,9 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram, faPinterest } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter, faInstagram, faPinterest } from '@fortawesome/free-brands-svg-icons';
 import { faRss } from '@fortawesome/free-solid-svg-icons';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -25,6 +26,14 @@ const styles = theme => ({
     position: 'relative',
     textAlign: 'center',
     zIndex: theme.zIndex.drawer + 1
+  },
+  gutterBottom: {
+    marginBottom: '1em'
+  },
+  link: {
+    display: 'inline-block',
+    paddingLeft: theme.spacing.unit,
+    paddingRight: theme.spacing.unit
   },
   socialIcon: {
     marginLeft: '12px',
@@ -49,6 +58,19 @@ const Footer = props => {
   return (
     <footer className={classes.root}>
       <div className={classes.footer}>
+        <div className={classes.links}>
+          <Typography >
+            <Link className={classes.link} to="/">Home</Link>
+            <Link className={classes.link} to="/page/1">Cocktails</Link>
+            <Link className={classes.link} to="/feature-page/1">Features</Link>
+          </Typography>
+          <Typography classes={{gutterBottom: classes.gutterBottom}} gutterBottom>
+            <Link className={classes.link} to="/about">About</Link>
+            <Link className={classes.link} to="/contact">Contact</Link>
+            <Link className={classes.link} to="/contact">Sponsor us</Link>
+            <Link className={classes.link} to="/contact">Affiliate program</Link>
+          </Typography>
+        </div>
         <div className={classes.socialIcons}>
           <a href="https://www.instagram.com/theportlandpour/" rel="noopener noreferrer" target="_blank" className={classes.socialIconLink}>
             <FontAwesomeIcon className={classes.socialIcon} icon={faInstagram} size="lg" />

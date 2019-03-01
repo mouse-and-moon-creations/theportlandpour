@@ -6,7 +6,6 @@
  */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import withRouter from 'react-router-dom/withRouter';
 import AppBar from '@material-ui/core/AppBar';
@@ -16,14 +15,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Navigation from '../Navigation';
 import SearchBar from '../SearchBar';
-
-const propTypes = {
-  searchCallback: PropTypes.func
-};
-
-const defaultProps = {
-  searchCallback: null
-}
 
 const styles = theme => ({
   appbar: {
@@ -111,9 +102,6 @@ class Header extends Component {
   }
 
 }
-
-Header.propTypes = propTypes;
-Header.defaultProps = defaultProps;
 
 const styledComponent = withStyles(styles)(Header);
 
