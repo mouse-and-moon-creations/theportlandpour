@@ -31,7 +31,7 @@ const styles = theme => ({
 
 const Gloss = props => {
 
-  const { classes, component, label, variant } = props;
+  const { classes, label } = props;
 
   return (
     <React.Fragment>

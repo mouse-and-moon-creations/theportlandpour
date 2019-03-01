@@ -13,7 +13,6 @@ import AboutBlock from '../../components/AboutBlock';
 import Footer from '../../components/Footer';
 import Hero from '../../components/Hero';
 import NewsletterBlock from '../../components/NewsletterBlock';
-import PitchBlock from '../../components/PitchBlock';
 import PostsBlock from '../../components/PostsBlock';
 import blogHelper from '../../helpers/blogHelper';
 import Helmet from 'react-helmet';
