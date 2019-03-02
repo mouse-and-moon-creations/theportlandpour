@@ -7,6 +7,7 @@
 
 import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
+import Fab from '@material-ui/core/Fab';
 import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import Gloss from '../Gloss';
@@ -69,6 +70,9 @@ const Hero = props => {
           </Typography>
           <Typography color="inherit">News, articles, tips, and craft cocktail recipes you can make at home</Typography>
           <Typography className={classes.thin} classes={{gutterBottom: classes.gutterBottom}} color="inherit" gutterBottom variant="h6">Proudly made in Portland, Oregon</Typography>
+          <a href="https://teespring.com/stores/theportlandpour" rel="noopener noreferrer" target="_blank">
+            <Fab color="primary" variant="extended">Get "drink local" merch</Fab>
+          </a>
         </div>
       </div>
     </div>
