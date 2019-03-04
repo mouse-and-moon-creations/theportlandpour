@@ -38,7 +38,7 @@ const styles = theme => ({
     backgroundColor: 'rgba(65, 54, 40, 0.6)',
     bottom: 0,
     height: '100%',
-    paddingBottom: '100px',
+    paddingBottom: '80px',
     paddingTop: '230px',
     width: '100%',
     [theme.breakpoints.down('md')]: {
