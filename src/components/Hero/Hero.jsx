@@ -71,7 +71,7 @@ const Hero = props => {
           <Typography color="inherit">News, articles, tips, and craft cocktail recipes you can make at home</Typography>
           <Typography className={classes.thin} classes={{gutterBottom: classes.gutterBottom}} color="inherit" gutterBottom variant="h6">Proudly made in Portland, Oregon</Typography>
           <a href="https://teespring.com/stores/theportlandpour" rel="noopener noreferrer" target="_blank">
-            <Fab color="primary" variant="extended">Get "drink local" merch</Fab>
+            <Fab color="primary" variant="extended">Get your gear and drink local</Fab>
           </a>
         </div>
       </div>

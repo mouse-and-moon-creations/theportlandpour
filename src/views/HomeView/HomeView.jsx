@@ -75,7 +75,7 @@ class HomeView extends Component {
         <Hero />
         <PostsBlock posts={posts.slice(0, 6)} label="Latest cocktails and features"/>
         <NewsletterBlock />
-        <PostsBlock posts={posts.slice(6, posts.length - 2)} />
+        <PostsBlock posts={posts.slice(6, posts.length)} />
         <AboutBlock />
         <Footer />
       </React.Fragment>
