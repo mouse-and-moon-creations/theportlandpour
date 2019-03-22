@@ -1,15 +1,21 @@
+.imggray {
+  filter: gray;
+  filter: grayscale(95%);
+}
+
+.imgres {
+  max-width: 100%
+}
+
 .jumbotron {
   background-color: #000;
   color: #fff;
+}
+
+.jumbotron-hero {
   padding-bottom: 0;
   padding-top: 0;
   text-align: center;
-}
-
-.jumbotron .hero {
-  filter: gray;
-  filter: grayscale(90%);
-  max-width: 100%;
 }
 
 .navbar {
@@ -30,29 +36,29 @@
 }
 
 @media (min-width: 992px) {
-  .jumbotron {
+  .jumbotron-hero {
     margin-top: -160px;
   }
 
-  .jumbotron .cta {
+  .jumbotron-hero .cta {
     padding-bottom: 15%;
   }
 
-  .jumbotron .cta button {
+  .jumbotron-hero .cta button {
     margin-top: 20px;
   }
 
 }
 
 @media (max-width: 991px) {
-  .jumbotron {
+  .jumbotron-hero {
     margin-top: -90px;
   }
   .display-4 {
     font-size: 2.5rem;
   }
 
-  .jumbotron .cta {
+  .jumbotron-hero .cta {
     padding-bottom: 20px;
     padding-top: 20px;
   }
