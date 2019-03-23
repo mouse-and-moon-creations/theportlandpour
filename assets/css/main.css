@@ -3,10 +3,6 @@
   filter: grayscale(95%);
 }
 
-.imgres {
-  max-width: 100%
-}
-
 .jumbotron {
   background-color: #000;
   color: #fff;
