@@ -22,8 +22,8 @@ import Helmet from 'react-helmet';
 import Footer from '../../components/Footer';
 
 const frontload = async props => {
-  const slug = props.location.pathname.split('/');
-  const post = await blogActions.fetchPostBySlug(slug.pop());
+  const { slug } = props.match.params;
+  const post = await blogActions.fetchPostBySlug(slug);
   await props.dispatch(post);
   const related = { filter: encodeURIComponent('tags:[' + post.data.tags.map(tag => tag.slug).join(',') + ']+id:-' + post.data.id) };
   const relatedPosts = await blogActions.getFeaturedPosts(related);
@@ -141,6 +141,8 @@ class PostView extends Component {
   }
 
   render() {
+
+    console.log(this.props);
 
     const { classes, match } = this.props;
     const { featuredPosts, post, waiting } = this.props.blog;
