@@ -142,8 +142,6 @@ class PostView extends Component {
 
   render() {
 
-    console.log(this.props);
-
     const { classes, match } = this.props;
     const { featuredPosts, post, waiting } = this.props.blog;
     const progress = <LinearProgress />;
