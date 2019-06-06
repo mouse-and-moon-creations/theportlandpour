@@ -68,7 +68,6 @@ class Navigation extends Component {
           <Link to="/"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Home" /></Link>
           <Link to="/page/1"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Cocktails" /></Link>
           <Link to="/feature-page/1"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Features" /></Link>
-          <a href="https://teespring.com/stores/theportlandpour" rel="noopener noreferrer" target="_blank"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Merch" /></a>
           <Link to="/work-with-us"><Tab classes={{ textColorInherit: classes.textColorInherit, label: classes.label }} label="Book us" /></Link>
         </Tabs>
       </div>
